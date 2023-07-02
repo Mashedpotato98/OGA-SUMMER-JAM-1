@@ -1,0 +1,192 @@
+; Engine configuration file.
+; It's best edited using the editor UI and not directly,
+; since the parameters that go here are not all obvious.
+;
+; Format:
+;   [section] ; section goes between []
+;   param=value ; assign values to parameters
+
+config_version=4
+
+_global_script_classes=[ {
+"base": "PackedDataContainer",
+"class": "BulletProps",
+"language": "GDScript",
+"path": "res://addons/BulletUpHell/BulletProps.gd"
+}, {
+"base": "Resource",
+"class": "DialogueResource",
+"language": "GDScript",
+"path": "res://addons/dialogue_manager/dialogue_resource.gd"
+}, {
+"base": "",
+"class": "GitAPI",
+"language": "NativeScript",
+"path": "res://addons/godot-git-plugin/git_api.gdns"
+}, {
+"base": "NavigationPolygon",
+"class": "PatternCircle",
+"language": "GDScript",
+"path": "res://addons/BulletUpHell/SpawnPatterns/PatternCircle.gd"
+}, {
+"base": "NavigationPolygon",
+"class": "PatternCustomArea",
+"language": "GDScript",
+"path": "res://addons/BulletUpHell/SpawnPatterns/PatternCustomArea.gd"
+}, {
+"base": "NavigationPolygon",
+"class": "PatternCustomPoints",
+"language": "GDScript",
+"path": "res://addons/BulletUpHell/SpawnPatterns/PatternCustomPoints.gd"
+}, {
+"base": "NavigationPolygon",
+"class": "PatternCustomShape",
+"language": "GDScript",
+"path": "res://addons/BulletUpHell/SpawnPatterns/PatternCustomShape.gd"
+}, {
+"base": "NavigationPolygon",
+"class": "PatternLine",
+"language": "GDScript",
+"path": "res://addons/BulletUpHell/SpawnPatterns/PatternLine.gd"
+}, {
+"base": "NavigationPolygon",
+"class": "PatternOne",
+"language": "GDScript",
+"path": "res://addons/BulletUpHell/SpawnPatterns/PatternOne.gd"
+}, {
+"base": "Object",
+"class": "RNGTools",
+"language": "GDScript",
+"path": "res://addons/rngtools/RNGTools.gd"
+}, {
+"base": "Reference",
+"class": "SfxrGenerator",
+"language": "GDScript",
+"path": "res://addons/godot_sfxr/SfxrGenerator.gd"
+}, {
+"base": "Object",
+"class": "SfxrGlobals",
+"language": "GDScript",
+"path": "res://addons/godot_sfxr/SfxrGlobals.gd"
+}, {
+"base": "Object",
+"class": "SfxrStreamPlayerInterface",
+"language": "GDScript",
+"path": "res://addons/godot_sfxr/SfxrStreamPlayerInterface.gd"
+}, {
+"base": "RichTextEffect",
+"class": "TriggerCollision",
+"language": "GDScript",
+"path": "res://addons/BulletUpHell/Triggers/TriggerCollision.gd"
+}, {
+"base": "RichTextEffect",
+"class": "TriggerPos",
+"language": "GDScript",
+"path": "res://addons/BulletUpHell/Triggers/TriggerPos.gd"
+}, {
+"base": "RichTextEffect",
+"class": "TriggerSignal",
+"language": "GDScript",
+"path": "res://addons/BulletUpHell/Triggers/TriggerSignal.gd"
+}, {
+"base": "RichTextEffect",
+"class": "TriggerTime",
+"language": "GDScript",
+"path": "res://addons/BulletUpHell/Triggers/TriggerTime.gd"
+} ]
+_global_script_class_icons={
+"BulletProps": "",
+"DialogueResource": "",
+"GitAPI": "",
+"PatternCircle": "",
+"PatternCustomArea": "",
+"PatternCustomPoints": "",
+"PatternCustomShape": "",
+"PatternLine": "",
+"PatternOne": "",
+"RNGTools": "",
+"SfxrGenerator": "",
+"SfxrGlobals": "",
+"SfxrStreamPlayerInterface": "",
+"TriggerCollision": "",
+"TriggerPos": "",
+"TriggerSignal": "",
+"TriggerTime": ""
+}
+
+[application]
+
+config/name="OGA SUMMER JAM"
+run/main_scene="res://Scenes/Main.tscn"
+config/icon="res://icon.png"
+
+[autoload]
+
+DialogueManager="*res://addons/dialogue_manager/dialogue_manager.gd"
+InputBuffer="*res://input_buffer.gd"
+Spawning="*res://addons/BulletUpHell/Spawning.tscn"
+
+[editor]
+
+version_control_autoload_on_startup=true
+version_control_plugin_name="GitAPI"
+
+[editor_plugins]
+
+enabled=PoolStringArray( "res://addons/BulletUpHell/plugin.cfg", "res://addons/Trail/plugin.cfg", "res://addons/dialogue_manager/plugin.cfg", "res://addons/godot_sfxr/plugin.cfg", "res://addons/gut/plugin.cfg", "res://addons/imrp/plugin.cfg", "res://addons/selection_shortcuts/plugin.cfg", "res://addons/transitions/plugin.cfg" )
+
+[gui]
+
+common/drop_mouse_on_gui_input_disabled=true
+
+[input]
+
+Right={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":0,"physical_scancode":68,"unicode":0,"echo":false,"script":null)
+ ]
+}
+Left={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":0,"physical_scancode":65,"unicode":0,"echo":false,"script":null)
+ ]
+}
+Down={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":0,"physical_scancode":83,"unicode":0,"echo":false,"script":null)
+ ]
+}
+Up={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":0,"physical_scancode":87,"unicode":0,"echo":false,"script":null)
+ ]
+}
+Dash,Roll={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":0,"physical_scancode":16777237,"unicode":0,"echo":false,"script":null)
+, Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":0,"physical_scancode":32,"unicode":0,"echo":false,"script":null)
+ ]
+}
+Shoot={
+"deadzone": 0.5,
+"events": [ Object(InputEventMouseButton,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"button_mask":0,"position":Vector2( 0, 0 ),"global_position":Vector2( 0, 0 ),"factor":1.0,"button_index":1,"pressed":false,"doubleclick":false,"script":null)
+ ]
+}
+Interact={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":0,"physical_scancode":69,"unicode":0,"echo":false,"script":null)
+ ]
+}
+Drop={
+"deadzone": 0.5,
+"events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":0,"physical_scancode":71,"unicode":0,"echo":false,"script":null)
+ ]
+}
+
+[physics]
+
+common/enable_pause_aware_picking=true
+
+[rendering]
+
+environment/default_environment="res://default_env.tres"
