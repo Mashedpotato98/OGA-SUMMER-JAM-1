@@ -16,34 +16,34 @@ var joymotion_timestamps: Dictionary
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	pause_mode = Node.PAUSE_MODE_PROCESS
-	
+
 	# Initialize all dictionary entris.
 	keyboard_timestamps = {}
 	joypad_timestamps = {}
 	joymotion_timestamps = {}
-	
+
 
 # Called whenever the player makes an input.
 func _input(event: InputEvent) -> void:
 	if event is InputEventKey:
 		if !event.pressed or event.is_echo():
 			return
-			
+
 		var scancode: int = event.scancode
 		keyboard_timestamps[scancode] = Time.get_ticks_msec()
 	elif event is InputEventJoypadButton:
 		if !event.pressed or event.is_echo():
 			return
-			
+
 		var button_index: int = event.button_index
 		joypad_timestamps[button_index] = Time.get_ticks_msec()
 	elif event is InputEventJoypadMotion:
 		if abs(event.axis_value) < JOY_DEADZONE:
 			return
-			
+
 		var axis_code: String = str(event.axis) + "_" + str(sign(event.axis_value))
 		joymotion_timestamps[axis_code] = Time.get_ticks_msec()
-	
+
 # Returns whether any of the keyboard keys or joypad buttons in the given action were pressed within the buffer window.
 func is_action_press_buffered(action: String) -> bool:
 	# Get the inputs associated with the action. If any one of them was pressed in the last BUFFER_WINDOW milliseconds,
@@ -55,7 +55,7 @@ func is_action_press_buffered(action: String) -> bool:
 				if Time.get_ticks_msec() - keyboard_timestamps[scancode] <= BUFFER_WINDOW:
 					# Prevent this method from returning true repeatedly and registering duplicate actions.
 					_invalidate_action(action)
-					
+
 					return true;
 		elif event is InputEventJoypadButton:
 			var button_index: int = event.button_index
@@ -72,7 +72,7 @@ func is_action_press_buffered(action: String) -> bool:
 				if delta <= BUFFER_WINDOW:
 					_invalidate_action(action)
 					return true
-	
+
 	return false
 
 

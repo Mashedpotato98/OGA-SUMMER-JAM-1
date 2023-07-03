@@ -7,7 +7,7 @@ func _ready():
 
 func _process(delta):
 	position += (Vector2.RIGHT*spd).rotated(rotation) * delta
-	
+
 func _physics_process(delta):
 	yield(get_tree().create_timer(0.01),"timeout")
 	set_physics_process(false)

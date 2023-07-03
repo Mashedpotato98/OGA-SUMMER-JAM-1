@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/g36c.png-bb1ebea709ca2daa309078a0ef7a98ad.stex"
+path="res://.import/turret_2.png-09d82ba13207c9a812d9b0e7fa27941b.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/art/g36c.png"
-dest_files=[ "res://.import/g36c.png-bb1ebea709ca2daa309078a0ef7a98ad.stex" ]
+source_file="res://guns/turret/turret_2.png"
+dest_files=[ "res://.import/turret_2.png-09d82ba13207c9a812d9b0e7fa27941b.stex" ]
 
 [params]
 
@@ -20,7 +20,7 @@ compress/hdr_mode=0
 compress/bptc_ldr=0
 compress/normal_map=0
 flags/repeat=0
-flags/filter=true
+flags/filter=false
 flags/mipmaps=false
 flags/anisotropic=false
 flags/srgb=2

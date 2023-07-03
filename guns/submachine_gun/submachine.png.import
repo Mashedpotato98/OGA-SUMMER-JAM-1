@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/turret_2.png-54f09a9e9adaaac66b5836c61e236f7b.stex"
+path="res://.import/submachine.png-107af303d5400895b71ad319e9ff3786.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/art/turret_2.png"
-dest_files=[ "res://.import/turret_2.png-54f09a9e9adaaac66b5836c61e236f7b.stex" ]
+source_file="res://guns/submachine_gun/submachine.png"
+dest_files=[ "res://.import/submachine.png-107af303d5400895b71ad319e9ff3786.stex" ]
 
 [params]
 

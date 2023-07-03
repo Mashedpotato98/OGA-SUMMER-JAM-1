@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/shotgun.png-ad3da284da5e9e000e7e6959c4f0a2d1.stex"
+path="res://.import/g36c.png-1848f6661b9f25b8e94b5315c3c92771.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/art/shotgun.png"
-dest_files=[ "res://.import/shotgun.png-ad3da284da5e9e000e7e6959c4f0a2d1.stex" ]
+source_file="res://guns/g36c/g36c.png"
+dest_files=[ "res://.import/g36c.png-1848f6661b9f25b8e94b5315c3c92771.stex" ]
 
 [params]
 
@@ -20,7 +20,7 @@ compress/hdr_mode=0
 compress/bptc_ldr=0
 compress/normal_map=0
 flags/repeat=0
-flags/filter=false
+flags/filter=true
 flags/mipmaps=false
 flags/anisotropic=false
 flags/srgb=2

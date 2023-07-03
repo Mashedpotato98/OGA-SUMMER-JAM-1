@@ -9,115 +9,55 @@
 config_version=4
 
 _global_script_classes=[ {
-"base": "PackedDataContainer",
-"class": "BulletProps",
+"base": "Area2D",
+"class": "Bullet",
 "language": "GDScript",
-"path": "res://addons/BulletUpHell/BulletProps.gd"
+"path": "res://guns/bullet.gd"
 }, {
-"base": "Resource",
-"class": "DialogueResource",
+"base": "KinematicBody2D",
+"class": "Character",
 "language": "GDScript",
-"path": "res://addons/dialogue_manager/dialogue_resource.gd"
+"path": "res://characters/character.gd"
 }, {
-"base": "",
-"class": "GitAPI",
-"language": "NativeScript",
-"path": "res://addons/godot-git-plugin/git_api.gdns"
-}, {
-"base": "NavigationPolygon",
-"class": "PatternCircle",
+"base": "Node2D",
+"class": "Gun",
 "language": "GDScript",
-"path": "res://addons/BulletUpHell/SpawnPatterns/PatternCircle.gd"
+"path": "res://guns/gun.gd"
 }, {
-"base": "NavigationPolygon",
-"class": "PatternCustomArea",
+"base": "Area2D",
+"class": "HitBox",
 "language": "GDScript",
-"path": "res://addons/BulletUpHell/SpawnPatterns/PatternCustomArea.gd"
+"path": "res://components/hit_box.gd"
 }, {
-"base": "NavigationPolygon",
-"class": "PatternCustomPoints",
+"base": "Area2D",
+"class": "ItemPickup",
 "language": "GDScript",
-"path": "res://addons/BulletUpHell/SpawnPatterns/PatternCustomPoints.gd"
+"path": "res://pickups/item_pickup.gd"
 }, {
-"base": "NavigationPolygon",
-"class": "PatternCustomShape",
+"base": "Node2D",
+"class": "Map",
 "language": "GDScript",
-"path": "res://addons/BulletUpHell/SpawnPatterns/PatternCustomShape.gd"
+"path": "res://map/map.gd"
 }, {
-"base": "NavigationPolygon",
-"class": "PatternLine",
+"base": "Character",
+"class": "Robber",
 "language": "GDScript",
-"path": "res://addons/BulletUpHell/SpawnPatterns/PatternLine.gd"
-}, {
-"base": "NavigationPolygon",
-"class": "PatternOne",
-"language": "GDScript",
-"path": "res://addons/BulletUpHell/SpawnPatterns/PatternOne.gd"
-}, {
-"base": "Object",
-"class": "RNGTools",
-"language": "GDScript",
-"path": "res://addons/rngtools/RNGTools.gd"
-}, {
-"base": "Reference",
-"class": "SfxrGenerator",
-"language": "GDScript",
-"path": "res://addons/godot_sfxr/SfxrGenerator.gd"
-}, {
-"base": "Object",
-"class": "SfxrGlobals",
-"language": "GDScript",
-"path": "res://addons/godot_sfxr/SfxrGlobals.gd"
-}, {
-"base": "Object",
-"class": "SfxrStreamPlayerInterface",
-"language": "GDScript",
-"path": "res://addons/godot_sfxr/SfxrStreamPlayerInterface.gd"
-}, {
-"base": "RichTextEffect",
-"class": "TriggerCollision",
-"language": "GDScript",
-"path": "res://addons/BulletUpHell/Triggers/TriggerCollision.gd"
-}, {
-"base": "RichTextEffect",
-"class": "TriggerPos",
-"language": "GDScript",
-"path": "res://addons/BulletUpHell/Triggers/TriggerPos.gd"
-}, {
-"base": "RichTextEffect",
-"class": "TriggerSignal",
-"language": "GDScript",
-"path": "res://addons/BulletUpHell/Triggers/TriggerSignal.gd"
-}, {
-"base": "RichTextEffect",
-"class": "TriggerTime",
-"language": "GDScript",
-"path": "res://addons/BulletUpHell/Triggers/TriggerTime.gd"
+"path": "res://characters/robber/robber.gd"
 } ]
 _global_script_class_icons={
-"BulletProps": "",
-"DialogueResource": "",
-"GitAPI": "",
-"PatternCircle": "",
-"PatternCustomArea": "",
-"PatternCustomPoints": "",
-"PatternCustomShape": "",
-"PatternLine": "",
-"PatternOne": "",
-"RNGTools": "",
-"SfxrGenerator": "",
-"SfxrGlobals": "",
-"SfxrStreamPlayerInterface": "",
-"TriggerCollision": "",
-"TriggerPos": "",
-"TriggerSignal": "",
-"TriggerTime": ""
+"Bullet": "",
+"Character": "",
+"Gun": "",
+"HitBox": "",
+"ItemPickup": "",
+"Map": "",
+"Robber": ""
 }
 
 [application]
 
 config/name="OGA SUMMER JAM"
-run/main_scene="res://Scenes/Main.tscn"
+run/main_scene="res://map/map.tscn"
 config/icon="res://icon.png"
 
 [autoload]
@@ -126,6 +66,14 @@ DialogueManager="*res://addons/dialogue_manager/dialogue_manager.gd"
 InputBuffer="*res://input_buffer.gd"
 Spawning="*res://addons/BulletUpHell/Spawning.tscn"
 
+[display]
+
+window/size/width=320
+window/size/height=180
+window/size/fullscreen=true
+window/stretch/mode="2d"
+window/stretch/aspect="keep"
+
 [editor]
 
 version_control_autoload_on_startup=true
@@ -133,7 +81,7 @@ version_control_plugin_name="GitAPI"
 
 [editor_plugins]
 
-enabled=PoolStringArray( "res://addons/BulletUpHell/plugin.cfg", "res://addons/Trail/plugin.cfg", "res://addons/dialogue_manager/plugin.cfg", "res://addons/godot_sfxr/plugin.cfg", "res://addons/gut/plugin.cfg", "res://addons/imrp/plugin.cfg", "res://addons/selection_shortcuts/plugin.cfg", "res://addons/transitions/plugin.cfg" )
+enabled=PoolStringArray(  )
 
 [gui]
 
@@ -141,47 +89,64 @@ common/drop_mouse_on_gui_input_disabled=true
 
 [input]
 
-Right={
+right={
 "deadzone": 0.5,
 "events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":0,"physical_scancode":68,"unicode":0,"echo":false,"script":null)
+, Object(InputEventJoypadMotion,"resource_local_to_scene":false,"resource_name":"","device":0,"axis":0,"axis_value":1.0,"script":null)
+, Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":16777233,"physical_scancode":0,"unicode":0,"echo":false,"script":null)
  ]
 }
-Left={
+left={
 "deadzone": 0.5,
 "events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":0,"physical_scancode":65,"unicode":0,"echo":false,"script":null)
+, Object(InputEventJoypadMotion,"resource_local_to_scene":false,"resource_name":"","device":0,"axis":0,"axis_value":-1.0,"script":null)
+, Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":16777231,"physical_scancode":0,"unicode":0,"echo":false,"script":null)
  ]
 }
-Down={
+down={
 "deadzone": 0.5,
 "events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":0,"physical_scancode":83,"unicode":0,"echo":false,"script":null)
+, Object(InputEventJoypadMotion,"resource_local_to_scene":false,"resource_name":"","device":0,"axis":1,"axis_value":1.0,"script":null)
+, Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":16777234,"physical_scancode":0,"unicode":0,"echo":false,"script":null)
  ]
 }
-Up={
+up={
 "deadzone": 0.5,
 "events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":0,"physical_scancode":87,"unicode":0,"echo":false,"script":null)
+, Object(InputEventJoypadMotion,"resource_local_to_scene":false,"resource_name":"","device":0,"axis":1,"axis_value":-1.0,"script":null)
+, Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":16777232,"physical_scancode":0,"unicode":0,"echo":false,"script":null)
  ]
 }
-Dash,Roll={
+dash={
 "deadzone": 0.5,
 "events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":0,"physical_scancode":16777237,"unicode":0,"echo":false,"script":null)
 , Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":0,"physical_scancode":32,"unicode":0,"echo":false,"script":null)
  ]
 }
-Shoot={
+shoot={
 "deadzone": 0.5,
 "events": [ Object(InputEventMouseButton,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"button_mask":0,"position":Vector2( 0, 0 ),"global_position":Vector2( 0, 0 ),"factor":1.0,"button_index":1,"pressed":false,"doubleclick":false,"script":null)
+, Object(InputEventJoypadMotion,"resource_local_to_scene":false,"resource_name":"","device":0,"axis":7,"axis_value":1.0,"script":null)
  ]
 }
-Interact={
+interact={
 "deadzone": 0.5,
 "events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":0,"physical_scancode":69,"unicode":0,"echo":false,"script":null)
  ]
 }
-Drop={
+drop={
 "deadzone": 0.5,
 "events": [ Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":0,"alt":false,"shift":false,"control":false,"meta":false,"command":false,"pressed":false,"scancode":0,"physical_scancode":71,"unicode":0,"echo":false,"script":null)
  ]
 }
+
+[layer_names]
+
+2d_physics/layer_1="Map"
+2d_physics/layer_2="Robber"
+2d_physics/layer_3="NPC"
+2d_physics/layer_4="Hit Box"
+2d_physics/layer_5="Shoot Through"
 
 [physics]
 

@@ -46,7 +46,7 @@ func _physics_process(delta):
 			dash_state()
 		DEATH:
 			death_state()
-	
+
 	#misc
 	_move_and_other_misc()
 	switch_state()
@@ -57,7 +57,7 @@ func move_state():
 	velocity.y = Input.get_action_strength("Down") - Input.get_action_strength("Up")
 
 	velocity = velocity.normalized()
-	
+
 	if velocity == Vector2.ZERO:
 		Anim.get("parameters/playback").travel("Idle")
 	else:
@@ -90,10 +90,10 @@ func _move_and_other_misc():
 		add_child(submachine_ins)
 
 		submachine_ins.state = 2
-		
+
 		can_interact_submachine = false
 		submachine = null
-		
+
 		slot += 1
 		holding = 1#1 for submachine
 
@@ -110,7 +110,7 @@ func _move_and_other_misc():
 		shotgun = null
 		slot += 1
 		holding = 2#2 for shotgun
-		
+
 
 #drop weapon
 	if Input.is_action_just_pressed("Drop") and holding == 1:

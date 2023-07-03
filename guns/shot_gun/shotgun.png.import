@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/submachine.png-784e2a2fd018991459e12225d4bb8b73.stex"
+path="res://.import/shotgun.png-30fa77362595b64b204e445db320f787.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/art/submachine.png"
-dest_files=[ "res://.import/submachine.png-784e2a2fd018991459e12225d4bb8b73.stex" ]
+source_file="res://guns/shot_gun/shotgun.png"
+dest_files=[ "res://.import/shotgun.png-30fa77362595b64b204e445db320f787.stex" ]
 
 [params]
 

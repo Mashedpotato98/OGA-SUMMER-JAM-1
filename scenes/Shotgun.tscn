@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=2]
 
-[ext_resource path="res://Scripts/Shotgun.gd" type="Script" id=1]
-[ext_resource path="res://assets/art/shotgun.png" type="Texture" id=6]
+[ext_resource path="res://scripts/Shotgun.gd" type="Script" id=1]
+[ext_resource path="res://guns/shot_gun/shotgun.png" type="Texture" id=6]
 
 [sub_resource type="RectangleShape2D" id=1]
 
