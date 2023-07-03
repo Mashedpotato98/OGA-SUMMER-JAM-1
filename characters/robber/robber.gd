@@ -11,16 +11,11 @@ export var kickback_time := 0.1
 
 var anim_dir := Vector2.RIGHT setget _on_anim_dir_set
 var aim_dir := Vector2()
-var stunned := false
 var guns := []
 
 onready var animation_tree: AnimationTree = $AnimationTree
 onready var playback: AnimationNodeStateMachinePlayback = animation_tree.get("parameters/playback")
-
-
-func _ready() -> void:
-	._ready()
-	#gun = hand.get_node("Pistol")# Direct access is temp
+onready var hit_box: HitBox = $HitBox
 
 
 func _unhandled_input(event: InputEvent) -> void:
@@ -30,6 +25,7 @@ func _unhandled_input(event: InputEvent) -> void:
 		aim_dir = global_position.direction_to(mouse_pos)
 	elif event.is_action_pressed("dash"):
 		shove(anim_dir * dash_speed, dash_length)
+		hit_box.start_immunity(dash_length)
 
 
 func _physics_process(delta: float) -> void:
@@ -66,15 +62,6 @@ func add_item(ITEM: PackedScene) -> void:
 	gun = ITEM.instance()
 	hand.add_child(gun)
 	guns.append(ITEM)
-
-
-func shove(vel: Vector2, duration: float) -> void:
-	if stunned:
-		return
-	velocity = vel
-	stunned = true
-	yield(get_tree().create_timer(duration), "timeout")
-	stunned = false
 
 
 func _on_anim_dir_set(value: Vector2) -> void:

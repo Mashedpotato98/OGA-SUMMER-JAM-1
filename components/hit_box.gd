@@ -11,8 +11,6 @@ onready var immunity_duration: Timer = $ImmunityDuration
 
 
 func take_dmg(attacker: Node2D, amount := 1) -> void:
-	if attacker == owner:# Prevent hitting self.
-		return
 	start_immunity()
 	emit_signal("dmg_taken", attacker, int(amount * sensitivity))
 

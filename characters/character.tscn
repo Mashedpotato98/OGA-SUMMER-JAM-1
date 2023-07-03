@@ -16,9 +16,9 @@ script = ExtResource( 2 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 
-[node name="Hitbox" parent="." instance=ExtResource( 1 )]
+[node name="HitBox" parent="." instance=ExtResource( 1 )]
 
-[node name="CollisionShape" parent="Hitbox" index="0"]
+[node name="CollisionShape" parent="HitBox" index="0"]
 shape = SubResource( 1 )
 
 [node name="HandPivot" type="Position2D" parent="."]
@@ -31,4 +31,6 @@ __meta__ = {
 "_gizmo_extents_": 4.0
 }
 
-[editable path="Hitbox"]
+[connection signal="dmg_taken" from="HitBox" to="." method="_on_HitBox_dmg_taken"]
+
+[editable path="HitBox"]

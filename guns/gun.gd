@@ -6,6 +6,7 @@ extends Node2D
 
 export var BULLET: PackedScene = null
 export var spread := 0.0
+export var flip := true
 
 var cooling := false
 
@@ -17,6 +18,8 @@ onready var animation_player: AnimationPlayer = $AnimationPlayer
 
 func _ready() -> void:
 	spread = deg2rad(spread)
+	if not flip:
+		set_process(false)
 
 
 func _process(_delta: float) -> void:

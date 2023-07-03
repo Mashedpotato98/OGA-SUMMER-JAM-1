@@ -8,9 +8,9 @@
 radius = 1.99999
 height = 6.00002
 
-[sub_resource type="RectangleShape2D" id=1]
+[sub_resource type="RectangleShape2D" id=45]
 resource_local_to_scene = true
-extents = Vector2( 3, 7 )
+extents = Vector2( 2, 7 )
 
 [sub_resource type="AnimationNodeAnimation" id=25]
 animation = "IdleLeft"
@@ -222,11 +222,6 @@ tracks/0/keys = {
 collision_layer = 2
 script = ExtResource( 2 )
 ammo = 100
-turn_speed = 10.0
-dash_speed = 128.0
-dash_length = 0.5
-kickback = 32.0
-kickback_time = 0.1
 
 [node name="Sprite" parent="." index="0"]
 position = Vector2( 0, -7 )
@@ -239,9 +234,9 @@ frame = 2
 rotation = -1.57079
 shape = SubResource( 44 )
 
-[node name="CollisionShape" parent="Hitbox" index="0"]
+[node name="CollisionShape" parent="HitBox" index="0"]
 position = Vector2( 0, -7 )
-shape = SubResource( 1 )
+shape = SubResource( 45 )
 
 [node name="AnimationTree" type="AnimationTree" parent="." index="3"]
 tree_root = SubResource( 33 )
@@ -271,4 +266,4 @@ position = Vector2( 8, 0 )
 [node name="Camera2D" type="Camera2D" parent="." index="6"]
 current = true
 
-[editable path="Hitbox"]
+[editable path="HitBox"]

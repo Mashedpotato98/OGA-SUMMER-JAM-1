@@ -3,6 +3,7 @@
 [ext_resource path="res://guns/gun.gd" type="Script" id=1]
 
 [sub_resource type="Animation" id=1]
+resource_local_to_scene = true
 resource_name = "Shoot"
 length = 0.15
 step = 0.05

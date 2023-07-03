@@ -18,6 +18,8 @@ var smoothing_enabled := true
 var smooth_vel := Vector2() setget _on_smooth_vel_set
 var velocity := Vector2() setget _on_velocity_set
 
+var stunned := false
+
 onready var hand_pivot: Position2D = $HandPivot
 onready var hand: Position2D = hand_pivot.get_node("Hand")
 
@@ -48,6 +50,15 @@ func pull_trigger() -> bool:
 	return false
 
 
+func shove(vel: Vector2, duration: float) -> void:
+	if stunned:
+		return
+	velocity = vel
+	stunned = true
+	yield(get_tree().create_timer(duration), "timeout")
+	stunned = false
+
+
 func _on_max_hp_set(value: int) -> void:
 	max_hp = value
 	_on_hp_set(hp)
@@ -71,3 +82,8 @@ func _on_smooth_vel_set(value: Vector2) -> void:
 func _on_velocity_set(value: Vector2) -> void:
 	velocity = value
 	smoothing_enabled = false
+
+
+func _on_HitBox_dmg_taken(attacker: Node2D, amount: int) -> void:
+	self.hp -= amount
+	#shove()
