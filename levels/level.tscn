@@ -1,7 +1,10 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://levels/level.gd" type="Script" id=4]
 [ext_resource path="res://characters/robber/robber.tscn" type="PackedScene" id=5]
+
+[sub_resource type="NavigationPolygon" id=1]
+resource_local_to_scene = true
 
 [node name="Level" type="Node2D"]
 script = ExtResource( 4 )
@@ -10,6 +13,9 @@ script = ExtResource( 4 )
 
 [node name="Robber" parent="YSort" instance=ExtResource( 5 )]
 
+[node name="Cops" type="YSort" parent="YSort"]
+
 [node name="Pickups" type="Node2D" parent="."]
 
 [node name="NavigationPolygonInstance" type="NavigationPolygonInstance" parent="."]
+navpoly = SubResource( 1 )

@@ -45,6 +45,7 @@ func shoot() -> bool:
 func add_bullet() -> void:
 	var bullet: Bullet = BULLET.instance()
 	bullet.attacker = owner
+	assert(bullet.attacker != null)
 	bullet.direction = global_transform.x.rotated(rand_range(-spread, spread))
 	get_tree().current_scene.add_child(bullet)
 	bullet.global_position = barrel.global_position

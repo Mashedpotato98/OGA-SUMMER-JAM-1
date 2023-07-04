@@ -9,38 +9,45 @@ export var hp := 3 setget _on_hp_set
 var robber
 var shooting := false
 
-onready var gun: Gun = $Gun
+onready var auto_aimer: AutoAimer = $AutoAimer
+onready var gun: Gun = auto_aimer.get_node("Gun")
 onready var animation_player: AnimationPlayer = $AnimationPlayer
 
 
-func _physics_process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	if robber == null:
 		return
 
 	var direction := global_position.direction_to(robber.global_position)
-	global_rotation = lerp_angle(global_rotation, direction.angle(), turn_speed * delta)
-
 	# Might could use dot product; for now just using matrix.
-	if transform.x.distance_to(direction) <= shoot_margin and not shooting:
+	if auto_aimer.transform.x.distance_to(direction) <= shoot_margin and not shooting:
 		shooting = true
 		play_random()
 
 
-
-
 func play_random() -> void:
-	var animation = null
 	var rand_num := randf()
-	if rand_num <= 0.1:
-		animation = "Wait"
-	elif rand_num <= 0.5:
-		animation = "RapidFire"
+	if rand_num <= 0.25:
+		animation_player.play("RapidFire")
+
+		var sweep_range := TAU / 4.0
+		yield(sweep(sweep_range / 2.0, 0.5), "finished")
+		yield(sweep(-sweep_range, 0.5), "finished")
+# warning-ignore:return_value_discarded
+		sweep(sweep_range / 2.0, 0.25)
 	else:
-		animation = "Fire"
+		animation_player.play("Fire")
 
 #	var animations := animation_player.get_animation_list()
 #	var animation := animations[rand_range(0, animations.size())]
-	animation_player.play(animation)
+#	animation_player.play(animation)
+
+
+func sweep(angle: float, duration: float) -> SceneTreeTween:
+	var tween := create_tween()
+# warning-ignore:return_value_discarded
+	tween.tween_property(auto_aimer, "transform", auto_aimer.transform.rotated(angle), duration)
+	return tween
 
 
 func _on_hp_set(value: int) -> void:

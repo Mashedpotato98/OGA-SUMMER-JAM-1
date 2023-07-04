@@ -6,8 +6,6 @@ extends Character
 export var turn_speed := 10.0
 export var dash_speed := 128.0
 export var dash_length := 0.5
-export var kickback := 32.0
-export var kickback_time := 0.1
 
 var anim_dir := Vector2.RIGHT setget _on_anim_dir_set
 var aim_dir := Vector2()
@@ -15,7 +13,6 @@ var guns := []
 
 onready var animation_tree: AnimationTree = $AnimationTree
 onready var playback: AnimationNodeStateMachinePlayback = animation_tree.get("parameters/playback")
-onready var hit_box: HitBox = $HitBox
 
 
 func _unhandled_input(event: InputEvent) -> void:
@@ -29,13 +26,13 @@ func _unhandled_input(event: InputEvent) -> void:
 
 
 func _physics_process(delta: float) -> void:
-	._physics_process(delta)
 	move(delta)
 	turn(delta)
+	._physics_process(delta)
 
 	if Input.is_action_pressed("shoot"):
-		if pull_trigger():
-			shove(-aim_dir * kickback, kickback_time)
+# warning-ignore:return_value_discarded
+		pull_trigger()
 
 
 func move(_delta: float) -> void:
@@ -48,10 +45,13 @@ func move(_delta: float) -> void:
 
 
 func turn(delta: float) -> void:
+	var joy_direction := Input.get_vector("aim_left", "aim_right", "aim_up", "aim_down")
+	if joy_direction.length() > 0.0:
+		aim_dir = joy_direction
 	hand_pivot.rotation = lerp_angle(hand_pivot.rotation, aim_dir.angle(), turn_speed * delta)
 
 
-func change_gun() -> void:
+func change_item() -> void:
 	pass
 
 
@@ -61,6 +61,7 @@ func add_item(ITEM: PackedScene) -> void:
 
 	gun = ITEM.instance()
 	hand.add_child(gun)
+	gun.set_owner(self)
 	guns.append(ITEM)
 
 

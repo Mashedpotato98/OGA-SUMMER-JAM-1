@@ -8,6 +8,10 @@ signal died
 
 export var acceleration := 128.0
 export var speed := 32.0
+export var hit_force := 64.0
+export var kickback := 32.0
+export var kickback_time := 0.1
+
 export var max_hp := 3 setget _on_max_hp_set
 export var hp := 3 setget _on_hp_set
 export(NodePath) var gun = NodePath()
@@ -20,6 +24,7 @@ var velocity := Vector2() setget _on_velocity_set
 
 var stunned := false
 
+onready var hit_box: HitBox = $HitBox
 onready var hand_pivot: Position2D = $HandPivot
 onready var hand: Position2D = hand_pivot.get_node("Hand")
 
@@ -41,11 +46,12 @@ func _die() -> void:
 
 
 func pull_trigger() -> bool:
-	if gun == null or ammo == 0:# Note: not ammo <= 0. this allows for using -1 to indicate no limit.
+	if gun == null or gun is NodePath or ammo == 0:# Note: not ammo <= 0. this allows for using -1 to indicate no limit.
 		return false
 
 	if gun.shoot():
 		ammo -= 1
+		shove(-hand_pivot.global_transform.x * kickback, kickback_time)
 		return true
 	return false
 
@@ -54,6 +60,7 @@ func shove(vel: Vector2, duration: float) -> void:
 	if stunned:
 		return
 	velocity = vel
+
 	stunned = true
 	yield(get_tree().create_timer(duration), "timeout")
 	stunned = false
@@ -85,5 +92,6 @@ func _on_velocity_set(value: Vector2) -> void:
 
 
 func _on_HitBox_dmg_taken(attacker: Node2D, amount: int) -> void:
+	if is_instance_valid(attacker):# Need to pass bullet instead.
+		shove(attacker.global_position.direction_to(global_position) * kickback, kickback_time)
 	self.hp -= amount
-	#shove()
