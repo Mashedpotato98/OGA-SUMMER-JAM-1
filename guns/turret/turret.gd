@@ -15,7 +15,7 @@ onready var animation_player: AnimationPlayer = $AnimationPlayer
 
 
 func _process(_delta: float) -> void:
-	if robber == null:
+	if robber == null or not is_instance_valid(robber):
 		return
 
 	var direction := global_position.direction_to(robber.global_position)

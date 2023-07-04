@@ -36,7 +36,6 @@ func _physics_process(delta: float) -> void:
 	._physics_process(delta)
 
 
-
 func move(_delta: float) -> void:
 	var input_dir := Input.get_vector("left", "right", "up", "down")
 	smooth_vel = input_dir * speed
@@ -62,6 +61,21 @@ func add_item(ITEM: PackedScene) -> void:
 	hand.add_child(gun)
 	gun.set_owner(self)
 	guns.append(ITEM)
+
+
+func blink() -> void:
+	var blink_duration := 0.25
+	var blinks := 3
+	for i in blinks:
+		sprite.material.set("shader_param/enabled", true)
+		yield(get_tree().create_timer(blink_duration / blinks / 2.0), "timeout")
+		sprite.material.set("shader_param/enabled", false)
+		yield(get_tree().create_timer(blink_duration / blinks / 2.0), "timeout")
+
+
+func _on_HitBox_dmg_taken(attacker: Node2D, amount: int) -> void:
+	._on_HitBox_dmg_taken(attacker, amount)
+	blink()
 
 
 func _on_anim_dir_set(value: Vector2) -> void:

@@ -43,7 +43,7 @@ func search() -> void:
 
 func move() -> void:
 	var wandering := false
-	if robber != null:
+	if robber != null and is_instance_valid(robber):
 		_chase()
 	elif last_robber_sighting != Vector2.INF:
 		search()

@@ -24,6 +24,7 @@ var velocity := Vector2() setget _on_velocity_set
 
 var stunned := false
 
+onready var sprite: Sprite = $Sprite
 onready var hit_box: HitBox = $HitBox
 onready var hand_pivot: Position2D = $HandPivot
 onready var hand: Position2D = hand_pivot.get_node("Hand")

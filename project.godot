@@ -96,6 +96,10 @@ config/name="OGA SUMMER JAM"
 run/main_scene="res://levels/level_0.tscn"
 config/icon="res://icon.png"
 
+[autoload]
+
+Inventory="*res://characters/robber/inventory.gd"
+
 [display]
 
 window/size/width=320

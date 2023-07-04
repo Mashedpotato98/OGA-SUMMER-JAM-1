@@ -7,6 +7,7 @@ export var min_circle_distance := 64.0
 export var max_circle_distance := 96.0
 
 var circle_dir := (randi() % 2) * 2 - 1# -1 or 1
+var bribed := false setget _on_bribed_set
 
 onready var circle_distance := rand_range(min_circle_distance, max_circle_distance)
 
@@ -33,6 +34,10 @@ func _chase() -> void:
 		smooth_vel = direction.rotated(max_rot * distance_scale) * speed
 
 	$DirectionVisualizer.cast_to = smooth_vel# temp
+
+
+func _on_bribed_set(value: bool) -> void:
+	bribed = value
 
 
 func _on_WallDetector_body_entered(_body: Node) -> void:

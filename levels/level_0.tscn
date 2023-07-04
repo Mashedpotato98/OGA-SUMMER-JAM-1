@@ -41,3 +41,5 @@ position = Vector2( 48, 16 )
 
 [node name="SubmachineGunPickup" parent="Pickups" index="1" instance=ExtResource( 6 )]
 position = Vector2( 240, -24 )
+
+[node name="StaticBody2D" type="StaticBody2D" parent="." index="4"]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://characters/character.tscn" type="PackedScene" id=1]
 [ext_resource path="res://components/detection_zone.tscn" type="PackedScene" id=2]
@@ -12,6 +12,8 @@ extents = Vector2( 8, 8 )
 [sub_resource type="CircleShape2D" id=2]
 resource_local_to_scene = true
 radius = 128.0
+
+[sub_resource type="AnimationNodeStateMachinePlayback" id=3]
 
 [node name="Enemy" instance=ExtResource( 1 )]
 script = ExtResource( 3 )
@@ -38,6 +40,9 @@ wait_time = 10.0
 shape = SubResource( 2 )
 
 [node name="SoftCollider" parent="." index="7" instance=ExtResource( 4 )]
+
+[node name="AnimationTree" parent="." index="8"]
+parameters/playback = SubResource( 3 )
 
 [connection signal="timeout" from="WanderTimer" to="." method="_on_WanderTimer_timeout"]
 [connection signal="robber_entered" from="DetectionZone" to="." method="_on_DetectionZone_robber_entered"]
