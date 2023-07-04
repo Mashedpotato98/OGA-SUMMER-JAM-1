@@ -9,6 +9,9 @@ resource_local_to_scene = true
 [node name="Level" type="Node2D"]
 script = ExtResource( 4 )
 
+[node name="NavigationPolygonInstance" type="NavigationPolygonInstance" parent="."]
+navpoly = SubResource( 1 )
+
 [node name="YSort" type="YSort" parent="."]
 
 [node name="Robber" parent="YSort" instance=ExtResource( 5 )]
@@ -16,6 +19,3 @@ script = ExtResource( 4 )
 [node name="Cops" type="YSort" parent="YSort"]
 
 [node name="Pickups" type="Node2D" parent="."]
-
-[node name="NavigationPolygonInstance" type="NavigationPolygonInstance" parent="."]
-navpoly = SubResource( 1 )

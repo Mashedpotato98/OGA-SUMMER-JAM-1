@@ -23,6 +23,8 @@ radius = 128.0
 
 [node name="Cop" instance=ExtResource( 1 )]
 script = ExtResource( 3 )
+max_hp = 4
+hp = 4
 gun = NodePath("HandPivot/Hand/Pistol")
 shoot_margin = 0.25
 min_circle_distance = 64.0

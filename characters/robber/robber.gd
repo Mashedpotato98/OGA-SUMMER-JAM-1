@@ -26,19 +26,18 @@ func _unhandled_input(event: InputEvent) -> void:
 
 
 func _physics_process(delta: float) -> void:
-	move(delta)
-	turn(delta)
+	if not stunned:
+		move(delta)
+		turn(delta)
+		if Input.is_action_pressed("shoot"):
+# warning-ignore:return_value_discarded
+			pull_trigger()
+
 	._physics_process(delta)
 
-	if Input.is_action_pressed("shoot"):
-# warning-ignore:return_value_discarded
-		pull_trigger()
 
 
 func move(_delta: float) -> void:
-	if stunned:
-		return
-
 	var input_dir := Input.get_vector("left", "right", "up", "down")
 	smooth_vel = input_dir * speed
 	self.anim_dir = input_dir

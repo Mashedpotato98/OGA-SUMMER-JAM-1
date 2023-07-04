@@ -123,6 +123,9 @@ anims/RapidFire = SubResource( 3 )
 [node name="CollisionShape" parent="HitBox" index="0"]
 shape = SubResource( 6 )
 
+[node name="ImmunityDuration" parent="HitBox" index="1"]
+wait_time = 0.001
+
 [connection signal="robber_entered" from="DetectionZone" to="." method="_on_DetectionZone_robber_entered"]
 [connection signal="robber_entered" from="DetectionZone" to="AutoAimer" method="_on_DetectionZone_robber_entered"]
 [connection signal="robber_exited" from="DetectionZone" to="." method="_on_DetectionZone_robber_exited"]

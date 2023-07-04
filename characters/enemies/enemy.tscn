@@ -22,6 +22,9 @@ wander_distance = 128.0
 [node name="CollisionShape" parent="HitBox" index="0"]
 shape = SubResource( 1 )
 
+[node name="ImmunityDuration" parent="HitBox" index="1"]
+wait_time = 0.001
+
 [node name="NavigationAgent" type="NavigationAgent2D" parent="." index="4"]
 path_desired_distance = 2.0
 target_desired_distance = 4.0
