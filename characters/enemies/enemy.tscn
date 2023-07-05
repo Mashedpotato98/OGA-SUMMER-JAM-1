@@ -20,6 +20,7 @@ script = ExtResource( 3 )
 walk_speed = 16.0
 wander_time_randomization = 5.0
 wander_distance = 128.0
+bribed_texture = null
 
 [node name="CollisionShape" parent="HitBox" index="0"]
 shape = SubResource( 1 )
@@ -45,8 +46,8 @@ shape = SubResource( 2 )
 parameters/playback = SubResource( 3 )
 
 [connection signal="timeout" from="WanderTimer" to="." method="_on_WanderTimer_timeout"]
-[connection signal="robber_entered" from="DetectionZone" to="." method="_on_DetectionZone_robber_entered"]
-[connection signal="robber_exited" from="DetectionZone" to="." method="_on_DetectionZone_robber_exited"]
+[connection signal="lost" from="DetectionZone" to="." method="_on_DetectionZone_lost"]
+[connection signal="saw" from="DetectionZone" to="." method="_on_DetectionZone_saw"]
 
 [editable path="HitBox"]
 [editable path="DetectionZone"]

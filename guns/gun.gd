@@ -7,7 +7,6 @@ extends Node2D
 export var BULLET: PackedScene = null
 export var spread := 0.0
 export var flip := true
-
 var cooling := false
 
 onready var sprite: Sprite = $Sprite
@@ -33,7 +32,7 @@ func level_sprite() -> void:
 	sprite.position.y = -sprite_y if flipped else sprite_y
 
 
-func shoot() -> bool:
+func activate() -> bool:
 	if cooling:
 		return false
 	add_bullet()
@@ -44,8 +43,7 @@ func shoot() -> bool:
 
 func add_bullet() -> void:
 	var bullet: Bullet = BULLET.instance()
-	bullet.attacker = owner
-	assert(bullet.attacker != null)
+	bullet.attack_type = owner.type
 	bullet.direction = global_transform.x.rotated(rand_range(-spread, spread))
 	get_tree().current_scene.add_child(bullet)
 	bullet.global_position = barrel.global_position
@@ -58,3 +56,7 @@ func start_cool_down() -> void:
 
 func _on_CoolDown_timeout() -> void:
 	cooling = false
+
+
+func _on_DetectionZone_body_entered(body: Node) -> void:
+	pass # Replace with function body.

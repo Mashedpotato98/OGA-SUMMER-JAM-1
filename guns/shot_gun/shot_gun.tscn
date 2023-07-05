@@ -1,0 +1,42 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://guns/gun.tscn" type="PackedScene" id=1]
+[ext_resource path="res://guns/shot_gun/shot_gun.gd" type="Script" id=2]
+[ext_resource path="res://guns/shot_gun/shotgun.png" type="Texture" id=3]
+[ext_resource path="res://guns/bullets/weak_bullet.tscn" type="PackedScene" id=4]
+
+[sub_resource type="Animation" id=1]
+resource_local_to_scene = true
+resource_name = "Shoot"
+length = 0.15
+step = 0.05
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.05, 0.15 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ), Vector2( 0.5, 1 ), Vector2( 1, 1 ) ]
+}
+
+[node name="ShotGun" instance=ExtResource( 1 )]
+script = ExtResource( 2 )
+BULLET = ExtResource( 4 )
+spread = 45.0
+bullets = 3
+
+[node name="Sprite" parent="." index="0"]
+position = Vector2( -11, 2 )
+texture = ExtResource( 3 )
+offset = Vector2( 18, 0 )
+flip_h = true
+
+[node name="Barrel" parent="." index="1"]
+position = Vector2( 16, 0 )
+
+[node name="AnimationPlayer" parent="." index="3"]
+anims/Shoot = SubResource( 1 )

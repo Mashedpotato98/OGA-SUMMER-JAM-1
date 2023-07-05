@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/smoke_grenade.png-811e57f54697a7f983668c4ce150ba9f.stex"
+path="res://.import/setting.png-3bf0de825bb8da84723a426ec54e8791.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/art/grenade/smoke_grenade.png"
-dest_files=[ "res://.import/smoke_grenade.png-811e57f54697a7f983668c4ce150ba9f.stex" ]
+source_file="res://ui/icons/setting.png"
+dest_files=[ "res://.import/setting.png-3bf0de825bb8da84723a426ec54e8791.stex" ]
 
 [params]
 
@@ -20,7 +20,7 @@ compress/hdr_mode=0
 compress/bptc_ldr=0
 compress/normal_map=0
 flags/repeat=0
-flags/filter=true
+flags/filter=false
 flags/mipmaps=false
 flags/anisotropic=false
 flags/srgb=2
@@ -31,5 +31,5 @@ process/invert_color=false
 process/normal_map_invert_y=false
 stream=false
 size_limit=0
-detect_3d=true
+detect_3d=false
 svg/scale=1.0

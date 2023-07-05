@@ -14,8 +14,9 @@ export var kickback_time := 0.1
 
 export var max_hp := 3 setget _on_max_hp_set
 export var hp := 3 setget _on_hp_set
-export(NodePath) var gun = NodePath()
+export(NodePath) var item = NodePath()
 export var ammo := -1
+export(String, "cop", "robber") var type := "cop"
 
 # Auto-switches based on what was last set.
 var smoothing_enabled := true
@@ -31,8 +32,8 @@ onready var hand: Position2D = hand_pivot.get_node("Hand")
 
 
 func _ready() -> void:
-	if not gun.is_empty():
-		gun = get_node(gun)
+	if not item.is_empty():
+		item = get_node(item)
 
 
 func _physics_process(delta: float) -> void:
@@ -46,13 +47,23 @@ func _die() -> void:
 	queue_free()
 
 
-func pull_trigger() -> bool:
-	if gun == null or gun is NodePath or ammo == 0:# Note: not ammo <= 0. this allows for using -1 to indicate no limit.
+func change_item(ITEM: PackedScene) -> void:
+	if item != null and not item is NodePath:
+		item.queue_free()
+
+	item = ITEM.instance()
+	hand.add_child(item)
+	item.set_owner(self)
+
+
+func activate_item() -> bool:
+	if item == null or item is NodePath or ammo == 0:# Note: not ammo <= 0. this allows for using -1 to indicate no limit.
 		return false
 
-	if gun.shoot():
-		ammo -= 1
-		shove(-hand_pivot.global_transform.x * kickback, kickback_time)
+	if item.activate():
+		if item is Gun:
+			ammo -= 1
+			shove(-hand_pivot.global_transform.x * kickback, kickback_time)
 		return true
 	return false
 
@@ -92,7 +103,6 @@ func _on_velocity_set(value: Vector2) -> void:
 	smoothing_enabled = false
 
 
-func _on_HitBox_dmg_taken(attacker: Node2D, amount: int) -> void:
-	if is_instance_valid(attacker):# Need to pass bullet instead.
-		shove(attacker.global_position.direction_to(global_position) * kickback, kickback_time)
+func _on_HitBox_dmg_taken(from: Vector2, amount: int) -> void:
+	shove(from.direction_to(global_position) * kickback, kickback_time)
 	self.hp -= amount

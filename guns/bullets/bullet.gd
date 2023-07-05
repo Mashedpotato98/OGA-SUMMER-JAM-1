@@ -6,7 +6,7 @@ export var speed := 128.0
 export var dmg := 1
 export var HIT_EFFECT: PackedScene = null
 
-var attacker: Node2D = null
+var attack_type := ""
 var direction := Vector2()
 
 
@@ -31,9 +31,9 @@ func _hit() -> void:
 
 
 func _on_Bullet_area_entered(area: Area2D) -> void:
-	if area.owner == attacker:
+	if area.owner.type == attack_type:
 		return
-	area.take_dmg(attacker, dmg)
+	area.take_dmg(global_position, dmg)
 	_hit()
 
 

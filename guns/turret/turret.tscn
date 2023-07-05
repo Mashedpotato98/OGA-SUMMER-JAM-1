@@ -5,7 +5,7 @@
 [ext_resource path="res://guns/gun.tscn" type="PackedScene" id=3]
 [ext_resource path="res://guns/turret/turret_2.png" type="Texture" id=4]
 [ext_resource path="res://components/detection_zone.tscn" type="PackedScene" id=5]
-[ext_resource path="res://guns/turret/turret_bullet.tscn" type="PackedScene" id=6]
+[ext_resource path="res://guns/bullets/weak_bullet.tscn" type="PackedScene" id=6]
 [ext_resource path="res://components/hit_box.tscn" type="PackedScene" id=7]
 [ext_resource path="res://guns/auto_aimer.tscn" type="PackedScene" id=8]
 
@@ -44,7 +44,7 @@ tracks/0/keys = {
 "transitions": PoolRealArray( 1 ),
 "values": [ {
 "args": [  ],
-"method": "shoot"
+"method": "activate"
 } ]
 }
 
@@ -62,22 +62,22 @@ tracks/0/keys = {
 "transitions": PoolRealArray( 1, 1, 1, 1, 1, 1 ),
 "values": [ {
 "args": [  ],
-"method": "shoot"
+"method": "activate"
 }, {
 "args": [  ],
-"method": "shoot"
+"method": "activate"
 }, {
 "args": [  ],
-"method": "shoot"
+"method": "activate"
 }, {
 "args": [  ],
-"method": "shoot"
+"method": "activate"
 }, {
 "args": [  ],
-"method": "shoot"
+"method": "activate"
 }, {
 "args": [  ],
-"method": "shoot"
+"method": "activate"
 } ]
 }
 
@@ -126,10 +126,10 @@ shape = SubResource( 6 )
 [node name="ImmunityDuration" parent="HitBox" index="1"]
 wait_time = 0.001
 
-[connection signal="robber_entered" from="DetectionZone" to="." method="_on_DetectionZone_robber_entered"]
-[connection signal="robber_entered" from="DetectionZone" to="AutoAimer" method="_on_DetectionZone_robber_entered"]
-[connection signal="robber_exited" from="DetectionZone" to="." method="_on_DetectionZone_robber_exited"]
-[connection signal="robber_exited" from="DetectionZone" to="AutoAimer" method="_on_DetectionZone_robber_exited"]
+[connection signal="lost" from="DetectionZone" to="." method="_on_DetectionZone_lost"]
+[connection signal="lost" from="DetectionZone" to="AutoAimer" method="lose_target"]
+[connection signal="saw" from="DetectionZone" to="." method="_on_DetectionZone_saw"]
+[connection signal="saw" from="DetectionZone" to="AutoAimer" method="set_target"]
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]
 [connection signal="dmg_taken" from="HitBox" to="." method="_on_HitBox_dmg_taken"]
 

@@ -2,36 +2,45 @@ class_name DetectionZone
 extends Area2D
 
 
-signal robber_entered(robber)
-signal robber_exited
+signal saw(what)
+signal lost(what)
 
-var robber_detected := false
+var collisions := []
 
 onready var ray_cast: RayCast2D = $RayCast
 
 
 func _process(_delta: float) -> void:
 	var bodies := get_overlapping_bodies()
-	if bodies.size() > 0:
-		var robber: Robber = bodies[0]# Will need to do some stuff if multiplayer
-		ray_cast.cast_to = to_local(robber.global_position)
-		if ray_cast.is_colliding() and ray_cast.get_collider() == robber:
-			if not robber_detected:
-				robber_detected = true
-				emit_signal("robber_entered", robber)
-		elif robber_detected:
-			exit_robber()
-	elif robber_detected:
-		exit_robber()# Repeatative
+	for body in bodies:
+		ray_cast.cast_to = to_local(body.global_position)
+		ray_cast.force_raycast_update()
 
-func exit_robber() -> void:
-	robber_detected = false
-	emit_signal("robber_exited")
+		var hit_body: bool = ray_cast.is_colliding() and ray_cast.get_collider() == body
+		if hit_body:
+			if not collisions.has(body):
+				see(body)
+		elif collisions.has(body):
+			lose(body)
+
+
+
+func see(body: Node) -> void:
+	collisions.append(body)
+	emit_signal("saw", body)
+
+
+func lose(body: Node) -> void:
+	collisions.erase(body)
+	emit_signal("lost", body)
 
 
 func _on_DetectionZone_body_entered(_body: Node) -> void:
 	ray_cast.enabled = true
 
 
-func _on_DetectionZone_body_exited(_body: Node) -> void:
-	ray_cast.enabled = false
+func _on_DetectionZone_body_exited(body: Node) -> void:
+	if get_overlapping_bodies().size() <= 0:
+		ray_cast.enabled = false
+	if collisions.has(body):
+		lose(body)

@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/molotov cocktail.png-c522b79be0fe1c729339f774baf8b708.stex"
+path="res://.import/bullets.png-9e746df36d36715f2dc48b4374f33204.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/art/molotov cocktail.png"
-dest_files=[ "res://.import/molotov cocktail.png-c522b79be0fe1c729339f774baf8b708.stex" ]
+source_file="res://guns/bullets.png"
+dest_files=[ "res://.import/bullets.png-9e746df36d36715f2dc48b4374f33204.stex" ]
 
 [params]
 
@@ -20,7 +20,7 @@ compress/hdr_mode=0
 compress/bptc_ldr=0
 compress/normal_map=0
 flags/repeat=0
-flags/filter=true
+flags/filter=false
 flags/mipmaps=false
 flags/anisotropic=false
 flags/srgb=2

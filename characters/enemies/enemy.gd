@@ -5,13 +5,16 @@ extends Character
 export var walk_speed := 16.0
 export var wander_time_randomization := 5.0
 export var wander_distance := 128.0
+export var bribed_texture: Texture
 
-var robber: Robber = null
-var last_robber_sighting := Vector2.INF
+var target: Node2D = null
+var last_target_sighting := Vector2.INF
+var bribed := false setget _on_bribed_set
 
 onready var wander_timer: Timer = $WanderTimer
 onready var navigation_agent: NavigationAgent2D = $NavigationAgent
 onready var soft_collider: SoftCollider = $SoftCollider
+onready var detection_zone: DetectionZone = $DetectionZone
 
 
 func _physics_process(delta: float) -> void:
@@ -35,17 +38,17 @@ func wander() -> void:
 
 
 func search() -> void:
-	if global_position.distance_to(last_robber_sighting) > navigation_agent.target_desired_distance:
-		smooth_vel = global_position.direction_to(last_robber_sighting) * speed
+	if global_position.distance_to(last_target_sighting) > navigation_agent.target_desired_distance:
+		smooth_vel = global_position.direction_to(last_target_sighting) * speed
 	else:
-		last_robber_sighting = Vector2.INF
+		last_target_sighting = Vector2.INF
 
 
 func move() -> void:
 	var wandering := false
-	if robber != null and is_instance_valid(robber):
+	if not is_null(target):
 		_chase()
-	elif last_robber_sighting != Vector2.INF:
+	elif last_target_sighting != Vector2.INF:
 		search()
 	else:
 		wander()
@@ -63,17 +66,18 @@ func start_wander_timer() -> void:
 			wander_time_randomization))
 
 
-# warning-ignore:shadowed_variable
-func _on_DetectionZone_robber_entered(robber: Robber) -> void:
-	self.robber = robber
+func is_null(node: Node) -> bool:
+	return target == null or not is_instance_valid(node)
 
 
-func _on_DetectionZone_robber_exited() -> void:
-	if not is_instance_valid(robber):
+func _on_bribed_set(value: bool) -> void:
+	if bribed == value:
 		return
+	bribed = value
 
-	last_robber_sighting = robber.global_position
-	robber = null
+	if bribed:
+		sprite.texture = bribed_texture
+		Inventory.cronies.append(item.filename)
 
 
 func _on_WanderTimer_timeout() -> void:
@@ -83,3 +87,17 @@ func _on_WanderTimer_timeout() -> void:
 	navigation_agent.set_target_location(wander_pos)
 
 	start_wander_timer()
+
+
+func _on_DetectionZone_lost(what: Node) -> void:
+	if what == target or is_null(target):
+		if is_null(target):# Redundent
+			last_target_sighting = target.global_position
+		if detection_zone.collisions.size() > 0:
+			target = detection_zone.collisions[0]
+		else:
+			target = null
+
+
+func _on_DetectionZone_saw(what: Node) -> void:
+	target = what
