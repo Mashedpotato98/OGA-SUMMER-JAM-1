@@ -18,7 +18,12 @@ onready var interaction_zone: Area2D = $InteractZone
 onready var dash_cool_down: Timer = $DashCoolDown
 
 
-func _unhandled_input(event: InputEvent) -> void:
+func _ready() -> void:
+	._ready()
+	Input.mouse_mode = Input.MOUSE_MODE_CONFINED
+
+
+func _input(event: InputEvent) -> void:
 	if event is InputEventMouseMotion:
 		# Put in _physics_process() if using camera smoothing.
 		var mouse_pos := get_global_mouse_position()
@@ -32,9 +37,8 @@ func _unhandled_input(event: InputEvent) -> void:
 		dash_colling = true
 		dash_cool_down.start()
 		hit_box.start_immunity(dash_length)
-	elif event.is_action_pressed("bribe"):
-		bribe()
-
+	#elif event.is_action_pressed("bribe"):
+	#	bribe()
 
 
 func _physics_process(delta: float) -> void:
@@ -46,6 +50,15 @@ func _physics_process(delta: float) -> void:
 			activate_item()
 
 	._physics_process(delta)
+
+
+func _die() -> void:
+	var fade := Fade.new()
+	add_child(fade)
+	fade.fade(Fade.FADE_IN, 1.0)
+	yield(fade, "finished")
+# warning-ignore:return_value_discarded
+	get_tree().change_scene("res://ui/screens/lose_screen.tscn")
 
 
 func move(_delta: float) -> void:
@@ -69,7 +82,6 @@ func bribe() -> void:
 
 	var cop: Node2D = bodies[0]
 	cop.bribed = true
-
 
 
 func add_item(ITEM: PackedScene) -> void:

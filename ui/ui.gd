@@ -9,6 +9,7 @@ onready var health_bar_fill: TextureRect = health_bar.get_node("Fill")
 onready var counters: GridContainer = $Counters
 onready var money_counter: Label = counters.get_node("MoneyCounter")
 onready var ammo_counter: Label = counters.get_node("AmmoCounter")
+onready var seed_num: LineEdit = $SeedHUD/SeedNum
 
 
 func _ready() -> void:
@@ -32,3 +33,8 @@ func set_money(money: int) -> void:
 
 func set_ammo(ammo: int) -> void:
 	ammo_counter.text = str(ammo)
+
+
+# warning-ignore:shadowed_variable
+func set_seed(seed_num: int) -> void:
+	self.seed_num.text = str(seed_num)

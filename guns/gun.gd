@@ -56,7 +56,3 @@ func start_cool_down() -> void:
 
 func _on_CoolDown_timeout() -> void:
 	cooling = false
-
-
-func _on_DetectionZone_body_entered(body: Node) -> void:
-	pass # Replace with function body.
