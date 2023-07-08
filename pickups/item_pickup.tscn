@@ -1,8 +1,14 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://pickups/pickup.tscn" type="PackedScene" id=1]
 [ext_resource path="res://pickups/item_pickup.gd" type="Script" id=2]
 
+[sub_resource type="CircleShape2D" id=1]
+resource_local_to_scene = true
+
 [node name="ItemPickup" instance=ExtResource( 1 )]
 script = ExtResource( 2 )
 ITEM = null
+
+[node name="CollisionShape2D" parent="." index="1"]
+shape = SubResource( 1 )

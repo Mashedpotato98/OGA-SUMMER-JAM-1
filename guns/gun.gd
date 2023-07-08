@@ -1,4 +1,4 @@
-# Even if there is ammo, might not to have loading system.
+# Even if there is ammo, might not need to have loading system.
 # Perhaps handle input for guns on gun.gd so that you can hold for submachine gun, but click for sniper.
 class_name Gun
 extends Node2D
@@ -7,7 +7,8 @@ extends Node2D
 export var BULLET: PackedScene = null
 export var spread := 0.0
 export var flip := true
-var cooling := false
+
+var cooling := true
 
 onready var sprite: Sprite = $Sprite
 onready var cool_down: Timer = $CoolDown

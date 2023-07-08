@@ -7,4 +7,5 @@ func _collect(_body: Node) -> void:
 
 
 func _on_Pickup_body_entered(body: Node) -> void:
-	_collect(body)
+	if body is Robber:
+		_collect(body)

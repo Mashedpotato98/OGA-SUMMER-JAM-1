@@ -18,6 +18,9 @@ func _ready() -> void:
 # warning-ignore:return_value_discarded
 	Inventory.connect("ammo_changed", self, "set_ammo")
 
+	set_money(Inventory.money)
+	set_ammo(Inventory.ammo)
+
 
 func set_max_hp(max_hp: int) -> void:
 	health_bar_bg.rect_size.x = max_hp * 8.0 + 16.0

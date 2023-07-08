@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/uzi.png-9e2b961a3b335fed27b5747eb5a608ed.stex"
+path="res://.import/ammo_pickup.png-c968746bb30c4cb54771e89af805f9a9.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://guns/uzi/uzi.png"
-dest_files=[ "res://.import/uzi.png-9e2b961a3b335fed27b5747eb5a608ed.stex" ]
+source_file="res://pickups/ammo_pickup.png"
+dest_files=[ "res://.import/ammo_pickup.png-c968746bb30c4cb54771e89af805f9a9.stex" ]
 
 [params]
 

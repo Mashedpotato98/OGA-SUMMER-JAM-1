@@ -42,6 +42,7 @@ position = Vector2( 0, -12 )
 texture = ExtResource( 2 )
 
 [node name="Door" type="AnimatedSprite" parent="."]
+pause_mode = 2
 position = Vector2( 0, -12 )
 frames = SubResource( 1 )
 animation = "open"

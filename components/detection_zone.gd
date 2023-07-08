@@ -10,9 +10,16 @@ var collisions := []
 onready var ray_cast: RayCast2D = $RayCast
 
 
+func _ready() -> void:
+	ray_cast.add_exception(owner)
+
+
 func _process(_delta: float) -> void:
 	var bodies := get_overlapping_bodies()
 	for body in bodies:
+		if body == owner:
+			continue
+
 		ray_cast.cast_to = to_local(body.global_position)
 		ray_cast.force_raycast_update()
 

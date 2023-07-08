@@ -23,6 +23,9 @@ tile_data = PoolIntArray( -589835, 0, 0, -589834, 0, 0, -589833, 0, 0, -589832, 
 [node name="NavigationPolygonInstance" parent="." index="4"]
 navpoly = SubResource( 1 )
 
+[node name="Robber" parent="YSort" index="0"]
+cronie_spawn_distance = 24.0
+
 [node name="Turret" parent="YSort" index="1" instance=ExtResource( 2 )]
 position = Vector2( 168, -16 )
 

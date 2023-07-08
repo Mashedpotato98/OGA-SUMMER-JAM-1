@@ -9,6 +9,11 @@
 config_version=4
 
 _global_script_classes=[ {
+"base": "Pickup",
+"class": "AmmoPickup",
+"language": "GDScript",
+"path": "res://pickups/ammo_pickup.gd"
+}, {
 "base": "Node2D",
 "class": "AutoAimer",
 "language": "GDScript",
@@ -69,6 +74,21 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://levels/level.gd"
 }, {
+"base": "Screen",
+"class": "LoseScreen",
+"language": "GDScript",
+"path": "res://ui/screens/lose_screen.gd"
+}, {
+"base": "Pickup",
+"class": "MoneyPickup",
+"language": "GDScript",
+"path": "res://pickups/money_pickup.gd"
+}, {
+"base": "Area2D",
+"class": "NoShootZone",
+"language": "GDScript",
+"path": "res://ui/icons/no_shoot_zone/no_shoot_zone.gd"
+}, {
 "base": "Area2D",
 "class": "Pickup",
 "language": "GDScript",
@@ -103,8 +123,14 @@ _global_script_classes=[ {
 "class": "UI",
 "language": "GDScript",
 "path": "res://ui/ui.gd"
+}, {
+"base": "Screen",
+"class": "WinScreen",
+"language": "GDScript",
+"path": "res://ui/screens/win_screen.gd"
 } ]
 _global_script_class_icons={
+"AmmoPickup": "",
 "AutoAimer": "",
 "Bullet": "",
 "Character": "",
@@ -117,13 +143,17 @@ _global_script_class_icons={
 "HitBox": "",
 "ItemPickup": "",
 "Level": "",
+"LoseScreen": "",
+"MoneyPickup": "",
+"NoShootZone": "",
 "Pickup": "",
 "Robber": "",
 "Screen": "",
 "ShotGun": "",
 "SoftCollider": "",
 "Turret": "",
-"UI": ""
+"UI": "",
+"WinScreen": ""
 }
 
 [application]
@@ -265,11 +295,10 @@ switch_gun_prev={
 
 2d_physics/layer_1="Map"
 2d_physics/layer_2="Robber"
-2d_physics/layer_3="NPC"
+2d_physics/layer_3="Cop"
 2d_physics/layer_4="Hit Box"
 2d_physics/layer_5="Shoot Through"
 2d_physics/layer_6="Soft Collider"
-2d_physics/layer_7="Elevator"
 
 [physics]
 

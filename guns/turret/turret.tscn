@@ -85,6 +85,8 @@ tracks/0/keys = {
 radius = 7.0
 
 [node name="Turret" type="StaticBody2D"]
+collision_layer = 4
+collision_mask = 23
 script = ExtResource( 2 )
 
 [node name="Sprite" type="Sprite" parent="."]

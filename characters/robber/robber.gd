@@ -3,24 +3,39 @@ class_name Robber
 extends Character
 
 
+const BRIBE := preload("res://characters/robber/bribe.tscn")
+
 export var turn_speed := 10.0
 export var dash_speed := 128.0
 export var dash_length := 0.5
+export var cronie_spawn_distance := 24.0
 
 var dash_colling := false
 var anim_dir := Vector2.RIGHT setget _on_anim_dir_set
 var aim_dir := Vector2()
-var guns := []
+var bribing := false
+var is_ready := false
 
 onready var animation_tree: AnimationTree = $AnimationTree
 onready var playback: AnimationNodeStateMachinePlayback = animation_tree.get("parameters/playback")
-onready var interaction_zone: Area2D = $InteractZone
 onready var dash_cool_down: Timer = $DashCoolDown
+
+
+func _init() -> void:
+	ammo = Inventory.ammo
+# warning-ignore:return_value_discarded
+	Inventory.connect("current_item_switched", self, "_on_Inventory_current_item_switched")
 
 
 func _ready() -> void:
 	._ready()
+	spawn_cronies()
+
+	if Inventory.items.keys().size() > 0:
+		Inventory._on_current_item_set(Inventory.current_item)
+
 	Input.mouse_mode = Input.MOUSE_MODE_CONFINED
+	is_ready = true
 
 
 func _input(event: InputEvent) -> void:
@@ -37,8 +52,10 @@ func _input(event: InputEvent) -> void:
 		dash_colling = true
 		dash_cool_down.start()
 		hit_box.start_immunity(dash_length)
-	#elif event.is_action_pressed("bribe"):
-	#	bribe()
+	elif event.is_action_pressed("switch_gun_next"):
+		scroll_items(1)
+	elif event.is_action_pressed("switch_gun_prev"):
+		scroll_items(-1)
 
 
 func _physics_process(delta: float) -> void:
@@ -61,6 +78,34 @@ func _die() -> void:
 	get_tree().change_scene("res://ui/screens/lose_screen.tscn")
 
 
+func _on_ammo_set(value: int) -> void:
+	if not is_ready:
+		return
+	ammo = value
+	Inventory.ammo = ammo
+
+
+func scroll_items(direction: int) -> void:
+	var item_count := Inventory.items.keys().size()
+	if item_count <= 0:
+		return
+
+	Inventory.current_item += direction
+
+
+func spawn_cronies() -> void:
+	var cronie_count := Inventory.cronies.size()
+	for i in cronie_count:
+		var cronie_info: Dictionary = Inventory.cronies[i]
+		var cronie: Character = load(cronie_info.type).instance()
+		get_parent().call_deferred("add_child", cronie)
+		yield(cronie, "ready")
+		cronie.global_position = global_position + (Vector2.RIGHT * cronie_spawn_distance).rotated(
+				TAU / cronie_count * i)
+		cronie.change_item(load(cronie_info.weapon))
+		cronie.bribe_state = cronie.BRIBE_STATES.BRIBED
+
+
 func move(_delta: float) -> void:
 	var input_dir := Input.get_vector("left", "right", "up", "down")
 	smooth_vel = input_dir * speed
@@ -74,22 +119,14 @@ func turn(delta: float) -> void:
 	hand_pivot.rotation = lerp_angle(hand_pivot.rotation, aim_dir.angle(), turn_speed * delta)
 
 
-func bribe() -> void:
-	var bodies := interaction_zone.get_overlapping_bodies()
-	if bodies.size() <= 0 or Inventory.cronies.size() >= Inventory.MAX_CRONIES:
-		print(Inventory.cronies)
-		return
-
-	var cop: Node2D = bodies[0]
-	cop.bribed = true
-
-
 func add_item(ITEM: PackedScene) -> void:
 	change_item(ITEM)
 	if Inventory.items.has(ITEM):
-		Inventory.items[ITEM] += 1
+		Inventory.items[ITEM.resource_path] += 1
 	else:
-		Inventory.items[ITEM] = 1
+		Inventory.items[ITEM.resource_path] = 1
+
+	Inventory.current_item = Inventory.items.keys().find(ITEM.resource_path)
 
 
 func blink() -> void:
@@ -102,11 +139,6 @@ func blink() -> void:
 		yield(get_tree().create_timer(blink_duration / blinks / 2.0), "timeout")
 
 
-func _on_HitBox_dmg_taken(from: Vector2, amount: int) -> void:
-	._on_HitBox_dmg_taken(from, amount)
-	blink()
-
-
 func _on_anim_dir_set(value: Vector2) -> void:
 	if value.length() > 0.0:
 		anim_dir = value
@@ -116,5 +148,16 @@ func _on_anim_dir_set(value: Vector2) -> void:
 	playback.travel(state)
 
 
+func _on_HitBox_dmg_taken(from: Vector2, amount: int) -> void:
+	._on_HitBox_dmg_taken(from, amount)
+	blink()
+
+
 func _on_DashCoolDown_timeout() -> void:
 	dash_colling = false
+
+
+func _on_Inventory_current_item_switched(item_index: int) -> void:
+	var item := load(Inventory.items.keys()[item_index])
+	change_item(item)
+	bribing = item == BRIBE

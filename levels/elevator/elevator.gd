@@ -8,8 +8,9 @@ onready var door: AnimatedSprite = $Door
 onready var needle: Sprite = $Needle
 
 
-func _on_Elevator_body_entered(_body: Node) -> void:
-	emit_signal("robber_entered")
+func _on_Elevator_body_entered(body: Node) -> void:
+	if body is Robber:
+		emit_signal("robber_entered")
 
 
 

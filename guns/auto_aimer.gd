@@ -9,7 +9,7 @@ var shooting := false
 
 
 func _physics_process(delta: float) -> void:
-	if target == null:
+	if target == null or not is_instance_valid(target):
 		return
 
 	var direction := global_position.direction_to(target.global_position)
