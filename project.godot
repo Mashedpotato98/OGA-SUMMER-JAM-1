@@ -64,6 +64,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://components/hit_box.gd"
 }, {
+"base": "Button",
+"class": "InventoryItem",
+"language": "GDScript",
+"path": "res://ui/buttons/inventory_item.gd"
+}, {
 "base": "Pickup",
 "class": "ItemPickup",
 "language": "GDScript",
@@ -83,11 +88,6 @@ _global_script_classes=[ {
 "class": "MoneyPickup",
 "language": "GDScript",
 "path": "res://pickups/money_pickup.gd"
-}, {
-"base": "Area2D",
-"class": "NoShootZone",
-"language": "GDScript",
-"path": "res://ui/icons/no_shoot_zone/no_shoot_zone.gd"
 }, {
 "base": "Area2D",
 "class": "Pickup",
@@ -141,11 +141,11 @@ _global_script_class_icons={
 "Fade": "",
 "Gun": "",
 "HitBox": "",
+"InventoryItem": "",
 "ItemPickup": "",
 "Level": "",
 "LoseScreen": "",
 "MoneyPickup": "",
-"NoShootZone": "",
 "Pickup": "",
 "Robber": "",
 "Screen": "",

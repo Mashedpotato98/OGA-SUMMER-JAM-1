@@ -4,6 +4,7 @@ extends Node
 signal money_changed(money)
 signal ammo_changed(ammo)
 signal current_item_switched(new_item)
+signal items_changed(items)
 
 const MAX_CRONIES := 2
 const BRIBE_COST := 10_000
@@ -17,7 +18,7 @@ var password := "y$NWO#6%T;51(nhsLZ*Q}yGm8,h:7T#Sa?ELupjw=5$C5j2TmTM0%.aQ:V4vZ8(
 
 var money := DEFAULT_MONEY setget _on_money_changed
 var ammo := DEFAULT_AMMO setget _on_ammo_changed
-var items := {}# <item_path> = <amount>
+var items := {} setget _on_items_set# <item_path> = <amount>
 var current_item := 0 setget _on_current_item_set
 var cronies := []# [{"type": <Enemy file path>, "weapon": <weapon path>}]
 
@@ -59,12 +60,12 @@ func save_inventory() -> void:
 func _on_money_changed(value: int) -> void:
 	money = value
 	if money >= BRIBE_COST:
-		items[BRIBE_PATH] = 0
+		self.items[BRIBE_PATH] = 1
 	elif items.has(BRIBE_PATH):
 # warning-ignore:return_value_discarded
 		if current_item >= items.keys().find(BRIBE_PATH):
 			self.current_item -= 1
-		items.erase(BRIBE_PATH)
+		self.items.erase(BRIBE_PATH)
 
 	emit_signal("money_changed", money)
 
@@ -72,6 +73,11 @@ func _on_money_changed(value: int) -> void:
 func _on_ammo_changed(value: int) -> void:
 	ammo = value
 	emit_signal("ammo_changed", ammo)
+
+
+func _on_items_set(value: Dictionary) -> void:
+	items = value
+	emit_signal("items_changed", items)
 
 
 func _on_current_item_set(value: int) -> void:

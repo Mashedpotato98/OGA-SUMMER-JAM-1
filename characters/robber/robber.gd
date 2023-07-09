@@ -15,6 +15,7 @@ var anim_dir := Vector2.RIGHT setget _on_anim_dir_set
 var aim_dir := Vector2()
 var bribing := false
 var is_ready := false
+var holding_trigger := false
 
 onready var animation_tree: AnimationTree = $AnimationTree
 onready var playback: AnimationNodeStateMachinePlayback = animation_tree.get("parameters/playback")
@@ -22,13 +23,13 @@ onready var dash_cool_down: Timer = $DashCoolDown
 
 
 func _init() -> void:
-	ammo = Inventory.ammo
 # warning-ignore:return_value_discarded
 	Inventory.connect("current_item_switched", self, "_on_Inventory_current_item_switched")
 
 
 func _ready() -> void:
 	._ready()
+	ammo = Inventory.ammo
 	spawn_cronies()
 
 	if Inventory.items.keys().size() > 0:
@@ -58,11 +59,18 @@ func _input(event: InputEvent) -> void:
 		scroll_items(-1)
 
 
+func _unhandled_input(event: InputEvent) -> void:
+	if event.is_action_pressed("shoot"):
+		holding_trigger = true
+	elif event.is_action_released("shoot"):
+		holding_trigger = false
+
+
 func _physics_process(delta: float) -> void:
 	if not stunned:
 		move(delta)
 		turn(delta)
-		if Input.is_action_pressed("shoot"):
+		if holding_trigger:
 # warning-ignore:return_value_discarded
 			activate_item()
 
@@ -121,7 +129,7 @@ func turn(delta: float) -> void:
 
 func add_item(ITEM: PackedScene) -> void:
 	change_item(ITEM)
-	if Inventory.items.has(ITEM):
+	if Inventory.items.has(ITEM.resource_path):
 		Inventory.items[ITEM.resource_path] += 1
 	else:
 		Inventory.items[ITEM.resource_path] = 1

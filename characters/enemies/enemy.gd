@@ -14,8 +14,13 @@ export var wander_distance := 128.0
 export var bribed_texture: Texture
 export var follow_distance := 24.0
 
-var player: Node2D = null
-var cop: Node2D = null
+var player: Robber = null
+var innocent_state_taget: Node2D = null
+var cop: Node2D = null setget test
+func test(value):
+	cop = value
+	if not is_null(cop):
+		assert(not cop is Robber)
 var last_target_sighting := Vector2.INF
 var bribe_state: int = BRIBE_STATES.INNOCENT setget _on_bribe_state_set
 
@@ -86,20 +91,24 @@ func move() -> void:
 
 
 func state_bribed() -> void:
+	var attacking := false
 	if not is_null(cop):# Might be able to use ternary if to make simpler
 		if cop is KinematicBody2D:
 			if cop.bribe_state == cop.BRIBE_STATES.INNOCENT:
 				hand_pivot.set_target(cop)
 				_chase(cop)
-			else:
-				hand_pivot.lose_target()
-				follow_player()
+				attacking = true
 		else:
 			hand_pivot.set_target(cop)
 			_chase(cop)
-	elif not is_null(player):
+			attacking = true
+
+	if not attacking:
 		hand_pivot.lose_target()
-		follow_player()
+		if not is_null(player):
+			follow_player()
+		else:
+			smooth_vel = Vector2()
 
 
 func state_being_bribed() -> void:
@@ -113,12 +122,12 @@ func state_being_bribed() -> void:
 func state_innocent() -> void:
 	var wandering := false
 
-	if not is_null(player):
-		if player is Robber and player.bribing and cop_detection_zone.collisions.size() <= 0:
-			self.bribe_state = BRIBE_STATES.BEING_BRIBED
-		else:
-			hand_pivot.set_target(player)
-			_chase(player)
+	var coast_clear := cop_detection_zone.collisions.size() <= 0
+	if not is_null(player) and player is Robber and player.bribing and coast_clear:
+		self.bribe_state = BRIBE_STATES.BEING_BRIBED
+	if not is_null(innocent_state_taget):
+		hand_pivot.set_target(innocent_state_taget)
+		_chase(innocent_state_taget)
 	elif last_target_sighting != Vector2.INF:
 		search()
 	else:
@@ -137,17 +146,17 @@ func start_wander_timer() -> void:
 			wander_time_randomization))
 
 
-func lose_sight_of(what: Node, old_var: Node2D) -> void:
+# warning-ignore:shadowed_variable
+func lose_sight_of(what: Node, property: String, detection_zone: DetectionZone) -> void:
+	var old_var: Node = get(property)
 	if old_var is Robber and bribe_state == BRIBE_STATES.BEING_BRIBED:
 		bribe_state = BRIBE_STATES.INNOCENT
 
 	if what == old_var or is_null(old_var):
 		if detection_zone.collisions.size() > 0:
-			old_var = detection_zone.collisions[0]
+			set(property, detection_zone.collisions[0])
 		else:
-			if not is_null(old_var):# Redundent
-				last_target_sighting = old_var.global_position
-			old_var = null
+			set(property, null)
 
 
 static func is_null(node: Node) -> bool:
@@ -175,17 +184,23 @@ func _on_WanderTimer_timeout() -> void:
 
 
 func _on_DetectionZone_lost(what: Node) -> void:
-	lose_sight_of(what, player)
+	lose_sight_of(what, "innocent_state_taget", detection_zone)
+	if what is Robber and bribe_state != BRIBE_STATES.BRIBED:
+		if not is_null(player):
+			last_target_sighting = player.global_position
+		lose_sight_of(what, "player", detection_zone)
 
 
 func _on_DetectionZone_saw(what: Node) -> void:
+	innocent_state_taget = what
 	if what is Robber:
 		player = what
 
 
 func _on_CopDetectionZone_lost(what: Node) -> void:
-	lose_sight_of(what, cop)
+	lose_sight_of(what, "cop", cop_detection_zone)
 
 
 func _on_CopDetectionZone_saw(what: Node) -> void:
+	assert(not what is Robber)
 	cop = what

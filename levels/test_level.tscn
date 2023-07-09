@@ -1,8 +1,10 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://levels/level.tscn" type="PackedScene" id=1]
 [ext_resource path="res://pickups/ammo_pickup.tscn" type="PackedScene" id=2]
 [ext_resource path="res://pickups/money_pickup.tscn" type="PackedScene" id=3]
+[ext_resource path="res://characters/enemies/cop/cop.tscn" type="PackedScene" id=4]
+[ext_resource path="res://pickups/pistol_pickup.tscn" type="PackedScene" id=5]
 
 [sub_resource type="NavigationPolygon" id=1]
 resource_local_to_scene = true
@@ -11,6 +13,81 @@ resource_local_to_scene = true
 
 [node name="NavigationPolygonInstance" parent="." index="3"]
 navpoly = SubResource( 1 )
+
+[node name="Cop" parent="YSort/Cops" index="0" instance=ExtResource( 4 )]
+position = Vector2( 384, 0 )
+
+[node name="Cop2" parent="YSort/Cops" index="1" instance=ExtResource( 4 )]
+position = Vector2( 408, 0 )
+
+[node name="Cop3" parent="YSort/Cops" index="2" instance=ExtResource( 4 )]
+position = Vector2( 432, 0 )
+
+[node name="Cop4" parent="YSort/Cops" index="3" instance=ExtResource( 4 )]
+position = Vector2( 456, 0 )
+
+[node name="Cop5" parent="YSort/Cops" index="4" instance=ExtResource( 4 )]
+position = Vector2( 480, 0 )
+
+[node name="Cop6" parent="YSort/Cops" index="5" instance=ExtResource( 4 )]
+position = Vector2( 384, 24 )
+
+[node name="Cop7" parent="YSort/Cops" index="6" instance=ExtResource( 4 )]
+position = Vector2( 408, 24 )
+
+[node name="Cop8" parent="YSort/Cops" index="7" instance=ExtResource( 4 )]
+position = Vector2( 432, 24 )
+
+[node name="Cop9" parent="YSort/Cops" index="8" instance=ExtResource( 4 )]
+position = Vector2( 456, 24 )
+
+[node name="Cop10" parent="YSort/Cops" index="9" instance=ExtResource( 4 )]
+position = Vector2( 480, 24 )
+
+[node name="Cop11" parent="YSort/Cops" index="10" instance=ExtResource( 4 )]
+position = Vector2( 384, 48 )
+
+[node name="Cop12" parent="YSort/Cops" index="11" instance=ExtResource( 4 )]
+position = Vector2( 408, 48 )
+
+[node name="Cop13" parent="YSort/Cops" index="12" instance=ExtResource( 4 )]
+position = Vector2( 432, 48 )
+
+[node name="Cop14" parent="YSort/Cops" index="13" instance=ExtResource( 4 )]
+position = Vector2( 456, 48 )
+
+[node name="Cop15" parent="YSort/Cops" index="14" instance=ExtResource( 4 )]
+position = Vector2( 480, 48 )
+
+[node name="Cop16" parent="YSort/Cops" index="15" instance=ExtResource( 4 )]
+position = Vector2( 384, 72 )
+
+[node name="Cop17" parent="YSort/Cops" index="16" instance=ExtResource( 4 )]
+position = Vector2( 408, 72 )
+
+[node name="Cop18" parent="YSort/Cops" index="17" instance=ExtResource( 4 )]
+position = Vector2( 432, 72 )
+
+[node name="Cop19" parent="YSort/Cops" index="18" instance=ExtResource( 4 )]
+position = Vector2( 456, 72 )
+
+[node name="Cop20" parent="YSort/Cops" index="19" instance=ExtResource( 4 )]
+position = Vector2( 480, 72 )
+
+[node name="Cop21" parent="YSort/Cops" index="20" instance=ExtResource( 4 )]
+position = Vector2( 384, 96 )
+
+[node name="Cop22" parent="YSort/Cops" index="21" instance=ExtResource( 4 )]
+position = Vector2( 408, 96 )
+
+[node name="Cop23" parent="YSort/Cops" index="22" instance=ExtResource( 4 )]
+position = Vector2( 432, 96 )
+
+[node name="Cop24" parent="YSort/Cops" index="23" instance=ExtResource( 4 )]
+position = Vector2( 456, 96 )
+
+[node name="Cop25" parent="YSort/Cops" index="24" instance=ExtResource( 4 )]
+position = Vector2( 480, 96 )
 
 [node name="AmmoPickup" parent="Pickups" index="0" instance=ExtResource( 2 )]
 position = Vector2( 48, -16 )
@@ -323,3 +400,5 @@ position = Vector2( 224, 288 )
 
 [node name="MoneyPickup100" parent="Pickups" index="103" instance=ExtResource( 3 )]
 position = Vector2( 248, 288 )
+
+[node name="PistolPickup" parent="Pickups" index="104" instance=ExtResource( 5 )]
