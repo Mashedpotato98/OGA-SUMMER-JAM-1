@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://characters/character.tscn" type="PackedScene" id=1]
 [ext_resource path="res://components/detection_zone.tscn" type="PackedScene" id=2]
@@ -14,10 +14,6 @@ extents = Vector2( 8, 8 )
 resource_local_to_scene = true
 radius = 128.0
 
-[sub_resource type="CircleShape2D" id=4]
-resource_local_to_scene = true
-radius = 128.0
-
 [sub_resource type="AnimationNodeStateMachinePlayback" id=3]
 
 [node name="Enemy" instance=ExtResource( 1 )]
@@ -25,8 +21,6 @@ script = ExtResource( 3 )
 walk_speed = 16.0
 wander_time_randomization = 5.0
 wander_distance = 128.0
-bribed_texture = null
-follow_distance = 24.0
 
 [node name="CollisionShape" parent="HitBox" index="0"]
 shape = SubResource( 1 )
@@ -49,27 +43,14 @@ wait_time = 10.0
 [node name="CollisionShape2D" parent="DetectionZone" index="0"]
 shape = SubResource( 2 )
 
-[node name="CopDetectionZone" parent="." index="7" instance=ExtResource( 2 )]
-collision_mask = 4
+[node name="SoftCollider" parent="." index="7" instance=ExtResource( 4 )]
 
-[node name="CollisionShape2D" parent="CopDetectionZone" index="0"]
-visible = false
-shape = SubResource( 4 )
-
-[node name="RayCast" parent="CopDetectionZone" index="1"]
-collision_mask = 5
-
-[node name="SoftCollider" parent="." index="8" instance=ExtResource( 4 )]
-
-[node name="AnimationTree" parent="." index="9"]
+[node name="AnimationTree" parent="." index="8"]
 parameters/playback = SubResource( 3 )
 
 [connection signal="timeout" from="WanderTimer" to="." method="_on_WanderTimer_timeout"]
 [connection signal="lost" from="DetectionZone" to="." method="_on_DetectionZone_lost"]
 [connection signal="saw" from="DetectionZone" to="." method="_on_DetectionZone_saw"]
-[connection signal="lost" from="CopDetectionZone" to="." method="_on_CopDetectionZone_lost"]
-[connection signal="saw" from="CopDetectionZone" to="." method="_on_CopDetectionZone_saw"]
 
 [editable path="HitBox"]
 [editable path="DetectionZone"]
-[editable path="CopDetectionZone"]

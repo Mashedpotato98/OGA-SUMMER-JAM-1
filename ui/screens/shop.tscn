@@ -1,0 +1,73 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://ui/theme.theme" type="Theme" id=1]
+[ext_resource path="res://ui/screens/shop.gd" type="Script" id=2]
+[ext_resource path="res://levels/walls/wall_3.png" type="Texture" id=3]
+[ext_resource path="res://levels/walls/wall_4.png" type="Texture" id=4]
+[ext_resource path="res://characters/enemies/cop/cop_bribed.png" type="Texture" id=5]
+[ext_resource path="res://characters/robber/robber.png" type="Texture" id=6]
+
+[node name="Shop" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+theme = ExtResource( 1 )
+script = ExtResource( 2 )
+
+[node name="Title" type="Label" parent="."]
+anchor_right = 1.0
+margin_bottom = 14.0
+text = "The Black Market"
+align = 1
+
+[node name="TableLeft" type="TextureRect" parent="."]
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+margin_left = 40.0
+margin_top = -90.0
+margin_right = -256.0
+margin_bottom = 6.0
+texture = ExtResource( 4 )
+stretch_mode = 2
+
+[node name="TableRight" type="TextureRect" parent="."]
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+margin_left = 256.0
+margin_top = -90.0
+margin_right = -40.0
+margin_bottom = 6.0
+texture = ExtResource( 4 )
+stretch_mode = 2
+
+[node name="Table" type="TextureRect" parent="."]
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+margin_left = 40.0
+margin_top = -18.0
+margin_right = -40.0
+margin_bottom = 6.0
+texture = ExtResource( 3 )
+stretch_mode = 2
+
+[node name="Robber" type="Sprite" parent="."]
+position = Vector2( 160, 136 )
+texture = ExtResource( 6 )
+
+[node name="CopBribed" type="Sprite" parent="."]
+position = Vector2( 16, 152 )
+texture = ExtResource( 5 )
+
+[node name="CopBribed2" type="Sprite" parent="."]
+position = Vector2( 80, 152 )
+texture = ExtResource( 5 )
+
+[node name="CopBribed3" type="Sprite" parent="."]
+position = Vector2( 240, 152 )
+texture = ExtResource( 5 )
+
+[node name="CopBribed4" type="Sprite" parent="."]
+position = Vector2( 304, 152 )
+texture = ExtResource( 5 )

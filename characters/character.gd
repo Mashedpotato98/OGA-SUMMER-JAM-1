@@ -11,6 +11,8 @@ export var speed := 32.0
 export var hit_force := 64.0
 export var kickback := 32.0
 export var kickback_time := 0.1
+export var hurt_bounce := 64.0
+export var hurt_bounce_time := 0.1
 
 export var max_hp := 3 setget _on_max_hp_set
 export var hp := 3 setget _on_hp_set
@@ -111,5 +113,5 @@ func _on_ammo_set(value: int) -> void:
 
 
 func _on_HitBox_dmg_taken(from: Vector2, amount: int) -> void:
-	shove(from.direction_to(global_position) * kickback, kickback_time)
+	shove(from.direction_to(global_position) * hurt_bounce, hurt_bounce_time)
 	self.hp -= amount
