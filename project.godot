@@ -318,6 +318,7 @@ switch_gun_prev={
 2d_physics/layer_5="Shoot Through"
 2d_physics/layer_6="Soft Collider"
 2d_physics/layer_7="NPC"
+2d_physics/layer_8="Bullet"
 
 [physics]
 

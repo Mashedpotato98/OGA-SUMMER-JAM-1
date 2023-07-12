@@ -15,39 +15,44 @@ func _ready() -> void:
 
 
 func _process(_delta: float) -> void:
-	var bodies := get_overlapping_bodies()
-	for body in bodies:
-		if body == owner:
+	for collider in get_colliders():
+		if collider == owner:
 			continue
 
-		ray_cast.cast_to = to_local(body.global_position)
+		ray_cast.cast_to = to_local(collider.global_position)
 		ray_cast.force_raycast_update()
 
-		var hit_body: bool = ray_cast.is_colliding() and ray_cast.get_collider() == body
-		if hit_body:
-			if not collisions.has(body):
-				see(body)
-		elif collisions.has(body):
-			lose(body)
+		var hit_collider: bool = ray_cast.is_colliding() and ray_cast.get_collider() == collider
+		if hit_collider:
+			if not collisions.has(collider):
+				see(collider)
+		elif collisions.has(collider):
+			lose(collider)
 
 
 
-func see(body: Node) -> void:
-	collisions.append(body)
-	emit_signal("saw", body)
+func see(collider: Node) -> void:
+	collisions.append(collider)
+	emit_signal("saw", collider)
 
 
-func lose(body: Node) -> void:
-	collisions.erase(body)
-	emit_signal("lost", body)
+func lose(collider: Node) -> void:
+	collisions.erase(collider)
+	emit_signal("lost", collider)
 
 
-func _on_DetectionZone_body_entered(_body: Node) -> void:
-	ray_cast.enabled = true
+func get_colliders() -> Array:
+	var colliders := get_overlapping_bodies()
+	colliders.append_array(get_overlapping_areas())
+	return colliders
 
 
-func _on_DetectionZone_body_exited(body: Node) -> void:
-	if get_overlapping_bodies().size() <= 0:
+func _on_collider_exited(collider: Node) -> void:
+	if get_colliders().size() <= 0:
 		ray_cast.enabled = false
-	if collisions.has(body):
-		lose(body)
+	if collisions.has(collider):
+		lose(collider)
+
+
+func _on_collider_entered(_collider: Node) -> void:
+	ray_cast.enabled = true

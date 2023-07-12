@@ -31,6 +31,8 @@ func _hit() -> void:
 
 
 func _on_Bullet_area_entered(area: Area2D) -> void:
+	if not area is HitBox:
+		return
 	if area.owner.type == attack_type and area.owner.type != "all":
 		return
 	area.take_dmg(global_position, dmg)

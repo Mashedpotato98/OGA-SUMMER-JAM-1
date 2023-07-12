@@ -18,6 +18,9 @@ shape = SubResource( 3 )
 [node name="RayCast" type="RayCast2D" parent="."]
 cast_to = Vector2( 0, 0 )
 collision_mask = 3
+collide_with_areas = true
 
-[connection signal="body_entered" from="." to="." method="_on_DetectionZone_body_entered"]
-[connection signal="body_exited" from="." to="." method="_on_DetectionZone_body_exited"]
+[connection signal="area_entered" from="." to="." method="_on_collider_entered"]
+[connection signal="area_exited" from="." to="." method="_on_collider_exited"]
+[connection signal="body_entered" from="." to="." method="_on_collider_entered"]
+[connection signal="body_exited" from="." to="." method="_on_collider_exited"]
