@@ -56,7 +56,6 @@ position = Vector2( 8, 0 )
 
 [node name="Camera2D" type="Camera2D" parent="." index="4"]
 current = true
-zoom = Vector2( 5, 5 )
 
 [node name="AnimationTree" parent="." index="5"]
 active = false

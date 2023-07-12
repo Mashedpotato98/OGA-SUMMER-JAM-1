@@ -76,6 +76,7 @@ active = false
 
 [node name="CopDetectionZone" parent="." index="11" instance=ExtResource( 5 )]
 collision_mask = 4
+monitorable = true
 
 [node name="CollisionShape2D" parent="CopDetectionZone" index="0"]
 visible = false
