@@ -1,0 +1,6 @@
+[gd_scene format=2]
+
+[node name="WanderPoint" type="Position2D" groups=["wander_points"]]
+__meta__ = {
+"_gizmo_extents_": 4.0
+}

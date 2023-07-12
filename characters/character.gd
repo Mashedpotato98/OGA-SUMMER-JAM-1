@@ -12,13 +12,13 @@ export var hit_force := 64.0
 export var kickback := 32.0
 export var kickback_time := 0.1
 export var hurt_bounce := 64.0
-export var hurt_bounce_time := 0.1
+export var hurt_bounce_time := 0.25
 
 export var max_hp := 3 setget _on_max_hp_set
 export var hp := 3 setget _on_hp_set
 export(NodePath) var item = NodePath()
 export var ammo := -1 setget _on_ammo_set
-export(String, "cop", "robber") var type := "cop"
+export(String, "cop", "robber", "all") var type := "cop"
 
 # Auto-switches based on what was last set.
 var smoothing_enabled := true

@@ -14,8 +14,11 @@ onready var elevator: Elevator = $Elevator
 onready var ui: UI = $UI
 
 
-func _ready() -> void:
+func _init() -> void:
 	randomize()
+
+
+func _ready() -> void:
 	if height == 0:
 		rng.seed = randi()
 		print("first level")

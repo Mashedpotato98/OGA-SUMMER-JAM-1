@@ -89,6 +89,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://pickups/money_pickup.gd"
 }, {
+"base": "Character",
+"class": "NPC",
+"language": "GDScript",
+"path": "res://characters/npc/npc.gd"
+}, {
 "base": "Area2D",
 "class": "Pickup",
 "language": "GDScript",
@@ -156,6 +161,7 @@ _global_script_class_icons={
 "Level": "",
 "LoseScreen": "",
 "MoneyPickup": "",
+"NPC": "",
 "Pickup": "",
 "Robber": "",
 "Screen": "",
@@ -311,6 +317,7 @@ switch_gun_prev={
 2d_physics/layer_4="Hit Box"
 2d_physics/layer_5="Shoot Through"
 2d_physics/layer_6="Soft Collider"
+2d_physics/layer_7="NPC"
 
 [physics]
 
