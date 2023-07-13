@@ -26,10 +26,10 @@ animations = [ {
 } ]
 
 [sub_resource type="RectangleShape2D" id=5]
-extents = Vector2( 10, 4 )
+extents = Vector2( 24, 5 )
 
 [sub_resource type="RectangleShape2D" id=6]
-extents = Vector2( 12, 10 )
+extents = Vector2( 24, 19 )
 
 [node name="Elevator" type="Area2D"]
 collision_layer = 0
@@ -39,11 +39,13 @@ script = ExtResource( 4 )
 
 [node name="Wall" type="Sprite" parent="."]
 position = Vector2( 0, -12 )
+scale = Vector2( 2, 2 )
 texture = ExtResource( 2 )
 
 [node name="Door" type="AnimatedSprite" parent="."]
 pause_mode = 2
 position = Vector2( 0, -12 )
+scale = Vector2( 2, 2 )
 frames = SubResource( 1 )
 animation = "open"
 
@@ -54,7 +56,7 @@ hframes = 7
 frame = 3
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2( 0, -20 )
+position = Vector2( 0, -31 )
 shape = SubResource( 5 )
 
 [node name="OpenZone" type="Area2D" parent="."]
@@ -63,7 +65,7 @@ collision_mask = 2
 monitorable = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="OpenZone"]
-position = Vector2( 0, -6 )
+position = Vector2( 0, -7 )
 shape = SubResource( 6 )
 
 [connection signal="body_entered" from="." to="." method="_on_Elevator_body_entered"]
