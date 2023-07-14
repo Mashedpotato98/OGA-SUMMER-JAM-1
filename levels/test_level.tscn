@@ -1,14 +1,8 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://levels/level.tscn" type="PackedScene" id=1]
 [ext_resource path="res://pickups/ammo_pickup.tscn" type="PackedScene" id=2]
 [ext_resource path="res://pickups/money_pickup.tscn" type="PackedScene" id=3]
-[ext_resource path="res://characters/enemies/cop/cop.tscn" type="PackedScene" id=4]
-[ext_resource path="res://pickups/pistol_pickup.tscn" type="PackedScene" id=5]
-[ext_resource path="res://characters/enemies/swat/swat.tscn" type="PackedScene" id=6]
-[ext_resource path="res://pickups/shot_gun_pickup.tscn" type="PackedScene" id=7]
-[ext_resource path="res://levels/wander_point.tscn" type="PackedScene" id=8]
-[ext_resource path="res://characters/npc/npc.tscn" type="PackedScene" id=9]
 
 [sub_resource type="NavigationPolygon" id=1]
 resource_local_to_scene = true
@@ -17,132 +11,6 @@ resource_local_to_scene = true
 
 [node name="NavigationPolygonInstance" parent="." index="3"]
 navpoly = SubResource( 1 )
-
-[node name="Cop" parent="YSort/Cops" index="0" instance=ExtResource( 4 )]
-position = Vector2( 384, 0 )
-
-[node name="Cop2" parent="YSort/Cops" index="1" instance=ExtResource( 4 )]
-position = Vector2( 408, 0 )
-
-[node name="Cop3" parent="YSort/Cops" index="2" instance=ExtResource( 4 )]
-position = Vector2( 432, 0 )
-
-[node name="Cop4" parent="YSort/Cops" index="3" instance=ExtResource( 4 )]
-position = Vector2( 456, 0 )
-
-[node name="Cop5" parent="YSort/Cops" index="4" instance=ExtResource( 4 )]
-position = Vector2( 480, 0 )
-
-[node name="Cop6" parent="YSort/Cops" index="5" instance=ExtResource( 4 )]
-position = Vector2( 384, 24 )
-
-[node name="Cop7" parent="YSort/Cops" index="6" instance=ExtResource( 4 )]
-position = Vector2( 408, 24 )
-
-[node name="Cop8" parent="YSort/Cops" index="7" instance=ExtResource( 4 )]
-position = Vector2( 432, 24 )
-
-[node name="Cop9" parent="YSort/Cops" index="8" instance=ExtResource( 4 )]
-position = Vector2( 456, 24 )
-
-[node name="Cop10" parent="YSort/Cops" index="9" instance=ExtResource( 4 )]
-position = Vector2( 480, 24 )
-
-[node name="Cop11" parent="YSort/Cops" index="10" instance=ExtResource( 4 )]
-position = Vector2( 384, 48 )
-
-[node name="Cop12" parent="YSort/Cops" index="11" instance=ExtResource( 4 )]
-position = Vector2( 408, 48 )
-
-[node name="Cop13" parent="YSort/Cops" index="12" instance=ExtResource( 4 )]
-position = Vector2( 432, 48 )
-
-[node name="Cop14" parent="YSort/Cops" index="13" instance=ExtResource( 4 )]
-position = Vector2( 456, 48 )
-
-[node name="Cop15" parent="YSort/Cops" index="14" instance=ExtResource( 4 )]
-position = Vector2( 480, 48 )
-
-[node name="Cop16" parent="YSort/Cops" index="15" instance=ExtResource( 4 )]
-position = Vector2( 384, 72 )
-
-[node name="Cop17" parent="YSort/Cops" index="16" instance=ExtResource( 4 )]
-position = Vector2( 408, 72 )
-
-[node name="Cop18" parent="YSort/Cops" index="17" instance=ExtResource( 4 )]
-position = Vector2( 432, 72 )
-
-[node name="Cop19" parent="YSort/Cops" index="18" instance=ExtResource( 4 )]
-position = Vector2( 456, 72 )
-
-[node name="Cop20" parent="YSort/Cops" index="19" instance=ExtResource( 4 )]
-position = Vector2( 480, 72 )
-
-[node name="Cop21" parent="YSort/Cops" index="20" instance=ExtResource( 4 )]
-position = Vector2( 384, 96 )
-
-[node name="Cop22" parent="YSort/Cops" index="21" instance=ExtResource( 4 )]
-position = Vector2( 408, 96 )
-
-[node name="Cop23" parent="YSort/Cops" index="22" instance=ExtResource( 4 )]
-position = Vector2( 432, 96 )
-
-[node name="Cop24" parent="YSort/Cops" index="23" instance=ExtResource( 4 )]
-position = Vector2( 456, 96 )
-
-[node name="Cop25" parent="YSort/Cops" index="24" instance=ExtResource( 4 )]
-position = Vector2( 480, 96 )
-
-[node name="Swat" parent="YSort/Cops" index="25" instance=ExtResource( 6 )]
-position = Vector2( -288, -72 )
-
-[node name="Swat2" parent="YSort/Cops" index="26" instance=ExtResource( 6 )]
-position = Vector2( -312, 72 )
-
-[node name="Swat3" parent="YSort/Cops" index="27" instance=ExtResource( 6 )]
-position = Vector2( -360, -24 )
-
-[node name="NPC" parent="YSort" index="2" instance=ExtResource( 9 )]
-position = Vector2( -168, -192 )
-
-[node name="NPC2" parent="YSort" index="3" instance=ExtResource( 9 )]
-position = Vector2( 288, -192 )
-
-[node name="NPC3" parent="YSort" index="4" instance=ExtResource( 9 )]
-position = Vector2( 384, 480 )
-
-[node name="NPC4" parent="YSort" index="5" instance=ExtResource( 9 )]
-position = Vector2( -48, 504 )
-
-[node name="NPC5" parent="YSort" index="6" instance=ExtResource( 9 )]
-position = Vector2( -216, 432 )
-
-[node name="NPC6" parent="YSort" index="7" instance=ExtResource( 9 )]
-position = Vector2( 216, 504 )
-
-[node name="NPC7" parent="YSort" index="8" instance=ExtResource( 9 )]
-position = Vector2( 408, 264 )
-
-[node name="NPC8" parent="YSort" index="9" instance=ExtResource( 9 )]
-position = Vector2( 288, -288 )
-
-[node name="NPC9" parent="YSort" index="10" instance=ExtResource( 9 )]
-position = Vector2( 0, -264 )
-
-[node name="NPC10" parent="YSort" index="11" instance=ExtResource( 9 )]
-position = Vector2( -288, 168 )
-
-[node name="NPC11" parent="YSort" index="12" instance=ExtResource( 9 )]
-position = Vector2( -504, 264 )
-
-[node name="NPC12" parent="YSort" index="13" instance=ExtResource( 9 )]
-position = Vector2( -456, 192 )
-
-[node name="NPC13" parent="YSort" index="14" instance=ExtResource( 9 )]
-position = Vector2( -504, 360 )
-
-[node name="NPC14" parent="YSort" index="15" instance=ExtResource( 9 )]
-position = Vector2( -192, 120 )
 
 [node name="AmmoPickup" parent="Pickups" index="0" instance=ExtResource( 2 )]
 position = Vector2( 48, -16 )
@@ -455,50 +323,3 @@ position = Vector2( 224, 288 )
 
 [node name="MoneyPickup100" parent="Pickups" index="103" instance=ExtResource( 3 )]
 position = Vector2( 248, 288 )
-
-[node name="PistolPickup" parent="Pickups" index="104" instance=ExtResource( 5 )]
-
-[node name="ShotGunPickup" parent="Pickups" index="105" instance=ExtResource( 7 )]
-position = Vector2( 0, 72 )
-
-[node name="StaticBody2D" type="StaticBody2D" parent="." index="7"]
-collision_mask = 87
-
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D" index="0"]
-polygon = PoolVector2Array( 192, -168, 120, 360, 264, 336, 288, -168, 120, -240, -96, -168, -168, 336, -384, 192, -408, 384, -432, 456, -288, 480, -360, 360, -288, 384, -360, 312, -384, 432, -408, 432, -360, 240, -168, 360, 24, -168 )
-
-[node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="StaticBody2D" index="1"]
-polygon = PoolVector2Array( -840, 528, -360, -504, 744, -456, 744, 720, -840, 528, -840, 600, 816, 840, 864, -504, -744, -600 )
-
-[node name="WanderPoint" parent="." index="8" instance=ExtResource( 8 )]
-position = Vector2( 96, -72 )
-
-[node name="WanderPoint2" parent="." index="9" instance=ExtResource( 8 )]
-position = Vector2( -24, 456 )
-
-[node name="WanderPoint3" parent="." index="10" instance=ExtResource( 8 )]
-position = Vector2( -312, 312 )
-
-[node name="WanderPoint4" parent="." index="11" instance=ExtResource( 8 )]
-position = Vector2( 360, 384 )
-
-[node name="WanderPoint5" parent="." index="12" instance=ExtResource( 8 )]
-position = Vector2( 384, -216 )
-
-[node name="WanderPoint6" parent="." index="13" instance=ExtResource( 8 )]
-position = Vector2( 120, -312 )
-
-[node name="WanderPoint7" parent="." index="14" instance=ExtResource( 8 )]
-position = Vector2( -144, -216 )
-
-[node name="WanderPoint8" parent="." index="15" instance=ExtResource( 8 )]
-position = Vector2( -216, 240 )
-
-[node name="WanderPoint9" parent="." index="16" instance=ExtResource( 8 )]
-position = Vector2( -432, 120 )
-
-[node name="WanderPoint10" parent="." index="17" instance=ExtResource( 8 )]
-position = Vector2( -504, 480 )
-
-[node name="WanderPoint11" parent="." index="18" instance=ExtResource( 8 )]
-position = Vector2( -216, 576 )

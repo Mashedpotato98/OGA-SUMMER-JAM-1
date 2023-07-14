@@ -3,7 +3,7 @@ extends Button
 
 
 var item := ""
-var count := 1 setget _on_count_set
+var ammo := 1 setget _on_ammo_set
 
 
 func _ready() -> void:
@@ -11,9 +11,9 @@ func _ready() -> void:
 	Inventory.connect("current_item_switched", self, "_on_Inventory_current_item_switched")
 
 
-func _on_count_set(value: int) -> void:
-	count = value
-	text = "X" + str(count)
+func _on_ammo_set(value: int) -> void:
+	ammo = value
+	text = "X" + str(ammo)
 
 
 func _on_InventoryItem_pressed() -> void:

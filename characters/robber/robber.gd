@@ -29,7 +29,6 @@ func _init() -> void:
 
 func _ready() -> void:
 	._ready()
-	ammo = Inventory.ammo
 	spawn_cronies()
 
 	if Inventory.items.keys().size() > 0:
@@ -86,11 +85,9 @@ func _die() -> void:
 	get_tree().change_scene("res://ui/screens/lose_screen.tscn")
 
 
-func _on_ammo_set(value: int) -> void:
-	if not is_ready:
-		return
-	ammo = value
-	Inventory.ammo = ammo
+func change_item(ITEM: PackedScene) -> void:
+	.change_item(ITEM)
+	ammo = Inventory.items[ITEM.resource_path]
 
 
 func scroll_items(direction: int) -> void:
@@ -99,6 +96,16 @@ func scroll_items(direction: int) -> void:
 		return
 
 	Inventory.current_item += direction
+
+
+func add_item(ITEM: PackedScene) -> void:
+	var item_ammo: int = Inventory.items_list[ITEM.resource_path].ammo
+	if Inventory.items.has(ITEM.resource_path):
+		Inventory.items[ITEM.resource_path] += item_ammo
+	else:
+		Inventory.items[ITEM.resource_path] = item_ammo
+
+	Inventory.current_item = Inventory.items.keys().find(ITEM.resource_path)
 
 
 func spawn_cronies() -> void:
@@ -127,16 +134,6 @@ func turn(delta: float) -> void:
 	hand_pivot.rotation = lerp_angle(hand_pivot.rotation, aim_dir.angle(), turn_speed * delta)
 
 
-func add_item(ITEM: PackedScene) -> void:
-	change_item(ITEM)
-	if Inventory.items.has(ITEM.resource_path):
-		Inventory.items[ITEM.resource_path] += 1
-	else:
-		Inventory.items[ITEM.resource_path] = 1
-
-	Inventory.current_item = Inventory.items.keys().find(ITEM.resource_path)
-
-
 func blink() -> void:
 	var blink_duration := 0.25
 	var blinks := 3
@@ -156,6 +153,19 @@ func _on_anim_dir_set(value: Vector2) -> void:
 	playback.travel(state)
 
 
+func _on_ammo_set(value: int) -> void:
+	if not is_ready:
+		return
+	ammo = value
+	Inventory.items[Inventory.items.keys()[Inventory.current_item]] = ammo
+
+
+func _on_Inventory_current_item_switched(item_index: int) -> void:
+	var item := load(Inventory.items.keys()[item_index])
+	change_item(item)
+	bribing = item == BRIBE
+
+
 func _on_HitBox_dmg_taken(from: Vector2, amount: int) -> void:
 	._on_HitBox_dmg_taken(from, amount)
 	blink()
@@ -163,9 +173,3 @@ func _on_HitBox_dmg_taken(from: Vector2, amount: int) -> void:
 
 func _on_DashCoolDown_timeout() -> void:
 	dash_colling = false
-
-
-func _on_Inventory_current_item_switched(item_index: int) -> void:
-	var item := load(Inventory.items.keys()[item_index])
-	change_item(item)
-	bribing = item == BRIBE

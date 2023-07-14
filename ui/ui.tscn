@@ -45,7 +45,7 @@ stretch_mode = 2
 [node name="Counters" type="GridContainer" parent="."]
 anchor_left = 1.0
 anchor_right = 1.0
-margin_left = -152.0
+margin_left = -158.0
 margin_bottom = 41.0
 mouse_filter = 2
 theme = ExtResource( 5 )
@@ -53,33 +53,33 @@ columns = 2
 
 [node name="MoneyCounter" type="Label" parent="Counters"]
 margin_top = 1.0
-margin_right = 134.0
+margin_right = 139.0
 margin_bottom = 18.0
 size_flags_horizontal = 3
-text = "$############"
+text = "$###,###,###,###"
 align = 2
 valign = 1
 
 [node name="MoneyIcon" type="TextureRect" parent="Counters"]
-margin_left = 134.0
-margin_right = 152.0
+margin_left = 140.0
+margin_right = 158.0
 margin_bottom = 20.0
 mouse_filter = 2
 texture = ExtResource( 4 )
 
 [node name="AmmoCounter" type="Label" parent="Counters"]
 margin_top = 22.0
-margin_right = 134.0
+margin_right = 139.0
 margin_bottom = 39.0
 size_flags_horizontal = 3
-text = "######"
+text = "###,###"
 align = 2
 valign = 1
 
 [node name="AmmoIcon" type="TextureRect" parent="Counters"]
-margin_left = 134.0
+margin_left = 140.0
 margin_top = 21.0
-margin_right = 152.0
+margin_right = 158.0
 margin_bottom = 41.0
 mouse_filter = 2
 texture = ExtResource( 6 )

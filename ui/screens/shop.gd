@@ -1,36 +1,22 @@
 class_name Shop
-extends Control
+extends Screen
 
+
+const BUY_BUTTON := preload("res://ui/buttons/buy_button.tscn")
 
 export var min_items := 5
 export var max_items := 15
-export var items: Array = [
-	ItemInfo.new(preload("res://pickups/ammo_pickup.png"), 1000, "res://guns/pistol/pistol.png"),
-
-]
 
 onready var tabs: TabContainer = $Tabs
 onready var shop: VBoxContainer = tabs.get_node("Shop")
+onready var items: GridContainer = shop.get_node("ScrollContainer/Items")
 onready var money: Label = shop.get_node("TopBar/Money")
 onready var dressing_room: Control = tabs.get_node("Dressing Room")
 
 
-class ItemInfo:
-	var icon: Texture
-	var price: int
-	var scene: String
-
-
-# warning-ignore:shadowed_variable
-# warning-ignore:shadowed_variable
-# warning-ignore:shadowed_variable
-	func _init(icon: Texture, price: int, scene: String) -> void:
-		self.icon = icon
-		self.price = price
-		self.scene = scene
-
-
 func _ready() -> void:
+	._ready()
+
 	fill_shop()
 	set_money(Inventory.money)
 # warning-ignore:return_value_discarded
@@ -45,7 +31,13 @@ func set_money(money: int) -> void:
 func fill_shop() -> void:
 	for i in rand_range(min_items, max_items):
 		add_item()
+	items.get_child(0).activate_button.grab_focus()
 
 
 func add_item() -> void:
-	pass
+	items.add_child(BUY_BUTTON.instance())
+
+
+func _on_DoneButton_pressed() -> void:
+	Inventory.save_inventory()
+	change_scene("res://ui/screens/main_menu.tscn")
