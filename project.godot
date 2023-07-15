@@ -79,10 +79,10 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://pickups/item_pickup.gd"
 }, {
-"base": "Node2D",
+"base": "Reference",
 "class": "Level",
 "language": "GDScript",
-"path": "res://levels/level.gd"
+"path": "res://levels/levels/level.gd"
 }, {
 "base": "Screen",
 "class": "LoseScreen",
