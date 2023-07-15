@@ -3,6 +3,7 @@ extends Screen
 
 
 func _init() -> void:
+	Inventory.first_raid = false
 	Inventory.save_inventory()
 
 

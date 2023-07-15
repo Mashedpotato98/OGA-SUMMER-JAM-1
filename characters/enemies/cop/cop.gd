@@ -129,7 +129,7 @@ func _on_Cop_player_reached() -> void:
 	if item != null and not item is NodePath:
 		cronie_data.weapon = item.filename
 	Inventory.cronies.append(cronie_data)
-	Inventory.money -= Inventory.BRIBE_COST
+	Inventory.money -= Inventory.items_list[Inventory.BRIBE_PATH].prices[0]
 
 
 func _on_DetectionZone_lost(what: Node) -> void:

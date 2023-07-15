@@ -9,7 +9,7 @@ extents = Vector2( 8, 11 )
 
 [node name="MoneyPickup" instance=ExtResource( 2 )]
 script = ExtResource( 3 )
-amount = 1000
+amount = 100
 
 [node name="Sprite" parent="." index="0"]
 texture = ExtResource( 1 )

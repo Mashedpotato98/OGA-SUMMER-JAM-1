@@ -55,13 +55,13 @@ position = Vector2( 0, -7 )
 position = Vector2( 8, 0 )
 
 [node name="Camera2D" type="Camera2D" parent="." index="4"]
-current = true
 
 [node name="AnimationTree" parent="." index="5"]
 active = false
 parameters/playback = SubResource( 46 )
 
 [node name="DashCoolDown" type="Timer" parent="." index="7"]
+wait_time = 0.9
 one_shot = true
 
 [connection signal="timeout" from="DashCoolDown" to="." method="_on_DashCoolDown_timeout"]

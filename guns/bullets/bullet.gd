@@ -8,6 +8,8 @@ export var HIT_EFFECT: PackedScene = null
 
 var attack_type := ""
 var direction := Vector2()
+var distance := 0.0
+var distance_traveled := 0.0
 
 
 func _ready() -> void:
@@ -18,7 +20,12 @@ func _physics_process(delta: float) -> void:
 	# This might go through hit boxes if slow frame rate / too fast speed.
 	# In that case, use RayCast to detect wether it skipped anything.
 	# perhaps only activate RayCast when it is moved over a certian amount within one frame.
-	translate(direction * speed * delta)
+	var velocity := direction * speed * delta
+	translate(velocity)
+	distance_traveled += velocity.length()
+
+	if distance_traveled > distance:
+		queue_free()
 
 
 func _hit() -> void:
@@ -37,10 +44,6 @@ func _on_Bullet_area_entered(area: Area2D) -> void:
 		return
 	area.take_dmg(global_position, dmg)
 	_hit()
-
-
-func _on_VisibilityNotifier2D_screen_exited() -> void:
-	queue_free()
 
 
 func _on_Bullet_body_entered(_body: Node) -> void:

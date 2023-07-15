@@ -7,6 +7,7 @@ const BUY_BUTTON := preload("res://ui/buttons/buy_button.tscn")
 export var min_items := 5
 export var max_items := 15
 
+onready var title: Label = $Title
 onready var tabs: TabContainer = $Tabs
 onready var shop: VBoxContainer = tabs.get_node("Shop")
 onready var items: GridContainer = shop.get_node("ScrollContainer/Items")
@@ -25,10 +26,11 @@ func _ready() -> void:
 
 # warning-ignore:shadowed_variable
 func set_money(money: int) -> void:
-	self.money.text = str(money)
+	self.money.text = "$" + str(money)
 
 
 func fill_shop() -> void:
+	randomize()
 	for i in rand_range(min_items, max_items):
 		add_item()
 	items.get_child(0).activate_button.grab_focus()
@@ -39,5 +41,8 @@ func add_item() -> void:
 
 
 func _on_DoneButton_pressed() -> void:
-	Inventory.save_inventory()
-	change_scene("res://ui/screens/main_menu.tscn")
+	if Inventory.first_raid:
+		change_scene("res://levels/level_1.tscn")#%s.tscn" % str(randi() % Level.LEVEL_VARIATIONS))
+	else:
+		Inventory.save_inventory()
+		change_scene("res://ui/screens/main_menu.tscn")

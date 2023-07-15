@@ -2,15 +2,16 @@ class_name Level
 extends Node2D
 
 
-const LEVELS := 7
+const LEVELS := 5
 const LEVEL_VARIATIONS := 2 # Should be automated based on files
 
 # So that the map seed is separate from the game seed.
 var rng := RandomNumberGenerator.new()
 var height := 0
 
-onready var robber: Robber = $YSort/Robber
-onready var elevator: Elevator = $Elevator
+onready var y_sort: YSort = $YSort
+onready var robber: Robber = y_sort.get_node("Robber")
+onready var elevator: Elevator = y_sort.get_node("Elevator")
 onready var ui: UI = $UI
 
 

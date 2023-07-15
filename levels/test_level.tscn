@@ -17,309 +17,409 @@ position = Vector2( 48, -16 )
 
 [node name="MoneyPickup" parent="Pickups" index="1" instance=ExtResource( 3 )]
 position = Vector2( 32, 72 )
+amount = 100
 
 [node name="MoneyPickup2" parent="Pickups" index="2" instance=ExtResource( 3 )]
 position = Vector2( 56, 72 )
+amount = 100
 
 [node name="MoneyPickup3" parent="Pickups" index="3" instance=ExtResource( 3 )]
 position = Vector2( 80, 72 )
+amount = 100
 
 [node name="MoneyPickup4" parent="Pickups" index="4" instance=ExtResource( 3 )]
 position = Vector2( 104, 72 )
+amount = 100
 
 [node name="MoneyPickup5" parent="Pickups" index="5" instance=ExtResource( 3 )]
 position = Vector2( 128, 72 )
+amount = 100
 
 [node name="MoneyPickup6" parent="Pickups" index="6" instance=ExtResource( 3 )]
 position = Vector2( 152, 72 )
+amount = 100
 
 [node name="MoneyPickup7" parent="Pickups" index="7" instance=ExtResource( 3 )]
 position = Vector2( 176, 72 )
+amount = 100
 
 [node name="MoneyPickup8" parent="Pickups" index="8" instance=ExtResource( 3 )]
 position = Vector2( 200, 72 )
+amount = 100
 
 [node name="MoneyPickup9" parent="Pickups" index="9" instance=ExtResource( 3 )]
 position = Vector2( 224, 72 )
+amount = 100
 
 [node name="MoneyPickup10" parent="Pickups" index="10" instance=ExtResource( 3 )]
 position = Vector2( 248, 72 )
+amount = 100
 
 [node name="AmmoPickup2" parent="Pickups" index="11" instance=ExtResource( 2 )]
 position = Vector2( 48, 8 )
 
 [node name="MoneyPickup11" parent="Pickups" index="12" instance=ExtResource( 3 )]
 position = Vector2( 32, 96 )
+amount = 100
 
 [node name="MoneyPickup12" parent="Pickups" index="13" instance=ExtResource( 3 )]
 position = Vector2( 56, 96 )
+amount = 100
 
 [node name="MoneyPickup13" parent="Pickups" index="14" instance=ExtResource( 3 )]
 position = Vector2( 80, 96 )
+amount = 100
 
 [node name="MoneyPickup14" parent="Pickups" index="15" instance=ExtResource( 3 )]
 position = Vector2( 104, 96 )
+amount = 100
 
 [node name="MoneyPickup15" parent="Pickups" index="16" instance=ExtResource( 3 )]
 position = Vector2( 128, 96 )
+amount = 100
 
 [node name="MoneyPickup16" parent="Pickups" index="17" instance=ExtResource( 3 )]
 position = Vector2( 152, 96 )
+amount = 100
 
 [node name="MoneyPickup17" parent="Pickups" index="18" instance=ExtResource( 3 )]
 position = Vector2( 176, 96 )
+amount = 100
 
 [node name="MoneyPickup18" parent="Pickups" index="19" instance=ExtResource( 3 )]
 position = Vector2( 200, 96 )
+amount = 100
 
 [node name="MoneyPickup19" parent="Pickups" index="20" instance=ExtResource( 3 )]
 position = Vector2( 224, 96 )
+amount = 100
 
 [node name="MoneyPickup20" parent="Pickups" index="21" instance=ExtResource( 3 )]
 position = Vector2( 248, 96 )
+amount = 100
 
 [node name="AmmoPickup3" parent="Pickups" index="22" instance=ExtResource( 2 )]
 position = Vector2( 48, 32 )
 
 [node name="MoneyPickup21" parent="Pickups" index="23" instance=ExtResource( 3 )]
 position = Vector2( 32, 120 )
+amount = 100
 
 [node name="MoneyPickup22" parent="Pickups" index="24" instance=ExtResource( 3 )]
 position = Vector2( 56, 120 )
+amount = 100
 
 [node name="MoneyPickup23" parent="Pickups" index="25" instance=ExtResource( 3 )]
 position = Vector2( 80, 120 )
+amount = 100
 
 [node name="MoneyPickup24" parent="Pickups" index="26" instance=ExtResource( 3 )]
 position = Vector2( 104, 120 )
+amount = 100
 
 [node name="MoneyPickup25" parent="Pickups" index="27" instance=ExtResource( 3 )]
 position = Vector2( 128, 120 )
+amount = 100
 
 [node name="MoneyPickup26" parent="Pickups" index="28" instance=ExtResource( 3 )]
 position = Vector2( 152, 120 )
+amount = 100
 
 [node name="MoneyPickup27" parent="Pickups" index="29" instance=ExtResource( 3 )]
 position = Vector2( 176, 120 )
+amount = 100
 
 [node name="MoneyPickup28" parent="Pickups" index="30" instance=ExtResource( 3 )]
 position = Vector2( 200, 120 )
+amount = 100
 
 [node name="MoneyPickup29" parent="Pickups" index="31" instance=ExtResource( 3 )]
 position = Vector2( 224, 120 )
+amount = 100
 
 [node name="MoneyPickup30" parent="Pickups" index="32" instance=ExtResource( 3 )]
 position = Vector2( 248, 120 )
+amount = 100
 
 [node name="AmmoPickup4" parent="Pickups" index="33" instance=ExtResource( 2 )]
 position = Vector2( 48, 56 )
 
 [node name="MoneyPickup31" parent="Pickups" index="34" instance=ExtResource( 3 )]
 position = Vector2( 32, 144 )
+amount = 100
 
 [node name="MoneyPickup32" parent="Pickups" index="35" instance=ExtResource( 3 )]
 position = Vector2( 56, 144 )
+amount = 100
 
 [node name="MoneyPickup33" parent="Pickups" index="36" instance=ExtResource( 3 )]
 position = Vector2( 80, 144 )
+amount = 100
 
 [node name="MoneyPickup34" parent="Pickups" index="37" instance=ExtResource( 3 )]
 position = Vector2( 104, 144 )
+amount = 100
 
 [node name="MoneyPickup35" parent="Pickups" index="38" instance=ExtResource( 3 )]
 position = Vector2( 128, 144 )
+amount = 100
 
 [node name="MoneyPickup36" parent="Pickups" index="39" instance=ExtResource( 3 )]
 position = Vector2( 152, 144 )
+amount = 100
 
 [node name="MoneyPickup37" parent="Pickups" index="40" instance=ExtResource( 3 )]
 position = Vector2( 176, 144 )
+amount = 100
 
 [node name="MoneyPickup38" parent="Pickups" index="41" instance=ExtResource( 3 )]
 position = Vector2( 200, 144 )
+amount = 100
 
 [node name="MoneyPickup39" parent="Pickups" index="42" instance=ExtResource( 3 )]
 position = Vector2( 224, 144 )
+amount = 100
 
 [node name="MoneyPickup40" parent="Pickups" index="43" instance=ExtResource( 3 )]
 position = Vector2( 248, 144 )
+amount = 100
 
 [node name="MoneyPickup41" parent="Pickups" index="44" instance=ExtResource( 3 )]
 position = Vector2( 32, 168 )
+amount = 100
 
 [node name="MoneyPickup42" parent="Pickups" index="45" instance=ExtResource( 3 )]
 position = Vector2( 56, 168 )
+amount = 100
 
 [node name="MoneyPickup43" parent="Pickups" index="46" instance=ExtResource( 3 )]
 position = Vector2( 80, 168 )
+amount = 100
 
 [node name="MoneyPickup44" parent="Pickups" index="47" instance=ExtResource( 3 )]
 position = Vector2( 104, 168 )
+amount = 100
 
 [node name="MoneyPickup45" parent="Pickups" index="48" instance=ExtResource( 3 )]
 position = Vector2( 128, 168 )
+amount = 100
 
 [node name="MoneyPickup46" parent="Pickups" index="49" instance=ExtResource( 3 )]
 position = Vector2( 152, 168 )
+amount = 100
 
 [node name="MoneyPickup47" parent="Pickups" index="50" instance=ExtResource( 3 )]
 position = Vector2( 176, 168 )
+amount = 100
 
 [node name="MoneyPickup48" parent="Pickups" index="51" instance=ExtResource( 3 )]
 position = Vector2( 200, 168 )
+amount = 100
 
 [node name="MoneyPickup49" parent="Pickups" index="52" instance=ExtResource( 3 )]
 position = Vector2( 224, 168 )
+amount = 100
 
 [node name="MoneyPickup50" parent="Pickups" index="53" instance=ExtResource( 3 )]
 position = Vector2( 248, 168 )
+amount = 100
 
 [node name="MoneyPickup51" parent="Pickups" index="54" instance=ExtResource( 3 )]
 position = Vector2( 32, 192 )
+amount = 100
 
 [node name="MoneyPickup52" parent="Pickups" index="55" instance=ExtResource( 3 )]
 position = Vector2( 56, 192 )
+amount = 100
 
 [node name="MoneyPickup53" parent="Pickups" index="56" instance=ExtResource( 3 )]
 position = Vector2( 80, 192 )
+amount = 100
 
 [node name="MoneyPickup54" parent="Pickups" index="57" instance=ExtResource( 3 )]
 position = Vector2( 104, 192 )
+amount = 100
 
 [node name="MoneyPickup55" parent="Pickups" index="58" instance=ExtResource( 3 )]
 position = Vector2( 128, 192 )
+amount = 100
 
 [node name="MoneyPickup56" parent="Pickups" index="59" instance=ExtResource( 3 )]
 position = Vector2( 152, 192 )
+amount = 100
 
 [node name="MoneyPickup57" parent="Pickups" index="60" instance=ExtResource( 3 )]
 position = Vector2( 176, 192 )
+amount = 100
 
 [node name="MoneyPickup58" parent="Pickups" index="61" instance=ExtResource( 3 )]
 position = Vector2( 200, 192 )
+amount = 100
 
 [node name="MoneyPickup59" parent="Pickups" index="62" instance=ExtResource( 3 )]
 position = Vector2( 224, 192 )
+amount = 100
 
 [node name="MoneyPickup60" parent="Pickups" index="63" instance=ExtResource( 3 )]
 position = Vector2( 248, 192 )
+amount = 100
 
 [node name="MoneyPickup61" parent="Pickups" index="64" instance=ExtResource( 3 )]
 position = Vector2( 32, 216 )
+amount = 100
 
 [node name="MoneyPickup62" parent="Pickups" index="65" instance=ExtResource( 3 )]
 position = Vector2( 56, 216 )
+amount = 100
 
 [node name="MoneyPickup63" parent="Pickups" index="66" instance=ExtResource( 3 )]
 position = Vector2( 80, 216 )
+amount = 100
 
 [node name="MoneyPickup64" parent="Pickups" index="67" instance=ExtResource( 3 )]
 position = Vector2( 104, 216 )
+amount = 100
 
 [node name="MoneyPickup65" parent="Pickups" index="68" instance=ExtResource( 3 )]
 position = Vector2( 128, 216 )
+amount = 100
 
 [node name="MoneyPickup66" parent="Pickups" index="69" instance=ExtResource( 3 )]
 position = Vector2( 152, 216 )
+amount = 100
 
 [node name="MoneyPickup67" parent="Pickups" index="70" instance=ExtResource( 3 )]
 position = Vector2( 176, 216 )
+amount = 100
 
 [node name="MoneyPickup68" parent="Pickups" index="71" instance=ExtResource( 3 )]
 position = Vector2( 200, 216 )
+amount = 100
 
 [node name="MoneyPickup69" parent="Pickups" index="72" instance=ExtResource( 3 )]
 position = Vector2( 224, 216 )
+amount = 100
 
 [node name="MoneyPickup70" parent="Pickups" index="73" instance=ExtResource( 3 )]
 position = Vector2( 248, 216 )
+amount = 100
 
 [node name="MoneyPickup71" parent="Pickups" index="74" instance=ExtResource( 3 )]
 position = Vector2( 32, 240 )
+amount = 100
 
 [node name="MoneyPickup72" parent="Pickups" index="75" instance=ExtResource( 3 )]
 position = Vector2( 56, 240 )
+amount = 100
 
 [node name="MoneyPickup73" parent="Pickups" index="76" instance=ExtResource( 3 )]
 position = Vector2( 80, 240 )
+amount = 100
 
 [node name="MoneyPickup74" parent="Pickups" index="77" instance=ExtResource( 3 )]
 position = Vector2( 104, 240 )
+amount = 100
 
 [node name="MoneyPickup75" parent="Pickups" index="78" instance=ExtResource( 3 )]
 position = Vector2( 128, 240 )
+amount = 100
 
 [node name="MoneyPickup76" parent="Pickups" index="79" instance=ExtResource( 3 )]
 position = Vector2( 152, 240 )
+amount = 100
 
 [node name="MoneyPickup77" parent="Pickups" index="80" instance=ExtResource( 3 )]
 position = Vector2( 176, 240 )
+amount = 100
 
 [node name="MoneyPickup78" parent="Pickups" index="81" instance=ExtResource( 3 )]
 position = Vector2( 200, 240 )
+amount = 100
 
 [node name="MoneyPickup79" parent="Pickups" index="82" instance=ExtResource( 3 )]
 position = Vector2( 224, 240 )
+amount = 100
 
 [node name="MoneyPickup80" parent="Pickups" index="83" instance=ExtResource( 3 )]
 position = Vector2( 248, 240 )
+amount = 100
 
 [node name="MoneyPickup81" parent="Pickups" index="84" instance=ExtResource( 3 )]
 position = Vector2( 32, 264 )
+amount = 100
 
 [node name="MoneyPickup82" parent="Pickups" index="85" instance=ExtResource( 3 )]
 position = Vector2( 56, 264 )
+amount = 100
 
 [node name="MoneyPickup83" parent="Pickups" index="86" instance=ExtResource( 3 )]
 position = Vector2( 80, 264 )
+amount = 100
 
 [node name="MoneyPickup84" parent="Pickups" index="87" instance=ExtResource( 3 )]
 position = Vector2( 104, 264 )
+amount = 100
 
 [node name="MoneyPickup85" parent="Pickups" index="88" instance=ExtResource( 3 )]
 position = Vector2( 128, 264 )
+amount = 100
 
 [node name="MoneyPickup86" parent="Pickups" index="89" instance=ExtResource( 3 )]
 position = Vector2( 152, 264 )
+amount = 100
 
 [node name="MoneyPickup87" parent="Pickups" index="90" instance=ExtResource( 3 )]
 position = Vector2( 176, 264 )
+amount = 100
 
 [node name="MoneyPickup88" parent="Pickups" index="91" instance=ExtResource( 3 )]
 position = Vector2( 200, 264 )
+amount = 100
 
 [node name="MoneyPickup89" parent="Pickups" index="92" instance=ExtResource( 3 )]
 position = Vector2( 224, 264 )
+amount = 100
 
 [node name="MoneyPickup90" parent="Pickups" index="93" instance=ExtResource( 3 )]
 position = Vector2( 248, 264 )
+amount = 100
 
 [node name="MoneyPickup91" parent="Pickups" index="94" instance=ExtResource( 3 )]
 position = Vector2( 32, 288 )
+amount = 100
 
 [node name="MoneyPickup92" parent="Pickups" index="95" instance=ExtResource( 3 )]
 position = Vector2( 56, 288 )
+amount = 100
 
 [node name="MoneyPickup93" parent="Pickups" index="96" instance=ExtResource( 3 )]
 position = Vector2( 80, 288 )
+amount = 100
 
 [node name="MoneyPickup94" parent="Pickups" index="97" instance=ExtResource( 3 )]
 position = Vector2( 104, 288 )
+amount = 100
 
 [node name="MoneyPickup95" parent="Pickups" index="98" instance=ExtResource( 3 )]
 position = Vector2( 128, 288 )
+amount = 100
 
 [node name="MoneyPickup96" parent="Pickups" index="99" instance=ExtResource( 3 )]
 position = Vector2( 152, 288 )
+amount = 100
 
 [node name="MoneyPickup97" parent="Pickups" index="100" instance=ExtResource( 3 )]
 position = Vector2( 176, 288 )
+amount = 100
 
 [node name="MoneyPickup98" parent="Pickups" index="101" instance=ExtResource( 3 )]
 position = Vector2( 200, 288 )
+amount = 100
 
 [node name="MoneyPickup99" parent="Pickups" index="102" instance=ExtResource( 3 )]
 position = Vector2( 224, 288 )
+amount = 100
 
 [node name="MoneyPickup100" parent="Pickups" index="103" instance=ExtResource( 3 )]
 position = Vector2( 248, 288 )
+amount = 100

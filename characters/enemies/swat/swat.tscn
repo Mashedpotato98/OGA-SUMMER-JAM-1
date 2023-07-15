@@ -37,7 +37,7 @@ shape = SubResource( 1 )
 [node name="CollisionShape2D" parent="DetectionZone" index="0"]
 shape = SubResource( 2 )
 
-[node name="AnimationTree" parent="." index="8"]
+[node name="AnimationTree" parent="." index="6"]
 parameters/playback = SubResource( 4 )
 
 [node name="SwatZone" type="Area2D" parent="." index="9"]

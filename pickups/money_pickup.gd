@@ -2,7 +2,7 @@ class_name MoneyPickup
 extends Pickup
 
 
-export var amount := 1_000
+export var amount := 100
 
 
 func _collect(_body: Node) -> void:

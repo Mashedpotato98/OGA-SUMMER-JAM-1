@@ -256,6 +256,10 @@ anims/WalkLeft = SubResource( 41 )
 anims/WalkRight = SubResource( 42 )
 anims/WalkUp = SubResource( 43 )
 
+[node name="WallDetector" type="RayCast2D" parent="."]
+cast_to = Vector2( 0, 0 )
+collision_mask = 17
+
 [connection signal="dmg_taken" from="HitBox" to="." method="_on_HitBox_dmg_taken"]
 
 [editable path="HitBox"]

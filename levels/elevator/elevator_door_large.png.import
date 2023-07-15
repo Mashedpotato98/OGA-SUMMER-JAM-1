@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/temp_large_robber.png-9702a3019c12d7d7941fede0d837212f.stex"
+path="res://.import/elevator_door_large.png-187170fb55f834b6f8d7f5b8083a5f44.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://ui/icons/temp_large_robber.png"
-dest_files=[ "res://.import/temp_large_robber.png-9702a3019c12d7d7941fede0d837212f.stex" ]
+source_file="res://levels/elevator/elevator_door_large.png"
+dest_files=[ "res://.import/elevator_door_large.png-187170fb55f834b6f8d7f5b8083a5f44.stex" ]
 
 [params]
 

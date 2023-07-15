@@ -8,11 +8,13 @@ signal died
 
 export var acceleration := 128.0
 export var speed := 32.0
+export var walk_speed := 16.0
 export var hit_force := 64.0
 export var kickback := 32.0
 export var kickback_time := 0.1
 export var hurt_bounce := 64.0
 export var hurt_bounce_time := 0.25
+export var desired_distance := 4.0
 
 export var max_hp := 3 setget _on_max_hp_set
 export var hp := 3 setget _on_hp_set
@@ -27,10 +29,12 @@ var velocity := Vector2() setget _on_velocity_set
 
 var stunned := false
 
+onready var wander_point := global_position
 onready var sprite: Sprite = $Sprite
 onready var hit_box: HitBox = $HitBox
 onready var hand_pivot: Position2D = $HandPivot
 onready var hand: Position2D = hand_pivot.get_node("Hand")
+onready var wall_detector: RayCast2D = $WallDetector
 
 
 func _ready() -> void:
@@ -81,6 +85,30 @@ func shove(vel: Vector2, duration: float) -> void:
 	stunned = true
 	yield(get_tree().create_timer(duration), "timeout")
 	stunned = false
+
+
+func wander() -> void:
+	if global_position.distance_to(wander_point) < desired_distance:
+		choose_wander_point()
+
+	smooth_vel = global_position.direction_to(wander_point) * walk_speed
+
+
+func choose_wander_point() -> void:
+	wall_detector.enabled = true
+	var wander_points := get_tree().get_nodes_in_group("wander_points")
+	wander_points.shuffle()
+
+# warning-ignore:shadowed_variable
+	for wander_point in wander_points:
+		var wander_point_pos: Vector2 = wander_point.global_position
+		wall_detector.cast_to = to_local(wander_point_pos)
+		wall_detector.force_raycast_update()
+		if not wall_detector.is_colliding():
+			self.wander_point = wander_point_pos
+			break
+
+	wall_detector.enabled = false
 
 
 func _on_max_hp_set(value: int) -> void:

@@ -7,20 +7,20 @@
 script = ExtResource( 2 )
 
 [node name="PlayButton" type="Button" parent="Menu" index="0"]
-margin_right = 40.0
-margin_bottom = 11.0
+margin_right = 67.0
+margin_bottom = 21.0
 text = "Play"
 
 [node name="CreditsButton" type="Button" parent="Menu" index="1"]
-margin_top = 15.0
-margin_right = 40.0
-margin_bottom = 26.0
+margin_top = 25.0
+margin_right = 67.0
+margin_bottom = 46.0
 text = "Credits"
 
 [node name="QuitButton" type="Button" parent="Menu" index="2"]
-margin_top = 30.0
-margin_right = 40.0
-margin_bottom = 41.0
+margin_top = 50.0
+margin_right = 67.0
+margin_bottom = 71.0
 text = "Quit"
 
 [connection signal="pressed" from="Menu/PlayButton" to="." method="_on_PlayButton_pressed"]

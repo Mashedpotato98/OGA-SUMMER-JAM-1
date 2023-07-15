@@ -25,6 +25,8 @@ onready var dash_cool_down: Timer = $DashCoolDown
 func _init() -> void:
 # warning-ignore:return_value_discarded
 	Inventory.connect("current_item_switched", self, "_on_Inventory_current_item_switched")
+# warning-ignore:return_value_discarded
+	Inventory.connect("items_changed", self, "_on_Inventory_items_changed")
 
 
 func _ready() -> void:
@@ -88,6 +90,10 @@ func _die() -> void:
 func change_item(ITEM: PackedScene) -> void:
 	.change_item(ITEM)
 	ammo = Inventory.items[ITEM.resource_path]
+
+
+func clear_item() -> void:
+	.change_item(null)
 
 
 func scroll_items(direction: int) -> void:
@@ -156,14 +162,21 @@ func _on_anim_dir_set(value: Vector2) -> void:
 func _on_ammo_set(value: int) -> void:
 	if not is_ready:
 		return
+
 	ammo = value
-	Inventory.items[Inventory.items.keys()[Inventory.current_item]] = ammo
+	var item_path: String = Inventory.items.keys()[Inventory.current_item]
+	Inventory.set_item_ammo(item_path, ammo, false)
 
 
 func _on_Inventory_current_item_switched(item_index: int) -> void:
 	var item := load(Inventory.items.keys()[item_index])
 	change_item(item)
 	bribing = item == BRIBE
+
+
+func _on_Inventory_items_changed(items: Dictionary) -> void:
+	if items.size() <= 0:
+		clear_item()
 
 
 func _on_HitBox_dmg_taken(from: Vector2, amount: int) -> void:

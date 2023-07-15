@@ -1,11 +1,10 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://ui/icons/Health_bar.png" type="Texture" id=1]
 [ext_resource path="res://ui/icons/health_singal.png" type="Texture" id=2]
 [ext_resource path="res://ui/ui.gd" type="Script" id=3]
 [ext_resource path="res://ui/icons/money.png" type="Texture" id=4]
 [ext_resource path="res://ui/theme.theme" type="Theme" id=5]
-[ext_resource path="res://pickups/ammo_pickup.png" type="Texture" id=6]
 [ext_resource path="res://ui/fonts/small_font.tres" type="DynamicFont" id=7]
 
 [node name="UI" type="CanvasLayer"]
@@ -66,24 +65,6 @@ margin_right = 158.0
 margin_bottom = 20.0
 mouse_filter = 2
 texture = ExtResource( 4 )
-
-[node name="AmmoCounter" type="Label" parent="Counters"]
-margin_top = 22.0
-margin_right = 139.0
-margin_bottom = 39.0
-size_flags_horizontal = 3
-text = "###,###"
-align = 2
-valign = 1
-
-[node name="AmmoIcon" type="TextureRect" parent="Counters"]
-margin_left = 140.0
-margin_top = 21.0
-margin_right = 158.0
-margin_bottom = 41.0
-mouse_filter = 2
-texture = ExtResource( 6 )
-stretch_mode = 4
 
 [node name="Inventory" type="HBoxContainer" parent="."]
 anchor_left = 0.5

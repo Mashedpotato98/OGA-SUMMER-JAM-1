@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://characters/enemies/enemy.tscn" type="PackedScene" id=1]
 [ext_resource path="res://characters/enemies/cop/cop.png" type="Texture" id=2]
@@ -6,6 +6,7 @@
 [ext_resource path="res://guns/pistol/pistol.tscn" type="PackedScene" id=4]
 [ext_resource path="res://components/detection_zone.tscn" type="PackedScene" id=5]
 [ext_resource path="res://characters/enemies/cop/cop_bribed.png" type="Texture" id=6]
+[ext_resource path="res://guns/bullets/weak_bullet.tscn" type="PackedScene" id=7]
 
 [sub_resource type="CapsuleShape2D" id=4]
 radius = 2.0
@@ -15,12 +16,12 @@ height = 6.0
 resource_local_to_scene = true
 extents = Vector2( 3, 7 )
 
-[sub_resource type="RectangleShape2D" id=2]
-extents = Vector2( 7, 4 )
-
 [sub_resource type="CircleShape2D" id=3]
 resource_local_to_scene = true
 radius = 128.0
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 7, 4 )
 
 [sub_resource type="CircleShape2D" id=6]
 resource_local_to_scene = true
@@ -57,36 +58,30 @@ position = Vector2( 0, -7 )
 position = Vector2( 8, 0 )
 
 [node name="Pistol" parent="HandPivot/Hand" index="0" instance=ExtResource( 4 )]
-
-[node name="WallDetector" type="Area2D" parent="." index="6"]
-collision_layer = 0
-collision_mask = 17
-monitorable = false
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="WallDetector" index="0"]
-shape = SubResource( 2 )
+BULLET = ExtResource( 7 )
 
 [node name="CollisionShape2D" parent="DetectionZone" index="0"]
 shape = SubResource( 3 )
 
-[node name="AnimationTree" parent="." index="9"]
+[node name="AnimationTree" parent="." index="6"]
 tree_root = null
 anim_player = NodePath("")
 active = false
 
-[node name="CopDetectionZone" parent="." index="11" instance=ExtResource( 5 )]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WallDetector" index="0"]
+shape = SubResource( 2 )
+
+[node name="CopDetectionZone" parent="." index="9" instance=ExtResource( 5 )]
 collision_mask = 4
 monitorable = true
 
 [node name="CollisionShape2D" parent="CopDetectionZone" index="0"]
-visible = false
 shape = SubResource( 6 )
 
 [node name="RayCast" parent="CopDetectionZone" index="1"]
 collision_mask = 5
 
 [connection signal="player_reached" from="." to="." method="_on_Cop_player_reached"]
-[connection signal="body_entered" from="WallDetector" to="." method="_on_WallDetector_body_entered"]
 [connection signal="lost" from="CopDetectionZone" to="." method="_on_CopDetectionZone_lost"]
 [connection signal="saw" from="CopDetectionZone" to="." method="_on_CopDetectionZone_saw"]
 
