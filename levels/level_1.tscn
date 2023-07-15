@@ -15,7 +15,13 @@ position = Vector2( 192, 324 )
 [node name="Cop" parent="YSort/Cops" index="0" instance=ExtResource( 4 )]
 position = Vector2( 336, 96 )
 
-[node name="Cop2" parent="YSort/Cops" index="1" instance=ExtResource( 4 )]
+[node name="Cop3" parent="YSort/Cops" index="1" instance=ExtResource( 4 )]
+position = Vector2( 132, 96 )
+
+[node name="Cop4" parent="YSort/Cops" index="2" instance=ExtResource( 4 )]
+position = Vector2( 252, 96 )
+
+[node name="Cop2" parent="YSort/Cops" index="3" instance=ExtResource( 4 )]
 position = Vector2( 48, 96 )
 
 [node name="Elevator" parent="YSort" index="2"]

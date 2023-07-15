@@ -82,7 +82,7 @@ _global_script_classes=[ {
 "base": "Reference",
 "class": "Level",
 "language": "GDScript",
-"path": "res://levels/levels/level.gd"
+"path": "res://levels/level.gd"
 }, {
 "base": "Screen",
 "class": "LoseScreen",
