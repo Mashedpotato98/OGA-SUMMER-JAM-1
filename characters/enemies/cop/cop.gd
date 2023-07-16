@@ -116,10 +116,6 @@ func _on_bribe_state_set(value: int) -> void:
 		sprite.texture = bribed_texture
 
 
-func _on_WallDetector_body_entered(_body: Node) -> void:
-	circle_dir = -circle_dir
-
-
 func _on_Cop_player_reached() -> void:
 	if bribe_state != BRIBE_STATES.BEING_BRIBED:
 		return
@@ -152,3 +148,7 @@ func _on_CopDetectionZone_saw(what: Node) -> void:
 #	if old_var is Robber and bribe_state == BRIBE_STATES.BEING_BRIBED:
 #		bribe_state = BRIBE_STATES.INNOCENT
 #	 and bribe_state != BRIBE_STATES.BRIBED
+
+
+func _on_BounceZone_body_entered(_body: Node) -> void:
+	circle_dir = -circle_dir

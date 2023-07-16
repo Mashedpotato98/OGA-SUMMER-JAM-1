@@ -20,12 +20,12 @@ extents = Vector2( 3, 7 )
 resource_local_to_scene = true
 radius = 128.0
 
-[sub_resource type="RectangleShape2D" id=2]
-extents = Vector2( 7, 4 )
-
 [sub_resource type="CircleShape2D" id=6]
 resource_local_to_scene = true
 radius = 128.0
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 7, 4 )
 
 [node name="Cop" instance=ExtResource( 1 )]
 script = ExtResource( 3 )
@@ -68,9 +68,6 @@ tree_root = null
 anim_player = NodePath("")
 active = false
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="WallDetector" index="0"]
-shape = SubResource( 2 )
-
 [node name="CopDetectionZone" parent="." index="9" instance=ExtResource( 5 )]
 collision_mask = 4
 monitorable = true
@@ -81,9 +78,17 @@ shape = SubResource( 6 )
 [node name="RayCast" parent="CopDetectionZone" index="1"]
 collision_mask = 5
 
+[node name="BounceZone" type="Area2D" parent="." index="10"]
+collision_layer = 0
+collision_mask = 17
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BounceZone" index="0"]
+shape = SubResource( 2 )
+
 [connection signal="player_reached" from="." to="." method="_on_Cop_player_reached"]
 [connection signal="lost" from="CopDetectionZone" to="." method="_on_CopDetectionZone_lost"]
 [connection signal="saw" from="CopDetectionZone" to="." method="_on_CopDetectionZone_saw"]
+[connection signal="body_entered" from="BounceZone" to="." method="_on_BounceZone_body_entered"]
 
 [editable path="HitBox"]
 [editable path="DetectionZone"]

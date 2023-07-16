@@ -107,9 +107,9 @@ func scroll_items(direction: int) -> void:
 func add_item(ITEM: PackedScene) -> void:
 	var item_ammo: int = Inventory.items_list[ITEM.resource_path].ammo
 	if Inventory.items.has(ITEM.resource_path):
-		Inventory.items[ITEM.resource_path] += item_ammo
+		Inventory.set_item_ammo(ITEM.resource_path, item_ammo)
 	else:
-		Inventory.items[ITEM.resource_path] = item_ammo
+		Inventory.set_item_ammo(ITEM.resource_path, item_ammo, false)
 
 	Inventory.current_item = Inventory.items.keys().find(ITEM.resource_path)
 
@@ -164,7 +164,7 @@ func _on_ammo_set(value: int) -> void:
 		return
 
 	ammo = value
-	var item_path: String = Inventory.items.keys()[Inventory.current_item]
+	var item_path: String = item.filename
 	Inventory.set_item_ammo(item_path, ammo, false)
 
 
