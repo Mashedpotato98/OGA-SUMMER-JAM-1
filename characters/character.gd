@@ -72,7 +72,7 @@ func activate_item() -> bool:
 	if item.activate():
 		if item is Gun:
 			self.ammo -= 1
-			shove(-hand_pivot.global_transform.x * kickback, kickback_time)
+			#shove(-hand_pivot.global_transform.x * kickback, kickback_time)
 		return true
 	return false
 
