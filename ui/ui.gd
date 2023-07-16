@@ -8,8 +8,7 @@ onready var health_bar: Control = $HealthBar
 onready var health_bar_bg: NinePatchRect = health_bar.get_node("BG")
 onready var health_bar_fill: TextureRect = health_bar.get_node("Fill")
 
-onready var counters: GridContainer = $Counters
-onready var money_counter: Label = counters.get_node("MoneyCounter")
+onready var money_counter: Label = $MoneyHUD/MoneyCounter
 
 onready var seed_hud: HBoxContainer = $SeedHUD
 onready var seed_num: LineEdit = seed_hud.get_node("SeedNum")
@@ -52,3 +51,10 @@ func set_items(items: Dictionary) -> void:
 # warning-ignore:shadowed_variable
 func set_seed(seed_num: int) -> void:
 	self.seed_num.text = str(seed_num)
+
+
+func _on_Robber_cool_down_started(item: String, duration: float) -> void:
+	yield(VisualServer, "frame_pre_draw")
+	var inventory_item: InventoryItem = inventory.get_child(Inventory.items.keys().find(item))
+	if is_instance_valid(inventory_item):
+		inventory_item.start_cool_down(duration)

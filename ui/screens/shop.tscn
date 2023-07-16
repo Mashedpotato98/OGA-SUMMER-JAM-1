@@ -12,8 +12,8 @@ script = ExtResource( 2 )
 
 [node name="Title" type="Label" parent="."]
 anchor_right = 1.0
-margin_bottom = 17.0
-text = "blackmarket.net"
+margin_bottom = 33.0
+text = "Shop"
 align = 1
 
 [node name="DoneButton" type="Button" parent="."]
@@ -23,64 +23,51 @@ margin_left = -48.0
 margin_bottom = 21.0
 text = "Done"
 
-[node name="Tabs" type="TabContainer" parent="."]
+[node name="Market" type="PanelContainer" parent="."]
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_top = 40.0
-size_flags_vertical = 3
-all_tabs_in_front = true
 
-[node name="Shop" type="VBoxContainer" parent="Tabs"]
-anchor_right = 1.0
-anchor_bottom = 1.0
-margin_left = 1.0
-margin_top = 20.0
-margin_right = -1.0
-margin_bottom = -1.0
+[node name="Menu" type="VBoxContainer" parent="Market"]
+margin_left = 2.0
+margin_top = 2.0
+margin_right = 382.0
+margin_bottom = 342.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
-[node name="TopBar" type="HBoxContainer" parent="Tabs/Shop"]
-margin_right = 382.0
+[node name="TopBar" type="HBoxContainer" parent="Market/Menu"]
+margin_right = 380.0
 margin_bottom = 33.0
 alignment = 2
 
-[node name="Money" type="Label" parent="Tabs/Shop/TopBar"]
-margin_left = 230.0
-margin_right = 363.0
+[node name="Money" type="Label" parent="Market/Menu/TopBar"]
+margin_left = 228.0
+margin_right = 361.0
 margin_bottom = 33.0
 size_flags_horizontal = 8
 text = "$100000"
 align = 2
 
-[node name="MoneyIcon" type="TextureRect" parent="Tabs/Shop/TopBar"]
-margin_left = 364.0
-margin_right = 382.0
+[node name="MoneyIcon" type="TextureRect" parent="Market/Menu/TopBar"]
+margin_left = 362.0
+margin_right = 380.0
 margin_bottom = 33.0
 texture = ExtResource( 4 )
 
-[node name="ScrollContainer" type="ScrollContainer" parent="Tabs/Shop"]
+[node name="ScrollContainer" type="ScrollContainer" parent="Market/Menu"]
 margin_top = 37.0
-margin_right = 382.0
-margin_bottom = 323.0
+margin_right = 380.0
+margin_bottom = 340.0
 size_flags_vertical = 3
 follow_focus = true
 scroll_horizontal_enabled = false
 
-[node name="Items" type="GridContainer" parent="Tabs/Shop/ScrollContainer"]
-margin_right = 382.0
-margin_bottom = 286.0
+[node name="Items" type="GridContainer" parent="Market/Menu/ScrollContainer"]
+margin_right = 380.0
+margin_bottom = 303.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 columns = 5
-
-[node name="Dressing Room" type="Control" parent="Tabs"]
-visible = false
-anchor_right = 1.0
-anchor_bottom = 1.0
-margin_left = 1.0
-margin_top = 11.0
-margin_right = -1.0
-margin_bottom = -1.0
 
 [connection signal="pressed" from="DoneButton" to="." method="_on_DoneButton_pressed"]

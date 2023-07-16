@@ -8,11 +8,9 @@ export var min_items := 5
 export var max_items := 15
 
 onready var title: Label = $Title
-onready var tabs: TabContainer = $Tabs
-onready var shop: VBoxContainer = tabs.get_node("Shop")
-onready var items: GridContainer = shop.get_node("ScrollContainer/Items")
-onready var money: Label = shop.get_node("TopBar/Money")
-onready var dressing_room: Control = tabs.get_node("Dressing Room")
+onready var menu: VBoxContainer = get_node("Market/Menu")
+onready var items: GridContainer = menu.get_node("ScrollContainer/Items")
+onready var money: Label = menu.get_node("TopBar/Money")
 
 
 func _ready() -> void:

@@ -41,30 +41,30 @@ texture = ExtResource( 2 )
 expand = true
 stretch_mode = 2
 
-[node name="Counters" type="GridContainer" parent="."]
+[node name="MoneyHUD" type="HBoxContainer" parent="."]
 anchor_left = 1.0
 anchor_right = 1.0
-margin_left = -158.0
+margin_left = -284.0
 margin_bottom = 41.0
 mouse_filter = 2
 theme = ExtResource( 5 )
-columns = 2
 
-[node name="MoneyCounter" type="Label" parent="Counters"]
-margin_top = 1.0
-margin_right = 139.0
-margin_bottom = 18.0
+[node name="MoneyCounter" type="Label" parent="MoneyHUD"]
+margin_top = 4.0
+margin_right = 265.0
+margin_bottom = 37.0
 size_flags_horizontal = 3
 text = "$###,###,###,###"
 align = 2
 valign = 1
 
-[node name="MoneyIcon" type="TextureRect" parent="Counters"]
-margin_left = 140.0
-margin_right = 158.0
-margin_bottom = 20.0
+[node name="MoneyIcon" type="TextureRect" parent="MoneyHUD"]
+margin_left = 266.0
+margin_right = 284.0
+margin_bottom = 41.0
 mouse_filter = 2
 texture = ExtResource( 4 )
+stretch_mode = 4
 
 [node name="Inventory" type="HBoxContainer" parent="."]
 anchor_left = 0.5

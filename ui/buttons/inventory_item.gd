@@ -5,10 +5,18 @@ extends Button
 var item := ""
 var ammo := 1 setget _on_ammo_set
 
+onready var cool_down: ProgressBar = $CoolDown
+
 
 func _ready() -> void:
 # warning-ignore:return_value_discarded
 	Inventory.connect("current_item_switched", self, "_on_Inventory_current_item_switched")
+
+
+func start_cool_down(duration: float) -> void:
+	cool_down.value = 1.0
+# warning-ignore:return_value_discarded
+	create_tween().tween_property(cool_down, "value", 0.0, duration * 0.9)
 
 
 func _on_ammo_set(value: int) -> void:

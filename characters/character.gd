@@ -2,6 +2,7 @@ class_name Character
 extends KinematicBody2D
 
 
+signal cool_down_started(item, duration)
 signal max_hp_changed(max_hp)
 signal hp_changed(hp)
 signal died
@@ -70,6 +71,8 @@ func activate_item() -> bool:
 		return false
 
 	if item.activate():
+		if item.has_node("CoolDown"):
+			emit_signal("cool_down_started", item.filename, item.get_node("CoolDown").wait_time)
 		if item is Gun:
 			self.ammo -= 1
 			#shove(-hand_pivot.global_transform.x * kickback, kickback_time)

@@ -45,6 +45,7 @@ border_width = 4.0
 
 [node name="WanderPoints" type="Node2D" parent="."]
 
+[connection signal="cool_down_started" from="YSort/Robber" to="UI" method="_on_Robber_cool_down_started"]
 [connection signal="hp_changed" from="YSort/Robber" to="UI" method="set_hp"]
 [connection signal="max_hp_changed" from="YSort/Robber" to="UI" method="set_max_hp"]
 [connection signal="robber_entered" from="YSort/Elevator" to="." method="level_up"]
