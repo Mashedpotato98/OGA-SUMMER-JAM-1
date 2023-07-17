@@ -1,0 +1,18 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://explosives/explosive.tscn" type="PackedScene" id=1]
+[ext_resource path="res://explosives/smoke_grenade/smoke_grenade.png" type="Texture" id=2]
+[ext_resource path="res://explosives/smoke_grenade/smoke.tscn" type="PackedScene" id=3]
+
+[sub_resource type="CircleShape2D" id=1]
+resource_local_to_scene = true
+radius = 8.0
+
+[node name="SmokeGrenade" instance=ExtResource( 1 )]
+HIT_EFFECT = ExtResource( 3 )
+
+[node name="Sprite" parent="." index="0"]
+texture = ExtResource( 2 )
+
+[node name="CollisionShape2D" parent="." index="1"]
+shape = SubResource( 1 )

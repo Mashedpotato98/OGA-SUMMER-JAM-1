@@ -8,6 +8,7 @@ export var min_items := 5
 export var max_items := 15
 
 onready var title: Label = $Title
+onready var done_button: Button = $DoneButton
 onready var menu: VBoxContainer = get_node("Market/Menu")
 onready var items: GridContainer = menu.get_node("ScrollContainer/Items")
 onready var money: Label = menu.get_node("TopBar/Money")
@@ -16,6 +17,7 @@ onready var money: Label = menu.get_node("TopBar/Money")
 func _ready() -> void:
 	._ready()
 
+	done_button.grab_focus()
 	fill_shop()
 	set_money(Inventory.money)
 # warning-ignore:return_value_discarded

@@ -4,7 +4,7 @@ extends StaticBody2D
 
 export var turn_speed := 5.0
 export var shoot_margin := 0.2
-export var hp := 3 setget _on_hp_set
+export var hp := 6 setget _on_hp_set
 
 var target: Node2D = null
 var shooting := false

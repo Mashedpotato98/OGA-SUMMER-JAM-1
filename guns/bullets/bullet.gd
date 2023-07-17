@@ -5,6 +5,7 @@ extends Area2D
 export var speed := 128.0
 export var dmg := 1
 export var HIT_EFFECT: PackedScene = null
+export var hit_on_out_of_range := false
 
 var attack_type := ""
 var direction := Vector2()
@@ -25,16 +26,21 @@ func _physics_process(delta: float) -> void:
 	distance_traveled += velocity.length()
 
 	if distance_traveled > distance:
+		if hit_on_out_of_range:
+# warning-ignore:return_value_discarded
+			_hit()
 		queue_free()
 
 
-func _hit() -> void:
+func _hit() -> Node2D:
+	var hit_effect: Node2D = null
 	if HIT_EFFECT != null:
-		var hit_effect: Node2D = HIT_EFFECT.instance()
-		get_parent().add_child(hit_effect)
+		hit_effect = HIT_EFFECT.instance()
 		hit_effect.global_position = global_position
+		get_parent().add_child(hit_effect)
 
 	queue_free()
+	return hit_effect
 
 
 func _on_Bullet_area_entered(area: Area2D) -> void:
@@ -43,8 +49,10 @@ func _on_Bullet_area_entered(area: Area2D) -> void:
 	if area.owner.type == attack_type and area.owner.type != "all":
 		return
 	area.take_dmg(global_position, dmg)
+# warning-ignore:return_value_discarded
 	_hit()
 
 
-func _on_Bullet_body_entered(_body: Node) -> void:
+func _on_Bullet_body_entered(body: Node) -> void:
+# warning-ignore:return_value_discarded
 	_hit()
