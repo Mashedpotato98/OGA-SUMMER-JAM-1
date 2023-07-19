@@ -53,6 +53,6 @@ func _on_Bullet_area_entered(area: Area2D) -> void:
 	_hit()
 
 
-func _on_Bullet_body_entered(body: Node) -> void:
+func _on_Bullet_body_entered(_body: Node) -> void:
 # warning-ignore:return_value_discarded
 	_hit()

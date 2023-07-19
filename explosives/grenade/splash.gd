@@ -2,7 +2,7 @@ class_name Splash
 extends Node2D
 
 
-export var distance := 48.0
+export var distance := 64.0
 export var bullets := 25
 export var BULLET: PackedScene
 

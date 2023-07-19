@@ -15,6 +15,7 @@ onready var sprite: Sprite = $Sprite
 onready var cool_down: Timer = $CoolDown
 onready var barrel: Position2D = $Barrel
 onready var animation_player: AnimationPlayer = $AnimationPlayer
+onready var shoot_sound: AudioStreamPlayer2D = $ShootSound
 
 
 func _ready() -> void:
@@ -37,6 +38,7 @@ func level_sprite() -> void:
 func activate() -> bool:
 	if cooling:
 		return false
+	shoot_sound.play()
 	add_bullet()
 	start_cool_down()
 	animation_player.play("Shoot")

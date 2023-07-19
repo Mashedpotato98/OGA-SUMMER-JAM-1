@@ -54,7 +54,7 @@ func set_seed(seed_num: int) -> void:
 
 
 func _on_Robber_cool_down_started(item: String, duration: float) -> void:
-	yield(VisualServer, "frame_pre_draw")
+	yield(VisualServer, "frame_post_draw")
 	var inventory_item: InventoryItem = inventory.get_child(Inventory.items.keys().find(item))
 	if is_instance_valid(inventory_item):
 		inventory_item.start_cool_down(duration)

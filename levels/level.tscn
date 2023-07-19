@@ -9,6 +9,12 @@
 [node name="Level" type="Node2D"]
 script = ExtResource( 3 )
 
+[node name="MapSizeReference" type="ReferenceRect" parent="."]
+margin_right = 384.0
+margin_bottom = 384.0
+mouse_filter = 2
+border_width = 4.0
+
 [node name="UI" parent="." instance=ExtResource( 1 )]
 
 [node name="Layout" type="TileMap" parent="."]
@@ -36,12 +42,6 @@ collision_mask = 87
 format = 1
 
 [node name="Pickups" type="Node2D" parent="."]
-
-[node name="MapSizeReference" type="ReferenceRect" parent="."]
-margin_right = 384.0
-margin_bottom = 384.0
-mouse_filter = 2
-border_width = 4.0
 
 [node name="WanderPoints" type="Node2D" parent="."]
 

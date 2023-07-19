@@ -20,6 +20,7 @@ var holding_trigger := false
 onready var animation_tree: AnimationTree = $AnimationTree
 onready var playback: AnimationNodeStateMachinePlayback = animation_tree.get("parameters/playback")
 onready var dash_cool_down: Timer = $DashCoolDown
+onready var dash_sound: AudioStreamPlayer = $DashSound
 
 
 func _init() -> void:
@@ -54,6 +55,7 @@ func _input(event: InputEvent) -> void:
 		dash_colling = true
 		dash_cool_down.start()
 		hit_box.start_immunity(dash_length)
+		dash_sound.play()
 	elif event.is_action_pressed("switch_gun_next"):
 		scroll_items(1)
 	elif event.is_action_pressed("switch_gun_prev"):
@@ -123,7 +125,7 @@ func spawn_cronies() -> void:
 		yield(cronie, "ready")
 		cronie.global_position = global_position + (Vector2.RIGHT * cronie_spawn_distance).rotated(
 				TAU / cronie_count * i)
-		cronie.change_item(load(cronie_info.weapon))
+		#cronie.change_item(load(cronie_info.weapon))
 		cronie.bribe_state = cronie.BRIBE_STATES.BRIBED
 
 
@@ -172,6 +174,9 @@ func _on_Inventory_current_item_switched(item_index: int) -> void:
 	var item := load(Inventory.items.keys()[item_index])
 	change_item(item)
 	bribing = item == BRIBE
+
+	yield(VisualServer, "frame_pre_draw")
+	start_cool_down()
 
 
 func _on_Inventory_items_changed(items: Dictionary) -> void:

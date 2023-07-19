@@ -22,6 +22,7 @@ export var hp := 3 setget _on_hp_set
 export(NodePath) var item = NodePath()
 export var ammo := -1 setget _on_ammo_set
 export(String, "cop", "robber", "all") var type := "cop"
+export var DEATH_EFFECT: PackedScene = null
 
 # Auto-switches based on what was last set.
 var smoothing_enabled := true
@@ -36,6 +37,7 @@ onready var hit_box: HitBox = $HitBox
 onready var hand_pivot: Position2D = $HandPivot
 onready var hand: Position2D = hand_pivot.get_node("Hand")
 onready var wall_detector: RayCast2D = $WallDetector
+onready var hurt_sound: AudioStreamPlayer2D = $HurtSound
 
 
 func _ready() -> void:
@@ -55,7 +57,7 @@ func _die() -> void:
 
 
 func change_item(ITEM: PackedScene) -> void:
-	if item != null and not item is NodePath:
+	if item != null and is_instance_valid(item) and not item is NodePath:
 		item.queue_free()
 
 	if ITEM != null:
@@ -71,13 +73,17 @@ func activate_item() -> bool:
 		return false
 
 	if item.activate():
-		if item.has_node("CoolDown"):
-			emit_signal("cool_down_started", item.filename, item.get_node("CoolDown").wait_time)
+		start_cool_down()
 		if item is Gun:
 			self.ammo -= 1
-			#shove(-hand_pivot.global_transform.x * kickback, kickback_time)
+
 		return true
 	return false
+
+
+func start_cool_down() -> void:
+	if item.has_node("CoolDown"):
+		emit_signal("cool_down_started", item.filename, item.get_node("CoolDown").wait_time)
 
 
 func shove(vel: Vector2, duration: float) -> void:
@@ -121,11 +127,21 @@ func _on_max_hp_set(value: int) -> void:
 
 
 func _on_hp_set(value: int) -> void:
+	if value < hp:
+		hurt_sound.play()
+
 # warning-ignore:narrowing_conversion
 	hp = min(value, max_hp)
 	if hp <= 0:
+		if DEATH_EFFECT != null:
+			var death_effect: Node = DEATH_EFFECT.instance()
+			get_tree().current_scene.add_child(death_effect)
+			if death_effect is Node2D:
+				death_effect.global_position = global_position
+
 		_die()
 		emit_signal("died")
+
 	emit_signal("hp_changed", hp)
 
 

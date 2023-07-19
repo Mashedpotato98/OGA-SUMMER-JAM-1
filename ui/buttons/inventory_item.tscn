@@ -20,6 +20,7 @@ script = ExtResource( 2 )
 [node name="CoolDown" type="ProgressBar" parent="."]
 anchor_right = 1.0
 anchor_bottom = 1.0
+mouse_filter = 2
 custom_styles/fg = SubResource( 1 )
 custom_styles/bg = SubResource( 2 )
 max_value = 1.0

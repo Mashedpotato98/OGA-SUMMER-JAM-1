@@ -1,13 +1,16 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://explosives/grenade/splash.gd" type="Script" id=1]
-[ext_resource path="res://guns/bullets/weak_bullet.tscn" type="PackedScene" id=2]
+[ext_resource path="res://guns/bullets/med_bullet.tscn" type="PackedScene" id=2]
+[ext_resource path="res://sfx/explosions/sfx_exp_short_hard8.wav" type="AudioStream" id=3]
 
 [node name="Splash" type="Node2D"]
 script = ExtResource( 1 )
 BULLET = ExtResource( 2 )
 
 [node name="ExplodeSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 3 )
 autoplay = true
+max_distance = 512.0
 
 [connection signal="finished" from="ExplodeSound" to="." method="_on_ExplodeSound_finished"]
