@@ -32,7 +32,8 @@ func play_random() -> void:
 	if rand_num <= 0.25:
 		animation_player.play("RapidFire")
 
-		var sweep_range := TAU / 4.0
+		var direction: float = stepify(randi() % 3, 2.0) - 1.0
+		var sweep_range := TAU / 4.0 * direction
 		yield(sweep(sweep_range / 2.0, 0.5), "finished")
 		yield(sweep(-sweep_range, 0.5), "finished")
 # warning-ignore:return_value_discarded

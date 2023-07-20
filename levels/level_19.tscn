@@ -6,7 +6,7 @@
 [ext_resource path="res://levels/tile/floor_wall2.tscn" type="PackedScene" id=4]
 [ext_resource path="res://levels/tile/decorations1.tscn" type="PackedScene" id=5]
 [ext_resource path="res://levels/tile/Carpet.tscn" type="PackedScene" id=6]
-[ext_resource path="res://red_detector.tscn" type="PackedScene" id=7]
+[ext_resource path="res://levels/red_detector/red_detector.tscn" type="PackedScene" id=7]
 
 [node name="level_19" type="Node2D"]
 
