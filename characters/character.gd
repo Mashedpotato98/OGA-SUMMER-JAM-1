@@ -67,7 +67,7 @@ func change_item(ITEM: PackedScene) -> void:
 
 
 func activate_item() -> bool:
-	if item == null or item is NodePath or ammo == 0:# Note: not ammo <= 0. this allows for using -1 to indicate no limit.
+	if item == null or not is_instance_valid(item) or item is NodePath or ammo == 0:# Note: not ammo <= 0. this allows for using -1 to indicate no limit.
 		return false
 	if not item.has_method("activate"):
 		return false

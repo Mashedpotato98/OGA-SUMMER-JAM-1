@@ -129,6 +129,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://pickups/pickup.gd"
 }, {
+"base": "Area2D",
+"class": "RedDetector",
+"language": "GDScript",
+"path": "res://levels/red_detector/red_detector.gd"
+}, {
 "base": "Character",
 "class": "Robber",
 "language": "GDScript",
@@ -179,6 +184,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://ui/ui.gd"
 }, {
+"base": "StaticBody2D",
+"class": "Vault",
+"language": "GDScript",
+"path": "res://levels/vault/vault.gd"
+}, {
 "base": "Screen",
 "class": "WinScreen",
 "language": "GDScript",
@@ -209,6 +219,7 @@ _global_script_class_icons={
 "MoneyPickup": "",
 "NPC": "",
 "Pickup": "",
+"RedDetector": "",
 "Robber": "",
 "Screen": "",
 "Shop": "",
@@ -219,6 +230,7 @@ _global_script_class_icons={
 "Swat": "",
 "Turret": "",
 "UI": "",
+"Vault": "",
 "WinScreen": ""
 }
 
