@@ -15,3 +15,6 @@ region_rect = Rect2( 0, 30, 10, 10 )
 
 [node name="CollisionShape2D" parent="." index="1"]
 shape = SubResource( 1 )
+
+[node name="Light2D" parent="." index="2"]
+energy = 8.0

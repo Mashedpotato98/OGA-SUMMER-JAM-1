@@ -13,3 +13,6 @@ region_rect = Rect2( 0, 0, 10, 10 )
 
 [node name="CollisionShape2D" parent="." index="1"]
 shape = SubResource( 1 )
+
+[node name="Light2D" parent="." index="2"]
+color = Color( 1, 1, 0, 1 )

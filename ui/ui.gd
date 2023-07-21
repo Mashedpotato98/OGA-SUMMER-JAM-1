@@ -39,9 +39,9 @@ func _input(event: InputEvent) -> void:
 	if vault == null:
 		return
 
-	if event.is_action_pressed("right"):
+	if event.is_action_pressed("turn_right"):
 		add_dir_to_code(true)
-	elif event.is_action_pressed("left"):
+	elif event.is_action_pressed("turn_left"):
 		add_dir_to_code(false)
 
 

@@ -3,5 +3,6 @@
 [ext_resource path="res://ui/icons/money.png" type="Texture" id=1]
 
 [node name="Bribe" type="Sprite"]
+light_mask = 3
 position = Vector2( 7, 0 )
 texture = ExtResource( 1 )

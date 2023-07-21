@@ -44,8 +44,10 @@ func spawn_bundle() -> void:
 	money_pickup.position = Vector2()
 	randomize()
 	var final_pos := Vector2(rand_range(min_pos.x, max_pos.x), rand_range(min_pos.y, max_pos.y))
+	var tween := create_tween()
+	tween.set_ease(Tween.EASE_OUT)
 # warning-ignore:return_value_discarded
-	create_tween().tween_property(money_pickup, "position", final_pos, fall_duration)
+	tween.tween_property(money_pickup, "position", final_pos, fall_duration)
 
 
 static func generate_code(length: int) -> Array:
