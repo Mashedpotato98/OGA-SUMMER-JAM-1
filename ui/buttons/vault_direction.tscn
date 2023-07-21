@@ -1,0 +1,24 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://ui/icons/arrow_bg.png" type="Texture" id=1]
+[ext_resource path="res://ui/icons/arrow_focus.png" type="Texture" id=2]
+[ext_resource path="res://ui/buttons/vault_direction.gd" type="Script" id=3]
+
+[node name="VaultDirection" type="TextureRect" groups=["vault_directions"]]
+margin_right = 48.0
+margin_bottom = 48.0
+texture = ExtResource( 1 )
+script = ExtResource( 3 )
+__meta__ = {
+"_editor_description_": ""
+}
+
+[node name="Arrow" type="TextureRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="Focus" type="TextureRect" parent="."]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+texture = ExtResource( 2 )

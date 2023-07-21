@@ -1,6 +1,43 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://levels/vault/vault.gd" type="Script" id=1]
+[ext_resource path="res://levels/oga_summer_2023_robber_game_jam_art/OGA Summer 2023 Robber Game Jam Art/in_progress/vault_door.png" type="Texture" id=2]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 24, 24 )
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 24, 3 )
 
 [node name="Vault" type="StaticBody2D"]
+collision_mask = 215
 script = ExtResource( 1 )
+
+[node name="Sprite" type="Sprite" parent="."]
+texture = ExtResource( 2 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource( 1 )
+
+[node name="MinPos" type="Position2D" parent="."]
+position = Vector2( -48, 24 )
+__meta__ = {
+"_gizmo_extents_": 8.0
+}
+
+[node name="MaxPos" type="Position2D" parent="."]
+position = Vector2( 48, 72 )
+__meta__ = {
+"_gizmo_extents_": 8.0
+}
+
+[node name="ActivationBox" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 2
+monitorable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ActivationBox"]
+position = Vector2( 0, 27 )
+shape = SubResource( 2 )
+
+[connection signal="body_entered" from="ActivationBox" to="." method="_on_ActivationBox_body_entered"]

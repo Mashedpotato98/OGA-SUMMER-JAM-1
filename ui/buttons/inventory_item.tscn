@@ -26,4 +26,5 @@ custom_styles/bg = SubResource( 2 )
 max_value = 1.0
 percent_visible = false
 
+[connection signal="focus_entered" from="." to="." method="_on_InventoryItem_focus_entered"]
 [connection signal="pressed" from="." to="." method="_on_InventoryItem_pressed"]

@@ -16,6 +16,7 @@ var aim_dir := Vector2()
 var bribing := false
 var is_ready := false
 var holding_trigger := false
+var enabled := true setget _on_enabled_set
 
 onready var animation_tree: AnimationTree = $AnimationTree
 onready var playback: AnimationNodeStateMachinePlayback = animation_tree.get("parameters/playback")
@@ -42,6 +43,9 @@ func _ready() -> void:
 
 
 func _input(event: InputEvent) -> void:
+	if not enabled:
+		return
+
 	if event is InputEventMouseMotion:
 		# Put in _physics_process() if using camera smoothing.
 		var mouse_pos := get_global_mouse_position()
@@ -63,6 +67,9 @@ func _input(event: InputEvent) -> void:
 
 
 func _unhandled_input(event: InputEvent) -> void:
+	if not enabled:
+		return
+
 	if event.is_action_pressed("shoot"):
 		holding_trigger = true
 	elif event.is_action_released("shoot"):
@@ -170,6 +177,11 @@ func _on_ammo_set(value: int) -> void:
 	Inventory.set_item_ammo(item_path, ammo, false)
 
 
+func _on_enabled_set(value: bool) -> void:
+	enabled = value
+	set_physics_process(enabled)
+
+
 func _on_Inventory_current_item_switched(item_index: int) -> void:
 	var item := load(Inventory.items.keys()[item_index])
 	change_item(item)
@@ -191,3 +203,11 @@ func _on_HitBox_dmg_taken(from: Vector2, amount: int) -> void:
 
 func _on_DashCoolDown_timeout() -> void:
 	dash_colling = false
+
+
+func _on_Vault_activated(_vault: StaticBody2D) -> void:
+	self.enabled = false
+
+
+func _on_UI_vault_menu_closed() -> void:
+	self.enabled = true

@@ -29,7 +29,6 @@ func _on_InventoryItem_pressed() -> void:
 		set_pressed_no_signal(true)
 
 	Inventory.current_item = Inventory.items.keys().find(item)
-	release_focus()
 
 	for inventory_item in get_tree().get_nodes_in_group("inventory_items"):
 		if inventory_item == self:
@@ -39,3 +38,7 @@ func _on_InventoryItem_pressed() -> void:
 
 func _on_Inventory_current_item_switched(new_item: int) -> void:
 	set_pressed_no_signal(get_index() == new_item)
+
+
+func _on_InventoryItem_focus_entered() -> void:
+	release_focus()
