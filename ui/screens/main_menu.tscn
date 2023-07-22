@@ -6,21 +6,27 @@
 [node name="MainMenu" instance=ExtResource( 1 )]
 script = ExtResource( 2 )
 
+[node name="Menu" parent="." index="1"]
+margin_left = -35.0
+margin_top = -40.0
+margin_right = 35.0
+margin_bottom = 40.0
+
 [node name="PlayButton" type="Button" parent="Menu" index="0"]
-margin_right = 67.0
-margin_bottom = 21.0
+margin_right = 70.0
+margin_bottom = 24.0
 text = "Play"
 
 [node name="CreditsButton" type="Button" parent="Menu" index="1"]
-margin_top = 25.0
-margin_right = 67.0
-margin_bottom = 46.0
+margin_top = 28.0
+margin_right = 70.0
+margin_bottom = 52.0
 text = "Credits"
 
 [node name="QuitButton" type="Button" parent="Menu" index="2"]
-margin_top = 50.0
-margin_right = 67.0
-margin_bottom = 71.0
+margin_top = 56.0
+margin_right = 70.0
+margin_bottom = 80.0
 text = "Quit"
 
 [connection signal="pressed" from="Menu/PlayButton" to="." method="_on_PlayButton_pressed"]
