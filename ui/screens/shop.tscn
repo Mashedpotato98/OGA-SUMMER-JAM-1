@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
 [ext_resource path="res://ui/theme.theme" type="Theme" id=1]
 [ext_resource path="res://ui/screens/shop.gd" type="Script" id=2]
+[ext_resource path="res://ui/fonts/title_font.tres" type="DynamicFont" id=3]
 [ext_resource path="res://ui/icons/money.png" type="Texture" id=4]
 
 [node name="Shop" type="Control"]
@@ -13,6 +14,7 @@ script = ExtResource( 2 )
 [node name="Title" type="Label" parent="."]
 anchor_right = 1.0
 margin_bottom = 33.0
+custom_fonts/font = ExtResource( 3 )
 text = "Shop"
 align = 1
 
@@ -26,25 +28,25 @@ text = "Done"
 [node name="Market" type="PanelContainer" parent="."]
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_top = 40.0
+margin_top = 48.0
 
 [node name="Menu" type="VBoxContainer" parent="Market"]
 margin_left = 2.0
 margin_top = 2.0
 margin_right = 382.0
-margin_bottom = 342.0
+margin_bottom = 334.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
 [node name="TopBar" type="HBoxContainer" parent="Market/Menu"]
 margin_right = 380.0
-margin_bottom = 33.0
+margin_bottom = 20.0
 alignment = 2
 
 [node name="Money" type="Label" parent="Market/Menu/TopBar"]
-margin_left = 228.0
+margin_left = 295.0
 margin_right = 361.0
-margin_bottom = 33.0
+margin_bottom = 20.0
 size_flags_horizontal = 8
 text = "$100000"
 align = 2
@@ -52,20 +54,20 @@ align = 2
 [node name="MoneyIcon" type="TextureRect" parent="Market/Menu/TopBar"]
 margin_left = 362.0
 margin_right = 380.0
-margin_bottom = 33.0
+margin_bottom = 20.0
 texture = ExtResource( 4 )
 
 [node name="ScrollContainer" type="ScrollContainer" parent="Market/Menu"]
-margin_top = 37.0
+margin_top = 24.0
 margin_right = 380.0
-margin_bottom = 340.0
+margin_bottom = 332.0
 size_flags_vertical = 3
 follow_focus = true
 scroll_horizontal_enabled = false
 
 [node name="Items" type="GridContainer" parent="Market/Menu/ScrollContainer"]
 margin_right = 380.0
-margin_bottom = 303.0
+margin_bottom = 308.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 columns = 5

@@ -21,6 +21,7 @@ onready var activation_box: Area2D = $ActivationBox
 func _ready() -> void:
 	randomize()
 	code = generate_code(code_length)
+	print(code)
 
 
 # warning-ignore:shadowed_variable

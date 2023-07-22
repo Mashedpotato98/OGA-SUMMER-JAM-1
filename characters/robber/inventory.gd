@@ -29,7 +29,7 @@ var items_list := {
 	"res://guns/shot_gun/shot_gun.tscn": ItemInfo.new(preload("res://guns/shot_gun/shotgun.png"), [800, 1_200], 10),
 	"res://guns/pistol/pistol.tscn": ItemInfo.new(preload("res://guns/pistol/pistol.png"), [1_000], 6),
 	"res://guns/g36c/g36c.tscn": ItemInfo.new(preload("res://guns/g36c/g36c.png"), [400, 1_200, 1_400], 3),
-	"res://explosives/grenade/grenade_launcher.tscn": ItemInfo.new(preload("res://explosives/grenade/grenade.png"), [500], 1)
+	"res://explosives/grenade/grenade_launcher.tscn": ItemInfo.new(preload("res://explosives/grenade/grenade.png"), [100, 250, 250, 500, 500], 1)
 	#"res:guns/": ItemInfo.new(preload("res://guns/uzi/uzi.png"), 1_000),
 	#"res:guns/": ItemInfo.new(preload("res://guns/ak/ak.png"), 1_000),
 }
