@@ -34,6 +34,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://characters/character.gd"
 }, {
+"base": "PanelContainer",
+"class": "Code",
+"language": "GDScript",
+"path": "res://ui/code.gd"
+}, {
 "base": "Pickup",
 "class": "CodePickup",
 "language": "GDScript",
@@ -210,6 +215,7 @@ _global_script_class_icons={
 "Bullet": "",
 "BuyButton": "",
 "Character": "",
+"Code": "",
 "CodePickup": "",
 "Cop": "",
 "DetectionZone": "",

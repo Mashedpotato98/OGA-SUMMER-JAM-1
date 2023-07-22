@@ -17,12 +17,15 @@ onready var health_bar_fill: TextureRect = health_bar.get_node("Fill")
 onready var seed_hud: HBoxContainer = $SeedHUD
 onready var seed_num: LineEdit = seed_hud.get_node("SeedNum")
 onready var inventory: HBoxContainer = $Inventory
-onready var money_counter: Label = $MoneyHUD/MoneyCounter
+
+onready var tr: VBoxContainer = $TR
+onready var money_counter: Label = tr.get_node("MoneyHUD/MoneyCounter")
+onready var code_icon: TextureRect = tr.get_node("CodeIcon")
 
 onready var vault_menu: ColorRect = $VaultMenu
 onready var vault_panel: PanelContainer = vault_menu.get_node("Panel")
 onready var list: VBoxContainer = vault_panel.get_node("List")
-onready var arrows: HBoxContainer = list.get_node("Arrows")
+onready var code_edit: Code = list.get_node("CodeEdit")
 onready var cancel_button: Button = list.get_node("CancelButton")
 
 
@@ -64,18 +67,22 @@ func shake_vault_panel() -> void:
 	yield(get_tree(), "idle_frame") # Not sure what this does or if it's necessary; just copied it from yield docs.
 
 	var shakes := 10
-	var distance := 16.0
+	var distance := 8.0
 	var duration := 0.05
 	var start_pos := vault_panel.rect_position.x
 
 	for i in shakes:
-		var direction := float(bool(i % 2 == 0)) * 2 - 1
+		var direction := float(bool(i % 2 == 0)) * 2.0 - 1.0
 		var final_pos := start_pos if i >= shakes - 1 else start_pos + distance * direction
 
 		var tween := create_tween()
 # warning-ignore:return_value_discarded
 		tween.tween_property(vault_panel, "rect_position:x", final_pos, duration)
 		yield(tween, "finished")
+
+
+func collect_code() -> void:
+	pass
 
 
 func set_max_hp(max_hp: int) -> void:
@@ -110,9 +117,7 @@ func hide_vault_menu() -> void:
 	vault = null
 	vault_menu.hide()
 	self.code = []
-
-	for vault_direction in arrows.get_children():
-		vault_direction.queue_free()
+	code_edit.clear_directions()
 
 	emit_signal("vault_menu_closed")
 
@@ -120,15 +125,14 @@ func hide_vault_menu() -> void:
 func _on_code_set(value: Array) -> void:
 	code = value
 
-	for i in arrows.get_child_count():
-		var vault_direction := arrows.get_child(i) as VaultDirection
+	for i in code_edit.get_direction_count():
 		var direction = null if code.size() - 1 < i else code[i]
-		vault_direction.set_direction(direction)
+		code_edit.set_direction(i, direction)
 
-	if code.size() < arrows.get_child_count():
-		arrows.get_child(0 if code.size() <= 0 else code.size()).grab_focus()
+	if code.size() < code_edit.get_direction_count():
+		code_edit.focus(0 if code.size() <= 0 else code.size())
 	else:
-		arrows.get_children()[-1].release_focus()
+		code_edit.release_focus()
 
 
 func _on_Robber_cool_down_started(item: String, duration: float) -> void:
@@ -142,12 +146,11 @@ func _on_Robber_cool_down_started(item: String, duration: float) -> void:
 func _on_Vault_activated(vault: Vault) -> void:
 	self.vault = vault
 
-	for i in vault.code_length:
-		arrows.add_child(VAULT_DIRECTION.instance())
+	code_edit.init_directions(vault.code_length)
 	_on_code_set(code)
 
-	cancel_button.grab_focus()
 	vault_menu.show()
+	cancel_button.grab_focus()
 
 
 func _on_CancelButton_pressed() -> void:

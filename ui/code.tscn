@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://ui/theme.theme" type="Theme" id=1]
+[ext_resource path="res://ui/code.gd" type="Script" id=3]
+
+[node name="Code" type="PanelContainer"]
+margin_right = 14.0
+margin_bottom = 14.0
+theme = ExtResource( 1 )
+script = ExtResource( 3 )
+
+[node name="Directions" type="HBoxContainer" parent="."]
+margin_left = 2.0
+margin_top = 2.0
+margin_right = 12.0
+margin_bottom = 12.0
