@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://ui/icons/Health_bar.png" type="Texture" id=1]
 [ext_resource path="res://ui/icons/health_singal.png" type="Texture" id=2]
@@ -6,6 +6,12 @@
 [ext_resource path="res://ui/icons/money.png" type="Texture" id=4]
 [ext_resource path="res://ui/theme.theme" type="Theme" id=5]
 [ext_resource path="res://ui/fonts/small_font.tres" type="DynamicFont" id=7]
+
+[sub_resource type="InputEventAction" id=1]
+action = "ui_cancel"
+
+[sub_resource type="ShortCut" id=2]
+shortcut = SubResource( 1 )
 
 [node name="UI" type="CanvasLayer"]
 script = ExtResource( 3 )
@@ -50,10 +56,10 @@ mouse_filter = 2
 theme = ExtResource( 5 )
 
 [node name="MoneyCounter" type="Label" parent="MoneyHUD"]
-margin_top = 4.0
 margin_right = 265.0
-margin_bottom = 37.0
+margin_bottom = 41.0
 size_flags_horizontal = 3
+size_flags_vertical = 3
 text = "$###,###,###,###"
 align = 2
 valign = 1
@@ -112,7 +118,7 @@ anchor_bottom = 1.0
 theme = ExtResource( 5 )
 color = Color( 0.501961, 0.501961, 0.501961, 0.501961 )
 
-[node name="Menu" type="PanelContainer" parent="VaultMenu"]
+[node name="Panel" type="PanelContainer" parent="VaultMenu"]
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
@@ -122,31 +128,33 @@ margin_top = -57.0
 margin_right = 152.0
 margin_bottom = 57.0
 
-[node name="List" type="VBoxContainer" parent="VaultMenu/Menu"]
+[node name="List" type="VBoxContainer" parent="VaultMenu/Panel"]
 margin_left = 2.0
 margin_top = 2.0
 margin_right = 302.0
 margin_bottom = 112.0
 
-[node name="Title" type="Label" parent="VaultMenu/Menu/List"]
+[node name="Title" type="Label" parent="VaultMenu/Panel/List"]
 margin_right = 300.0
 margin_bottom = 33.0
 text = "Unlock"
 align = 1
 
-[node name="Arrows" type="HBoxContainer" parent="VaultMenu/Menu/List"]
+[node name="Arrows" type="HBoxContainer" parent="VaultMenu/Panel/List"]
 margin_top = 37.0
 margin_right = 300.0
 margin_bottom = 85.0
 size_flags_vertical = 3
 alignment = 1
 
-[node name="CancelButton" type="Button" parent="VaultMenu/Menu/List"]
+[node name="CancelButton" type="Button" parent="VaultMenu/Panel/List"]
 margin_left = 118.0
 margin_top = 89.0
 margin_right = 181.0
 margin_bottom = 110.0
+hint_tooltip = " "
 size_flags_horizontal = 4
+shortcut = SubResource( 2 )
 text = "Cancel"
 
-[connection signal="pressed" from="VaultMenu/Menu/List/CancelButton" to="." method="_on_CancelButton_pressed"]
+[connection signal="pressed" from="VaultMenu/Panel/List/CancelButton" to="." method="_on_CancelButton_pressed"]

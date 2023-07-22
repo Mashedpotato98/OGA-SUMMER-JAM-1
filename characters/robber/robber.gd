@@ -179,6 +179,8 @@ func _on_ammo_set(value: int) -> void:
 
 func _on_enabled_set(value: bool) -> void:
 	enabled = value
+	if not enabled:
+		holding_trigger = false
 	set_physics_process(enabled)
 
 

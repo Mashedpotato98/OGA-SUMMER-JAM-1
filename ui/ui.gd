@@ -20,7 +20,8 @@ onready var inventory: HBoxContainer = $Inventory
 onready var money_counter: Label = $MoneyHUD/MoneyCounter
 
 onready var vault_menu: ColorRect = $VaultMenu
-onready var list: VBoxContainer = vault_menu.get_node("Menu/List")
+onready var vault_panel: PanelContainer = vault_menu.get_node("Panel")
+onready var list: VBoxContainer = vault_panel.get_node("List")
 onready var arrows: HBoxContainer = list.get_node("Arrows")
 onready var cancel_button: Button = list.get_node("CancelButton")
 
@@ -38,6 +39,8 @@ func _ready() -> void:
 func _input(event: InputEvent) -> void:
 	if vault == null:
 		return
+	if code.size() > vault.code_length:
+		return
 
 	if event.is_action_pressed("turn_right"):
 		add_dir_to_code(true)
@@ -53,8 +56,26 @@ func add_dir_to_code(direction: bool) -> void:
 		if vault.is_code_valid(code):
 			hide_vault_menu()
 		else:
-			pass
+			yield(shake_vault_panel(), "completed")
 		self.code = []
+
+
+func shake_vault_panel() -> void:
+	yield(get_tree(), "idle_frame") # Not sure what this does or if it's necessary; just copied it from yield docs.
+
+	var shakes := 10
+	var distance := 16.0
+	var duration := 0.05
+	var start_pos := vault_panel.rect_position.x
+
+	for i in shakes:
+		var direction := float(bool(i % 2 == 0)) * 2 - 1
+		var final_pos := start_pos if i >= shakes - 1 else start_pos + distance * direction
+
+		var tween := create_tween()
+# warning-ignore:return_value_discarded
+		tween.tween_property(vault_panel, "rect_position:x", final_pos, duration)
+		yield(tween, "finished")
 
 
 func set_max_hp(max_hp: int) -> void:
