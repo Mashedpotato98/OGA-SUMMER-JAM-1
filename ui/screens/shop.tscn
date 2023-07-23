@@ -25,25 +25,30 @@ margin_left = -48.0
 margin_bottom = 21.0
 text = "Done"
 
-[node name="Market" type="PanelContainer" parent="."]
+[node name="ItemLists" type="VBoxContainer" parent="."]
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_top = 48.0
 
-[node name="Menu" type="VBoxContainer" parent="Market"]
+[node name="Market" type="PanelContainer" parent="ItemLists"]
+margin_right = 384.0
+margin_bottom = 332.0
+size_flags_vertical = 3
+
+[node name="Menu" type="VBoxContainer" parent="ItemLists/Market"]
 margin_left = 2.0
 margin_top = 2.0
 margin_right = 382.0
-margin_bottom = 334.0
+margin_bottom = 330.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
-[node name="TopBar" type="HBoxContainer" parent="Market/Menu"]
+[node name="TopBar" type="HBoxContainer" parent="ItemLists/Market/Menu"]
 margin_right = 380.0
 margin_bottom = 20.0
 alignment = 2
 
-[node name="Money" type="Label" parent="Market/Menu/TopBar"]
+[node name="Money" type="Label" parent="ItemLists/Market/Menu/TopBar"]
 margin_left = 295.0
 margin_right = 361.0
 margin_bottom = 20.0
@@ -51,25 +56,31 @@ size_flags_horizontal = 8
 text = "$100000"
 align = 2
 
-[node name="MoneyIcon" type="TextureRect" parent="Market/Menu/TopBar"]
+[node name="MoneyIcon" type="TextureRect" parent="ItemLists/Market/Menu/TopBar"]
 margin_left = 362.0
 margin_right = 380.0
 margin_bottom = 20.0
 texture = ExtResource( 4 )
 
-[node name="ScrollContainer" type="ScrollContainer" parent="Market/Menu"]
+[node name="ScrollContainer" type="ScrollContainer" parent="ItemLists/Market/Menu"]
 margin_top = 24.0
 margin_right = 380.0
-margin_bottom = 332.0
+margin_bottom = 328.0
 size_flags_vertical = 3
 follow_focus = true
 scroll_horizontal_enabled = false
 
-[node name="Items" type="GridContainer" parent="Market/Menu/ScrollContainer"]
+[node name="Items" type="GridContainer" parent="ItemLists/Market/Menu/ScrollContainer"]
 margin_right = 380.0
-margin_bottom = 308.0
+margin_bottom = 304.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 columns = 5
+
+[node name="Inventory" type="HBoxContainer" parent="ItemLists"]
+margin_top = 336.0
+margin_right = 384.0
+margin_bottom = 336.0
+alignment = 1
 
 [connection signal="pressed" from="DoneButton" to="." method="_on_DoneButton_pressed"]

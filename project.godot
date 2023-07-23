@@ -99,6 +99,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://components/hit_box.gd"
 }, {
+"base": "HBoxContainer",
+"class": "InventoryDisplay",
+"language": "GDScript",
+"path": "res://ui/inventory_display/inventory_display.gd"
+}, {
 "base": "Button",
 "class": "InventoryItem",
 "language": "GDScript",
@@ -228,6 +233,7 @@ _global_script_class_icons={
 "GrenadeLauncher": "",
 "Gun": "",
 "HitBox": "",
+"InventoryDisplay": "",
 "InventoryItem": "",
 "ItemPickup": "",
 "Level": "",

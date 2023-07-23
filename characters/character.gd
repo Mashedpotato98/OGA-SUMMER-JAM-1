@@ -82,7 +82,7 @@ func activate_item() -> bool:
 
 
 func start_cool_down() -> void:
-	if item.has_node("CoolDown"):
+	if is_instance_valid(item) and item.has_node("CoolDown"):
 		emit_signal("cool_down_started", item.filename, item.get_node("CoolDown").wait_time)
 
 

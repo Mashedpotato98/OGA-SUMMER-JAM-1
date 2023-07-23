@@ -2,6 +2,8 @@ class_name UI
 extends CanvasLayer
 
 
+const CODE := preload("res://ui/code.tscn")
+
 signal vault_menu_closed
 
 const INVENTORY_ITEM := preload("res://ui/buttons/inventory_item.tscn")
@@ -81,8 +83,10 @@ func shake_vault_panel() -> void:
 		yield(tween, "finished")
 
 
-func collect_code() -> void:
-	pass
+func collect_code(from_pos: Vector2) -> void:
+	var code_instance: Code = CODE.instance()
+	code_instance
+	code_icon.get_global_transform()
 
 
 func set_max_hp(max_hp: int) -> void:

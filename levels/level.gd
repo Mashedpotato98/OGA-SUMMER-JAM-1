@@ -50,4 +50,5 @@ func level_up() -> void:
 		queue_free()
 	else:
 # warning-ignore:return_value_discarded
-		get_tree().change_scene("res://ui/screens/win_screen.tscn")
+#get_tree().change_scene("res://ui/screens/win_screen.tscn")
+		get_tree().change_scene("res://ui/screens/shop.tscn") # Decided to go directly to shop instead.
