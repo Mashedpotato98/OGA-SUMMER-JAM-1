@@ -3,6 +3,8 @@ class_name Robber
 extends Character
 
 
+signal code_grabbed(code, from)
+
 const BRIBE := preload("res://characters/robber/bribe.tscn")
 
 export var turn_speed := 10.0
@@ -94,6 +96,10 @@ func _die() -> void:
 	yield(fade, "finished")
 # warning-ignore:return_value_discarded
 	get_tree().change_scene("res://ui/screens/lose_screen.tscn")
+
+
+func set_code(code: Array, from: Vector2) -> void:
+	emit_signal("code_grabbed", code, from)
 
 
 func change_item(ITEM: PackedScene) -> void:

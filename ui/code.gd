@@ -12,6 +12,18 @@ func init_directions(amount: int) -> void:
 		directions.add_child(VAULT_DIRECTION.instance())
 
 
+func set_directions_array(directions_array: Array) -> void:
+	for i in directions_array.size():
+		var vault_direction: VaultDirection
+		if directions.get_child_count() - 1 < i:
+			vault_direction = VAULT_DIRECTION.instance()
+			directions.add_child(vault_direction)
+		else:
+			vault_direction = directions.get_child(i)
+
+		vault_direction.set_direction(directions_array[i])
+
+
 func clear_directions() -> void:
 	for vault_direction in directions.get_children():
 		vault_direction.queue_free()

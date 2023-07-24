@@ -20,9 +20,8 @@ onready var seed_hud: HBoxContainer = $SeedHUD
 onready var seed_num: LineEdit = seed_hud.get_node("SeedNum")
 onready var inventory: HBoxContainer = $Inventory
 
-onready var tr: VBoxContainer = $TR
-onready var money_counter: Label = tr.get_node("MoneyHUD/MoneyCounter")
-onready var code_icon: TextureRect = tr.get_node("CodeIcon")
+onready var money_counter: Label = $MoneyHUD/MoneyCounter
+onready var code_icon: TextureRect = $CodeIcon
 
 onready var vault_menu: ColorRect = $VaultMenu
 onready var vault_panel: PanelContainer = vault_menu.get_node("Panel")
@@ -83,12 +82,6 @@ func shake_vault_panel() -> void:
 		yield(tween, "finished")
 
 
-func collect_code(from_pos: Vector2) -> void:
-	var code_instance: Code = CODE.instance()
-	code_instance
-	code_icon.get_global_transform()
-
-
 func set_max_hp(max_hp: int) -> void:
 	health_bar_bg.rect_size.x = max_hp * 8.0 + 16.0
 
@@ -126,6 +119,12 @@ func hide_vault_menu() -> void:
 	emit_signal("vault_menu_closed")
 
 
+static func reparent(node: Node, new_parent: Node) -> void:
+	var old_parent := node.get_parent()
+	old_parent.remove_child(node)
+	new_parent.add_child(node)
+
+
 func _on_code_set(value: Array) -> void:
 	code = value
 
@@ -159,3 +158,44 @@ func _on_Vault_activated(vault: Vault) -> void:
 
 func _on_CancelButton_pressed() -> void:
 	hide_vault_menu()
+
+
+# warning-ignore:shadowed_variable
+# warning-ignore:shadowed_variable
+func _on_Robber_code_grabbed(code: Array, from: Vector2) -> void:
+	var code_instance: Code = CODE.instance()
+	get_parent().add_child(code_instance)
+	code_instance.set_directions_array(code)
+	code_instance.rect_position = from
+	code_instance.rect_scale = Vector2.ZERO
+
+	var anim_duration := 1.0
+	var start_pos := code_instance.rect_position
+	# Bad code, but couldn't think of any other solution to CanvasLayer not moveing.
+	reparent(code_icon, get_parent())
+	var final_pos := code_icon.get_canvas_transform().affine_inverse() * code_icon.rect_position
+	reparent(code_icon, self)
+
+	var half_pos := start_pos.linear_interpolate(final_pos, 0.5)
+
+	var tween := create_tween()
+	tween.tween_property(code_instance, "rect_position", half_pos, anim_duration / 2.0
+# warning-ignore:return_value_discarded
+			).set_ease(Tween.EASE_OUT)
+	create_tween().tween_property(code_instance, "rect_scale", Vector2.ONE * 0.5,
+# warning-ignore:return_value_discarded
+			anim_duration / 2.0).set_ease(Tween.EASE_OUT)
+
+	yield(tween, "finished")
+
+	var tween_2 := create_tween()
+	tween_2.tween_property(code_instance, "rect_position", final_pos,
+# warning-ignore:return_value_discarded
+			anim_duration / 2.0).set_ease(Tween.EASE_IN)
+	create_tween().tween_property(code_instance, "rect_scale", Vector2.ZERO, anim_duration / 2.0
+# warning-ignore:return_value_discarded
+			).set_ease(Tween.EASE_IN)
+
+	yield(tween_2, "finished")
+	code_icon.show()
+	code_instance.queue_free()

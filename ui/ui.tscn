@@ -49,19 +49,23 @@ texture = ExtResource( 2 )
 expand = true
 stretch_mode = 2
 
-[node name="TR" type="VBoxContainer" parent="."]
-anchor_left = 1.0
-anchor_right = 1.0
-margin_left = -161.0
+[node name="CodeIcon" type="TextureRect" parent="."]
+visible = false
+margin_left = 368.0
+margin_top = 24.0
+margin_right = 384.0
 margin_bottom = 40.0
+size_flags_horizontal = 8
+texture = ExtResource( 6 )
 
-[node name="MoneyHUD" type="HBoxContainer" parent="TR"]
-margin_right = 161.0
+[node name="MoneyHUD" type="HBoxContainer" parent="."]
+margin_left = 223.0
+margin_right = 384.0
 margin_bottom = 20.0
 mouse_filter = 2
 theme = ExtResource( 5 )
 
-[node name="MoneyCounter" type="Label" parent="TR/MoneyHUD"]
+[node name="MoneyCounter" type="Label" parent="MoneyHUD"]
 margin_right = 142.0
 margin_bottom = 20.0
 size_flags_horizontal = 3
@@ -71,22 +75,13 @@ text = "$#,###,###,###"
 align = 2
 valign = 1
 
-[node name="MoneyIcon" type="TextureRect" parent="TR/MoneyHUD"]
+[node name="MoneyIcon" type="TextureRect" parent="MoneyHUD"]
 margin_left = 143.0
 margin_right = 161.0
 margin_bottom = 20.0
 mouse_filter = 2
 texture = ExtResource( 4 )
 stretch_mode = 4
-
-[node name="CodeIcon" type="TextureRect" parent="TR"]
-visible = false
-margin_left = 145.0
-margin_top = 24.0
-margin_right = 161.0
-margin_bottom = 40.0
-size_flags_horizontal = 8
-texture = ExtResource( 6 )
 
 [node name="Inventory" type="HBoxContainer" parent="."]
 anchor_left = 0.5

@@ -5,10 +5,12 @@ extends StaticBody2D
 signal activated(vault)
 
 const MONEY_PICKUP := preload("res://pickups/money_pickup.tscn")
+const CODE_PICKUP := preload("res://pickups/code_pickup.tscn")
 
 export var bundles := 10
 export var fall_duration := 0.25
 export var code_length := 6
+export(NodePath) var code_spawn_points
 
 # Code format: [<true = right, false = left>, etc...]
 var code := []
@@ -22,6 +24,11 @@ func _ready() -> void:
 	randomize()
 	code = generate_code(code_length)
 	print(code)
+	if not code_spawn_points.is_empty() and get_node(code_spawn_points).get_child_count() > 0:
+		code_spawn_points = get_node(code_spawn_points)
+		spawn_code_pickup()
+	else:
+		printerr("No vault spawn points!")
 
 
 # warning-ignore:shadowed_variable
@@ -31,6 +38,16 @@ func is_code_valid(code: Array) -> bool:
 		return true
 	else:
 		return false
+
+
+func spawn_code_pickup() -> void:
+	var spawn_index: int = randi() % code_spawn_points.get_child_count()
+	var pos: Vector2 = code_spawn_points.get_child(spawn_index).global_position
+
+	var code_pickup: CodePickup = CODE_PICKUP.instance()
+	code_pickup.code = code
+	add_child(code_pickup)
+	code_pickup.global_position = pos
 
 
 func open() -> void:

@@ -32,8 +32,12 @@ position = Vector2( 0, -24 )
 
 [node name="Vault" parent="." instance=ExtResource( 4 )]
 position = Vector2( 48, -48 )
+code_spawn_points = NodePath("../CodeSpawnPoints")
+
+[node name="CodeSpawnPoints" type="Node2D" parent="."]
 
 [connection signal="vault_menu_closed" from="UI" to="YSort/Robber" method="_on_UI_vault_menu_closed"]
+[connection signal="code_grabbed" from="YSort/Robber" to="UI" method="_on_Robber_code_grabbed"]
 [connection signal="cool_down_started" from="YSort/Robber" to="UI" method="_on_Robber_cool_down_started"]
 [connection signal="hp_changed" from="YSort/Robber" to="UI" method="set_hp"]
 [connection signal="max_hp_changed" from="YSort/Robber" to="UI" method="set_max_hp"]
