@@ -3,7 +3,7 @@ extends Node2D
 
 
 const LEVELS := 5
-const LEVEL_VARIATIONS := 2 # Should be automated based on files
+const LEVEL_VARIATIONS := 11 # Should be automated based on files
 
 # So that the map seed is separate from the game seed.
 var rng := RandomNumberGenerator.new()

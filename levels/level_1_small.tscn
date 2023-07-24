@@ -1,0 +1,64 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://levels/points/wander_point.tscn" type="PackedScene" id=1]
+[ext_resource path="res://characters/enemies/cop/cop.tscn" type="PackedScene" id=2]
+[ext_resource path="res://levels/level.tscn" type="PackedScene" id=3]
+
+[node name="Level1" instance=ExtResource( 3 )]
+
+[node name="Robber" parent="YSort" index="0"]
+position = Vector2( 192, 324 )
+
+[node name="Cop" parent="YSort/Cops" index="0" instance=ExtResource( 2 )]
+position = Vector2( 336, 96 )
+
+[node name="Cop3" parent="YSort/Cops" index="1" instance=ExtResource( 2 )]
+position = Vector2( 132, 96 )
+
+[node name="Cop4" parent="YSort/Cops" index="2" instance=ExtResource( 2 )]
+position = Vector2( 252, 96 )
+
+[node name="Cop2" parent="YSort/Cops" index="3" instance=ExtResource( 2 )]
+position = Vector2( 48, 96 )
+
+[node name="Elevator" parent="YSort" index="2"]
+position = Vector2( 192, 24 )
+
+[node name="WanderPoint" parent="WanderPoints" index="0" instance=ExtResource( 1 )]
+position = Vector2( 48, 96 )
+
+[node name="WanderPoint2" parent="WanderPoints" index="1" instance=ExtResource( 1 )]
+position = Vector2( 336, 96 )
+
+[node name="WanderPoint3" parent="WanderPoints" index="2" instance=ExtResource( 1 )]
+position = Vector2( 132, 96 )
+
+[node name="WanderPoint4" parent="WanderPoints" index="3" instance=ExtResource( 1 )]
+position = Vector2( 336, 192 )
+
+[node name="WanderPoint5" parent="WanderPoints" index="4" instance=ExtResource( 1 )]
+position = Vector2( 48, 192 )
+
+[node name="WanderPoint6" parent="WanderPoints" index="5" instance=ExtResource( 1 )]
+position = Vector2( 48, 300 )
+
+[node name="WanderPoint7" parent="WanderPoints" index="6" instance=ExtResource( 1 )]
+position = Vector2( 312, 300 )
+
+[node name="WanderPoint8" parent="WanderPoints" index="7" instance=ExtResource( 1 )]
+position = Vector2( 132, 300 )
+
+[node name="WanderPoint9" parent="WanderPoints" index="8" instance=ExtResource( 1 )]
+position = Vector2( 132, 192 )
+
+[node name="WanderPoint10" parent="WanderPoints" index="9" instance=ExtResource( 1 )]
+position = Vector2( 252, 300 )
+
+[node name="WanderPoint11" parent="WanderPoints" index="10" instance=ExtResource( 1 )]
+position = Vector2( 252, 192 )
+
+[node name="WanderPoint12" parent="WanderPoints" index="11" instance=ExtResource( 1 )]
+position = Vector2( 252, 96 )
+
+[node name="Vault" parent="." index="5"]
+position = Vector2( 264, 24 )
