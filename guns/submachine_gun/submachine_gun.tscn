@@ -27,6 +27,7 @@ tracks/0/keys = {
 [node name="SubmachineGun" instance=ExtResource( 1 )]
 script = ExtResource( 3 )
 BULLET = ExtResource( 4 )
+distance = 128.0
 
 [node name="Sprite" parent="." index="0"]
 position = Vector2( 0, 2 )

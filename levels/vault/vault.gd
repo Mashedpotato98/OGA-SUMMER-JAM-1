@@ -28,7 +28,7 @@ func _ready() -> void:
 		code_spawn_points = get_node(code_spawn_points)
 		spawn_code_pickup()
 	else:
-		printerr("No vault spawn points!")
+		printerr("No vault key spawn points!")
 
 
 # warning-ignore:shadowed_variable

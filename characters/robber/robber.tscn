@@ -52,6 +52,9 @@ shape = SubResource( 44 )
 position = Vector2( 0, -7 )
 shape = SubResource( 45 )
 
+[node name="ImmunityDuration" parent="HitBox" index="1"]
+wait_time = 0.05
+
 [node name="HandPivot" parent="." index="3"]
 position = Vector2( 0, -7 )
 
