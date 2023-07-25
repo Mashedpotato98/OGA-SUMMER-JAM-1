@@ -61,6 +61,9 @@ position = Vector2( 8, 0 )
 [node name="CollisionShape2D" parent="DetectionZone" index="0"]
 shape = SubResource( 3 )
 
+[node name="SoftCollider" parent="." index="5"]
+strength = 0.5
+
 [node name="AnimationTree" parent="." index="6"]
 tree_root = null
 anim_player = NodePath("")

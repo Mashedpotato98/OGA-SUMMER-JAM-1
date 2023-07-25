@@ -45,6 +45,7 @@ func _die() -> void:
 			if (cronie.type == filename
 					and true if not cronie.has("weapon") else cronie.weapon == item.filename):
 				Inventory.cronies.remove(i)
+				Inventory._on_cronies_set(Inventory.cronies)
 				break
 	queue_free()
 
