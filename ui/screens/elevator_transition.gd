@@ -17,7 +17,6 @@ func level_up(from_height: int, robber_hp: int) -> void:
 	fade.fade(Fade.FADE_OUT, 1.0)
 	yield(fade, "finished")
 
-	yield(get_tree().create_timer(0.5), "timeout")
 	level_display.frame = next_height
 	yield(get_tree().create_timer(1.0), "timeout")
 
