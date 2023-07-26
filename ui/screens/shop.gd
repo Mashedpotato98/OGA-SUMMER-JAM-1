@@ -43,8 +43,8 @@ func add_item() -> void:
 
 
 func _on_DoneButton_pressed() -> void:
-	if Inventory.first_raid:
-		change_scene("res://levels/level_1.tscn")#%s.tscn" % str(randi() % Level.LEVEL_VARIATIONS))
-	else:
-		Inventory.save_inventory()
-		change_scene("res://ui/screens/main_menu.tscn")
+#	if Inventory.first_raid:
+#		change_scene("res://levels/level_1.tscn")#%s.tscn" % str(randi() % Level.LEVEL_VARIATIONS))
+#	else:
+	Inventory.save_inventory()
+	change_scene("res://ui/screens/main_menu.tscn")

@@ -59,11 +59,19 @@ func _die() -> void:
 func change_item(ITEM: PackedScene) -> void:
 	if item != null and is_instance_valid(item) and not item is NodePath:
 		item.queue_free()
+		yield(item, "tree_exited")
+		item = null
 
 	if ITEM != null:
 		item = ITEM.instance()
-		hand.add_child(item)
+		hand.call_deferred("add_child", item)
+		yield(item, "ready")
 		item.set_owner(self)
+
+	# Bad code, but fastest fix to weird bug with two guns.
+	yield(get_tree().create_timer(0.1), "timeout")
+	if hand.get_child_count() > 1:
+		hand.get_child(0).queue_free()
 
 
 func activate_item() -> bool:

@@ -135,15 +135,40 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 margin_left = -152.0
-margin_top = -57.0
+margin_top = -30.0
 margin_right = 152.0
-margin_bottom = 57.0
+margin_bottom = 30.0
+grow_horizontal = 2
+grow_vertical = 2
 
 [node name="List" type="VBoxContainer" parent="VaultMenu/Panel"]
 margin_left = 2.0
 margin_top = 2.0
 margin_right = 302.0
-margin_bottom = 112.0
+margin_bottom = 58.0
+alignment = 1
+
+[node name="KeyPanel" type="PanelContainer" parent="VaultMenu/Panel/List"]
+visible = false
+margin_right = 300.0
+margin_bottom = 32.0
+
+[node name="Spliter" type="VBoxContainer" parent="VaultMenu/Panel/List/KeyPanel"]
+margin_left = 2.0
+margin_top = 2.0
+margin_right = 298.0
+margin_bottom = 30.0
+
+[node name="Title" type="Label" parent="VaultMenu/Panel/List/KeyPanel/Spliter"]
+margin_right = 296.0
+margin_bottom = 20.0
+text = "Key"
+align = 1
+
+[node name="KeyCodeDisplay" parent="VaultMenu/Panel/List/KeyPanel/Spliter" instance=ExtResource( 8 )]
+margin_top = 24.0
+margin_right = 296.0
+margin_bottom = 28.0
 
 [node name="Title" type="Label" parent="VaultMenu/Panel/List"]
 margin_right = 300.0

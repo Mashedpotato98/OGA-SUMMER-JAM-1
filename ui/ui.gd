@@ -26,6 +26,10 @@ onready var code_icon: TextureRect = $CodeIcon
 onready var vault_menu: ColorRect = $VaultMenu
 onready var vault_panel: PanelContainer = vault_menu.get_node("Panel")
 onready var list: VBoxContainer = vault_panel.get_node("List")
+
+onready var key_panel: PanelContainer = list.get_node("KeyPanel")
+onready var key_code_display: Code = key_panel.get_node("Spliter/KeyCodeDisplay")
+
 onready var code_edit: Code = list.get_node("CodeEdit")
 onready var cancel_button: Button = list.get_node("CancelButton")
 
@@ -161,8 +165,10 @@ func _on_CancelButton_pressed() -> void:
 
 
 # warning-ignore:shadowed_variable
-# warning-ignore:shadowed_variable
 func _on_Robber_code_grabbed(code: Array, from: Vector2) -> void:
+	key_panel.show()
+	key_code_display.set_directions_array(code)
+
 	var code_instance: Code = CODE.instance()
 	get_parent().add_child(code_instance)
 	code_instance.set_directions_array(code)
@@ -173,16 +179,18 @@ func _on_Robber_code_grabbed(code: Array, from: Vector2) -> void:
 	var start_pos := code_instance.rect_position
 	# Bad code, but couldn't think of any other solution to CanvasLayer not moveing.
 	reparent(code_icon, get_parent())
+	# Magical line copy-pasted from Reddit: MODIFY AT YOUR OWN RISK
 	var final_pos := code_icon.get_canvas_transform().affine_inverse() * code_icon.rect_position
 	reparent(code_icon, self)
 
 	var half_pos := start_pos.linear_interpolate(final_pos, 0.5)
 
+	# Bunch'a tweening stuff
 	var tween := create_tween()
 	tween.tween_property(code_instance, "rect_position", half_pos, anim_duration / 2.0
 # warning-ignore:return_value_discarded
 			).set_ease(Tween.EASE_OUT)
-	create_tween().tween_property(code_instance, "rect_scale", Vector2.ONE * 0.5,
+	create_tween().tween_property(code_instance, "rect_scale", Vector2.ONE * 0.3,
 # warning-ignore:return_value_discarded
 			anim_duration / 2.0).set_ease(Tween.EASE_OUT)
 
