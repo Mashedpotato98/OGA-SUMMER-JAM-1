@@ -93,7 +93,7 @@ func bribed() -> void:
 	var attacking := false
 	if not is_null(cop):# Might be able to use ternary if to make simpler
 		if cop is KinematicBody2D:
-			if cop.bribe_state == cop.BRIBE_STATES.INNOCENT:
+			if cop.get_script() != get_script() or cop.bribe_state == cop.BRIBE_STATES.INNOCENT:
 				hand_pivot.set_target(cop)
 				_chase(cop)
 				attacking = true
