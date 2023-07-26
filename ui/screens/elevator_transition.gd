@@ -3,7 +3,7 @@ extends Control
 
 
 const LEVELS := 5
-const LEVEL_VARIATIONS := 2 # Should be automated based on files
+const LEVEL_VARIATIONS := 20 # Should be automated based on files
 
 onready var level_display: Sprite = $LevelDisplay
 
