@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/tausdei_-_vice_police.mp3-cc22343ba31a27c0b8808f806d84f42c.mp3str"
+
+[deps]
+
+source_file="res://music/tausdei_-_vice_police.mp3"
+dest_files=[ "res://.import/tausdei_-_vice_police.mp3-cc22343ba31a27c0b8808f806d84f42c.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

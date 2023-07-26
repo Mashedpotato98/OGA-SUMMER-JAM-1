@@ -4,6 +4,9 @@ extends Node2D
 
 const ELEVATOR_TRANSITION := preload("res://ui/screens/elevator_transition.tscn")
 
+export var track: AudioStream
+export var volume := 0.0
+
 var height := 0
 
 onready var y_sort: YSort = $YSort
@@ -20,6 +23,8 @@ func _ready() -> void:
 	var fade := Fade.new()
 	add_child(fade)
 	fade.fade(Fade.FADE_OUT, 1.0)
+
+	Music.change_track(track, volume)
 
 
 func level_up() -> void:

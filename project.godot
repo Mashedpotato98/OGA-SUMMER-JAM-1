@@ -273,6 +273,7 @@ config/icon="res://icon.png"
 [autoload]
 
 Inventory="*res://characters/robber/inventory.gd"
+Music="*res://music/music.tscn"
 
 [display]
 
