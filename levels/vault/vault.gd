@@ -23,12 +23,12 @@ onready var activation_box: Area2D = $ActivationBox
 func _ready() -> void:
 	randomize()
 	code = generate_code(code_length)
-	print(code)
+
 	if not code_spawn_points.is_empty() and get_node(code_spawn_points).get_child_count() > 0:
 		code_spawn_points = get_node(code_spawn_points)
 		spawn_code_pickup()
 	else:
-		printerr("No vault spawn points!")
+		printerr("No vault key spawn points!")
 
 
 # warning-ignore:shadowed_variable
