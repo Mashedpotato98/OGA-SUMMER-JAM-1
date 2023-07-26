@@ -136,10 +136,9 @@ func spawn_cronies() -> void:
 		var cronie: Character = load(cronie_info.type).instance()
 		get_parent().call_deferred("add_child", cronie)
 		yield(cronie, "ready")
-
 		cronie.global_position = global_position + (Vector2.RIGHT * cronie_spawn_distance).rotated(
 				TAU / cronie_count * i)
-		cronie.change_item(load(cronie_info.weapon))
+		#cronie.change_item(load(cronie_info.weapon))
 		cronie.bribe_state = cronie.BRIBE_STATES.BRIBED
 
 
