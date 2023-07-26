@@ -10,13 +10,6 @@ enum BRIBE_STATES {
 	BRIBED,
 }
 
-const GUNS := [
-	preload("res://guns/g36c/g36c.tscn"),
-	preload("res://guns/pistol/pistol.tscn"),
-	preload("res://guns/shot_gun/shot_gun.tscn"),
-	preload("res://guns/submachine_gun/submachine_gun.tscn"),
-]
-
 export var shoot_margin := 0.25
 export var min_circle_distance := 64.0
 export var max_circle_distance := 96.0
@@ -33,11 +26,6 @@ onready var cop_detection_zone_collision_shape: CollisionShape2D = cop_detection
 		"CollisionShape2D")
 
 
-func _ready() -> void:
-	._ready()
-	change_item(GUNS[randi() % GUNS.size()])
-
-
 func _die() -> void:
 	if bribe_state == BRIBE_STATES.BRIBED:
 		for i in Inventory.cronies.size():
@@ -45,7 +33,6 @@ func _die() -> void:
 			if (cronie.type == filename
 					and true if not cronie.has("weapon") else cronie.weapon == item.filename):
 				Inventory.cronies.remove(i)
-				Inventory._on_cronies_set(Inventory.cronies)
 				break
 	queue_free()
 
@@ -153,6 +140,14 @@ func _on_CopDetectionZone_lost(what: Node) -> void:
 
 func _on_CopDetectionZone_saw(what: Node) -> void:
 	cop = what
+
+
+#func random_stuff():
+#	lose_sight_of(what, "innocent_state_target", detection_zone)
+#	innocent_state_taget = what
+#	if old_var is Robber and bribe_state == BRIBE_STATES.BEING_BRIBED:
+#		bribe_state = BRIBE_STATES.INNOCENT
+#	 and bribe_state != BRIBE_STATES.BRIBED
 
 
 func _on_BounceZone_body_entered(_body: Node) -> void:
