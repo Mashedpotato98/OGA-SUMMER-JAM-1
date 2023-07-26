@@ -24,8 +24,6 @@ onready var money_counter: Label = $MoneyHUD/MoneyCounter
 onready var code_icon: TextureRect = $CodeIcon
 
 onready var vault_menu: ColorRect = $VaultMenu
-onready var wrong_sound: AudioStreamPlayer = vault_menu.get_node("WrongSound")
-onready var turn_sound: AudioStreamPlayer = vault_menu.get_node("TurnSound")
 onready var vault_panel: PanelContainer = vault_menu.get_node("Panel")
 onready var list: VBoxContainer = vault_panel.get_node("List")
 
@@ -62,13 +60,10 @@ func add_dir_to_code(direction: bool) -> void:
 	self.code.append(direction)
 	_on_code_set(code)
 
-	turn_sound.play()
-
 	if code.size() >= vault.code_length:
 		if vault.is_code_valid(code):
 			hide_vault_menu()
 		else:
-			wrong_sound.play()
 			yield(shake_vault_panel(), "completed")
 		self.code = []
 
