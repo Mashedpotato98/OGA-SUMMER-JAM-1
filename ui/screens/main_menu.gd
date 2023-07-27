@@ -17,5 +17,4 @@ func _on_QuitButton_pressed() -> void:
 
 
 func _on_PlayButton_pressed() -> void:
-	var scene := "res://levels/level_%s.tscn" % str(randi() % ElevatorTransition.LEVEL_VARIATIONS)
-	change_scene(scene)
+	change_scene(ElevatorTransition.get_level())

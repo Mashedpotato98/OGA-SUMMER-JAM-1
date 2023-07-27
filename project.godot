@@ -266,7 +266,7 @@ _global_script_class_icons={
 
 [application]
 
-config/name="OGA SUMMER JAM"
+config/name="Robbing Hood"
 run/main_scene="res://ui/screens/main_menu.tscn"
 config/icon="res://icon.png"
 

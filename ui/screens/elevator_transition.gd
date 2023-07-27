@@ -3,7 +3,7 @@ extends Control
 
 
 const LEVELS := 5
-const LEVEL_VARIATIONS := 20 # Should be automated based on files
+const LEVEL_VARIATIONS := 18 # Should be automated based on files
 
 onready var level_display: Sprite = $LevelDisplay
 
@@ -25,8 +25,7 @@ func level_up(from_height: int, robber_hp: int) -> void:
 	fade_in.fade(Fade.FADE_IN, 1.0)
 	yield(fade_in, "finished")
 
-	var LEVEL: PackedScene = load("res://levels/level_%s.tscn"
-			% str(randi() % LEVEL_VARIATIONS))
+	var LEVEL: PackedScene = load(get_level())
 	var level := LEVEL.instance()
 
 	level.height = next_height
@@ -35,3 +34,7 @@ func level_up(from_height: int, robber_hp: int) -> void:
 
 	get_tree().current_scene = level
 	queue_free()
+
+
+static func get_level() -> String:
+	return "res://levels/level_%s.tscn" % str(randi() % LEVEL_VARIATIONS + 1)
