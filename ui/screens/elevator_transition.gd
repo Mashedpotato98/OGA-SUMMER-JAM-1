@@ -2,7 +2,7 @@ class_name ElevatorTransition
 extends Control
 
 
-const LEVELS := 5
+const LEVELS := 3
 const LEVEL_VARIATIONS := 18 # Should be automated based on files
 
 onready var level_display: Sprite = $LevelDisplay
@@ -37,4 +37,5 @@ func level_up(from_height: int, robber_hp: int) -> void:
 
 
 static func get_level() -> String:
+	randomize()
 	return "res://levels/level_%s.tscn" % str(randi() % LEVEL_VARIATIONS + 1)

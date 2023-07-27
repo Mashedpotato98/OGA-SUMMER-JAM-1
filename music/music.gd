@@ -6,6 +6,10 @@ export var fade_duration := 0.5
 var track: AudioStream
 
 
+func _ready() -> void:
+	change_track(preload("res://music/tausdei_-_vice_police.mp3"), -10.0)
+
+
 func change_track(to: AudioStream, volume := 0) -> void:
 	if to == stream:
 		return
