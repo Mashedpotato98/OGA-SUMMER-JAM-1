@@ -28,6 +28,7 @@ var cop: Node2D = null
 var circle_dir := (randi() % 2) * 2 - 1# -1 or 1
 
 onready var circle_distance := rand_range(min_circle_distance, max_circle_distance)
+onready var navigator: NavigationAgent2D = $Navigator
 onready var cop_detection_zone: DetectionZone = $CopDetectionZone
 onready var cop_detection_zone_collision_shape: CollisionShape2D = cop_detection_zone.get_node(
 		"CollisionShape2D")
@@ -83,7 +84,10 @@ func _move() -> void:
 
 func follow_player() -> void:
 	if global_position.distance_to(player.global_position) > follow_distance:
-		smooth_vel = global_position.direction_to(player.global_position) * speed
+		#smooth_vel = global_position.direction_to(player.global_position) * speed
+
+		navigator.set_target_location(player.global_position)
+		smooth_vel = global_position.direction_to(navigator.get_next_location()) * speed
 	else:
 		smooth_vel = Vector2()
 		emit_signal("player_reached")
