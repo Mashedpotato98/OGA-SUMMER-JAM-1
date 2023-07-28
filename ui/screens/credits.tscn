@@ -1,0 +1,235 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://ui/screens/screen.tscn" type="PackedScene" id=1]
+[ext_resource path="res://ui/screens/credits.gd" type="Script" id=2]
+[ext_resource path="res://ui/fonts/kenpixel_mini.ttf" type="DynamicFontData" id=3]
+
+[sub_resource type="DynamicFont" id=1]
+size = 8
+font_data = ExtResource( 3 )
+
+[node name="Credits" instance=ExtResource( 1 )]
+script = ExtResource( 2 )
+
+[node name="Title" parent="." index="0"]
+text = "Credits"
+
+[node name="Menu" parent="." index="1"]
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 0.0
+margin_top = 48.0
+margin_right = 0.0
+margin_bottom = 0.0
+
+[node name="Text" type="RichTextLabel" parent="Menu" index="0"]
+margin_right = 384.0
+margin_bottom = 308.0
+size_flags_vertical = 3
+custom_fonts/normal_font = SubResource( 1 )
+bbcode_enabled = true
+bbcode_text = "Title:
+    Assets for OGA Summer Jam
+
+Author:
+    [url=]mashedpotato98[/url]
+
+URL:
+    [url]https://opengameart.org/content/assets-for-oga-summer-jam[/url]
+
+License(s):
+    * CC0 ( [url]http://creativecommons.org/publicdomain/zero/1.0/legalcode[/url] )
+
+----------------------------------------
+
+Title:
+    OGA Summer 2023 Robber Game Jam Art
+
+Author:
+    [url=]Cranton[/url]
+
+Collaborators:
+    [url=]mashedpotato98[/url]
+
+URL:
+    [url]https://opengameart.org/content/oga-summer-2023-robber-game-jam-art[/url]
+
+License(s):
+    * CC0 ( [url]http://creativecommons.org/publicdomain/zero/1.0/legalcode[/url] )
+
+----------------------------------------
+
+Title:
+    512 Sound Effects (8-bit style)
+
+Author:
+    [url=]SubspaceAudio[/url]
+
+URL:
+    [url]https://opengameart.org/content/512-sound-effects-8-bit-style[/url]
+
+License(s):
+    * CC0 ( [url]http://creativecommons.org/publicdomain/zero/1.0/legalcode[/url] )
+
+----------------------------------------
+
+Title:
+    Kenney fonts
+
+Author:
+    [url=]Kenney[/url]
+
+URL:
+    [url]https://opengameart.org/content/kenney-fonts[/url]
+
+License(s):
+    * CC0 ( [url]http://creativecommons.org/publicdomain/zero/1.0/legalcode[/url] )
+
+Copyright/Attribution Notice:
+    Credit \"Kenney.nl\" or \"www.kenney.nl\", this is not mandatory.
+
+----------------------------------------
+
+Title:
+    Vice Police
+
+Author:
+    [url=]Tausdei[/url]
+
+URL:
+    [url]https://opengameart.org/content/vice-police[/url]
+
+License(s):
+    * CC-BY 3.0 ( [url]http://creativecommons.org/licenses/by/3.0/legalcode[/url] )
+
+Copyright/Attribution Notice:
+    Music by Tausdei
+
+----------------------------------------
+
+Title:
+    SFX: The Ultimate 2017 16 bit Mini pack
+
+Author:
+    [url=]phoenix1291[/url]
+
+URL:
+    [url]https://opengameart.org/content/sfx-the-ultimate-2017-16-bit-mini-pack[/url]
+
+License(s):
+    * CC0 ( [url]http://creativecommons.org/publicdomain/zero/1.0/legalcode[/url] )
+
+Copyright/Attribution Notice:
+    Credit \"phoenix1291\" or \"SwissArcadeGameEntertainment\", this is not mandatory.
+
+----------------------------------------
+"
+text = "Title:
+    Assets for OGA Summer Jam
+
+Author:
+    mashedpotato98
+
+URL:
+    https://opengameart.org/content/assets-for-oga-summer-jam
+
+License(s):
+    * CC0 ( http://creativecommons.org/publicdomain/zero/1.0/legalcode )
+
+----------------------------------------
+
+Title:
+    OGA Summer 2023 Robber Game Jam Art
+
+Author:
+    Cranton
+
+Collaborators:
+    mashedpotato98
+
+URL:
+    https://opengameart.org/content/oga-summer-2023-robber-game-jam-art
+
+License(s):
+    * CC0 ( http://creativecommons.org/publicdomain/zero/1.0/legalcode )
+
+----------------------------------------
+
+Title:
+    512 Sound Effects (8-bit style)
+
+Author:
+    SubspaceAudio
+
+URL:
+    https://opengameart.org/content/512-sound-effects-8-bit-style
+
+License(s):
+    * CC0 ( http://creativecommons.org/publicdomain/zero/1.0/legalcode )
+
+----------------------------------------
+
+Title:
+    Kenney fonts
+
+Author:
+    Kenney
+
+URL:
+    https://opengameart.org/content/kenney-fonts
+
+License(s):
+    * CC0 ( http://creativecommons.org/publicdomain/zero/1.0/legalcode )
+
+Copyright/Attribution Notice:
+    Credit \"Kenney.nl\" or \"www.kenney.nl\", this is not mandatory.
+
+----------------------------------------
+
+Title:
+    Vice Police
+
+Author:
+    Tausdei
+
+URL:
+    https://opengameart.org/content/vice-police
+
+License(s):
+    * CC-BY 3.0 ( http://creativecommons.org/licenses/by/3.0/legalcode )
+
+Copyright/Attribution Notice:
+    Music by Tausdei
+
+----------------------------------------
+
+Title:
+    SFX: The Ultimate 2017 16 bit Mini pack
+
+Author:
+    phoenix1291
+
+URL:
+    https://opengameart.org/content/sfx-the-ultimate-2017-16-bit-mini-pack
+
+License(s):
+    * CC0 ( http://creativecommons.org/publicdomain/zero/1.0/legalcode )
+
+Copyright/Attribution Notice:
+    Credit \"phoenix1291\" or \"SwissArcadeGameEntertainment\", this is not mandatory.
+
+----------------------------------------
+"
+
+[node name="BackButton" type="Button" parent="Menu" index="1"]
+margin_left = 168.0
+margin_top = 312.0
+margin_right = 216.0
+margin_bottom = 336.0
+size_flags_horizontal = 4
+text = "Back"
+
+[connection signal="meta_clicked" from="Menu/Text" to="." method="_on_Text_meta_clicked"]
+[connection signal="pressed" from="Menu/BackButton" to="." method="_on_BackButton_pressed"]

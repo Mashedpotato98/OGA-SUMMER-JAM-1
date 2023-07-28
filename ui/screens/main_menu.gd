@@ -18,3 +18,7 @@ func _on_QuitButton_pressed() -> void:
 
 func _on_PlayButton_pressed() -> void:
 	change_scene(ElevatorTransition.get_level())
+
+
+func _on_CreditsButton_pressed() -> void:
+	change_scene("res://ui/screens/credits.tscn")
