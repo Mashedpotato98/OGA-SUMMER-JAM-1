@@ -400,6 +400,7 @@ parameters/Idle/blend_position = Vector2( 0, 0 )
 parameters/Run/blend_position = Vector2( 0, 0 )
 parameters/Walk/blend_position = Vector2( 0, 0 )
 
+[connection signal="player_reached" from="." to="." method="_on_Cop_player_reached"]
 [connection signal="lost" from="CopDetectionZone" to="." method="_on_CopDetectionZone_lost"]
 [connection signal="saw" from="CopDetectionZone" to="." method="_on_CopDetectionZone_saw"]
 [connection signal="body_entered" from="BounceZone" to="." method="_on_BounceZone_body_entered"]
