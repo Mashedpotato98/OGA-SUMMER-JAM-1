@@ -10,7 +10,7 @@ onready var animation_tree: AnimationTree = $AnimationTree
 onready var playback: AnimationNodeStateMachinePlayback = animation_tree.get("parameters/playback")
 
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	# Using _process() instead of _physics_process() because animation isn't physics related.
 	animate()
 

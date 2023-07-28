@@ -42,6 +42,7 @@ tracks/0/keys = {
 
 [node name="MolotovCocktail" instance=ExtResource( 1 )]
 HIT_EFFECT = ExtResource( 2 )
+hit_on_out_of_range = true
 
 [node name="Sprite" parent="." index="0"]
 texture = ExtResource( 3 )
