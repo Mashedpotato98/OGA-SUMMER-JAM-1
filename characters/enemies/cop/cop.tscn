@@ -88,7 +88,6 @@ shape = SubResource( 2 )
 
 [node name="Navigator" type="NavigationAgent2D" parent="." index="12"]
 
-[connection signal="player_reached" from="." to="." method="_on_Cop_player_reached"]
 [connection signal="lost" from="CopDetectionZone" to="." method="_on_CopDetectionZone_lost"]
 [connection signal="saw" from="CopDetectionZone" to="." method="_on_CopDetectionZone_saw"]
 [connection signal="body_entered" from="BounceZone" to="." method="_on_BounceZone_body_entered"]
