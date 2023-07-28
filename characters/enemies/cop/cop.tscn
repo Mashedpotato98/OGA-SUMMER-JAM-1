@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=25 format=2]
 
 [ext_resource path="res://characters/enemies/enemy.tscn" type="PackedScene" id=1]
 [ext_resource path="res://characters/enemies/cop/cop.png" type="Texture" id=2]
@@ -25,6 +25,45 @@ radius = 128.0
 
 [sub_resource type="RectangleShape2D" id=2]
 extents = Vector2( 7, 4 )
+
+[sub_resource type="Animation" id=16]
+resource_name = "IdleDown"
+loop = true
+
+[sub_resource type="Animation" id=17]
+resource_name = "IdleLeft"
+
+[sub_resource type="Animation" id=18]
+resource_name = "IdleRight"
+
+[sub_resource type="Animation" id=19]
+resource_name = "IdleUp"
+
+[sub_resource type="AnimationNodeBlendSpace2D" id=7]
+
+[sub_resource type="AnimationNodeBlendSpace2D" id=8]
+
+[sub_resource type="AnimationNodeBlendSpace2D" id=9]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=10]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=11]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=12]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=13]
+
+[sub_resource type="AnimationNodeStateMachine" id=14]
+states/Idle/node = SubResource( 7 )
+states/Idle/position = Vector2( 332, 78 )
+states/Run/node = SubResource( 8 )
+states/Run/position = Vector2( 332, 158 )
+states/Walk/node = SubResource( 9 )
+states/Walk/position = Vector2( 481, 78 )
+transitions = [ "Idle", "Walk", SubResource( 10 ), "Walk", "Idle", SubResource( 11 ), "Run", "Idle", SubResource( 12 ), "Idle", "Run", SubResource( 13 ) ]
+start_node = "Idle"
+
+[sub_resource type="AnimationNodeStateMachinePlayback" id=15]
 
 [node name="Cop" instance=ExtResource( 1 )]
 script = ExtResource( 3 )
@@ -64,12 +103,7 @@ shape = SubResource( 3 )
 [node name="SoftCollider" parent="." index="5"]
 strength = 0.5
 
-[node name="AnimationTree" parent="." index="6"]
-tree_root = null
-anim_player = NodePath("")
-active = false
-
-[node name="CopDetectionZone" parent="." index="9" instance=ExtResource( 5 )]
+[node name="CopDetectionZone" parent="." index="8" instance=ExtResource( 5 )]
 collision_mask = 4
 monitorable = true
 
@@ -79,14 +113,28 @@ shape = SubResource( 6 )
 [node name="RayCast" parent="CopDetectionZone" index="1"]
 collision_mask = 5
 
-[node name="BounceZone" type="Area2D" parent="." index="10"]
+[node name="BounceZone" type="Area2D" parent="." index="9"]
 collision_layer = 0
 collision_mask = 17
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="BounceZone" index="0"]
 shape = SubResource( 2 )
 
-[node name="Navigator" type="NavigationAgent2D" parent="." index="12"]
+[node name="Navigator" type="NavigationAgent2D" parent="." index="10"]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." index="11"]
+anims/IdleDown = SubResource( 16 )
+anims/IdleLeft = SubResource( 17 )
+anims/IdleRight = SubResource( 18 )
+anims/IdleUp = SubResource( 19 )
+
+[node name="AnimationTree" type="AnimationTree" parent="." index="12"]
+tree_root = SubResource( 14 )
+anim_player = NodePath("../AnimationPlayer")
+parameters/playback = SubResource( 15 )
+parameters/Idle/blend_position = Vector2( 0, 0 )
+parameters/Run/blend_position = Vector2( 0, 0 )
+parameters/Walk/blend_position = Vector2( 0, 0 )
 
 [connection signal="player_reached" from="." to="." method="_on_Cop_player_reached"]
 [connection signal="lost" from="CopDetectionZone" to="." method="_on_CopDetectionZone_lost"]

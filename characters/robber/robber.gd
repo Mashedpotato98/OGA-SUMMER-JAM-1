@@ -57,11 +57,7 @@ func _input(event: InputEvent) -> void:
 		return
 
 	if event.is_action_pressed("dash") and not dash_colling:
-		shove(anim_dir * dash_speed, dash_length)
-		dash_colling = true
-		dash_cool_down.start()
-		hit_box.start_immunity(dash_length)
-		dash_sound.play()
+		dash()
 	elif event.is_action_pressed("switch_gun_next"):
 		scroll_items(1)
 	elif event.is_action_pressed("switch_gun_prev"):
@@ -96,6 +92,16 @@ func _die() -> void:
 	yield(fade, "finished")
 # warning-ignore:return_value_discarded
 	get_tree().change_scene("res://ui/screens/lose_screen.tscn")
+
+
+func dash() -> void:
+	shove(anim_dir * dash_speed, dash_length)
+	dash_colling = true
+	dash_cool_down.start()
+	hit_box.start_immunity(dash_length)
+	dash_sound.play()
+	animation_tree.set("parameters/Dash/blend_position", anim_dir)
+	playback.travel("Dash")
 
 
 func set_code(code: Array, from: Vector2) -> void:
@@ -170,7 +176,7 @@ func _on_anim_dir_set(value: Vector2) -> void:
 	if value.length() > 0.0:
 		anim_dir = value
 
-	var state := "Walk" if value.length() > 0.0 else "Idle"
+	var state := "Run" if value.length() > 0.0 else "Idle"
 	animation_tree.set("parameters/{0}/blend_position".format([state]), anim_dir)
 	playback.travel(state)
 
