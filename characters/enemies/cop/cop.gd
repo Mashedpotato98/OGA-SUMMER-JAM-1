@@ -33,6 +33,9 @@ onready var cop_detection_zone: DetectionZone = $CopDetectionZone
 onready var cop_detection_zone_collision_shape: CollisionShape2D = cop_detection_zone.get_node(
 		"CollisionShape2D")
 
+onready var animation_tree: AnimationTree = $AnimationTree
+onready var playback: AnimationNodeStateMachinePlayback = animation_tree.get("parameters/playback")
+
 
 func _ready() -> void:
 	._ready()
@@ -80,6 +83,21 @@ func _move() -> void:
 				self.bribe_state = BRIBE_STATES.BEING_BRIBED
 			else:
 				patrol()
+
+	animate()
+
+
+func animate() -> void:
+	var anim_name := ""
+	if smooth_vel.length() >= speed:
+		anim_name = "Run"
+	elif smooth_vel.length() > 0.0:
+		anim_name = "Walk"
+	else:
+		anim_name = "Idle"
+
+	animation_tree.set("parameters/%s/blend_position" % anim_name, smooth_vel)
+	playback.travel(anim_name)
 
 
 func follow_player() -> void:
