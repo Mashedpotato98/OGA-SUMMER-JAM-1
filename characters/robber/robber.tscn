@@ -1,4 +1,4 @@
-[gd_scene load_steps=45 format=2]
+[gd_scene load_steps=46 format=2]
 
 [ext_resource path="res://characters/character.tscn" type="PackedScene" id=1]
 [ext_resource path="res://characters/robber/robber.gd" type="Script" id=2]
@@ -7,6 +7,7 @@
 [ext_resource path="res://sfx/movement/sfx_movement_jump15.wav" type="AudioStream" id=5]
 [ext_resource path="res://sfx/dmg/death_sound.tscn" type="PackedScene" id=6]
 [ext_resource path="res://sfx/dmg/sfx_damage_hit3.wav" type="AudioStream" id=7]
+[ext_resource path="res://characters/robber/screen_shake_camera/screen_shake_camera.tscn" type="PackedScene" id=8]
 
 [sub_resource type="ShaderMaterial" id=47]
 shader = ExtResource( 4 )
@@ -362,8 +363,7 @@ position = Vector2( 0, -7 )
 [node name="Hand" parent="HandPivot" index="0"]
 position = Vector2( 8, 0 )
 
-[node name="Camera2D" type="Camera2D" parent="." index="4"]
-current = true
+[node name="ScreenShakeCamera" parent="." index="4" instance=ExtResource( 8 )]
 
 [node name="HurtSound" parent="." index="6"]
 stream = ExtResource( 7 )

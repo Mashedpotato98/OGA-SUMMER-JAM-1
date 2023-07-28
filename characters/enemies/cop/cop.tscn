@@ -354,6 +354,9 @@ shape = SubResource( 3 )
 [node name="SoftCollider" parent="." index="5"]
 strength = 0.5
 
+[node name="HurtSound" parent="." index="7"]
+max_distance = 2000.0
+
 [node name="CopDetectionZone" parent="." index="8" instance=ExtResource( 5 )]
 collision_mask = 4
 monitorable = true

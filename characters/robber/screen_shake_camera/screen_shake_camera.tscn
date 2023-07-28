@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://characters/robber/screen_shake_camera/screen_shake_camera.gd" type="Script" id=1]
+
+[node name="ScreenShakeCamera" type="Camera2D" groups=["cameras"]]
+current = true
+script = ExtResource( 1 )

@@ -446,6 +446,9 @@ shape = SubResource( 1 )
 [node name="CollisionShape2D" parent="DetectionZone" index="0"]
 shape = SubResource( 2 )
 
+[node name="HurtSound" parent="." index="7"]
+max_distance = 2000.0
+
 [node name="SwatZone" type="Area2D" parent="." index="8"]
 collision_layer = 0
 collision_mask = 8

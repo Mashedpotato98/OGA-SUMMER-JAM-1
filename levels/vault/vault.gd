@@ -15,9 +15,11 @@ export(NodePath) var code_spawn_points
 # Code format: [<true = right, false = left>, etc...]
 var code := []
 
+onready var sprite: Sprite = $Sprite
 onready var min_pos: Vector2 = $MinPos.position
 onready var max_pos: Vector2 = $MaxPos.position
 onready var activation_box: Area2D = $ActivationBox
+onready var open_sound: AudioStreamPlayer2D = $OpenSound
 
 
 func _ready() -> void:
@@ -54,6 +56,10 @@ func open() -> void:
 	activation_box.queue_free()
 	for i in bundles:
 		spawn_bundle()
+
+	sprite.frame = 1
+	open_sound.play()
+	get_tree().get_nodes_in_group("cameras")[0].shake(4.0, 20, 0.5)
 
 
 func spawn_bundle() -> void:
