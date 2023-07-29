@@ -2,7 +2,7 @@ class_name RedDetector
 extends Area2D
 
 
-export var dmg := 1
+export var dmg := 2
 
 var detecting := true setget _on_detecting_set
 

@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://levels/tile/floor_wall2.tscn" type="PackedScene" id=1]
 [ext_resource path="res://levels/tile/floor_wall1.tscn" type="PackedScene" id=2]
@@ -8,6 +8,7 @@
 [ext_resource path="res://levels/tile/Carpet.tscn" type="PackedScene" id=6]
 [ext_resource path="res://levels/red_detector/red_detector.tscn" type="PackedScene" id=7]
 [ext_resource path="res://levels/level.tscn" type="PackedScene" id=8]
+[ext_resource path="res://pickups/health_pack.tscn" type="PackedScene" id=9]
 
 [sub_resource type="NavigationPolygon" id=1]
 resource_local_to_scene = true
@@ -51,6 +52,9 @@ position = Vector2( 819, 180 )
 [node name="red_detector6" parent="YSort" index="14" instance=ExtResource( 7 )]
 position = Vector2( 753, 458 )
 rotation = 1.5708
+
+[node name="health_pack" parent="YSort" index="15" instance=ExtResource( 9 )]
+position = Vector2( 975, 176 )
 
 [node name="WanderPoints" parent="." index="4"]
 position = Vector2( -34, 146 )
