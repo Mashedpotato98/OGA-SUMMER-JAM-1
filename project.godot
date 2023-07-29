@@ -105,7 +105,7 @@ _global_script_classes=[ {
 "path": "res://guns/gun.gd"
 }, {
 "base": "Pickup",
-"class": "HealthPickup",
+"class": "HealthPack",
 "language": "GDScript",
 "path": "res://pickups/health_pack.gd"
 }, {
@@ -259,7 +259,7 @@ _global_script_class_icons={
 "FireSpawn": "",
 "Grenade": "",
 "Gun": "",
-"HealthPickup": "",
+"HealthPack": "",
 "HitBox": "",
 "InventoryDisplay": "",
 "InventoryItem": "",

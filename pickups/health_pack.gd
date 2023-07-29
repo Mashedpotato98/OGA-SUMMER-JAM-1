@@ -1,4 +1,4 @@
-class_name HealthPickup
+class_name HealthPack
 extends Pickup
 
 
