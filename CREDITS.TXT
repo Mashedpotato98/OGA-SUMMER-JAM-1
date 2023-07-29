@@ -93,3 +93,20 @@ Copyright/Attribution Notice:
     Credit "phoenix1291" or "SwissArcadeGameEntertainment", this is not mandatory.
 
 ----------------------------------------
+
+Title:
+    OGA SUMMER JAM ASSETS 2
+
+Author:
+    mashedpotato98
+
+URL:
+    https://opengameart.org/content/oga-summer-jam-assets-2
+
+License(s):
+    * CC0 ( http://creativecommons.org/publicdomain/zero/1.0/legalcode )
+
+File(s):
+    * oga_summer_jam.zip
+
+----------------------------------------

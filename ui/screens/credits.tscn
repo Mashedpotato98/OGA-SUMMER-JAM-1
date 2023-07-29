@@ -125,7 +125,20 @@ Copyright/Attribution Notice:
     Credit \"phoenix1291\" or \"SwissArcadeGameEntertainment\", this is not mandatory.
 
 ----------------------------------------
-"
+
+Title:
+    OGA SUMMER JAM ASSETS 2
+
+Author:
+    [url=https://opengameart.org/users/mashedpotato98]mashedpotato98[/url]
+
+URL:
+    [url]https://opengameart.org/content/oga-summer-jam-assets-2[/url]
+
+License(s):
+    * CC0 ( [url]http://creativecommons.org/publicdomain/zero/1.0/legalcode[/url] )
+
+----------------------------------------"
 text = "Title:
     Assets for OGA Summer Jam
 
@@ -221,7 +234,20 @@ Copyright/Attribution Notice:
     Credit \"phoenix1291\" or \"SwissArcadeGameEntertainment\", this is not mandatory.
 
 ----------------------------------------
-"
+
+Title:
+    OGA SUMMER JAM ASSETS 2
+
+Author:
+    mashedpotato98
+
+URL:
+    https://opengameart.org/content/oga-summer-jam-assets-2
+
+License(s):
+    * CC0 ( http://creativecommons.org/publicdomain/zero/1.0/legalcode )
+
+----------------------------------------"
 
 [node name="BackButton" type="Button" parent="Menu" index="1"]
 margin_left = 168.0
