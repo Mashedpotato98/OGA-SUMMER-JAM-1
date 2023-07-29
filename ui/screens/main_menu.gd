@@ -3,7 +3,7 @@ extends Screen
 
 
 onready var title: Label = $Title
-onready var play_button: Button = $Menu/PlayButton
+onready var play_button: Button = $Menu/StartButtons/PlayButton
 
 
 func _ready() -> void:
@@ -22,3 +22,7 @@ func _on_PlayButton_pressed() -> void:
 
 func _on_CreditsButton_pressed() -> void:
 	change_scene("res://ui/screens/credits.tscn")
+
+
+func _on_Tutorial_pressed() -> void:
+	change_scene("res://tutorial.tscn")

@@ -10,15 +10,8 @@ const BRIBE_PATH := "res://characters/robber/bribe.tscn"
 
 const DEFAULT_MONEY := 5_000
 const DEFAULT_ITEMS := {
+	"res://guns/pistol/pistol.tscn": 50,
 	BRIBE_PATH: MAX_CRONIES,
-	"res://guns/submachine_gun/submachine_gun.tscn": 50,
-	"res://guns/shot_gun/shot_gun.tscn": 20,
-	"res://guns/pistol/pistol.tscn": 12,
-	"res://guns/g36c/g36c.tscn": 6,
-	"res://explosives/grenade/grenade_launcher.tscn": 1,
-	"res://explosives/molotov_cocktail/molotov_cocktail_thower.tscn": 1,
-	#"res:guns/":
-	#"res:guns/":
 }
 
 var file_path := "user://inventory"

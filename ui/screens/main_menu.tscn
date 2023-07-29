@@ -7,28 +7,47 @@
 script = ExtResource( 2 )
 
 [node name="Menu" parent="." index="1"]
-margin_left = -35.0
-margin_top = -40.0
-margin_right = 35.0
-margin_bottom = 40.0
+margin_left = -78.5
+margin_top = -54.0
+margin_right = 78.5
+margin_bottom = 54.0
 
-[node name="PlayButton" type="Button" parent="Menu" index="0"]
-margin_right = 70.0
+[node name="StartButtons" type="HBoxContainer" parent="Menu" index="0"]
+margin_right = 157.0
 margin_bottom = 24.0
+
+[node name="PlayButton" type="Button" parent="Menu/StartButtons" index="0"]
+margin_right = 78.0
+margin_bottom = 24.0
+size_flags_horizontal = 3
 text = "Play"
+
+[node name="Tutorial" type="Button" parent="Menu/StartButtons" index="1"]
+margin_left = 79.0
+margin_right = 157.0
+margin_bottom = 24.0
+size_flags_horizontal = 3
+text = "Tutorial"
 
 [node name="CreditsButton" type="Button" parent="Menu" index="1"]
 margin_top = 28.0
-margin_right = 70.0
+margin_right = 157.0
 margin_bottom = 52.0
 text = "Credits"
 
-[node name="QuitButton" type="Button" parent="Menu" index="2"]
+[node name="Button" type="Button" parent="Menu" index="2"]
 margin_top = 56.0
-margin_right = 70.0
+margin_right = 157.0
 margin_bottom = 80.0
+text = "Settings"
+
+[node name="QuitButton" type="Button" parent="Menu" index="3"]
+margin_top = 84.0
+margin_right = 157.0
+margin_bottom = 108.0
 text = "Quit"
 
-[connection signal="pressed" from="Menu/PlayButton" to="." method="_on_PlayButton_pressed"]
+[connection signal="pressed" from="Menu/StartButtons/PlayButton" to="." method="_on_PlayButton_pressed"]
+[connection signal="pressed" from="Menu/StartButtons/Tutorial" to="." method="_on_Tutorial_pressed"]
 [connection signal="pressed" from="Menu/CreditsButton" to="." method="_on_CreditsButton_pressed"]
 [connection signal="pressed" from="Menu/QuitButton" to="." method="_on_QuitButton_pressed"]

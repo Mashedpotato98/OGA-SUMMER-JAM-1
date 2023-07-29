@@ -27,6 +27,7 @@ BULLET = ExtResource( 2 )
 
 [node name="Sprite" parent="." index="0"]
 texture = ExtResource( 3 )
+flip_h = true
 
 [node name="AnimationPlayer" parent="." index="3"]
 anims/Shoot = SubResource( 1 )
