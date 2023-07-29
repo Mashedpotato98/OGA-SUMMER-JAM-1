@@ -358,6 +358,7 @@ strength = 0.5
 max_distance = 2000.0
 
 [node name="CopDetectionZone" parent="." index="8" instance=ExtResource( 5 )]
+visible = false
 collision_mask = 4
 monitorable = true
 
