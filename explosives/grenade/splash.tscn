@@ -12,5 +12,6 @@ BULLET = ExtResource( 2 )
 stream = ExtResource( 3 )
 autoplay = true
 max_distance = 512.0
+bus = "SFX"
 
 [connection signal="finished" from="ExplodeSound" to="." method="_on_ExplodeSound_finished"]

@@ -26,3 +26,7 @@ func _on_CreditsButton_pressed() -> void:
 
 func _on_Tutorial_pressed() -> void:
 	change_scene("res://tutorial.tscn")
+
+
+func _on_SettingsButton_pressed() -> void:
+	change_scene("res://ui/screens/settings_menu.tscn")

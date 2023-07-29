@@ -175,6 +175,11 @@ _global_script_classes=[ {
 "path": "res://characters/robber/screen_shake_camera/screen_shake_camera.gd"
 }, {
 "base": "Screen",
+"class": "SettingsMenu",
+"language": "GDScript",
+"path": "res://ui/screens/settings_menu.gd"
+}, {
+"base": "Screen",
 "class": "Shop",
 "language": "GDScript",
 "path": "res://ui/screens/shop.gd"
@@ -263,6 +268,7 @@ _global_script_class_icons={
 "Robber": "",
 "Screen": "",
 "ScreenShakeCamera": "",
+"SettingsMenu": "",
 "Shop": "",
 "ShotGun": "",
 "SoftCollider": "",
@@ -286,6 +292,7 @@ config/icon="res://icon.png"
 
 Inventory="*res://characters/robber/inventory.gd"
 Music="*res://music/music.tscn"
+Settings="*res://settings.gd"
 
 [display]
 

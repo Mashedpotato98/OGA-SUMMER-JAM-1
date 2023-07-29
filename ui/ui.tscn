@@ -195,9 +195,11 @@ text = "Cancel"
 
 [node name="WrongSound" type="AudioStreamPlayer" parent="VaultMenu"]
 stream = ExtResource( 9 )
+bus = "SFX"
 
 [node name="TurnSound" type="AudioStreamPlayer" parent="VaultMenu"]
 stream = ExtResource( 10 )
 pitch_scale = 4.0
+bus = "SFX"
 
 [connection signal="pressed" from="VaultMenu/Panel/List/CancelButton" to="." method="_on_CancelButton_pressed"]

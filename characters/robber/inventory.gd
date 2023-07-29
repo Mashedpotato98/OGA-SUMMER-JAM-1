@@ -51,7 +51,7 @@ func load_inventory() -> void:
 			first_raid = inventory.first_raid
 			self.money = inventory.money
 		else:
-			OS.alert("Could not save inventory. Error code: " + str(error))
+			OS.alert("Could not load inventory. Error code: " + str(error))
 	else:
 		save_inventory()
 

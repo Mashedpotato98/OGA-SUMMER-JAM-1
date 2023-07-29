@@ -42,5 +42,6 @@ anims/Shoot = SubResource( 1 )
 
 [node name="ShootSound" type="AudioStreamPlayer2D" parent="."]
 max_distance = 256.0
+bus = "SFX"
 
 [connection signal="timeout" from="CoolDown" to="." method="_on_CoolDown_timeout"]

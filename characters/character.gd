@@ -135,9 +135,6 @@ func _on_max_hp_set(value: int) -> void:
 
 
 func _on_hp_set(value: int) -> void:
-	if value < hp:
-		hurt_sound.play()
-
 # warning-ignore:narrowing_conversion
 	hp = min(value, max_hp)
 	if hp <= 0:
@@ -170,3 +167,4 @@ func _on_ammo_set(value: int) -> void:
 func _on_HitBox_dmg_taken(from: Vector2, amount: int) -> void:
 	shove(from.direction_to(global_position) * hurt_bounce, hurt_bounce_time)
 	self.hp -= amount
+	hurt_sound.play()

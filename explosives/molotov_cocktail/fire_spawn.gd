@@ -10,7 +10,8 @@ onready var animation_player: AnimationPlayer = $AnimationPlayer
 
 
 func _ready() -> void:
-	yield(get_tree().create_timer(rand_range(min_life_time, max_life_time)), "timeout")
+	var life_time := rand_range(min_life_time, max_life_time)
+	yield(get_tree().create_timer(life_time), "timeout")
 	animation_player.play("Fade")
 
 

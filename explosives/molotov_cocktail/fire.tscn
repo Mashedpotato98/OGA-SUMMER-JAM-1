@@ -15,6 +15,7 @@ autostart = true
 [node name="SoundEffect" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource( 2 )
 max_distance = 512.0
+bus = "SFX"
 
 [connection signal="child_exiting_tree" from="." to="." method="_on_Fire_child_exiting_tree"]
 [connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
