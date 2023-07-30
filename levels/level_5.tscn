@@ -88,7 +88,7 @@ position = Vector2( 744, 408 )
 position = Vector2( 372, 156 )
 
 [node name="SpawnPoint2" parent="CodeSpawnPoints" index="1" instance=ExtResource( 10 )]
-position = Vector2( 444, 96 )
+position = Vector2( 571, 136 )
 
 [node name="SpawnPoint3" parent="CodeSpawnPoints" index="2" instance=ExtResource( 10 )]
 position = Vector2( 300, 420 )
