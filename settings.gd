@@ -2,7 +2,7 @@ extends Node
 
 
 var file_path := "user://settings"
-var data := {music_vol = 0.0, sfx_vol = 0.0}
+var data := {music_vol = 0.0, sfx_vol = 0.0, blood_mode = true}
 
 
 func _ready() -> void:

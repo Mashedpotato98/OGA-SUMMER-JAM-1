@@ -60,10 +60,26 @@ value = 1.0
 tick_count = 11
 ticks_on_borders = true
 
-[node name="FinishButtons" type="HBoxContainer" parent="Menu" index="2"]
+[node name="BloodMode" type="HBoxContainer" parent="Menu" index="2"]
 margin_top = 48.0
 margin_right = 260.0
-margin_bottom = 72.0
+margin_bottom = 68.0
+
+[node name="Label" type="Label" parent="Menu/BloodMode" index="0"]
+margin_right = 227.0
+margin_bottom = 20.0
+size_flags_horizontal = 3
+text = "Blood mode:"
+
+[node name="BloodModeToggle" type="CheckButton" parent="Menu/BloodMode" index="1"]
+margin_left = 228.0
+margin_right = 260.0
+margin_bottom = 20.0
+
+[node name="FinishButtons" type="HBoxContainer" parent="Menu" index="3"]
+margin_top = 72.0
+margin_right = 260.0
+margin_bottom = 96.0
 
 [node name="SaveButton" type="Button" parent="Menu/FinishButtons" index="0"]
 margin_right = 129.0
