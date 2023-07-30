@@ -22,6 +22,7 @@ export var min_circle_distance := 64.0
 export var max_circle_distance := 96.0
 export var bribed_texture: Texture
 export var follow_distance := 24.0
+export var drop_chance := 0.1
 
 var bribe_state: int = BRIBE_STATES.INNOCENT setget _on_bribe_state_set
 var cop: Node2D = null
@@ -51,6 +52,10 @@ func _die() -> void:
 				Inventory.cronies.remove(i)
 				Inventory._on_cronies_set(Inventory.cronies)
 				break
+	else:
+		if randf() >= drop_chance:
+			drop()
+
 	queue_free()
 
 
@@ -138,6 +143,10 @@ func being_bribed() -> void:
 	else:
 		hand_pivot.lose_target()
 		follow_player()
+
+
+func drop() -> void:
+	pass
 
 
 func _on_bribe_state_set(value: int) -> void:
