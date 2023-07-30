@@ -5,6 +5,6 @@ extends Pickup
 export var amount := 100
 
 
-func _collect(_body: Node) -> void:
+func _collect(body: Node) -> void:
 	Inventory.money += amount
-	queue_free()
+	._collect(body)
