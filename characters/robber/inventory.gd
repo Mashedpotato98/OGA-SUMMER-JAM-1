@@ -10,7 +10,7 @@ const BRIBE_PATH := "res://characters/robber/bribe.tscn"
 
 const DEFAULT_MONEY := 5_000
 const DEFAULT_ITEMS := {
-	"res://guns/pistol/pistol.tscn": 50,
+	"res://guns/pistol/pistol.tscn": 100,
 	BRIBE_PATH: MAX_CRONIES,
 }
 
