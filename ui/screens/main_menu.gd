@@ -25,7 +25,7 @@ func _on_CreditsButton_pressed() -> void:
 
 
 func _on_Tutorial_pressed() -> void:
-	change_scene("res://tutorial.tscn")
+	change_scene("res://levels/tutorial_2.tscn")
 
 
 func _on_SettingsButton_pressed() -> void:

@@ -2,7 +2,7 @@ class_name ElevatorTransition
 extends Control
 
 
-const LEVELS := 3
+const LEVELS := 6
 const LEVEL_VARIATIONS := 18 # Should be automated based on files
 
 onready var level_display: Sprite = $LevelDisplay

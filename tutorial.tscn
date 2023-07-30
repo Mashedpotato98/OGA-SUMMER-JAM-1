@@ -42,10 +42,7 @@ position = Vector2( 184, 346 )
 [node name="CollisionShape" parent="Robber/HitBox" index="0"]
 shape = SubResource( 2 )
 
-[node name="Camera2D" parent="Robber" index="4"]
-zoom = Vector2( 0.6, 0.6 )
-
-[node name="AnimationTree" parent="Robber" index="5"]
+[node name="AnimationTree" parent="Robber" index="11"]
 parameters/playback = SubResource( 3 )
 
 [node name="UI" parent="." instance=ExtResource( 1 )]

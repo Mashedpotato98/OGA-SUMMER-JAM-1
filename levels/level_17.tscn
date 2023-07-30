@@ -34,18 +34,15 @@ position = Vector2( 236, 256 )
 position = Vector2( 496, 70 )
 
 [node name="Swat" parent="YSort/Cops" index="4" instance=ExtResource( 7 )]
-position = Vector2( 238, 474 )
+position = Vector2( 539, 485 )
 
-[node name="Swat4" parent="YSort/Cops" index="5" instance=ExtResource( 7 )]
-position = Vector2( 238, 474 )
-
-[node name="Swat2" parent="YSort/Cops" index="6" instance=ExtResource( 7 )]
+[node name="Swat2" parent="YSort/Cops" index="5" instance=ExtResource( 7 )]
 position = Vector2( 416, 479 )
 
-[node name="Swat3" parent="YSort/Cops" index="7" instance=ExtResource( 7 )]
+[node name="Swat3" parent="YSort/Cops" index="6" instance=ExtResource( 7 )]
 position = Vector2( 94, 168 )
 
-[node name="Swat5" parent="YSort/Cops" index="8" instance=ExtResource( 7 )]
+[node name="Swat5" parent="YSort/Cops" index="7" instance=ExtResource( 7 )]
 position = Vector2( 354, 57 )
 
 [node name="Elevator" parent="YSort" index="2"]
