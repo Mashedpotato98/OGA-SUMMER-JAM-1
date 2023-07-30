@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://guns/turret/turret_1.png" type="Texture" id=1]
 [ext_resource path="res://guns/turret/turret.gd" type="Script" id=2]
@@ -8,6 +8,8 @@
 [ext_resource path="res://guns/bullets/weak_bullet.tscn" type="PackedScene" id=6]
 [ext_resource path="res://components/hit_box.tscn" type="PackedScene" id=7]
 [ext_resource path="res://guns/auto_aimer.tscn" type="PackedScene" id=8]
+[ext_resource path="res://sfx/shots/sfx_wpn_machinegun_loop4.wav" type="AudioStream" id=9]
+[ext_resource path="res://sfx/dmg/sfx_damage_hit7.wav" type="AudioStream" id=10]
 
 [sub_resource type="CircleShape2D" id=1]
 radius = 8.0
@@ -115,6 +117,9 @@ wait_time = 0.1
 [node name="AnimationPlayer" parent="AutoAimer/Gun" index="3"]
 anims/Shoot = SubResource( 2 )
 
+[node name="ShootSound" parent="AutoAimer/Gun" index="4"]
+stream = ExtResource( 9 )
+
 [node name="DetectionZone" parent="." instance=ExtResource( 5 )]
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
@@ -128,6 +133,10 @@ shape = SubResource( 6 )
 
 [node name="ImmunityDuration" parent="HitBox" index="1"]
 wait_time = 0.001
+
+[node name="HurtSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 10 )
+max_distance = 512.0
 
 [connection signal="lost" from="DetectionZone" to="." method="_on_DetectionZone_lost"]
 [connection signal="lost" from="DetectionZone" to="AutoAimer" method="lose_target"]

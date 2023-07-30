@@ -2,6 +2,8 @@ class_name Turret
 extends StaticBody2D
 
 
+const TURRET_DEATH_EFFECT := preload("res://guns/turret/turret_death_effect.tscn")
+
 export var turn_speed := 5.0
 export var shoot_margin := 0.2
 export var hp := 6 setget _on_hp_set
@@ -14,6 +16,7 @@ onready var auto_aimer: AutoAimer = $AutoAimer
 onready var gun: Gun = auto_aimer.get_node("Gun")
 onready var detection_zone: Area2D = $DetectionZone
 onready var animation_player: AnimationPlayer = $AnimationPlayer
+onready var hurt_sound: AudioStreamPlayer2D = $HurtSound
 
 
 func _process(_delta: float) -> void:
@@ -56,7 +59,10 @@ func sweep(angle: float, duration: float) -> SceneTreeTween:
 func _on_hp_set(value: int) -> void:
 	hp = value
 	if hp <= 0:
-		queue_free()# For now.
+		var turret_death_effect: TurretDeathEffect = TURRET_DEATH_EFFECT.instance()
+		get_tree().current_scene.add_child(turret_death_effect)
+		turret_death_effect.global_position = global_position
+		queue_free()
 
 
 func _on_AnimationPlayer_animation_finished(_anim_name: String) -> void:
@@ -65,6 +71,7 @@ func _on_AnimationPlayer_animation_finished(_anim_name: String) -> void:
 
 func _on_HitBox_dmg_taken(_from: Vector2, amount: int) -> void:
 	self.hp -= amount
+	hurt_sound.play()
 
 
 func _on_DetectionZone_lost(what: Node) -> void:
