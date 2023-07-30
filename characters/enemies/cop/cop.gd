@@ -52,9 +52,8 @@ func _die() -> void:
 				Inventory.cronies.remove(i)
 				Inventory._on_cronies_set(Inventory.cronies)
 				break
-	else:
-		if randf() >= drop_chance:
-			drop()
+	elif randf() <= drop_chance:
+		drop()
 
 	queue_free()
 
@@ -146,7 +145,11 @@ func being_bribed() -> void:
 
 
 func drop() -> void:
-	pass
+	var file := str(item.filename).get_basename().get_file()
+	file += "_pickup.tscn"
+	var pickup: ItemPickup = load("res://pickups/" + file).instance()
+	get_tree().current_scene.add_child(pickup)
+	pickup.global_position = global_position
 
 
 func _on_bribe_state_set(value: int) -> void:
