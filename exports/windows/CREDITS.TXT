@@ -106,7 +106,4 @@ URL:
 License(s):
     * CC0 ( http://creativecommons.org/publicdomain/zero/1.0/legalcode )
 
-File(s):
-    * oga_summer_jam.zip
-
 ----------------------------------------
