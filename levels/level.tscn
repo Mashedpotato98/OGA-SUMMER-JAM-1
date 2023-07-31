@@ -1,10 +1,11 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://ui/ui.tscn" type="PackedScene" id=1]
 [ext_resource path="res://music/tausdei_-_vice_police.mp3" type="AudioStream" id=2]
 [ext_resource path="res://levels/level.gd" type="Script" id=3]
 [ext_resource path="res://levels/vault/vault.tscn" type="PackedScene" id=4]
 [ext_resource path="res://characters/robber/robber.tscn" type="PackedScene" id=5]
+[ext_resource path="res://ui/screens/pause_screen.tscn" type="PackedScene" id=6]
 [ext_resource path="res://levels/elevator/elevator.tscn" type="PackedScene" id=7]
 
 [sub_resource type="NavigationPolygon" id=1]
@@ -44,6 +45,8 @@ code_spawn_points = NodePath("../CodeSpawnPoints")
 
 [node name="NavigationPolygonInstance" type="NavigationPolygonInstance" parent="."]
 navpoly = SubResource( 1 )
+
+[node name="PauseScreen" parent="." instance=ExtResource( 6 )]
 
 [connection signal="vault_menu_closed" from="UI" to="YSort/Robber" method="_on_UI_vault_menu_closed"]
 [connection signal="code_grabbed" from="YSort/Robber" to="UI" method="_on_Robber_code_grabbed"]
