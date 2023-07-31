@@ -31,7 +31,7 @@ show_collision = true
 tile_data = PoolIntArray( 524314, 1, 0, 524315, 1, 0, 983047, 1, 0, 983048, 1, 0, 983065, 1, 0, 983066, 1, 0, 983067, 1, 0, 1179649, 2, 0, 1179660, 0, 0, 1245185, 2, 0, 1310732, 0, 0, 1376257, 2, 0, 1441793, 2, 0, 1441804, 0, 0 )
 
 [node name="Robber" parent="YSort" index="0"]
-position = Vector2( 53, 283 )
+position = Vector2( 60, 276 )
 
 [node name="Cop" parent="YSort/Cops" index="0" instance=ExtResource( 8 )]
 position = Vector2( 401, 295 )

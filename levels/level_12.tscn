@@ -19,7 +19,7 @@ outlines = [ PoolVector2Array( 234, 570, 198, 570, 198, 546, 138, 546, 138, 570,
 [node name="level_12" instance=ExtResource( 7 )]
 
 [node name="Robber" parent="YSort" index="0"]
-position = Vector2( 669, 85 )
+position = Vector2( 684, 84 )
 
 [node name="Cop" parent="YSort/Cops" index="0" instance=ExtResource( 8 )]
 position = Vector2( 199, 501 )
