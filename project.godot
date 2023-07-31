@@ -304,7 +304,7 @@ _global_script_class_icons={
 
 config/name="Robbing Hood"
 run/main_scene="res://ui/screens/main_menu.tscn"
-boot_splash/image="res://icon.png"
+boot_splash/image="res://ui/screens/splash.png"
 boot_splash/use_filter=false
 boot_splash/bg_color=Color( 0.121569, 0.113725, 0.113725, 1 )
 config/icon="res://icon.png"
