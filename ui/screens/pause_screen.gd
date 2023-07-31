@@ -23,3 +23,11 @@ func _on_ResumeButton_pressed() -> void:
 
 func _on_QuitButton_pressed() -> void:
 	get_tree().quit()
+
+
+func enable() -> void:
+	set_process_input(true)
+
+
+func disable() -> void:
+	set_process_input(false)

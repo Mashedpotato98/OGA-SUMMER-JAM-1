@@ -5,6 +5,7 @@ extends CanvasLayer
 const CODE := preload("res://ui/code.tscn")
 
 signal vault_menu_closed
+signal vault_menu_opened
 
 const INVENTORY_ITEM := preload("res://ui/buttons/inventory_item.tscn")
 const VAULT_DIRECTION := preload("res://ui/buttons/vault_direction.tscn")
@@ -163,6 +164,7 @@ func _on_Vault_activated(vault: Vault) -> void:
 
 	vault_menu.show()
 	cancel_button.grab_focus()
+	emit_signal("vault_menu_opened")
 
 
 func _on_CancelButton_pressed() -> void:

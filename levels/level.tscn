@@ -24,6 +24,8 @@ border_width = 4.0
 
 [node name="UI" parent="." instance=ExtResource( 1 )]
 
+[node name="PauseScreen" parent="." instance=ExtResource( 6 )]
+
 [node name="YSort" type="YSort" parent="."]
 
 [node name="Robber" parent="YSort" instance=ExtResource( 5 )]
@@ -46,9 +48,9 @@ code_spawn_points = NodePath("../CodeSpawnPoints")
 [node name="NavigationPolygonInstance" type="NavigationPolygonInstance" parent="."]
 navpoly = SubResource( 1 )
 
-[node name="PauseScreen" parent="." instance=ExtResource( 6 )]
-
 [connection signal="vault_menu_closed" from="UI" to="YSort/Robber" method="_on_UI_vault_menu_closed"]
+[connection signal="vault_menu_closed" from="UI" to="PauseScreen" method="enable"]
+[connection signal="vault_menu_opened" from="UI" to="PauseScreen" method="disable"]
 [connection signal="code_grabbed" from="YSort/Robber" to="UI" method="_on_Robber_code_grabbed"]
 [connection signal="cool_down_started" from="YSort/Robber" to="UI" method="_on_Robber_cool_down_started"]
 [connection signal="hp_changed" from="YSort/Robber" to="UI" method="set_hp"]
