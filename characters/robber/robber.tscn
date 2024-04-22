@@ -2,7 +2,7 @@
 
 [ext_resource path="res://characters/character.tscn" type="PackedScene" id=1]
 [ext_resource path="res://characters/robber/robber.gd" type="Script" id=2]
-[ext_resource path="res://characters/robber/robber.png" type="Texture" id=3]
+[ext_resource path="res://characters/robber/robber_reskin.png" type="Texture" id=3]
 [ext_resource path="res://characters/robber/color_shader.gdshader" type="Shader" id=4]
 [ext_resource path="res://sfx/movement/sfx_movement_jump15.wav" type="AudioStream" id=5]
 [ext_resource path="res://sfx/dmg/death_sound.tscn" type="PackedScene" id=6]
@@ -327,6 +327,7 @@ graph_offset = Vector2( -273.882, 20.748 )
 
 [node name="Robber" instance=ExtResource( 1 )]
 collision_layer = 2
+collision_mask = 85
 script = ExtResource( 2 )
 speed = 48.0
 max_hp = 6
