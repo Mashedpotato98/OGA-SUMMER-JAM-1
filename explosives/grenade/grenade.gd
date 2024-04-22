@@ -33,8 +33,9 @@ func _physics_process(delta: float) -> void:
 			assert(not enemy is Robber)
 			average += enemy.global_position
 		average /= enemies.size()
+		# Remove stragglers
 		for i in range(enemies.size() - 1, -1, -1):
-			if global_position.distance_to(enemies[i].global_position) > explosion_radius \
+			if average.distance_to(enemies[i].global_position) > explosion_radius \
 					+ explosion_safe_margin:
 				enemies.remove(i)
 				refining = true
