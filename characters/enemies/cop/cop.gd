@@ -23,6 +23,7 @@ export var max_circle_distance := 96.0
 export var bribed_texture: Texture
 export var follow_distance := 24.0
 export var drop_chance := 0.1
+export var g36c_accuracy := 4.0
 
 var bribe_state: int = BRIBE_STATES.INNOCENT setget _on_bribe_state_set
 var cop: Node2D = null
@@ -40,7 +41,12 @@ onready var playback: AnimationNodeStateMachinePlayback = animation_tree.get("pa
 
 func _ready() -> void:
 	._ready()
-	change_item(GUNS[randi() % GUNS.size()])
+	var selected_gun: PackedScene = GUNS[randi() % GUNS.size()]
+	change_item(selected_gun)
+
+	if selected_gun == GUNS[0]:
+		shoot_margin /= g36c_accuracy
+		hand_pivot.turn_speed *= g36c_accuracy
 
 
 func _die() -> void:

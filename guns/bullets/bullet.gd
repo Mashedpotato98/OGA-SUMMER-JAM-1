@@ -43,6 +43,10 @@ func _hit() -> Node2D:
 	return hit_effect
 
 
+func _post_translation() -> void:
+	pass
+
+
 func _on_Bullet_area_entered(area: Area2D) -> void:
 	if not area is HitBox:
 		return

@@ -325,6 +325,7 @@ max_circle_distance = 96.0
 bribed_texture = ExtResource( 6 )
 follow_distance = 24.0
 drop_chance = 0.1
+g36c_accuracy = 4.0
 
 [node name="Sprite" parent="." index="0"]
 position = Vector2( 0, -7 )

@@ -2,7 +2,7 @@ class_name ShotGun
 extends Gun
 
 
-export var bullets := 3
+export var bullets := 4
 
 
 func activate() -> bool:

@@ -52,6 +52,7 @@ func add_bullet() -> void:
 	bullet.distance = distance
 	get_tree().current_scene.add_child(bullet)
 	bullet.global_position = barrel.global_position
+	bullet._post_translation()
 
 
 func start_cool_down() -> void:

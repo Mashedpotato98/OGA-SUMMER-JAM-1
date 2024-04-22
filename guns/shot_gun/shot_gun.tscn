@@ -27,8 +27,8 @@ tracks/0/keys = {
 [node name="ShotGun" instance=ExtResource( 1 )]
 script = ExtResource( 2 )
 BULLET = ExtResource( 4 )
-spread = 45.0
-bullets = 3
+spread = 30.0
+bullets = 4
 
 [node name="Sprite" parent="." index="0"]
 position = Vector2( -11, 2 )

@@ -38,4 +38,7 @@ func level_up(from_height: int, robber_hp: int) -> void:
 
 static func get_level() -> String:
 	randomize()
-	return "res://levels/level_%s.tscn" % str(randi() % LEVEL_VARIATIONS + 1)
+	var result: String
+	while result in ["", "res://levels/level_14.tscn", "res://levels/level_18.tscn"]:
+		result = "res://levels/level_%s.tscn" % str(randi() % LEVEL_VARIATIONS + 1)
+	return result
