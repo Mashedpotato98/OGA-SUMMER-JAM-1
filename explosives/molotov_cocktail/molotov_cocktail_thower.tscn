@@ -24,6 +24,7 @@ tracks/0/keys = {
 
 [node name="MolotovCoctailThower" instance=ExtResource( 1 )]
 BULLET = ExtResource( 2 )
+distance = 128.0
 
 [node name="Sprite" parent="." index="0"]
 texture = ExtResource( 3 )

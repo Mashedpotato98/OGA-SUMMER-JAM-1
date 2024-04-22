@@ -5,7 +5,7 @@ signal money_changed(money)
 signal current_item_switched(new_item)
 signal items_changed(items)
 
-const MAX_CRONIES := 4
+const MAX_CRONIES := 16
 const BRIBE_PATH := "res://characters/robber/bribe.tscn"
 
 const DEFAULT_MONEY := 5_000

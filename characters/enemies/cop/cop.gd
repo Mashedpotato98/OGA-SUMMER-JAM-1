@@ -24,6 +24,7 @@ export var bribed_texture: Texture
 export var follow_distance := 24.0
 export var drop_chance := 0.1
 export var g36c_accuracy := 4.0
+export var bribed_soft_collider_radius := 16.0
 
 var bribe_state: int = BRIBE_STATES.INNOCENT setget _on_bribe_state_set
 var cop: Node2D = null
@@ -34,6 +35,8 @@ onready var navigator: NavigationAgent2D = $Navigator
 onready var cop_detection_zone: DetectionZone = $CopDetectionZone
 onready var cop_detection_zone_collision_shape: CollisionShape2D = cop_detection_zone.get_node(
 		"CollisionShape2D")
+onready var soft_collider_shape: CircleShape2D = soft_collider.get_node("CollisionShape2D").shape
+onready var soft_collider_radius := soft_collider_shape.radius
 
 onready var animation_tree: AnimationTree = $AnimationTree
 onready var playback: AnimationNodeStateMachinePlayback = animation_tree.get("parameters/playback")
@@ -164,6 +167,8 @@ func _on_bribe_state_set(value: int) -> void:
 	var bribed: bool = bribe_state == BRIBE_STATES.BRIBED
 	set_collision_layer_bit(1, bribed)
 	set_collision_layer_bit(2, not bribed)
+	set_collision_mask_bit(1, not bribed)
+	soft_collider_shape.radius = bribed_soft_collider_radius if bribed else soft_collider_radius
 	type = "robber" if bribed else "cop"
 	if bribed:
 		sprite.texture = bribed_texture
