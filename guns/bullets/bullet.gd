@@ -57,6 +57,14 @@ func _on_Bullet_area_entered(area: Area2D) -> void:
 	_hit()
 
 
-func _on_Bullet_body_entered(_body: Node) -> void:
+#func _on_Bullet_body_entered(_body: Node) -> void:
 # warning-ignore:return_value_discarded
-	_hit()
+#	_hit()
+
+
+func _on_Bullet_body_shape_entered(_body_rid: RID, _body: Node,
+		_body_shape_index: int, local_shape_index: int) -> void:
+	var local_shape_owner := shape_find_owner(local_shape_index)
+	var local_shape_node: CollisionShape2D = shape_owner_get_owner(local_shape_owner)
+	if local_shape_node.name == "WallCollider":
+		_hit()

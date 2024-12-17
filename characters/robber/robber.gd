@@ -12,7 +12,7 @@ export var dash_speed := 128.0
 export var dash_length := 0.5
 export var cronie_spawn_distance := 24.0
 
-var dash_colling := false
+var dash_cooling := false
 var anim_dir := Vector2.RIGHT setget _on_anim_dir_set
 var aim_dir := Vector2()
 var bribing := false
@@ -24,6 +24,7 @@ onready var animation_tree: AnimationTree = $AnimationTree
 onready var playback: AnimationNodeStateMachinePlayback = animation_tree.get("parameters/playback")
 onready var dash_cool_down: Timer = $DashCoolDown
 onready var dash_sound: AudioStreamPlayer = $DashSound
+onready var dash_bar: TextureProgress = $DashBar
 
 
 func _init() -> void:
@@ -41,6 +42,7 @@ func _ready() -> void:
 		Inventory._on_current_item_set(Inventory.current_item)
 
 	Input.mouse_mode = Input.MOUSE_MODE_CONFINED
+	dash_bar.max_value = dash_cool_down.wait_time
 	is_ready = true
 
 
@@ -56,8 +58,6 @@ func _input(event: InputEvent) -> void:
 	if stunned:
 		return
 
-	if event.is_action_pressed("dash") and not dash_colling:
-		dash()
 	elif event.is_action_pressed("switch_gun_next"):
 		scroll_items(1)
 	elif event.is_action_pressed("switch_gun_prev"):
@@ -75,6 +75,8 @@ func _unhandled_input(event: InputEvent) -> void:
 
 
 func _physics_process(delta: float) -> void:
+	if Input.is_action_pressed("dash") and not dash_cooling:
+		dash()
 	if not stunned:
 		move(delta)
 		turn(delta)
@@ -95,11 +97,13 @@ func _die() -> void:
 
 
 func dash() -> void:
-	shove(anim_dir * dash_speed, dash_length)
-	dash_colling = true
+	shove(anim_dir * dash_speed, dash_length, false)
+	dash_cooling = true
 	dash_cool_down.start()
 	hit_box.start_immunity(dash_length)
 	dash_sound.play()
+	dash_bar.value = dash_bar.max_value
+	create_tween().tween_property(dash_bar, "value", 0.0, dash_cool_down.wait_time)
 	animation_tree.set("parameters/Dash/blend_position", anim_dir)
 	playback.travel("Dash")
 
@@ -217,7 +221,7 @@ func _on_HitBox_dmg_taken(from: Vector2, amount: int) -> void:
 
 
 func _on_DashCoolDown_timeout() -> void:
-	dash_colling = false
+	dash_cooling = false
 
 
 func _on_Vault_activated(_vault: StaticBody2D) -> void:

@@ -70,7 +70,7 @@ position = Vector2( 169, 298 )
 [node name="WanderPoint8" parent="WanderPoints" index="7" instance=ExtResource( 10 )]
 position = Vector2( 162, 112 )
 
-[node name="Vault" parent="." index="8"]
+[node name="Vault" parent="." index="9"]
 position = Vector2( 720, 24 )
 
 [node name="SpawnPoint" parent="CodeSpawnPoints" index="0" instance=ExtResource( 9 )]
@@ -85,5 +85,5 @@ position = Vector2( 36, 252 )
 [node name="SpawnPoint4" parent="CodeSpawnPoints" index="3" instance=ExtResource( 9 )]
 position = Vector2( 492, 300 )
 
-[node name="NavigationPolygonInstance" parent="." index="10"]
+[node name="NavigationPolygonInstance" parent="." index="11"]
 navpoly = SubResource( 1 )

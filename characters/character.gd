@@ -94,14 +94,15 @@ func start_cool_down() -> void:
 		emit_signal("cool_down_started", item.filename, item.get_node("CoolDown").wait_time)
 
 
-func shove(vel: Vector2, duration: float) -> void:
+func shove(vel: Vector2, duration: float, stun := true) -> void:
 	if stunned:
 		return
 	velocity = vel
 
-	stunned = true
-	yield(get_tree().create_timer(duration), "timeout")
-	stunned = false
+	if stun:
+		stunned = true
+		yield(get_tree().create_timer(duration), "timeout")
+		stunned = false
 
 
 func wander() -> void:

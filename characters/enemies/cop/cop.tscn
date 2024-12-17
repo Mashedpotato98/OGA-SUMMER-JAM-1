@@ -1,11 +1,11 @@
 [gd_scene load_steps=46 format=2]
 
 [ext_resource path="res://characters/enemies/enemy.tscn" type="PackedScene" id=1]
-[ext_resource path="res://characters/enemies/cop/cop.png" type="Texture" id=2]
+[ext_resource path="res://characters/enemies/cop/cop_reskin.png" type="Texture" id=2]
 [ext_resource path="res://characters/enemies/cop/cop.gd" type="Script" id=3]
 [ext_resource path="res://guns/pistol/pistol.tscn" type="PackedScene" id=4]
 [ext_resource path="res://components/detection_zone.tscn" type="PackedScene" id=5]
-[ext_resource path="res://characters/enemies/cop/cop_bribed.png" type="Texture" id=6]
+[ext_resource path="res://characters/enemies/cop/cop_bribed_reskin.png" type="Texture" id=6]
 
 [sub_resource type="CapsuleShape2D" id=4]
 radius = 2.0
@@ -71,7 +71,7 @@ tracks/0/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 1,
-"values": [ 4 ]
+"values": [ 0 ]
 }
 
 [sub_resource type="Animation" id=19]
@@ -87,7 +87,7 @@ tracks/0/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 1,
-"values": [ 5 ]
+"values": [ 1 ]
 }
 
 [sub_resource type="Animation" id=20]
@@ -107,7 +107,7 @@ tracks/0/keys = {
 
 [sub_resource type="Animation" id=25]
 resource_name = "RunDown"
-length = 0.2
+length = 0.4
 loop = true
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:frame")
@@ -116,15 +116,15 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.1 ),
-"transitions": PoolRealArray( 1, 1 ),
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
 "update": 1,
-"values": [ 6, 10 ]
+"values": [ 6, 2, 10, 2 ]
 }
 
 [sub_resource type="Animation" id=26]
 resource_name = "RunLeft"
-length = 0.2
+length = 0.4
 loop = true
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:frame")
@@ -133,15 +133,15 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.1 ),
-"transitions": PoolRealArray( 1, 1 ),
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
 "update": 1,
-"values": [ 7, 11 ]
+"values": [ 7, 3, 11, 3 ]
 }
 
 [sub_resource type="Animation" id=27]
 resource_name = "RunRight"
-length = 0.2
+length = 0.4
 loop = true
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:frame")
@@ -150,15 +150,15 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.1 ),
-"transitions": PoolRealArray( 1, 1 ),
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
 "update": 1,
-"values": [ 4, 8 ]
+"values": [ 4, 0, 8, 0 ]
 }
 
 [sub_resource type="Animation" id=28]
 resource_name = "RunUp"
-length = 0.2
+length = 0.4
 loop = true
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:frame")
@@ -167,15 +167,15 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.1 ),
-"transitions": PoolRealArray( 1, 1 ),
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
 "update": 1,
-"values": [ 5, 9 ]
+"values": [ 5, 1, 9, 1 ]
 }
 
 [sub_resource type="Animation" id=21]
 resource_name = "WalkDown"
-length = 0.4
+length = 0.8
 loop = true
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:frame")
@@ -184,15 +184,15 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.2 ),
-"transitions": PoolRealArray( 1, 1 ),
+"times": PoolRealArray( 0, 0.2, 0.4, 0.6 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
 "update": 1,
-"values": [ 6, 10 ]
+"values": [ 6, 2, 10, 2 ]
 }
 
 [sub_resource type="Animation" id=22]
 resource_name = "WalkLeft"
-length = 0.5
+length = 0.8
 loop = true
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:frame")
@@ -201,15 +201,15 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.2 ),
-"transitions": PoolRealArray( 1, 1 ),
+"times": PoolRealArray( 0, 0.2, 0.4, 0.6 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
 "update": 1,
-"values": [ 7, 11 ]
+"values": [ 7, 3, 11, 3 ]
 }
 
 [sub_resource type="Animation" id=23]
 resource_name = "WalkRight"
-length = 0.4
+length = 0.8
 loop = true
 tracks/0/type = "value"
 tracks/0/path = NodePath("Sprite:frame")
@@ -218,14 +218,28 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.2 ),
-"transitions": PoolRealArray( 1, 1 ),
+"times": PoolRealArray( 0, 0.2, 0.4, 0.6 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
 "update": 1,
-"values": [ 4, 8 ]
+"values": [ 4, 0, 8, 0 ]
 }
 
 [sub_resource type="Animation" id=24]
 resource_name = "WalkUp"
+length = 0.8
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2, 0.4, 0.6 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 5, 1, 9, 1 ]
+}
 
 [sub_resource type="AnimationNodeAnimation" id=29]
 animation = "IdleLeft"
@@ -351,11 +365,15 @@ position = Vector2( 8, 0 )
 
 [node name="Pistol" parent="HandPivot/Hand" index="0" instance=ExtResource( 4 )]
 
+[node name="DetectionZone" parent="." index="4"]
+visible = false
+
 [node name="CollisionShape2D" parent="DetectionZone" index="0"]
 shape = SubResource( 3 )
 
 [node name="SoftCollider" parent="." index="5"]
-strength = 0.5
+visible = false
+strength = 0.4
 
 [node name="HurtSound" parent="." index="7"]
 max_distance = 2000.0

@@ -30,6 +30,7 @@ func search() -> void:
 	if global_position.distance_to(last_target_sighting) > desired_distance:
 		smooth_vel = global_position.direction_to(last_target_sighting) * speed
 	else:
+		choose_wander_point()
 		last_target_sighting = Vector2.INF
 
 

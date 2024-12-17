@@ -44,6 +44,7 @@ onready var playback: AnimationNodeStateMachinePlayback = animation_tree.get("pa
 
 func _ready() -> void:
 	._ready()
+	hand_pivot.rotation = rand_range(0.0, TAU)
 	var selected_gun: PackedScene = GUNS[randi() % GUNS.size()]
 	change_item(selected_gun)
 
