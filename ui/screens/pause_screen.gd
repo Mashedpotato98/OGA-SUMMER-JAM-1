@@ -2,9 +2,9 @@ class_name PauseScreen
 extends CanvasLayer
 
 
-onready var bg: ColorRect = $BG
-onready var interface: Screen = $Interface
-onready var resume_button: Button = interface.get_node("Menu/ResumeButton")
+@onready var bg: ColorRect = $BG
+@onready var interface: Screen = $Interface
+@onready var resume_button: Button = interface.get_node("Menu/ResumeButton")
 
 
 func _input(event: InputEvent) -> void:

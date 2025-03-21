@@ -1,5 +1,5 @@
 class_name TurretDeathEffect
-extends AnimatedSprite
+extends AnimatedSprite2D
 
 
 func _ready() -> void:

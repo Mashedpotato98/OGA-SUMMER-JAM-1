@@ -2,13 +2,13 @@ class_name BuyButton
 extends PanelContainer
 
 
-onready var menu: VBoxContainer = $Menu
-onready var icon: TextureRect = menu.get_node("Icon")
-onready var price_label: Label = menu.get_node("PriceLabel")
-onready var activate_button: Button = menu.get_node("ActivateButton")
+@onready var menu: VBoxContainer = $Menu
+@onready var icon: TextureRect = menu.get_node("Icon")
+@onready var price_label: Label = menu.get_node("PriceLabel")
+@onready var activate_button: Button = menu.get_node("ActivateButton")
 
-onready var refund_sound: AudioStreamPlayer = $RefundSound
-onready var buy_sound: AudioStreamPlayer = $BuySound
+@onready var refund_sound: AudioStreamPlayer = $RefundSound
+@onready var buy_sound: AudioStreamPlayer = $BuySound
 
 var bought := false
 var item := ""
@@ -23,7 +23,7 @@ func _ready() -> void:
 	price_label.text = "$" + str(price)
 
 # warning-ignore:return_value_discarded
-	Inventory.connect("money_changed", self, "_on_Inventory_money_changed")
+	Inventory.connect("money_changed", Callable(self, "_on_Inventory_money_changed"))
 	_on_Inventory_money_changed(Inventory.money)
 
 
@@ -38,7 +38,7 @@ func _on_ActivateButton_pressed() -> void:
 	if bought:
 		buy_sound.play()
 		activate_button.text = "Refund"
-		activate_button.modulate = Color.white
+		activate_button.modulate = Color.WHITE
 		Inventory.money -= price
 
 		if Inventory.items.has(item):

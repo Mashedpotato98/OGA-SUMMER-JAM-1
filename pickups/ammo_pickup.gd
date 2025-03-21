@@ -8,4 +8,4 @@ func _collect(body: Node) -> void:
 		return
 
 	Inventory.items[type] += int(ceil(Inventory.items_list[type].ammo / 2.0))
-	._collect(body)
+	super._collect(body)

@@ -1,13 +1,14 @@
 [remap]
 
 importer="wav"
-type="AudioStreamSample"
-path="res://.import/sfx_damage_hit1.wav-7f698c171eea4739b2a1fe1c48af7912.sample"
+type="AudioStreamWAV"
+uid="uid://v54lug6rm6kk"
+path="res://.godot/imported/sfx_damage_hit1.wav-7f698c171eea4739b2a1fe1c48af7912.sample"
 
 [deps]
 
 source_file="res://sfx/dmg/sfx_damage_hit1.wav"
-dest_files=[ "res://.import/sfx_damage_hit1.wav-7f698c171eea4739b2a1fe1c48af7912.sample" ]
+dest_files=["res://.godot/imported/sfx_damage_hit1.wav-7f698c171eea4739b2a1fe1c48af7912.sample"]
 
 [params]
 

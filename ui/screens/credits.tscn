@@ -2,9 +2,9 @@
 
 [ext_resource path="res://ui/screens/screen.tscn" type="PackedScene" id=1]
 [ext_resource path="res://ui/screens/credits.gd" type="Script" id=2]
-[ext_resource path="res://ui/fonts/kenpixel_mini.ttf" type="DynamicFontData" id=3]
+[ext_resource path="res://ui/fonts/kenpixel_mini.ttf" type="FontFile" id=3]
 
-[sub_resource type="DynamicFont" id=1]
+[sub_resource type="FontFile" id=1]
 size = 8
 font_data = ExtResource( 3 )
 
@@ -19,18 +19,18 @@ anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = 0.0
-margin_top = 48.0
-margin_right = 0.0
-margin_bottom = 0.0
+offset_left = 0.0
+offset_top = 48.0
+offset_right = 0.0
+offset_bottom = 0.0
 
 [node name="Text" type="RichTextLabel" parent="Menu" index="0"]
-margin_right = 384.0
-margin_bottom = 308.0
+offset_right = 384.0
+offset_bottom = 308.0
 size_flags_vertical = 3
-custom_fonts/normal_font = SubResource( 1 )
+theme_override_fonts/normal_font = SubResource( 1 )
 bbcode_enabled = true
-bbcode_text = "Title:
+text = "Title:
     Assets for OGA Summer Jam
 
 Author:
@@ -250,10 +250,10 @@ License(s):
 ----------------------------------------"
 
 [node name="BackButton" type="Button" parent="Menu" index="1"]
-margin_left = 168.0
-margin_top = 312.0
-margin_right = 216.0
-margin_bottom = 336.0
+offset_left = 168.0
+offset_top = 312.0
+offset_right = 216.0
+offset_bottom = 336.0
 size_flags_horizontal = 4
 text = "Back"
 

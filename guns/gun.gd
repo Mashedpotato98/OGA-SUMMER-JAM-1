@@ -4,22 +4,22 @@ class_name Gun
 extends Node2D
 
 
-export var BULLET: PackedScene = null
-export var spread := 0.0
-export var flip := true
-export var distance := 104.0
+@export var BULLET: PackedScene = null
+@export var spread := 0.0
+@export var flip := true
+@export var distance := 104.0
 
 var cooling := true
 
-onready var sprite: Sprite = $Sprite
-onready var cool_down: Timer = $CoolDown
-onready var barrel: Position2D = $Barrel
-onready var animation_player: AnimationPlayer = $AnimationPlayer
-onready var shoot_sound: AudioStreamPlayer2D = $ShootSound
+@onready var sprite: Sprite2D = $Sprite2D
+@onready var cool_down: Timer = $CoolDown
+@onready var barrel: Marker2D = $Barrel
+@onready var animation_player: AnimationPlayer = $AnimationPlayer
+@onready var shoot_sound: AudioStreamPlayer2D = $ShootSound
 
 
 func _ready() -> void:
-	spread = deg2rad(spread)
+	spread = deg_to_rad(spread)
 	if not flip:
 		set_process(false)
 
@@ -46,9 +46,9 @@ func activate() -> bool:
 
 
 func add_bullet() -> void:
-	var bullet: Bullet = BULLET.instance()
+	var bullet: Bullet = BULLET.instantiate()
 	bullet.attack_type = owner.type
-	bullet.direction = global_transform.x.rotated(rand_range(-spread, spread))
+	bullet.direction = global_transform.x.rotated(randf_range(-spread, spread))
 	bullet.distance = distance
 	get_tree().current_scene.add_child(bullet)
 	bullet.global_position = barrel.global_position

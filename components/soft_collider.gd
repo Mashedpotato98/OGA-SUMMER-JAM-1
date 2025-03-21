@@ -2,7 +2,7 @@ class_name SoftCollider
 extends Area2D
 
 
-export var strength := 0.75
+@export var strength := 0.75
 
 
 func get_safe_velocity(velocity: Vector2) -> Vector2:

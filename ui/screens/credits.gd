@@ -2,7 +2,7 @@ class_name Credits
 extends Screen
 
 
-onready var back_button: Button = $Menu/BackButton
+@onready var back_button: Button = $Menu/BackButton
 
 
 func _ready() -> void:
@@ -10,7 +10,7 @@ func _ready() -> void:
 
 
 func _on_BackButton_pressed() -> void:
-	change_scene("res://ui/screens/main_menu.tscn")
+	change_scene_to_file("res://ui/screens/main_menu.tscn")
 
 
 func _on_Text_meta_clicked(meta) -> void:

@@ -17,8 +17,8 @@ track = ExtResource( 2 )
 volume = -10.0
 
 [node name="MapSizeReference" type="ReferenceRect" parent="."]
-margin_right = 792.0
-margin_bottom = 600.0
+offset_right = 792.0
+offset_bottom = 600.0
 mouse_filter = 2
 border_width = 4.0
 
@@ -26,13 +26,13 @@ border_width = 4.0
 
 [node name="PauseScreen" parent="." instance=ExtResource( 6 )]
 
-[node name="YSort" type="YSort" parent="."]
+[node name="Node2D" type="Node2D" parent="."]
 
-[node name="Robber" parent="YSort" instance=ExtResource( 5 )]
+[node name="Robber" parent="Node2D" instance=ExtResource( 5 )]
 
-[node name="Cops" type="YSort" parent="YSort"]
+[node name="Cops" type="Node2D" parent="Node2D"]
 
-[node name="Elevator" parent="YSort" instance=ExtResource( 7 )]
+[node name="Elevator" parent="Node2D" instance=ExtResource( 7 )]
 position = Vector2( 0, -24 )
 
 [node name="Pickups" type="Node2D" parent="."]
@@ -45,16 +45,16 @@ code_spawn_points = NodePath("../CodeSpawnPoints")
 
 [node name="CodeSpawnPoints" type="Node2D" parent="."]
 
-[node name="NavigationPolygonInstance" type="NavigationPolygonInstance" parent="."]
-navpoly = SubResource( 1 )
+[node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
+navigation_polygon = SubResource( 1 )
 
 [connection signal="vault_menu_closed" from="UI" to="PauseScreen" method="enable"]
-[connection signal="vault_menu_closed" from="UI" to="YSort/Robber" method="_on_UI_vault_menu_closed"]
+[connection signal="vault_menu_closed" from="UI" to="Node2D/Robber" method="_on_UI_vault_menu_closed"]
 [connection signal="vault_menu_opened" from="UI" to="PauseScreen" method="disable"]
-[connection signal="code_grabbed" from="YSort/Robber" to="UI" method="_on_Robber_code_grabbed"]
-[connection signal="cool_down_started" from="YSort/Robber" to="UI" method="_on_Robber_cool_down_started"]
-[connection signal="hp_changed" from="YSort/Robber" to="UI" method="set_hp"]
-[connection signal="max_hp_changed" from="YSort/Robber" to="UI" method="set_max_hp"]
-[connection signal="robber_entered" from="YSort/Elevator" to="." method="level_up"]
+[connection signal="code_grabbed" from="Node2D/Robber" to="UI" method="_on_Robber_code_grabbed"]
+[connection signal="cool_down_started" from="Node2D/Robber" to="UI" method="_on_Robber_cool_down_started"]
+[connection signal="hp_changed" from="Node2D/Robber" to="UI" method="set_hp"]
+[connection signal="max_hp_changed" from="Node2D/Robber" to="UI" method="set_max_hp"]
+[connection signal="robber_entered" from="Node2D/Elevator" to="." method="level_up"]
 [connection signal="activated" from="Vault" to="UI" method="_on_Vault_activated"]
-[connection signal="activated" from="Vault" to="YSort/Robber" method="_on_Vault_activated"]
+[connection signal="activated" from="Vault" to="Node2D/Robber" method="_on_Vault_activated"]

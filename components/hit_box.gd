@@ -4,10 +4,10 @@ extends Area2D
 
 signal dmg_taken(from, amount)
 
-export var sensitivity := 1.0
+@export var sensitivity := 1.0
 
-onready var collision_shape: CollisionShape2D = $CollisionShape
-onready var immunity_duration: Timer = $ImmunityDuration
+@onready var collision_shape: CollisionShape2D = $CollisionShape3D
+@onready var immunity_duration: Timer = $ImmunityDuration
 
 
 func take_dmg(from: Vector2, amount := 1) -> void:

@@ -4,19 +4,19 @@ extends PanelContainer
 
 const VAULT_DIRECTION := preload("res://ui/buttons/vault_direction.tscn")
 
-onready var directions: HBoxContainer = $Directions
+@onready var directions: HBoxContainer = $Directions
 
 
 func init_directions(amount: int) -> void:
 	for i in amount:
-		directions.add_child(VAULT_DIRECTION.instance())
+		directions.add_child(VAULT_DIRECTION.instantiate())
 
 
 func set_directions_array(directions_array: Array) -> void:
 	for i in directions_array.size():
 		var vault_direction: VaultDirection
 		if directions.get_child_count() - 1 < i:
-			vault_direction = VAULT_DIRECTION.instance()
+			vault_direction = VAULT_DIRECTION.instantiate()
 			directions.add_child(vault_direction)
 		else:
 			vault_direction = directions.get_child(i)

@@ -6,22 +6,22 @@
 
 [node name="Level1" instance=ExtResource( 3 )]
 
-[node name="Robber" parent="YSort" index="0"]
+[node name="Robber" parent="Node2D" index="0"]
 position = Vector2( 192, 324 )
 
-[node name="Cop" parent="YSort/Cops" index="0" instance=ExtResource( 2 )]
+[node name="Cop" parent="Node2D/Cops" index="0" instance=ExtResource( 2 )]
 position = Vector2( 336, 96 )
 
-[node name="Cop3" parent="YSort/Cops" index="1" instance=ExtResource( 2 )]
+[node name="Cop3" parent="Node2D/Cops" index="1" instance=ExtResource( 2 )]
 position = Vector2( 132, 96 )
 
-[node name="Cop4" parent="YSort/Cops" index="2" instance=ExtResource( 2 )]
+[node name="Cop4" parent="Node2D/Cops" index="2" instance=ExtResource( 2 )]
 position = Vector2( 252, 96 )
 
-[node name="Cop2" parent="YSort/Cops" index="3" instance=ExtResource( 2 )]
+[node name="Cop2" parent="Node2D/Cops" index="3" instance=ExtResource( 2 )]
 position = Vector2( 48, 96 )
 
-[node name="Elevator" parent="YSort" index="2"]
+[node name="Elevator" parent="Node2D" index="2"]
 position = Vector2( 192, 24 )
 
 [node name="WanderPoint" parent="WanderPoints" index="0" instance=ExtResource( 1 )]

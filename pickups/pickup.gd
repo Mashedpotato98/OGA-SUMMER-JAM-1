@@ -2,8 +2,8 @@ class_name Pickup
 extends Area2D
 
 
-onready var sound_effect: AudioStreamPlayer = $SoundEffect
-onready var collision_shape: CollisionShape2D = $CollisionShape
+@onready var sound_effect: AudioStreamPlayer = $SoundEffect
+@onready var collision_shape: CollisionShape2D = $CollisionShape3D
 
 
 func _collect(_body: Node) -> void:

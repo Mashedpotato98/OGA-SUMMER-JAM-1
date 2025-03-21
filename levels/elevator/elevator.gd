@@ -4,8 +4,8 @@ extends Area2D
 
 signal robber_entered
 
-onready var door: AnimatedSprite = $Door
-onready var needle: Sprite = $Needle
+@onready var door: AnimatedSprite2D = $Door
+@onready var needle: Sprite2D = $Needle
 
 
 func _on_Elevator_body_entered(body: Node) -> void:

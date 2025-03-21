@@ -2,23 +2,23 @@ class_name Grenade
 extends Bullet
 
 
-export var min_distance := 64.0
-export var explosion_safe_margin := 8.0
+@export var min_distance := 64.0
+@export var explosion_safe_margin := 8.0
 
 var explosion_radius := Splash.new().distance
 
-onready var enemy_detector: Area2D = $EnemyDetector
-onready var enemy_detector_shape: CapsuleShape2D = enemy_detector.get_node("CollisionShape2D").shape
+@onready var enemy_detector: Area2D = $EnemyDetector
+@onready var enemy_detector_shape: CapsuleShape2D = enemy_detector.get_node("CollisionShape2D").shape
 
 
 func _ready() -> void:
-	._ready()
+	super._ready()
 	enemy_detector_shape.radius = explosion_radius
 	enemy_detector.rotation = direction.angle()
 
 
 func _physics_process(delta: float) -> void:
-	._physics_process(delta)
+	super._physics_process(delta)
 
 	var remaining_length := distance - distance_traveled
 	enemy_detector_shape.height = remaining_length
@@ -47,7 +47,7 @@ func _physics_process(delta: float) -> void:
 
 
 func _hit() -> Node2D:
-	var hit_effect: Node2D = ._hit()
+	var hit_effect: Node2D = super._hit()
 	hit_effect.attack_type = attack_type
 
 	return hit_effect

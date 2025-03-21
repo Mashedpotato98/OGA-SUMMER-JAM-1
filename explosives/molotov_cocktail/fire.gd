@@ -4,11 +4,11 @@ extends Area2D
 
 const FIRE_SPAWN := preload("res://explosives/molotov_cocktail/fire_spawn.tscn")
 
-export var distance := 64.0
-export var flames := 50
-export var dmg := 1
+@export var distance := 64.0
+@export var flames := 50
+@export var dmg := 1
 
-onready var sound_effect: AudioStreamPlayer2D = $SoundEffect
+@onready var sound_effect: AudioStreamPlayer2D = $SoundEffect
 
 
 func _ready() -> void:
@@ -19,10 +19,10 @@ func _ready() -> void:
 
 
 func spawn_flame() -> void:
-	var fire_spawn: FireSpawn = FIRE_SPAWN.instance()
+	var fire_spawn: FireSpawn = FIRE_SPAWN.instantiate()
 	call_deferred("add_child", fire_spawn)
-	yield(fire_spawn, "ready")
-	var final_pos := (Vector2.RIGHT * rand_range(0.0, distance)).rotated(randf() * TAU)
+	await fire_spawn.ready
+	var final_pos := (Vector2.RIGHT * randf_range(0.0, distance)).rotated(randf() * TAU)
 	fire_spawn.tween_pos(final_pos)
 
 

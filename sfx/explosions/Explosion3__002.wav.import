@@ -1,13 +1,14 @@
 [remap]
 
 importer="wav"
-type="AudioStreamSample"
-path="res://.import/Explosion3__002.wav-4435c41e39ab0ac2ed910254815de277.sample"
+type="AudioStreamWAV"
+uid="uid://bx3hfjygmcxlw"
+path="res://.godot/imported/Explosion3__002.wav-4435c41e39ab0ac2ed910254815de277.sample"
 
 [deps]
 
 source_file="res://sfx/explosions/Explosion3__002.wav"
-dest_files=[ "res://.import/Explosion3__002.wav-4435c41e39ab0ac2ed910254815de277.sample" ]
+dest_files=["res://.godot/imported/Explosion3__002.wav-4435c41e39ab0ac2ed910254815de277.sample"]
 
 [params]
 

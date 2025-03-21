@@ -7,7 +7,7 @@ signal lost(what)
 
 var collisions := []
 
-onready var ray_cast: RayCast2D = $RayCast
+@onready var ray_cast: RayCast2D = $RayCast3D
 
 
 func _ready() -> void:
@@ -19,7 +19,7 @@ func _process(_delta: float) -> void:
 		if collider == owner:
 			continue
 
-		ray_cast.cast_to = to_local(collider.global_position)
+		ray_cast.target_position = to_local(collider.global_position)
 		ray_cast.force_raycast_update()
 
 		var hit_collider: bool = ray_cast.is_colliding() and ray_cast.get_collider() == collider

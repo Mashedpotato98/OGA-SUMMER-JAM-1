@@ -1,13 +1,14 @@
 [remap]
 
 importer="wav"
-type="AudioStreamSample"
-path="res://.import/sfx_weapon_singleshot17.wav-e396830e3c34544976e17348bdb84794.sample"
+type="AudioStreamWAV"
+uid="uid://dsbvcumkpwg2v"
+path="res://.godot/imported/sfx_weapon_singleshot17.wav-e396830e3c34544976e17348bdb84794.sample"
 
 [deps]
 
 source_file="res://sfx/shots/sfx_weapon_singleshot17.wav"
-dest_files=[ "res://.import/sfx_weapon_singleshot17.wav-e396830e3c34544976e17348bdb84794.sample" ]
+dest_files=["res://.godot/imported/sfx_weapon_singleshot17.wav-e396830e3c34544976e17348bdb84794.sample"]
 
 [params]
 

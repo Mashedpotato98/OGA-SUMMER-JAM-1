@@ -3,7 +3,7 @@
 [ext_resource path="res://sfx/dmg/sfx_deathscream_human1.wav" type="AudioStream" id=1]
 
 [node name="DeathSound" type="AudioStreamPlayer"]
-pause_mode = 2
+process_mode = 3
 stream = ExtResource( 1 )
 autoplay = true
 bus = "SFX"

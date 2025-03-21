@@ -2,7 +2,7 @@ class_name LoseScreen
 extends Screen
 
 
-onready var home_button: Button = $Menu/HomeButton
+@onready var home_button: Button = $Menu/HomeButton
 
 
 func _init() -> void:
@@ -15,12 +15,12 @@ func _init() -> void:
 
 
 func _ready() -> void:
-	._ready()
+	super._ready()
 	home_button.grab_focus()
 
 
 func _on_HomeButton_pressed() -> void:
-	change_scene("res://ui/screens/main_menu.tscn")
+	change_scene_to_file("res://ui/screens/main_menu.tscn")
 
 
 func _on_QuitButton_pressed() -> void:

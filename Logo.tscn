@@ -3,8 +3,8 @@
 [ext_resource path="res://characters/enemies/swat/swat.tscn" type="PackedScene" id=1]
 [ext_resource path="res://characters/robber/robber.tscn" type="PackedScene" id=2]
 [ext_resource path="res://characters/enemies/cop/cop.tscn" type="PackedScene" id=3]
-[ext_resource path="res://light.png" type="Texture" id=4]
-[ext_resource path="res://ui/fonts/kenpixel.ttf" type="DynamicFontData" id=5]
+[ext_resource path="res://light.png" type="Texture2D" id=4]
+[ext_resource path="res://ui/fonts/kenpixel.ttf" type="FontFile" id=5]
 
 [sub_resource type="RectangleShape2D" id=1]
 resource_local_to_scene = true
@@ -34,7 +34,7 @@ radius = 128.0
 
 [sub_resource type="AnimationNodeStateMachinePlayback" id=8]
 
-[sub_resource type="DynamicFont" id=9]
+[sub_resource type="FontFile" id=9]
 font_data = ExtResource( 5 )
 
 [node name="Logo" type="Node2D"]
@@ -42,7 +42,7 @@ font_data = ExtResource( 5 )
 [node name="Robber" parent="." instance=ExtResource( 2 )]
 position = Vector2( 110, 142 )
 
-[node name="Sprite" parent="Robber" index="0"]
+[node name="Sprite2D" parent="Robber" index="0"]
 position = Vector2( -1, -5 )
 
 [node name="CollisionShape2D" parent="Robber" index="1"]
@@ -51,7 +51,7 @@ visible = false
 [node name="HitBox" parent="Robber" index="2"]
 visible = false
 
-[node name="CollisionShape" parent="Robber/HitBox" index="0"]
+[node name="CollisionShape3D" parent="Robber/HitBox" index="0"]
 shape = SubResource( 1 )
 
 [node name="HandPivot" parent="Robber" index="3"]
@@ -66,7 +66,7 @@ parameters/playback = SubResource( 2 )
 [node name="WallDetector" parent="Robber" index="8"]
 visible = false
 
-[node name="Listener2D" parent="Robber" index="9"]
+[node name="AudioListener2D" parent="Robber" index="9"]
 visible = false
 
 [node name="HurtSound" parent="Robber" index="10"]
@@ -86,7 +86,7 @@ visible = false
 [node name="HitBox" parent="Cop" index="2"]
 visible = false
 
-[node name="CollisionShape" parent="Cop/HitBox" index="0"]
+[node name="CollisionShape3D" parent="Cop/HitBox" index="0"]
 visible = false
 shape = SubResource( 3 )
 
@@ -106,7 +106,7 @@ visible = false
 visible = false
 shape = SubResource( 4 )
 
-[node name="RayCast" parent="Cop/DetectionZone" index="1"]
+[node name="RayCast3D" parent="Cop/DetectionZone" index="1"]
 visible = false
 
 [node name="SoftCollider" parent="Cop" index="5"]
@@ -122,7 +122,7 @@ visible = false
 visible = false
 shape = SubResource( 5 )
 
-[node name="RayCast" parent="Cop/CopDetectionZone" index="1"]
+[node name="RayCast3D" parent="Cop/CopDetectionZone" index="1"]
 visible = false
 
 [node name="BounceZone" parent="Cop" index="10"]
@@ -148,7 +148,7 @@ visible = false
 [node name="HitBox" parent="Swat" index="2"]
 visible = false
 
-[node name="CollisionShape" parent="Swat/HitBox" index="0"]
+[node name="CollisionShape3D" parent="Swat/HitBox" index="0"]
 visible = false
 shape = SubResource( 6 )
 
@@ -165,7 +165,7 @@ visible = false
 visible = false
 shape = SubResource( 7 )
 
-[node name="RayCast" parent="Swat/DetectionZone" index="1"]
+[node name="RayCast3D" parent="Swat/DetectionZone" index="1"]
 visible = false
 
 [node name="SoftCollider" parent="Swat" index="5"]
@@ -187,19 +187,19 @@ visible = false
 [node name="HurtSound" parent="Swat" index="10"]
 visible = false
 
-[node name="Light2D" type="Light2D" parent="."]
+[node name="PointLight2D" type="PointLight2D" parent="."]
 position = Vector2( 109, 101 )
 texture = ExtResource( 4 )
 texture_scale = 0.3
 shadow_enabled = true
 
 [node name="Label" type="Label" parent="."]
-margin_left = 48.0
-margin_top = 103.0
-margin_right = 180.0
-margin_bottom = 127.0
-rect_pivot_offset = Vector2( 92, 94 )
-custom_fonts/font = SubResource( 9 )
+offset_left = 48.0
+offset_top = 103.0
+offset_right = 180.0
+offset_bottom = 127.0
+pivot_offset = Vector2( 92, 94 )
+theme_override_fonts/font = SubResource( 9 )
 text = "Robbing Hood"
 
 [editable path="Robber"]

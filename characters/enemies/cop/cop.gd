@@ -17,34 +17,34 @@ const GUNS := [
 	preload("res://guns/submachine_gun/submachine_gun.tscn"),
 ]
 
-export var shoot_margin := 0.25
-export var min_circle_distance := 64.0
-export var max_circle_distance := 96.0
-export var bribed_texture: Texture
-export var follow_distance := 24.0
-export var drop_chance := 0.1
-export var g36c_accuracy := 4.0
-export var bribed_soft_collider_radius := 16.0
+@export var shoot_margin := 0.25
+@export var min_circle_distance := 64.0
+@export var max_circle_distance := 96.0
+@export var bribed_texture: Texture2D
+@export var follow_distance := 24.0
+@export var drop_chance := 0.1
+@export var g36c_accuracy := 4.0
+@export var bribed_soft_collider_radius := 16.0
 
-var bribe_state: int = BRIBE_STATES.INNOCENT setget _on_bribe_state_set
+var bribe_state: int = BRIBE_STATES.INNOCENT: set = _on_bribe_state_set
 var cop: Node2D = null
 var circle_dir := (randi() % 2) * 2 - 1# -1 or 1
 
-onready var circle_distance := rand_range(min_circle_distance, max_circle_distance)
-onready var navigator: NavigationAgent2D = $Navigator
-onready var cop_detection_zone: DetectionZone = $CopDetectionZone
-onready var cop_detection_zone_collision_shape: CollisionShape2D = cop_detection_zone.get_node(
+@onready var circle_distance := randf_range(min_circle_distance, max_circle_distance)
+@onready var navigator: NavigationAgent2D = $Navigator
+@onready var cop_detection_zone: DetectionZone = $CopDetectionZone
+@onready var cop_detection_zone_collision_shape: CollisionShape2D = cop_detection_zone.get_node(
 		"CollisionShape2D")
-onready var soft_collider_shape: CircleShape2D = soft_collider.get_node("CollisionShape2D").shape
-onready var soft_collider_radius := soft_collider_shape.radius
+@onready var soft_collider_shape: CircleShape2D = soft_collider.get_node("CollisionShape2D").shape
+@onready var soft_collider_radius := soft_collider_shape.radius
 
-onready var animation_tree: AnimationTree = $AnimationTree
-onready var playback: AnimationNodeStateMachinePlayback = animation_tree.get("parameters/playback")
+@onready var animation_tree: AnimationTree = $AnimationTree
+@onready var playback: AnimationNodeStateMachinePlayback = animation_tree.get("parameters/playback")
 
 
 func _ready() -> void:
-	._ready()
-	hand_pivot.rotation = rand_range(0.0, TAU)
+	super._ready()
+	hand_pivot.rotation = randf_range(0.0, TAU)
 	var selected_gun: PackedScene = GUNS[randi() % GUNS.size()]
 	change_item(selected_gun)
 
@@ -118,8 +118,8 @@ func follow_player() -> void:
 	if global_position.distance_to(player.global_position) > follow_distance:
 		#smooth_vel = global_position.direction_to(player.global_position) * speed
 
-		navigator.set_target_location(player.global_position)
-		smooth_vel = global_position.direction_to(navigator.get_next_location()) * speed
+		navigator.set_target_position(player.global_position)
+		smooth_vel = global_position.direction_to(navigator.get_next_path_position()) * speed
 	else:
 		smooth_vel = Vector2()
 		emit_signal("player_reached")
@@ -128,7 +128,7 @@ func follow_player() -> void:
 func bribed() -> void:
 	var attacking := false
 	if not is_null(cop):# Might be able to use ternary if to make simpler
-		if cop is KinematicBody2D:
+		if cop is CharacterBody2D:
 			if cop.get_script() != get_script() or cop.bribe_state == cop.BRIBE_STATES.INNOCENT:
 				hand_pivot.set_target(cop)
 				_chase(cop)
@@ -157,7 +157,7 @@ func being_bribed() -> void:
 func drop() -> void:
 	var file := str(item.filename).get_basename().get_file()
 	file += "_pickup.tscn"
-	var pickup: ItemPickup = load("res://pickups/" + file).instance()
+	var pickup: ItemPickup = load("res://pickups/" + file).instantiate()
 	get_tree().current_scene.add_child(pickup)
 	pickup.global_position = global_position
 
@@ -166,9 +166,9 @@ func _on_bribe_state_set(value: int) -> void:
 	bribe_state = value
 
 	var bribed: bool = bribe_state == BRIBE_STATES.BRIBED
-	set_collision_layer_bit(1, bribed)
-	set_collision_layer_bit(2, not bribed)
-	set_collision_mask_bit(1, not bribed)
+	set_collision_layer_value(1, bribed)
+	set_collision_layer_value(2, not bribed)
+	set_collision_mask_value(1, not bribed)
 	soft_collider_shape.radius = bribed_soft_collider_radius if bribed else soft_collider_radius
 	type = "robber" if bribed else "cop"
 	if bribed:
@@ -190,7 +190,7 @@ func _on_Cop_player_reached() -> void:
 func _on_DetectionZone_lost(what: Node) -> void:
 	if bribe_state == BRIBE_STATES.BRIBED:
 		return
-	._on_DetectionZone_lost(what)
+	super._on_DetectionZone_lost(what)
 
 
 func _on_CopDetectionZone_lost(what: Node) -> void:

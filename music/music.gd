@@ -1,7 +1,7 @@
 extends AudioStreamPlayer
 
 
-export var fade_duration := 0.5
+@export var fade_duration := 0.5
 
 var track: AudioStream
 
@@ -18,7 +18,7 @@ func change_track(to: AudioStream, volume := 0.0) -> void:
 	var tween := create_tween()
 # warning-ignore:return_value_discarded
 	tween.tween_property(self, "volume_db", -80.0, fade_duration)
-	yield(tween, "finished")
+	await tween.finished
 
 	stream = track
 	play()

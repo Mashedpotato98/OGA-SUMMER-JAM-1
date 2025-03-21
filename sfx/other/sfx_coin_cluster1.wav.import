@@ -1,13 +1,14 @@
 [remap]
 
 importer="wav"
-type="AudioStreamSample"
-path="res://.import/sfx_coin_cluster1.wav-bf6769329fe226420700823c1dd75e53.sample"
+type="AudioStreamWAV"
+uid="uid://c55th0b0sguu3"
+path="res://.godot/imported/sfx_coin_cluster1.wav-bf6769329fe226420700823c1dd75e53.sample"
 
 [deps]
 
 source_file="res://sfx/other/sfx_coin_cluster1.wav"
-dest_files=[ "res://.import/sfx_coin_cluster1.wav-bf6769329fe226420700823c1dd75e53.sample" ]
+dest_files=["res://.godot/imported/sfx_coin_cluster1.wav-bf6769329fe226420700823c1dd75e53.sample"]
 
 [params]
 

@@ -2,21 +2,21 @@ class_name Splash
 extends Node2D
 
 
-export var distance := 64.0
-export var bullets := 25
-export var BULLET: PackedScene
+@export var distance := 64.0
+@export var bullets := 25
+@export var BULLET: PackedScene
 
 var attack_type := ""
 
 
 func _ready() -> void:
-	yield(VisualServer, "frame_post_draw")
+	await RenderingServer.frame_post_draw
 	explode()
 
 
 func explode() -> void:
 	for i in bullets:
-		var bullet: Bullet = BULLET.instance()
+		var bullet: Bullet = BULLET.instantiate()
 		bullet.direction = Vector2.RIGHT.rotated(TAU * (float(i) / bullets))
 		bullet.attack_type = attack_type
 		bullet.distance = distance

@@ -1,13 +1,14 @@
 [remap]
 
 importer="wav"
-type="AudioStreamSample"
-path="res://.import/sfx_deathscream_human1.wav-32ea8ad7dd3b835bb1002e1720127b20.sample"
+type="AudioStreamWAV"
+uid="uid://ctcbberu0natr"
+path="res://.godot/imported/sfx_deathscream_human1.wav-32ea8ad7dd3b835bb1002e1720127b20.sample"
 
 [deps]
 
 source_file="res://sfx/dmg/sfx_deathscream_human1.wav"
-dest_files=[ "res://.import/sfx_deathscream_human1.wav-32ea8ad7dd3b835bb1002e1720127b20.sample" ]
+dest_files=["res://.godot/imported/sfx_deathscream_human1.wav-32ea8ad7dd3b835bb1002e1720127b20.sample"]
 
 [params]
 

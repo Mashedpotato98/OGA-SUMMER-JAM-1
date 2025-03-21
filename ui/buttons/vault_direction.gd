@@ -5,8 +5,8 @@ extends TextureRect
 const LEFT := preload("res://ui/icons/turn_left.png")
 const RIGHT := preload("res://ui/icons/turn_right.png")
 
-onready var arrow: TextureRect = $Arrow
-onready var focus: TextureRect = $Focus
+@onready var arrow: TextureRect = $Arrow
+@onready var focus: TextureRect = $Focus
 
 
 func set_direction(direction) -> void:

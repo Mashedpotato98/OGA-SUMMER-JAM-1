@@ -1,13 +1,14 @@
 [remap]
 
 importer="wav"
-type="AudioStreamSample"
-path="res://.import/sfx_sounds_impact3.wav-80054c58ca9f4f1b30af7431590012a0.sample"
+type="AudioStreamWAV"
+uid="uid://dkwcg6lwn4kyv"
+path="res://.godot/imported/sfx_sounds_impact3.wav-80054c58ca9f4f1b30af7431590012a0.sample"
 
 [deps]
 
 source_file="res://sfx/ui/sfx_sounds_impact3.wav"
-dest_files=[ "res://.import/sfx_sounds_impact3.wav-80054c58ca9f4f1b30af7431590012a0.sample" ]
+dest_files=["res://.godot/imported/sfx_sounds_impact3.wav-80054c58ca9f4f1b30af7431590012a0.sample"]
 
 [params]
 

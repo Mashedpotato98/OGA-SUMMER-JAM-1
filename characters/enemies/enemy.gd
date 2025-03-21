@@ -6,8 +6,8 @@ var player: Robber = null
 var current_target: Node2D = null
 var last_target_sighting := Vector2.INF
 
-onready var soft_collider: SoftCollider = $SoftCollider
-onready var detection_zone: DetectionZone = $DetectionZone
+@onready var soft_collider: SoftCollider = $SoftCollider
+@onready var detection_zone: DetectionZone = $DetectionZone
 
 
 func _physics_process(delta: float) -> void:
@@ -15,7 +15,7 @@ func _physics_process(delta: float) -> void:
 		_move()
 
 	smooth_vel = soft_collider.get_safe_velocity(smooth_vel)
-	._physics_process(delta)
+	super._physics_process(delta)
 
 
 func _move() -> void:

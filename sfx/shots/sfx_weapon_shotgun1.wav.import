@@ -1,13 +1,14 @@
 [remap]
 
 importer="wav"
-type="AudioStreamSample"
-path="res://.import/sfx_weapon_shotgun1.wav-ebf4284adf182b7205cb0e3ccdb9bb12.sample"
+type="AudioStreamWAV"
+uid="uid://bkyny0t5rrcw4"
+path="res://.godot/imported/sfx_weapon_shotgun1.wav-ebf4284adf182b7205cb0e3ccdb9bb12.sample"
 
 [deps]
 
 source_file="res://sfx/shots/sfx_weapon_shotgun1.wav"
-dest_files=[ "res://.import/sfx_weapon_shotgun1.wav-ebf4284adf182b7205cb0e3ccdb9bb12.sample" ]
+dest_files=["res://.godot/imported/sfx_weapon_shotgun1.wav-ebf4284adf182b7205cb0e3ccdb9bb12.sample"]
 
 [params]
 

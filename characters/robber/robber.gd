@@ -7,35 +7,35 @@ signal code_grabbed(code, from)
 
 const BRIBE := preload("res://characters/robber/bribe.tscn")
 
-export var turn_speed := 10.0
-export var dash_speed := 128.0
-export var dash_length := 0.5
-export var cronie_spawn_distance := 24.0
+@export var turn_speed := 10.0
+@export var dash_speed := 128.0
+@export var dash_length := 0.5
+@export var cronie_spawn_distance := 24.0
 
 var dash_cooling := false
-var anim_dir := Vector2.RIGHT setget _on_anim_dir_set
+var anim_dir := Vector2.RIGHT: set = _on_anim_dir_set
 var aim_dir := Vector2()
 var bribing := false
 var is_ready := false
 var holding_trigger := false
-var enabled := true setget _on_enabled_set
+var enabled := true: set = _on_enabled_set
 
-onready var animation_tree: AnimationTree = $AnimationTree
-onready var playback: AnimationNodeStateMachinePlayback = animation_tree.get("parameters/playback")
-onready var dash_cool_down: Timer = $DashCoolDown
-onready var dash_sound: AudioStreamPlayer = $DashSound
-onready var dash_bar: TextureProgress = $DashBar
+@onready var animation_tree: AnimationTree = $AnimationTree
+@onready var playback: AnimationNodeStateMachinePlayback = animation_tree.get("parameters/playback")
+@onready var dash_cool_down: Timer = $DashCoolDown
+@onready var dash_sound: AudioStreamPlayer = $DashSound
+@onready var dash_bar: TextureProgressBar = $DashBar
 
 
 func _init() -> void:
 # warning-ignore:return_value_discarded
-	Inventory.connect("current_item_switched", self, "_on_Inventory_current_item_switched")
+	Inventory.connect("current_item_switched", Callable(self, "_on_Inventory_current_item_switched"))
 # warning-ignore:return_value_discarded
-	Inventory.connect("items_changed", self, "_on_Inventory_items_changed")
+	Inventory.connect("items_changed", Callable(self, "_on_Inventory_items_changed"))
 
 
 func _ready() -> void:
-	._ready()
+	super._ready()
 	spawn_cronies()
 
 	if Inventory.items.keys().size() > 0:
@@ -84,16 +84,16 @@ func _physics_process(delta: float) -> void:
 # warning-ignore:return_value_discarded
 			activate_item()
 
-	._physics_process(delta)
+	super._physics_process(delta)
 
 
 func _die() -> void:
 	var fade := Fade.new()
 	add_child(fade)
 	fade.fade(Fade.FADE_IN, 1.0)
-	yield(fade, "finished")
+	await fade.finished
 # warning-ignore:return_value_discarded
-	get_tree().change_scene("res://ui/screens/lose_screen.tscn")
+	get_tree().change_scene_to_file("res://ui/screens/lose_screen.tscn")
 
 
 func dash() -> void:
@@ -113,12 +113,12 @@ func set_code(code: Array, from: Vector2) -> void:
 
 
 func change_item(ITEM: PackedScene) -> void:
-	.change_item(ITEM)
+	super.change_item(ITEM)
 	ammo = Inventory.items[ITEM.resource_path]
 
 
 func clear_item() -> void:
-	.change_item(null)
+	super.change_item(null)
 
 
 func scroll_items(direction: int) -> void:
@@ -143,9 +143,9 @@ func spawn_cronies() -> void:
 	var cronie_count := Inventory.cronies.size()
 	for i in cronie_count:
 		var cronie_info: Dictionary = Inventory.cronies[i]
-		var cronie: Character = load(cronie_info.type).instance()
+		var cronie: Character = load(cronie_info.type).instantiate()
 		get_parent().call_deferred("add_child", cronie)
-		yield(cronie, "ready")
+		await cronie.ready
 
 		cronie.global_position = global_position + (Vector2.RIGHT * cronie_spawn_distance).rotated(
 				TAU / cronie_count * i)
@@ -171,9 +171,9 @@ func blink() -> void:
 	var blinks := 3
 	for i in blinks:
 		sprite.material.set("shader_param/enabled", true)
-		yield(get_tree().create_timer(blink_duration / blinks / 2.0), "timeout")
+		await get_tree().create_timer(blink_duration / blinks / 2.0).timeout
 		sprite.material.set("shader_param/enabled", false)
-		yield(get_tree().create_timer(blink_duration / blinks / 2.0), "timeout")
+		await get_tree().create_timer(blink_duration / blinks / 2.0).timeout
 
 
 func _on_anim_dir_set(value: Vector2) -> void:
@@ -206,7 +206,7 @@ func _on_Inventory_current_item_switched(item_index: int) -> void:
 	change_item(item)
 	bribing = item == BRIBE
 
-	yield(VisualServer, "frame_pre_draw")
+	await RenderingServer.frame_pre_draw
 	start_cool_down()
 
 
@@ -216,7 +216,7 @@ func _on_Inventory_items_changed(items: Dictionary) -> void:
 
 
 func _on_HitBox_dmg_taken(from: Vector2, amount: int) -> void:
-	._on_HitBox_dmg_taken(from, amount)
+	super._on_HitBox_dmg_taken(from, amount)
 	blink()
 
 

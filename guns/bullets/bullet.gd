@@ -2,10 +2,10 @@ class_name Bullet
 extends Area2D
 
 
-export var speed := 128.0
-export var dmg := 1
-export var HIT_EFFECT: PackedScene = null
-export var hit_on_out_of_range := false
+@export var speed := 128.0
+@export var dmg := 1
+@export var HIT_EFFECT: PackedScene = null
+@export var hit_on_out_of_range := false
 
 var attack_type := ""
 var direction := Vector2()
@@ -14,7 +14,7 @@ var distance_traveled := 0.0
 
 
 func _ready() -> void:
-	set_as_toplevel(true)
+	set_as_top_level(true)
 
 
 func _physics_process(delta: float) -> void:
@@ -35,7 +35,7 @@ func _physics_process(delta: float) -> void:
 func _hit() -> Node2D:
 	var hit_effect: Node2D = null
 	if HIT_EFFECT != null:
-		hit_effect = HIT_EFFECT.instance()
+		hit_effect = HIT_EFFECT.instantiate()
 		hit_effect.global_position = global_position
 		get_parent().add_child(hit_effect)
 

@@ -2,12 +2,12 @@ class_name Swat
 extends Enemy
 
 
-export var dmg := 1
-export var swat_cool_down := 1.0
+@export var dmg := 1
+@export var swat_cool_down := 1.0
 
-onready var swat_zone_shape: CollisionShape2D = $SwatZone/CollisionShape2D
-onready var animation_tree: AnimationTree = $AnimationTree
-onready var playback: AnimationNodeStateMachinePlayback = animation_tree.get("parameters/playback")
+@onready var swat_zone_shape: CollisionShape2D = $SwatZone/CollisionShape2D
+@onready var animation_tree: AnimationTree = $AnimationTree
+@onready var playback: AnimationNodeStateMachinePlayback = animation_tree.get("parameters/playback")
 
 
 func _process(_delta: float) -> void:
@@ -39,5 +39,5 @@ func _on_SwatZone_area_entered(area: Area2D) -> void:
 	playback.travel("Attack")
 
 	swat_zone_shape.set_deferred("disabled", true)
-	yield(get_tree().create_timer(swat_cool_down), "timeout")
+	await get_tree().create_timer(swat_cool_down).timeout
 	swat_zone_shape.set_deferred("disabled", false)

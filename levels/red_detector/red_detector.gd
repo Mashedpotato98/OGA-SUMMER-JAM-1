@@ -2,12 +2,12 @@ class_name RedDetector
 extends Area2D
 
 
-export var dmg := 2
+@export var dmg := 2
 
-var detecting := true setget _on_detecting_set
+var detecting := true: set = _on_detecting_set
 
-onready var sprite: Sprite = $Sprite
-onready var collision_shape: CollisionShape2D = $CollisionShape2D
+@onready var sprite: Sprite2D = $Sprite2D
+@onready var collision_shape: CollisionShape2D = $CollisionShape2D
 
 
 func _on_detecting_set(value: bool) -> void:

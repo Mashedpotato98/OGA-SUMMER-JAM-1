@@ -2,7 +2,7 @@ class_name ShotGun
 extends Gun
 
 
-export var bullets := 4
+@export var bullets := 4
 
 
 func activate() -> bool:
@@ -13,5 +13,5 @@ func activate() -> bool:
 		add_bullet()
 
 # warning-ignore:return_value_discarded
-	.activate()
+	super.activate()
 	return true

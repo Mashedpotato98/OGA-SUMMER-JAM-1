@@ -2,7 +2,7 @@ class_name AutoAimer
 extends Node2D
 
 
-export var turn_speed := 5.0
+@export var turn_speed := 5.0
 
 var target: Node2D = null
 var shooting := false

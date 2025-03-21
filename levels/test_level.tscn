@@ -318,14 +318,14 @@ position = Vector2( 224, 288 )
 [node name="MoneyPickup100" parent="Pickups" index="103" instance=ExtResource( 3 )]
 position = Vector2( 248, 288 )
 
-[node name="Position2D" type="Position2D" parent="CodeSpawnPoints" index="0"]
+[node name="Marker2D" type="Marker2D" parent="CodeSpawnPoints" index="0"]
 position = Vector2( 216, 24 )
 
-[node name="Position2D2" type="Position2D" parent="CodeSpawnPoints" index="1"]
+[node name="Position2D2" type="Marker2D" parent="CodeSpawnPoints" index="1"]
 position = Vector2( -48, 72 )
 
-[node name="Position2D3" type="Position2D" parent="CodeSpawnPoints" index="2"]
+[node name="Position2D3" type="Marker2D" parent="CodeSpawnPoints" index="2"]
 position = Vector2( -72, 0 )
 
-[node name="Position2D4" type="Position2D" parent="CodeSpawnPoints" index="3"]
+[node name="Position2D4" type="Marker2D" parent="CodeSpawnPoints" index="3"]
 position = Vector2( 144, -72 )

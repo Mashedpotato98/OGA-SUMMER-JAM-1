@@ -15,19 +15,19 @@ resource_local_to_scene = true
 
 [node name="StaticBody2D" type="StaticBody2D" parent="." index="3"]
 
-[node name="Turret" parent="YSort" index="1" instance=ExtResource( 2 )]
+[node name="Turret" parent="Node2D" index="1" instance=ExtResource( 2 )]
 position = Vector2( 168, -16 )
 
-[node name="Cop" parent="YSort/Cops" index="0" instance=ExtResource( 5 )]
+[node name="Cop" parent="Node2D/Cops" index="0" instance=ExtResource( 5 )]
 position = Vector2( 288, 144 )
 
-[node name="Cop2" parent="YSort/Cops" index="1" instance=ExtResource( 5 )]
+[node name="Cop2" parent="Node2D/Cops" index="1" instance=ExtResource( 5 )]
 position = Vector2( 0, 184 )
 
-[node name="Cop3" parent="YSort/Cops" index="2" instance=ExtResource( 5 )]
+[node name="Cop3" parent="Node2D/Cops" index="2" instance=ExtResource( 5 )]
 position = Vector2( 200, -16 )
 
-[node name="Cop4" parent="YSort/Cops" index="3" instance=ExtResource( 5 )]
+[node name="Cop4" parent="Node2D/Cops" index="3" instance=ExtResource( 5 )]
 position = Vector2( 240, 64 )
 
 [node name="PistolPickup" parent="Pickups" index="0" instance=ExtResource( 3 )]
@@ -42,8 +42,8 @@ position = Vector2( 40, -16 )
 [node name="G36CPickup" parent="Pickups" index="3" instance=ExtResource( 8 )]
 position = Vector2( -40, -16 )
 
-[node name="NavigationPolygonInstance" parent="." index="9"]
-navpoly = SubResource( 1 )
+[node name="NavigationRegion2D" parent="." index="9"]
+navigation_polygon = SubResource( 1 )
 
 [connection signal="body_entered" from="Pickups/PistolPickup" to="Pickups/PistolPickup" method="_on_ItemPickup_body_entered"]
 [connection signal="body_entered" from="Pickups/SubmachineGunPickup" to="Pickups/SubmachineGunPickup" method="_on_ItemPickup_body_entered"]

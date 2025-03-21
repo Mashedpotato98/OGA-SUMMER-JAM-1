@@ -3,14 +3,14 @@ extends Button
 
 
 var item := ""
-var ammo := 1 setget _on_ammo_set
+var ammo := 1: set = _on_ammo_set
 
-onready var cool_down: ProgressBar = $CoolDown
+@onready var cool_down: ProgressBar = $CoolDown
 
 
 func _ready() -> void:
 # warning-ignore:return_value_discarded
-	Inventory.connect("current_item_switched", self, "_on_Inventory_current_item_switched")
+	Inventory.connect("current_item_switched", Callable(self, "_on_Inventory_current_item_switched"))
 
 
 func start_cool_down(duration: float) -> void:

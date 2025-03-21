@@ -10,11 +10,11 @@ radius = 4.0
 speed = 64.0
 dmg = 10
 
-[node name="Sprite" parent="." index="0"]
+[node name="Sprite2D" parent="." index="0"]
 region_rect = Rect2( 0, 30, 10, 10 )
 
 [node name="CollisionShape2D" parent="." index="1"]
 shape = SubResource( 1 )
 
-[node name="Light2D" parent="." index="2"]
+[node name="PointLight2D" parent="." index="2"]
 energy = 8.0
