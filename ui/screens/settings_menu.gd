@@ -13,12 +13,13 @@ func _ready() -> void:
 	sfx_slider.value = inverse_lerp(-80.0, 0.0, Settings.data.sfx_vol)
 	blood_mode_toggle.button_pressed = Settings.data.blood_mode
 	music_slider.grab_focus()
+	super()
 
 
 func _on_SaveButton_pressed() -> void:
 	Settings.data.music_vol = AudioServer.get_bus_volume_db(1)
 	Settings.data.sfx_vol = AudioServer.get_bus_volume_db(2)
-	Settings.data.blood_mode = blood_mode_toggle.pressed
+	Settings.data.blood_mode = blood_mode_toggle.button_pressed
 	Settings.save_data()
 
 	change_scene_to_file("res://ui/screens/main_menu.tscn")

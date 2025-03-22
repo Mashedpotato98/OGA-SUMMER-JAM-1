@@ -9,7 +9,7 @@ extends Screen
 
 
 func _ready() -> void:
-	super._ready()
+	super()
 	title.text = ProjectSettings.get_setting("application/config/name")
 	play_button.grab_focus()
 

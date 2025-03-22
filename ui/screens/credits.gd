@@ -7,6 +7,7 @@ extends Screen
 
 func _ready() -> void:
 	back_button.grab_focus()
+	super()
 
 
 func _on_BackButton_pressed() -> void:

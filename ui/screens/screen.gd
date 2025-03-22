@@ -13,5 +13,4 @@ func change_scene_to_file(scene: String) -> void:
 	add_child(fade)
 	fade.fade(Fade.FadeMode.FADE_IN, 1.0)
 	await fade.finished
-# warning-ignore:return_value_discarded
 	get_tree().change_scene_to_file(scene)
