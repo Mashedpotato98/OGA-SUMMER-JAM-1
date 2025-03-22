@@ -1,12 +1,14 @@
-class_name Fade
-extends CanvasLayer
+class_name Fade extends CanvasLayer
 
 
+#region Members
 enum FadeMode {FADE_IN, FADE_OUT}
 
 signal finished
+#endregion
 
 
+#region Functions
 func _init() -> void:
 	process_mode = Node.PROCESS_MODE_ALWAYS
 	layer = 2
@@ -21,8 +23,9 @@ func fade(mode: FadeMode, duration: float) -> void:
 	show()
 	rect.color.a = mode
 	var tween := create_tween()
-	tween.tween_property(rect, "color:a", float(not bool(mode)), duration)
+	tween.tween_property(rect, ^"color:a", float(not bool(mode)), duration)
 	await tween.finished
 
 	finished.emit()
 	queue_free()
+#endregion

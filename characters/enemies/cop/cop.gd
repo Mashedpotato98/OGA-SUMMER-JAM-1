@@ -1,7 +1,7 @@
-class_name Cop
-extends Enemy
+class_name Cop extends Enemy
 
 
+#region Members
 signal player_reached
 
 enum BRIBE_STATES {
@@ -17,6 +17,7 @@ const GUNS := [
 	preload("res://guns/submachine_gun/submachine_gun.tscn"),
 ]
 
+#region Export
 @export var shoot_margin := 0.25
 @export var min_circle_distance := 64.0
 @export var max_circle_distance := 96.0
@@ -25,25 +26,32 @@ const GUNS := [
 @export var drop_chance := 0.1
 @export var g36c_accuracy := 4.0
 @export var bribed_soft_collider_radius := 16.0
+#endregion
 
+#region Variables
 var bribe_state: int = BRIBE_STATES.INNOCENT: set = _on_bribe_state_set
 var cop: Node2D = null
 var circle_dir := (randi() % 2) * 2 - 1# -1 or 1
+#endregion
 
+#region Onready
 @onready var circle_distance := randf_range(min_circle_distance, max_circle_distance)
 @onready var navigator: NavigationAgent2D = $Navigator
 @onready var cop_detection_zone: DetectionZone = $CopDetectionZone
 @onready var cop_detection_zone_collision_shape: CollisionShape2D = cop_detection_zone.get_node(
-		"CollisionShape2D")
-@onready var soft_collider_shape: CircleShape2D = soft_collider.get_node("CollisionShape2D").shape
+		^"CollisionShape2D")
+@onready var soft_collider_shape: CircleShape2D = soft_collider.get_node(^"CollisionShape2D").shape
 @onready var soft_collider_radius := soft_collider_shape.radius
 
 @onready var animation_tree: AnimationTree = $AnimationTree
-@onready var playback: AnimationNodeStateMachinePlayback = animation_tree.get("parameters/playback")
+@onready var playback: AnimationNodeStateMachinePlayback = animation_tree.get(&"parameters/playback")
+#endregion
+#endregion
 
 
+#region Functions
+#region Overrides
 func _ready() -> void:
-	super._ready()
 	hand_pivot.rotation = randf_range(0.0, TAU)
 	var selected_gun: PackedScene = GUNS[randi() % GUNS.size()]
 	change_item(selected_gun)
@@ -57,9 +65,9 @@ func _die() -> void:
 	if bribe_state == BRIBE_STATES.BRIBED:
 		for i in Inventory.cronies.size():
 			var cronie: Dictionary = Inventory.cronies[i]
-			if (cronie.type == filename
-					and true if not cronie.has("weapon") else cronie.weapon == item.filename):
-				Inventory.cronies.remove(i)
+			if (cronie.type == scene_file_path
+					and true if not cronie.has("weapon") else cronie.weapon == item.scene_file_path):
+				Inventory.cronies.remove_at(i)
 				Inventory._on_cronies_set(Inventory.cronies)
 				break
 	elif randf() <= drop_chance:
@@ -81,7 +89,6 @@ func _chase(target: Node2D) -> void:
 
 	var aim_direction := global_position.direction_to(target.global_position)
 	if hand_pivot.global_transform.x.distance_to(aim_direction) <= shoot_margin:
-# warning-ignore:return_value_discarded
 		activate_item()
 
 
@@ -99,8 +106,10 @@ func _move() -> void:
 				patrol()
 
 	animate()
+#endregion
 
 
+#region Regular
 func animate() -> void:
 	var anim_name := ""
 	if smooth_vel.length() >= speed:
@@ -110,7 +119,7 @@ func animate() -> void:
 	else:
 		anim_name = "Idle"
 
-	animation_tree.set("parameters/%s/blend_position" % anim_name, smooth_vel)
+	animation_tree.set(&"parameters/%s/blend_position" % anim_name, smooth_vel)
 	playback.travel(anim_name)
 
 
@@ -122,7 +131,7 @@ func follow_player() -> void:
 		smooth_vel = global_position.direction_to(navigator.get_next_path_position()) * speed
 	else:
 		smooth_vel = Vector2()
-		emit_signal("player_reached")
+		player_reached.emit()
 
 
 func bribed() -> void:
@@ -160,8 +169,10 @@ func drop() -> void:
 	var pickup: ItemPickup = load("res://pickups/" + file).instantiate()
 	get_tree().current_scene.add_child(pickup)
 	pickup.global_position = global_position
+#endregion
 
 
+#region Events
 func _on_bribe_state_set(value: int) -> void:
 	bribe_state = value
 
@@ -180,8 +191,8 @@ func _on_Cop_player_reached() -> void:
 		return
 
 	self.bribe_state = BRIBE_STATES.BRIBED
-	var cronie_data := {"type": filename}
-	if item != null and not item is NodePath:
+	var cronie_data := {"type": scene_file_path}
+	if item != null:
 		cronie_data.weapon = item.filename
 	Inventory.cronies.append(cronie_data)
 	Inventory.money -= Inventory.items_list[Inventory.BRIBE_PATH].prices[0]
@@ -203,3 +214,5 @@ func _on_CopDetectionZone_saw(what: Node) -> void:
 
 func _on_BounceZone_body_entered(_body: Node) -> void:
 	circle_dir = -circle_dir
+#endregion
+#endregion

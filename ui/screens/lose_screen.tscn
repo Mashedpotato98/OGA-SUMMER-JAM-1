@@ -1,23 +1,21 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=3 format=3 uid="uid://baateg0tv514x"]
 
-[ext_resource path="res://ui/screens/screen.tscn" type="PackedScene" id=1]
-[ext_resource path="res://ui/screens/lose_screen.gd" type="Script" id=2]
+[ext_resource type="PackedScene" uid="uid://wkfst0sburps" path="res://ui/screens/screen.tscn" id="1"]
+[ext_resource type="Script" path="res://ui/screens/lose_screen.gd" id="2"]
 
-[node name="LoseScreen" instance=ExtResource( 1 )]
-script = ExtResource( 2 )
+[node name="LoseScreen" instance=ExtResource("1")]
+script = ExtResource("2")
 
 [node name="Title" parent="." index="0"]
 text = "Game Over"
 
 [node name="HomeButton" type="Button" parent="Menu" index="0"]
-offset_right = 48.0
-offset_bottom = 21.0
+unique_name_in_owner = true
+layout_mode = 2
 text = "Home"
 
 [node name="QuitButton" type="Button" parent="Menu" index="1"]
-offset_top = 25.0
-offset_right = 48.0
-offset_bottom = 46.0
+layout_mode = 2
 text = "Quit"
 
 [connection signal="pressed" from="Menu/HomeButton" to="." method="_on_HomeButton_pressed"]

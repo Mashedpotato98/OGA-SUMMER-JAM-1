@@ -1,5 +1,4 @@
-class_name ShotGun
-extends Gun
+class_name ShotGun extends Gun
 
 
 @export var bullets := 4
@@ -12,6 +11,5 @@ func activate() -> bool:
 	for i in bullets - 1:
 		add_bullet()
 
-# warning-ignore:return_value_discarded
-	super.activate()
+	super()
 	return true

@@ -1,9 +1,9 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=2 format=3 uid="uid://bc7bxfabx0y62"]
 
-[ext_resource path="res://sfx/dmg/sfx_deathscream_human1.wav" type="AudioStream" id=1]
+[ext_resource type="AudioStream" uid="uid://ctcbberu0natr" path="res://sfx/dmg/sfx_deathscream_human1.wav" id="1"]
 
 [node name="DeathSound" type="AudioStreamPlayer"]
 process_mode = 3
-stream = ExtResource( 1 )
+stream = ExtResource("1")
 autoplay = true
-bus = "SFX"
+bus = &"SFX"

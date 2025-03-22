@@ -13,8 +13,6 @@ cache/0/16/0/underline_thickness = 0.0
 cache/0/16/0/scale = 1.0
 
 [node name="Credits" instance=ExtResource("1")]
-grow_horizontal = 2
-grow_vertical = 2
 script = ExtResource("2")
 
 [node name="Title" parent="." index="0"]

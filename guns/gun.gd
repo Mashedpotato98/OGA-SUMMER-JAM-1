@@ -1,23 +1,30 @@
 # Even if there is ammo, might not need to have loading system.
 # Perhaps handle input for guns on gun.gd so that you can hold for submachine gun, but click for sniper.
-class_name Gun
-extends Node2D
+class_name Gun extends Node2D
 
 
+#region Members
+#region Export
 @export var BULLET: PackedScene = null
 @export var spread := 0.0
 @export var flip := true
 @export var distance := 104.0
+#endregion
 
 var cooling := true
 
+#region Onready
 @onready var sprite: Sprite2D = $Sprite2D
 @onready var cool_down: Timer = $CoolDown
 @onready var barrel: Marker2D = $Barrel
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 @onready var shoot_sound: AudioStreamPlayer2D = $ShootSound
+#endregion
+#endregion
 
 
+#region Functions
+#region Overrides
 func _ready() -> void:
 	spread = deg_to_rad(spread)
 	if not flip:
@@ -26,12 +33,14 @@ func _ready() -> void:
 
 func _process(_delta: float) -> void:
 	level_sprite()
+#endregion
 
 
+#region Regular
 func level_sprite() -> void:
 	var flipped := global_transform.x.x < 0.0
 	sprite.flip_v = flipped
-	var sprite_y := abs(sprite.position.y)
+	var sprite_y := absf(sprite.position.y)
 	sprite.position.y = -sprite_y if flipped else sprite_y
 
 
@@ -41,7 +50,7 @@ func activate() -> bool:
 	shoot_sound.play()
 	add_bullet()
 	start_cool_down()
-	animation_player.play("Shoot")
+	animation_player.play(&"Shoot")
 	return true
 
 
@@ -58,7 +67,9 @@ func add_bullet() -> void:
 func start_cool_down() -> void:
 	cooling = true
 	cool_down.start()
+#endregion
 
 
 func _on_CoolDown_timeout() -> void:
 	cooling = false
+#endregion

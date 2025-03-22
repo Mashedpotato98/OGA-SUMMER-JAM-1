@@ -1,14 +1,18 @@
-class_name Splash
-extends Node2D
+class_name Splash extends Node2D
 
 
+#region Members
+#region Export
 @export var distance := 64.0
 @export var bullets := 25
 @export var BULLET: PackedScene
+#endregion
 
 var attack_type := ""
+#endregion
 
 
+#region Functions
 func _ready() -> void:
 	await RenderingServer.frame_post_draw
 	explode()
@@ -26,3 +30,4 @@ func explode() -> void:
 
 func _on_ExplodeSound_finished() -> void:
 	queue_free()
+#endregion

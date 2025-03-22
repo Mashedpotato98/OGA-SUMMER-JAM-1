@@ -1,20 +1,26 @@
-class_name Level
-extends Node2D
+class_name Level extends Node2D
 
 
+#region Members
 const ELEVATOR_TRANSITION := preload("res://ui/screens/elevator_transition.tscn")
 
+#region Export
 @export var track: AudioStream
 @export var volume := 0.0
+#endregion
 
 var height := 0
 
+#region Onready
 @onready var y_sort: Node2D = $Node2D
 @onready var robber: Robber = y_sort.get_node("Robber")
 @onready var elevator: Elevator = y_sort.get_node("Elevator")
 @onready var ui: UI = $UI
+#endregion
+#endregion
 
 
+#region Functions
 func _ready() -> void:
 	randomize()
 
@@ -22,7 +28,7 @@ func _ready() -> void:
 
 	var fade := Fade.new()
 	add_child(fade)
-	fade.fade(Fade.FADE_OUT, 1.0)
+	fade.fade(Fade.FadeMode.FADE_OUT, 1.0)
 
 	Music.change_track(track, volume)
 
@@ -31,7 +37,7 @@ func level_up() -> void:
 	if height < ElevatorTransition.LEVELS - 1:
 		var fade := Fade.new()
 		add_child(fade)
-		fade.fade(Fade.FADE_IN, 1.0)
+		fade.fade(Fade.FadeMode.FADE_IN, 1.0)
 		await fade.finished
 
 		var elevator_trans: ElevatorTransition = ELEVATOR_TRANSITION.instantiate()
@@ -39,6 +45,6 @@ func level_up() -> void:
 		queue_free()
 		elevator_trans.level_up(height, robber.hp)
 	else:
-# warning-ignore:return_value_discarded
 #		get_tree().change_scene("res://ui/screens/win_screen.tscn")
 		get_tree().change_scene_to_file("res://ui/screens/shop.tscn") # Decided to go directly to shop instead.
+#endregion

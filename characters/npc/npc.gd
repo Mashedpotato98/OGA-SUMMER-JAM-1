@@ -11,8 +11,6 @@ var panicking := false
 
 
 func _ready() -> void:
-	super._ready()
-
 	skins.shuffle()
 	sprite.texture = skins[0]
 

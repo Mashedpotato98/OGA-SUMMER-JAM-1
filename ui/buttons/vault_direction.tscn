@@ -1,24 +1,26 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=4 format=3 uid="uid://brnm2hdxirx3v"]
 
-[ext_resource path="res://ui/icons/arrow_bg.png" type="Texture2D" id=1]
-[ext_resource path="res://ui/icons/arrow_focus.png" type="Texture2D" id=2]
-[ext_resource path="res://ui/buttons/vault_direction.gd" type="Script" id=3]
+[ext_resource type="Texture2D" uid="uid://exdc7qtbtkbq" path="res://ui/icons/arrow_bg.png" id="1"]
+[ext_resource type="Texture2D" uid="uid://7iahd6odlc25" path="res://ui/icons/arrow_focus.png" id="2"]
+[ext_resource type="Script" path="res://ui/buttons/vault_direction.gd" id="3"]
 
 [node name="VaultDirection" type="TextureRect" groups=["vault_directions"]]
 offset_right = 48.0
 offset_bottom = 48.0
-texture = ExtResource( 1 )
-script = ExtResource( 3 )
-__meta__ = {
-"_editor_description_": ""
-}
+texture = ExtResource("1")
+script = ExtResource("3")
 
 [node name="Arrow" type="TextureRect" parent="."]
+layout_mode = 0
 anchor_right = 1.0
 anchor_bottom = 1.0
 
 [node name="Focus" type="TextureRect" parent="."]
 visible = false
+layout_mode = 0
 anchor_right = 1.0
 anchor_bottom = 1.0
-texture = ExtResource( 2 )
+texture = ExtResource("2")
+
+[connection signal="focus_entered" from="." to="." method="_on_focus_entered"]
+[connection signal="focus_exited" from="." to="." method="_on_focus_exited"]

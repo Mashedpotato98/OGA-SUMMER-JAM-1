@@ -1,12 +1,15 @@
-class_name Code
-extends PanelContainer
+class_name Code extends PanelContainer
 
 
+#region Members
 const VAULT_DIRECTION := preload("res://ui/buttons/vault_direction.tscn")
 
 @onready var directions: HBoxContainer = $Directions
+#endregion
 
 
+#region Functions
+#region Regular
 func init_directions(amount: int) -> void:
 	for i in amount:
 		directions.add_child(VAULT_DIRECTION.instantiate())
@@ -33,14 +36,17 @@ func get_direction_count() -> int:
 	return directions.get_child_count()
 
 
+@warning_ignore("untyped_declaration")
 func set_direction(index: int, direction) -> void:
 	directions.get_child(index).set_direction(direction)
 
 
 func focus(index: int) -> void:
 	directions.get_child(index).grab_focus()
+#endregion
 
 
-func release_focus() -> void:
+func _on_focus_exited() -> void:
 	for vault_direction in directions.get_children():
 		vault_direction.release_focus()
+#endregion

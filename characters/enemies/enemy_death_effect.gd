@@ -1,5 +1,4 @@
-class_name EnemyDeathEffect
-extends CPUParticles2D
+class_name EnemyDeathEffect extends CPUParticles2D
 
 
 @export var duration := 3.0

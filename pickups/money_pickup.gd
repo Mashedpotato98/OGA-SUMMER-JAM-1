@@ -1,5 +1,4 @@
-class_name MoneyPickup
-extends Pickup
+class_name MoneyPickup extends Pickup
 
 
 @export var amount := 100
@@ -7,4 +6,4 @@ extends Pickup
 
 func _collect(body: Node) -> void:
 	Inventory.money += amount
-	super._collect(body)
+	super(body)

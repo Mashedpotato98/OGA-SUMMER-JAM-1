@@ -1,5 +1,4 @@
-class_name MainMenu
-extends Screen
+class_name MainMenu extends Screen
 
 
 #region Members
@@ -8,12 +7,14 @@ extends Screen
 #endregion
 
 
+#region Functions
 func _ready() -> void:
 	super()
 	title.text = ProjectSettings.get_setting("application/config/name")
 	play_button.grab_focus()
 
 
+#region Events
 func _on_QuitButton_pressed() -> void:
 	get_tree().quit()
 
@@ -32,3 +33,5 @@ func _on_Tutorial_pressed() -> void:
 
 func _on_SettingsButton_pressed() -> void:
 	change_scene_to_file("res://ui/screens/settings_menu.tscn")
+#endregion
+#endregion

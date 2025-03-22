@@ -1,11 +1,10 @@
-class_name AmmoPickup
-extends Pickup
+class_name AmmoPickup extends Pickup
 
 
 func _collect(body: Node) -> void:
-	var type: String = (body as Robber).item.filename
+	var type: String = (body as Robber).item.scene_file_path
 	if type == Inventory.BRIBE_PATH:
 		return
 
 	Inventory.items[type] += int(ceil(Inventory.items_list[type].ammo / 2.0))
-	super._collect(body)
+	super(body)

@@ -1,18 +1,25 @@
-class_name Bullet
-extends Area2D
+class_name Bullet extends Area2D
 
 
+#region Members
+#region Export
 @export var speed := 128.0
 @export var dmg := 1
 @export var HIT_EFFECT: PackedScene = null
 @export var hit_on_out_of_range := false
+#endregion
 
+#region Variables
 var attack_type := ""
 var direction := Vector2()
 var distance := 0.0
 var distance_traveled := 0.0
+#endregion
+#endregion
 
 
+#region Functions
+#region Overrides
 func _ready() -> void:
 	set_as_top_level(true)
 
@@ -27,7 +34,6 @@ func _physics_process(delta: float) -> void:
 
 	if distance_traveled > distance:
 		if hit_on_out_of_range:
-# warning-ignore:return_value_discarded
 			_hit()
 		queue_free()
 
@@ -45,15 +51,16 @@ func _hit() -> Node2D:
 
 func _post_translation() -> void:
 	pass
+#endregion
 
 
+#region Events
 func _on_Bullet_area_entered(area: Area2D) -> void:
 	if not area is HitBox:
 		return
 	if area.owner.type == attack_type and area.owner.type != "all":
 		return
 	area.take_dmg(global_position, dmg)
-# warning-ignore:return_value_discarded
 	_hit()
 
 
@@ -66,5 +73,7 @@ func _on_Bullet_body_shape_entered(_body_rid: RID, _body: Node,
 		_body_shape_index: int, local_shape_index: int) -> void:
 	var local_shape_owner := shape_find_owner(local_shape_index)
 	var local_shape_node: CollisionShape2D = shape_owner_get_owner(local_shape_owner)
-	if local_shape_node.name == "WallCollider":
+	if local_shape_node.name == &"WallCollider":
 		_hit()
+#endregion
+#endregion

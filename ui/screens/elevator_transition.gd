@@ -1,13 +1,17 @@
-class_name ElevatorTransition
-extends Control
+class_name ElevatorTransition extends Control
 
 
+#region Members
+#region Constants
 const LEVELS := 3
 const LEVEL_VARIATIONS := 19 # Should be automated based on files
+#endregion
 
 @onready var level_display: Sprite2D = $LevelDisplay
+#endregion
 
 
+#region Functions
 func level_up(from_height: int, robber_hp: int) -> void:
 	var next_height := from_height + 1
 	level_display.frame = from_height
@@ -29,7 +33,7 @@ func level_up(from_height: int, robber_hp: int) -> void:
 	var level := LEVEL.instantiate()
 
 	level.height = next_height
-	get_node("/root").add_child(level)
+	get_node(^"/root").add_child(level)
 	level.robber.hp = robber_hp
 
 	get_tree().current_scene = level
@@ -42,3 +46,4 @@ static func get_level() -> String:
 	while result in ["", "res://levels/level_14.tscn", "res://levels/level_18.tscn"]:
 		result = "res://levels/level_%s.tscn" % str(randi() % LEVEL_VARIATIONS + 1)
 	return result
+#endregion

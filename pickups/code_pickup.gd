@@ -7,4 +7,4 @@ var code := []
 
 func _collect(body: Node) -> void:
 	body.set_code(code, global_position)
-	super._collect(body)
+	super(body)

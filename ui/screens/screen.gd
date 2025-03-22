@@ -1,7 +1,7 @@
-class_name Screen
-extends Control
+class_name Screen extends Control
 
 
+#region Functions
 func _ready() -> void:
 	var fade := Fade.new()
 	add_child(fade)
@@ -14,3 +14,4 @@ func change_scene_to_file(scene: String) -> void:
 	fade.fade(Fade.FadeMode.FADE_IN, 1.0)
 	await fade.finished
 	get_tree().change_scene_to_file(scene)
+#endregion

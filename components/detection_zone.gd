@@ -1,21 +1,26 @@
-class_name DetectionZone
-extends Area2D
+class_name DetectionZone extends Area2D
 
 
-signal saw(what)
-signal lost(what)
+#region Members
+#region Signals
+signal saw(what: Node)
+signal lost(what: Node)
+#endregion
 
 var collisions := []
 
 @onready var ray_cast: RayCast2D = $RayCast3D
+#endregion
 
 
+#region Functions
+#region Overrides
 func _ready() -> void:
 	ray_cast.add_exception(owner)
 
 
 func _process(_delta: float) -> void:
-	for collider in get_colliders():
+	for collider: CollisionObject2D in get_colliders():
 		if collider == owner:
 			continue
 
@@ -28,25 +33,29 @@ func _process(_delta: float) -> void:
 				see(collider)
 		elif collisions.has(collider):
 			lose(collider)
+#endregion
 
 
 
+#region Regular
 func see(collider: Node) -> void:
 	collisions.append(collider)
-	emit_signal("saw", collider)
+	saw.emit(collider)
 
 
 func lose(collider: Node) -> void:
 	collisions.erase(collider)
-	emit_signal("lost", collider)
+	lost.emit(collider)
 
 
 func get_colliders() -> Array:
 	var colliders := get_overlapping_bodies()
 	colliders.append_array(get_overlapping_areas())
 	return colliders
+#endregion
 
 
+#region Events
 func _on_collider_exited(collider: Node) -> void:
 	if get_colliders().size() <= 0:
 		ray_cast.enabled = false
@@ -56,3 +65,5 @@ func _on_collider_exited(collider: Node) -> void:
 
 func _on_collider_entered(_collider: Node) -> void:
 	ray_cast.enabled = true
+#endregion
+#endregion

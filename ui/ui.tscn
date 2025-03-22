@@ -1,54 +1,56 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=12 format=3 uid="uid://dmdcinglu0t1"]
 
-[ext_resource path="res://ui/icons/Health_bar.png" type="Texture2D" id=1]
-[ext_resource path="res://ui/icons/health_singal.png" type="Texture2D" id=2]
-[ext_resource path="res://ui/ui.gd" type="Script" id=3]
-[ext_resource path="res://ui/icons/money.png" type="Texture2D" id=4]
-[ext_resource path="res://ui/theme.theme" type="Theme" id=5]
-[ext_resource path="res://pickups/key.png" type="Texture2D" id=6]
-[ext_resource path="res://ui/fonts/default_font.tres" type="FontFile" id=7]
-[ext_resource path="res://ui/code.tscn" type="PackedScene" id=8]
-[ext_resource path="res://sfx/ui/sfx_sounds_error2.wav" type="AudioStream" id=9]
-[ext_resource path="res://sfx/ui/sfx_sounds_impact3.wav" type="AudioStream" id=10]
+[ext_resource type="Texture2D" uid="uid://b06hvhbcexpuk" path="res://ui/icons/Health_bar.png" id="1"]
+[ext_resource type="Texture2D" uid="uid://di1seirj1fqt4" path="res://ui/icons/health_singal.png" id="2"]
+[ext_resource type="Script" path="res://ui/ui.gd" id="3"]
+[ext_resource type="Texture2D" uid="uid://6i6jv7s3607b" path="res://ui/icons/money.png" id="4"]
+[ext_resource type="Theme" uid="uid://bfswc7hc3bmsg" path="res://ui/theme.theme" id="5"]
+[ext_resource type="Texture2D" uid="uid://kq85j53wdoaw" path="res://pickups/key.png" id="6"]
+[ext_resource type="FontFile" path="res://ui/fonts/default_font.tres" id="7"]
+[ext_resource type="PackedScene" uid="uid://d2fbuqeou0j3r" path="res://ui/code.tscn" id="8"]
+[ext_resource type="AudioStream" uid="uid://dr4ud50hwf8u4" path="res://sfx/ui/sfx_sounds_error2.wav" id="9"]
+[ext_resource type="AudioStream" uid="uid://dkwcg6lwn4kyv" path="res://sfx/ui/sfx_sounds_impact3.wav" id="10"]
 
-[sub_resource type="InputEventAction" id=1]
-action = "ui_cancel"
-
-[sub_resource type="Shortcut" id=2]
-shortcut = SubResource( 1 )
+[sub_resource type="Shortcut" id="2"]
 
 [node name="UI" type="CanvasLayer"]
-script = ExtResource( 3 )
+script = ExtResource("3")
 
 [node name="HealthBar" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
 offset_right = 64.0
 offset_bottom = 26.0
 mouse_filter = 2
 
 [node name="BG" type="NinePatchRect" parent="HealthBar"]
+unique_name_in_owner = true
+layout_mode = 0
 offset_right = 64.0
 offset_bottom = 26.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
-texture = ExtResource( 1 )
-region_rect = Rect2( 0, 0, 64, 26 )
+texture = ExtResource("1")
+region_rect = Rect2(0, 0, 64, 26)
 patch_margin_left = 9
 patch_margin_top = 7
 patch_margin_right = 9
 patch_margin_bottom = 7
 
 [node name="Fill" type="TextureRect" parent="HealthBar"]
+unique_name_in_owner = true
+layout_mode = 0
 offset_left = 8.0
 offset_top = 5.0
 offset_right = 56.0
 offset_bottom = 21.0
 grow_horizontal = 2
 grow_vertical = 2
-mouse_filter = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
-texture = ExtResource( 2 )
-expand = true
+mouse_filter = 2
+texture = ExtResource("2")
+expand_mode = 1
 stretch_mode = 2
 
 [node name="CodeIcon" type="TextureRect" parent="."]
@@ -58,34 +60,33 @@ offset_top = 24.0
 offset_right = 384.0
 offset_bottom = 40.0
 size_flags_horizontal = 8
-texture = ExtResource( 6 )
+texture = ExtResource("6")
 
 [node name="MoneyHUD" type="HBoxContainer" parent="."]
 offset_left = 223.0
 offset_right = 384.0
 offset_bottom = 20.0
 mouse_filter = 2
-theme = ExtResource( 5 )
+theme = ExtResource("5")
 
 [node name="MoneyCounter" type="Label" parent="MoneyHUD"]
-offset_right = 142.0
-offset_bottom = 20.0
+unique_name_in_owner = true
+layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
-theme_override_fonts/font = ExtResource( 7 )
+theme_override_fonts/font = ExtResource("7")
 text = "$#,###,###,###"
-align = 2
-valign = 1
+horizontal_alignment = 2
+vertical_alignment = 1
 
 [node name="MoneyIcon" type="TextureRect" parent="MoneyHUD"]
-offset_left = 143.0
-offset_right = 161.0
-offset_bottom = 20.0
+layout_mode = 2
 mouse_filter = 2
-texture = ExtResource( 4 )
+texture = ExtResource("4")
 stretch_mode = 4
 
 [node name="Inventory" type="HBoxContainer" parent="."]
+anchors_preset = 7
 anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
@@ -94,11 +95,12 @@ offset_left = -32.0
 offset_top = -20.0
 offset_right = 32.0
 grow_horizontal = 2
-theme = ExtResource( 5 )
+theme = ExtResource("5")
 alignment = 1
 
 [node name="SeedHUD" type="HBoxContainer" parent="."]
 visible = false
+anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
@@ -109,29 +111,29 @@ offset_right = 37.5
 offset_bottom = 9.5
 
 [node name="SeedLabel" type="Label" parent="SeedHUD"]
-offset_top = 5.0
-offset_right = 49.0
-offset_bottom = 22.0
-theme_override_fonts/font = ExtResource( 7 )
+layout_mode = 2
+theme_override_fonts/font = ExtResource("7")
 text = " Seed:"
 
 [node name="SeedNum" type="LineEdit" parent="SeedHUD"]
-offset_left = 53.0
-offset_right = 135.0
-offset_bottom = 27.0
+unique_name_in_owner = true
+layout_mode = 2
 size_flags_horizontal = 4
-theme = ExtResource( 5 )
+theme = ExtResource("5")
 editable = false
 expand_to_text_length = true
 
 [node name="VaultMenu" type="ColorRect" parent="."]
 visible = false
+anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-theme = ExtResource( 5 )
-color = Color( 0.501961, 0.501961, 0.501961, 0.501961 )
+theme = ExtResource("5")
+color = Color(0.501961, 0.501961, 0.501961, 0.501961)
 
 [node name="Panel" type="PanelContainer" parent="VaultMenu"]
+unique_name_in_owner = true
+layout_mode = 0
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
@@ -144,62 +146,52 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="List" type="VBoxContainer" parent="VaultMenu/Panel"]
-offset_left = 2.0
-offset_top = 2.0
-offset_right = 302.0
-offset_bottom = 58.0
+layout_mode = 2
 alignment = 1
 
 [node name="KeyPanel" type="PanelContainer" parent="VaultMenu/Panel/List"]
+unique_name_in_owner = true
 visible = false
-offset_right = 300.0
-offset_bottom = 32.0
+layout_mode = 2
 
 [node name="Spliter" type="VBoxContainer" parent="VaultMenu/Panel/List/KeyPanel"]
-offset_left = 2.0
-offset_top = 2.0
-offset_right = 298.0
-offset_bottom = 30.0
+layout_mode = 2
 
 [node name="Title" type="Label" parent="VaultMenu/Panel/List/KeyPanel/Spliter"]
-offset_right = 296.0
-offset_bottom = 20.0
+layout_mode = 2
 text = "Key"
-align = 1
+horizontal_alignment = 1
 
-[node name="KeyCodeDisplay" parent="VaultMenu/Panel/List/KeyPanel/Spliter" instance=ExtResource( 8 )]
-offset_top = 24.0
-offset_right = 296.0
-offset_bottom = 28.0
+[node name="KeyCodeDisplay" parent="VaultMenu/Panel/List/KeyPanel/Spliter" instance=ExtResource("8")]
+unique_name_in_owner = true
+layout_mode = 2
 
 [node name="Title" type="Label" parent="VaultMenu/Panel/List"]
-offset_right = 300.0
-offset_bottom = 20.0
+layout_mode = 2
 text = "Unlock"
-align = 1
+horizontal_alignment = 1
 
-[node name="CodeEdit" parent="VaultMenu/Panel/List" instance=ExtResource( 8 )]
-offset_top = 24.0
-offset_right = 300.0
-offset_bottom = 28.0
+[node name="CodeEdit" parent="VaultMenu/Panel/List" instance=ExtResource("8")]
+unique_name_in_owner = true
+layout_mode = 2
 
 [node name="CancelButton" type="Button" parent="VaultMenu/Panel/List"]
-offset_left = 117.0
-offset_top = 32.0
-offset_right = 183.0
-offset_bottom = 56.0
-tooltip_text = " "
+unique_name_in_owner = true
+layout_mode = 2
 size_flags_horizontal = 4
-shortcut = SubResource( 2 )
+tooltip_text = " "
+shortcut = SubResource("2")
 text = "Cancel"
 
 [node name="WrongSound" type="AudioStreamPlayer" parent="VaultMenu"]
-stream = ExtResource( 9 )
-bus = "SFX"
+unique_name_in_owner = true
+stream = ExtResource("9")
+bus = &"SFX"
 
 [node name="TurnSound" type="AudioStreamPlayer" parent="VaultMenu"]
-stream = ExtResource( 10 )
+unique_name_in_owner = true
+stream = ExtResource("10")
 pitch_scale = 4.0
-bus = "SFX"
+bus = &"SFX"
 
 [connection signal="pressed" from="VaultMenu/Panel/List/CancelButton" to="." method="_on_CancelButton_pressed"]

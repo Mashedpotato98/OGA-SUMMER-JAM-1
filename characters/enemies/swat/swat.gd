@@ -1,15 +1,21 @@
-class_name Swat
-extends Enemy
+class_name Swat extends Enemy
 
 
+#region Members
+#region Export
 @export var dmg := 1
 @export var swat_cool_down := 1.0
+#endregion
 
+#region Onready
 @onready var swat_zone_shape: CollisionShape2D = $SwatZone/CollisionShape2D
 @onready var animation_tree: AnimationTree = $AnimationTree
-@onready var playback: AnimationNodeStateMachinePlayback = animation_tree.get("parameters/playback")
+@onready var playback: AnimationNodeStateMachinePlayback = animation_tree.get(&"parameters/playback")
+#endregion
+#endregion
 
 
+#region Functions
 func _process(_delta: float) -> void:
 	# Using _process() instead of _physics_process() because animation isn't physics related.
 	animate()
@@ -26,7 +32,7 @@ func animate() -> void:
 	else:
 		anim_name = "Idle"
 
-	animation_tree.set("parameters/%s/blend_position" % anim_name, smooth_vel)
+	animation_tree.set(&"parameters/%s/blend_position" % anim_name, smooth_vel)
 	playback.travel(anim_name)
 
 
@@ -35,9 +41,10 @@ func _on_SwatZone_area_entered(area: Area2D) -> void:
 		return
 	area.take_dmg(global_position, dmg)
 
-	animation_tree.set("parameters/Attack/blend_position", smooth_vel)
-	playback.travel("Attack")
+	animation_tree.set(&"parameters/Attack/blend_position", smooth_vel)
+	playback.travel(&"Attack")
 
-	swat_zone_shape.set_deferred("disabled", true)
+	swat_zone_shape.set_deferred(&"disabled", true)
 	await get_tree().create_timer(swat_cool_down).timeout
-	swat_zone_shape.set_deferred("disabled", false)
+	swat_zone_shape.set_deferred(&"disabled", false)
+#endregion

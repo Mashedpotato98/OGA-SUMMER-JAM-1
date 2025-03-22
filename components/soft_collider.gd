@@ -1,5 +1,4 @@
-class_name SoftCollider
-extends Area2D
+class_name SoftCollider extends Area2D
 
 
 @export var strength := 0.75

@@ -1,24 +1,27 @@
-class_name InventoryItem
-extends Button
+class_name InventoryItem extends Button
 
 
+#region Members
+#region Variables
 var item := ""
 var ammo := 1: set = _on_ammo_set
+#endregion
 
 @onready var cool_down: ProgressBar = $CoolDown
+#endregion
 
 
+#region Functions
 func _ready() -> void:
-# warning-ignore:return_value_discarded
-	Inventory.connect("current_item_switched", Callable(self, "_on_Inventory_current_item_switched"))
+	Inventory.current_item_switched.connect(_on_Inventory_current_item_switched)
 
 
 func start_cool_down(duration: float) -> void:
 	cool_down.value = 1.0
-# warning-ignore:return_value_discarded
-	create_tween().tween_property(cool_down, "value", 0.0, duration * 0.9)
+	create_tween().tween_property(cool_down, ^"value", 0.0, duration * 0.9)
 
 
+#region Events
 func _on_ammo_set(value: int) -> void:
 	ammo = value
 	text = "X" + str(ammo)
@@ -30,7 +33,7 @@ func _on_InventoryItem_pressed() -> void:
 
 	Inventory.current_item = Inventory.items.keys().find(item)
 
-	for inventory_item in get_tree().get_nodes_in_group("inventory_items"):
+	for inventory_item in get_tree().get_nodes_in_group(&"inventory_items"):
 		if inventory_item == self:
 			continue
 		inventory_item.set_pressed_no_signal(false)
@@ -42,3 +45,5 @@ func _on_Inventory_current_item_switched(new_item: int) -> void:
 
 func _on_InventoryItem_focus_entered() -> void:
 	release_focus()
+#endregion
+#endregion

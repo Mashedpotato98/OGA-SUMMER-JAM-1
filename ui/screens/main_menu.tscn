@@ -4,10 +4,6 @@
 [ext_resource type="Script" path="res://ui/screens/main_menu.gd" id="2"]
 
 [node name="MainMenu" instance=ExtResource("1")]
-layout_mode = 3
-anchors_preset = 15
-grow_horizontal = 2
-grow_vertical = 2
 script = ExtResource("2")
 
 [node name="Title" parent="." index="0"]
@@ -15,7 +11,6 @@ layout_mode = 1
 anchors_preset = 10
 offset_bottom = 24.0
 grow_horizontal = 2
-horizontal_alignment = 1
 
 [node name="Menu" parent="." index="1"]
 layout_mode = 1

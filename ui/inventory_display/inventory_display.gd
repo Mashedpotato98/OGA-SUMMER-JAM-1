@@ -1,2 +1,1 @@
-class_name InventoryDisplay
-extends HBoxContainer
+class_name InventoryDisplay extends HBoxContainer

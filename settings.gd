@@ -1,18 +1,22 @@
 extends Node
 
 
+#region Members
 var path := "user://godot_4/"
 var file := "settings"
 var file_path := path + file
 var data := {music_vol = 0.0, sfx_vol = 0.0, blood_mode = true}
+#endregion
 
 
+#region Functions
 func _ready() -> void:
 	load_data()
 	AudioServer.set_bus_volume_db(1, data.music_vol)
 	AudioServer.set_bus_volume_db(2, data.sfx_vol)
 
 
+#region Regular
 func load_data() -> void:
 	if FileAccess.file_exists(file_path):
 		var file := FileAccess.open(file_path, FileAccess.READ)
@@ -39,3 +43,5 @@ func save_data() -> void:
 		file.store_var(data)
 	else:
 		OS.alert("Could not save settings.\nError: " + error_string(error))
+#endregion
+#endregion

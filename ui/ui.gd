@@ -1,47 +1,52 @@
-class_name UI
-extends CanvasLayer
+class_name UI extends CanvasLayer
 
 
-const CODE := preload("res://ui/code.tscn")
-
+#region Members
+#region Signals
 signal vault_menu_closed
 signal vault_menu_opened
+#endregion
 
+#region Constants
+const CODE := preload("res://ui/code.tscn")
 const INVENTORY_ITEM := preload("res://ui/buttons/inventory_item.tscn")
 const VAULT_DIRECTION := preload("res://ui/buttons/vault_direction.tscn")
+#endregion
 
+#region Variables
 var vault: Vault = null
 var code := []: set = _on_code_set
+#endregion
 
-@onready var health_bar: Control = $HealthBar
-@onready var health_bar_bg: NinePatchRect = health_bar.get_node("BG")
-@onready var health_bar_fill: TextureRect = health_bar.get_node("Fill")
+#region Onready
+@onready var health_bar_bg: NinePatchRect = %BG
+@onready var health_bar_fill: TextureRect = %Fill
 
-@onready var seed_hud: HBoxContainer = $SeedHUD
-@onready var seed_num: LineEdit = seed_hud.get_node("SeedNum")
+@onready var seed_num: LineEdit = %SeedNum
 @onready var inventory: HBoxContainer = $Inventory
 
-@onready var money_counter: Label = $MoneyHUD/MoneyCounter
+@onready var money_counter: Label = %MoneyCounter
 @onready var code_icon: TextureRect = $CodeIcon
 
 @onready var vault_menu: ColorRect = $VaultMenu
-@onready var wrong_sound: AudioStreamPlayer = vault_menu.get_node("WrongSound")
-@onready var turn_sound: AudioStreamPlayer = vault_menu.get_node("TurnSound")
-@onready var vault_panel: PanelContainer = vault_menu.get_node("Panel")
-@onready var list: VBoxContainer = vault_panel.get_node("List")
+@onready var wrong_sound: AudioStreamPlayer = %WrongSound
+@onready var turn_sound: AudioStreamPlayer = %TurnSound
+@onready var vault_panel: PanelContainer = %Panel
 
-@onready var key_panel: PanelContainer = list.get_node("KeyPanel")
-@onready var key_code_display: Code = key_panel.get_node("Spliter/KeyCodeDisplay")
+@onready var key_panel: PanelContainer = %KeyPanel
+@onready var key_code_display: Code = %KeyCodeDisplay
 
-@onready var code_edit: Code = list.get_node("CodeEdit")
-@onready var cancel_button: Button = list.get_node("CancelButton")
+@onready var code_edit: Code = %CodeEdit
+@onready var cancel_button: Button = %CancelButton
+#endregion
+#endregion
 
 
+#region Functions
+#region Overrides
 func _ready() -> void:
-# warning-ignore:return_value_discarded
-	Inventory.connect("money_changed", Callable(self, "set_money"))
-# warning-ignore:return_value_discarded
-	Inventory.connect("items_changed", Callable(self, "set_items"))
+	Inventory.money_changed.connect(set_money)
+	Inventory.items_changed.connect(set_items)
 
 	set_money(Inventory.money)
 	set_items(Inventory.items)
@@ -53,14 +58,14 @@ func _input(event: InputEvent) -> void:
 	if code.size() > vault.code_length:
 		return
 
-	if event.is_action_pressed("turn_right"):
+	if event.is_action_pressed(&"turn_right"):
 		add_dir_to_code(true)
-	elif event.is_action_pressed("turn_left"):
+	elif event.is_action_pressed(&"turn_left"):
 		add_dir_to_code(false)
 
 
 func add_dir_to_code(direction: bool) -> void:
-	self.code.append(direction)
+	code.append(direction)
 	_on_code_set(code)
 
 	turn_sound.play()
@@ -70,13 +75,13 @@ func add_dir_to_code(direction: bool) -> void:
 			hide_vault_menu()
 		else:
 			wrong_sound.play()
-			await shake_vault_panel().completed
-		self.code = []
+			await shake_vault_panel()
+		code = []
+#endregion
 
 
+#region Regular
 func shake_vault_panel() -> void:
-	await get_tree().idle_frame # Not sure what this does or if it's necessary; just copied it from yield docs.
-
 	var shakes := 10
 	var distance := 8.0
 	var duration := 0.05
@@ -87,8 +92,7 @@ func shake_vault_panel() -> void:
 		var final_pos := start_pos if i >= shakes - 1 else start_pos + distance * direction
 
 		var tween := create_tween()
-# warning-ignore:return_value_discarded
-		tween.tween_property(vault_panel, "position:x", final_pos, duration)
+		tween.tween_property(vault_panel, ^"position:x", final_pos, duration)
 		await tween.finished
 
 
@@ -107,7 +111,7 @@ func set_money(money: int) -> void:
 func set_items(items: Dictionary) -> void:
 	for inventory_item in inventory.get_children():
 		inventory_item.queue_free()
-	for item_path in items:
+	for item_path: String in items:
 		var inventory_item: InventoryItem = INVENTORY_ITEM.instantiate()
 		inventory.add_child(inventory_item)
 		inventory_item.item = item_path
@@ -115,7 +119,6 @@ func set_items(items: Dictionary) -> void:
 		inventory_item.ammo = items[item_path]
 
 
-# warning-ignore:shadowed_variable
 func set_seed(seed_num: int) -> void:
 	self.seed_num.text = str(seed_num)
 
@@ -123,22 +126,19 @@ func set_seed(seed_num: int) -> void:
 func hide_vault_menu() -> void:
 	vault = null
 	vault_menu.hide()
-	self.code = []
+	code = []
 	code_edit.clear_directions()
 
-	emit_signal("vault_menu_closed")
+	vault_menu_closed.emit()
+#endregion
 
 
-static func reparent(node: Node, new_parent: Node) -> void:
-	var old_parent := node.get_parent()
-	old_parent.remove_child(node)
-	new_parent.add_child(node)
-
-
+#region Events
 func _on_code_set(value: Array) -> void:
 	code = value
 
 	for i in code_edit.get_direction_count():
+		@warning_ignore("untyped_declaration")
 		var direction = null if code.size() - 1 < i else code[i]
 		code_edit.set_direction(i, direction)
 
@@ -155,7 +155,6 @@ func _on_Robber_cool_down_started(item: String, duration: float) -> void:
 		inventory_item.start_cool_down(duration)
 
 
-# warning-ignore:shadowed_variable
 func _on_Vault_activated(vault: Vault) -> void:
 	self.vault = vault
 
@@ -164,14 +163,13 @@ func _on_Vault_activated(vault: Vault) -> void:
 
 	vault_menu.show()
 	cancel_button.grab_focus()
-	emit_signal("vault_menu_opened")
+	vault_menu_opened.emit()
 
 
 func _on_CancelButton_pressed() -> void:
 	hide_vault_menu()
 
 
-# warning-ignore:shadowed_variable
 func _on_Robber_code_grabbed(code: Array, from: Vector2) -> void:
 	key_panel.show()
 	key_code_display.set_directions_array(code)
@@ -184,33 +182,31 @@ func _on_Robber_code_grabbed(code: Array, from: Vector2) -> void:
 
 	var anim_duration := 1.0
 	var start_pos := code_instance.position
-	# Bad code, but couldn't think of any other solution to CanvasLayer not moveing.
-	reparent(code_icon, get_parent())
+	# Bad code, but couldn't think of any other solution to CanvasLayer not moving.
+	code_icon.reparent(get_parent())
 	# Magical line copy-pasted from Reddit: MODIFY AT YOUR OWN RISK
 	var final_pos := code_icon.get_canvas_transform().affine_inverse() * code_icon.position
-	reparent(code_icon, self)
+	code_icon.reparent(self)
 
 	var half_pos := start_pos.lerp(final_pos, 0.5)
 
 	# Bunch'a tweening stuff
 	var tween := create_tween()
-	tween.tween_property(code_instance, "position", half_pos, anim_duration / 2.0
-# warning-ignore:return_value_discarded
+	tween.tween_property(code_instance, ^"position", half_pos, anim_duration / 2.0
 			).set_ease(Tween.EASE_OUT)
-	create_tween().tween_property(code_instance, "scale", Vector2.ONE * 0.3,
-# warning-ignore:return_value_discarded
+	create_tween().tween_property(code_instance, ^"scale", Vector2.ONE * 0.3,
 			anim_duration / 2.0).set_ease(Tween.EASE_OUT)
 
 	await tween.finished
 
 	var tween_2 := create_tween()
-	tween_2.tween_property(code_instance, "position", final_pos,
-# warning-ignore:return_value_discarded
+	tween_2.tween_property(code_instance, ^"position", final_pos,
 			anim_duration / 2.0).set_ease(Tween.EASE_IN)
-	create_tween().tween_property(code_instance, "scale", Vector2.ZERO, anim_duration / 2.0
-# warning-ignore:return_value_discarded
+	create_tween().tween_property(code_instance, ^"scale", Vector2.ZERO, anim_duration / 2.0
 			).set_ease(Tween.EASE_IN)
 
 	await tween_2.finished
 	code_icon.show()
 	code_instance.queue_free()
+#endregion
+#endregion

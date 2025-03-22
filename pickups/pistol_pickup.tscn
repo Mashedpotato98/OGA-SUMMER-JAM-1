@@ -1,18 +1,18 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=5 format=3 uid="uid://cjc2u6y8v2lr"]
 
-[ext_resource path="res://pickups/item_pickup.tscn" type="PackedScene" id=1]
-[ext_resource path="res://guns/pistol/pistol.png" type="Texture2D" id=2]
-[ext_resource path="res://guns/pistol/pistol.tscn" type="PackedScene" id=3]
+[ext_resource type="PackedScene" uid="uid://bdkq5awasu10h" path="res://pickups/item_pickup.tscn" id="1"]
+[ext_resource type="Texture2D" uid="uid://b17p5v2hcuqia" path="res://guns/pistol/pistol.png" id="2"]
+[ext_resource type="PackedScene" path="res://guns/pistol/pistol.tscn" id="3"]
 
-[sub_resource type="CircleShape2D" id=1]
+[sub_resource type="CircleShape2D" id="CircleShape2D_np88y"]
 resource_local_to_scene = true
 
-[node name="PistolPickup" instance=ExtResource( 1 )]
-ITEM = ExtResource( 3 )
+[node name="PistolPickup" instance=ExtResource("1")]
+ITEM = ExtResource("3")
 
 [node name="Sprite2D" parent="." index="0"]
-texture = ExtResource( 2 )
+texture = ExtResource("2")
 flip_h = true
 
-[node name="CollisionShape2D" parent="." index="1"]
-shape = SubResource( 1 )
+[node name="CollisionShape3D" parent="." index="1"]
+shape = SubResource("CircleShape2D_np88y")

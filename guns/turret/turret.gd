@@ -1,24 +1,30 @@
-class_name Turret
-extends StaticBody2D
+class_name Turret extends StaticBody2D
 
 
+#region Members
 const TURRET_DEATH_EFFECT := preload("res://guns/turret/turret_death_effect.tscn")
 
+#region Export
 @export var turn_speed := 5.0
 @export var shoot_margin := 0.2
 @export var hp := 6: set = _on_hp_set
+#endregion
 
+#region Variables
 var target: Node2D = null
 var shooting := false
 var type := "cop"
+#endregion
 
 @onready var auto_aimer: AutoAimer = $AutoAimer
-@onready var gun: Gun = auto_aimer.get_node("Gun")
+@onready var gun: Gun = %Gun
 @onready var detection_zone: Area2D = $DetectionZone
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 @onready var hurt_sound: AudioStreamPlayer2D = $HurtSound
+#endregion
 
 
+#region Functions
 func _process(_delta: float) -> void:
 	if target == null or not is_instance_valid(target):
 		return
@@ -33,16 +39,15 @@ func _process(_delta: float) -> void:
 func play_random() -> void:
 	var rand_num := randf()
 	if rand_num <= 0.25:
-		animation_player.play("RapidFire")
+		animation_player.play(&"RapidFire")
 
 		var direction: float = snapped(randi() % 3, 2.0) - 1.0
 		var sweep_range := TAU / 4.0 * direction
 		await sweep(sweep_range / 2.0, 0.5).finished
 		await sweep(-sweep_range, 0.5).finished
-# warning-ignore:return_value_discarded
 		sweep(sweep_range / 2.0, 0.25)
 	else:
-		animation_player.play("Fire")
+		animation_player.play(&"Fire")
 
 #	var animations := animation_player.get_animation_list()
 #	var animation := animations[rand_range(0, animations.size())]
@@ -51,11 +56,11 @@ func play_random() -> void:
 
 func sweep(angle: float, duration: float) -> Tween:
 	var tween := create_tween()
-# warning-ignore:return_value_discarded
-	tween.tween_property(auto_aimer, "transform", auto_aimer.transform.rotated(angle), duration)
+	tween.tween_property(auto_aimer, ^"transform", auto_aimer.transform.rotated(angle), duration)
 	return tween
 
 
+#region Events
 func _on_hp_set(value: int) -> void:
 	hp = value
 	if hp <= 0:
@@ -85,3 +90,5 @@ func _on_DetectionZone_lost(what: Node) -> void:
 
 func _on_DetectionZone_saw(what: Node) -> void:
 	target = what
+#endregion
+#endregion

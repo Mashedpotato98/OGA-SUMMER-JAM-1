@@ -1,5 +1,4 @@
-class_name ScreenShakeCamera
-extends Camera2D
+class_name ScreenShakeCamera extends Camera2D
 
 
 func shake(distance: float, frequency: int, duration: float) -> void:
@@ -8,6 +7,5 @@ func shake(distance: float, frequency: int, duration: float) -> void:
 		var direction := Vector2(randf_range(-distance, distance), randf_range(-distance, distance))
 
 		var tween := create_tween()
-# warning-ignore:return_value_discarded
-		tween.tween_property(self, "position", direction, shake_duration)
+		tween.tween_property(self, ^"position", direction, shake_duration)
 		await tween.finished

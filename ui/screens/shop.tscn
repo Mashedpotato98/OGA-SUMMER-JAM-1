@@ -1,24 +1,30 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=5 format=3 uid="uid://brm3oh5g5n7nf"]
 
-[ext_resource path="res://ui/theme.theme" type="Theme" id=1]
-[ext_resource path="res://ui/screens/shop.gd" type="Script" id=2]
-[ext_resource path="res://ui/fonts/title_font.tres" type="FontFile" id=3]
-[ext_resource path="res://ui/icons/money.png" type="Texture2D" id=4]
+[ext_resource type="Theme" uid="uid://bfswc7hc3bmsg" path="res://ui/theme.theme" id="1"]
+[ext_resource type="Script" path="res://ui/screens/shop.gd" id="2"]
+[ext_resource type="FontFile" path="res://ui/fonts/title_font.tres" id="3"]
+[ext_resource type="Texture2D" uid="uid://6i6jv7s3607b" path="res://ui/icons/money.png" id="4"]
 
 [node name="Shop" type="Control"]
+layout_mode = 3
+anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-theme = ExtResource( 1 )
-script = ExtResource( 2 )
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1")
+script = ExtResource("2")
 
 [node name="Title" type="Label" parent="."]
+layout_mode = 0
 anchor_right = 1.0
 offset_bottom = 33.0
-theme_override_fonts/font = ExtResource( 3 )
+theme_override_fonts/font = ExtResource("3")
 text = "Shop"
-align = 1
+horizontal_alignment = 1
 
 [node name="DoneButton" type="Button" parent="."]
+layout_mode = 0
 anchor_left = 1.0
 anchor_right = 1.0
 offset_left = -48.0
@@ -26,61 +32,50 @@ offset_bottom = 21.0
 text = "Done"
 
 [node name="ItemLists" type="VBoxContainer" parent="."]
+layout_mode = 0
 anchor_right = 1.0
 anchor_bottom = 1.0
 offset_top = 48.0
 
 [node name="Market" type="PanelContainer" parent="ItemLists"]
-offset_right = 384.0
-offset_bottom = 332.0
+layout_mode = 2
 size_flags_vertical = 3
 
 [node name="Menu" type="VBoxContainer" parent="ItemLists/Market"]
-offset_left = 2.0
-offset_top = 2.0
-offset_right = 382.0
-offset_bottom = 330.0
+layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
 [node name="TopBar" type="HBoxContainer" parent="ItemLists/Market/Menu"]
-offset_right = 380.0
-offset_bottom = 20.0
+layout_mode = 2
 alignment = 2
 
 [node name="Money" type="Label" parent="ItemLists/Market/Menu/TopBar"]
-offset_left = 295.0
-offset_right = 361.0
-offset_bottom = 20.0
+unique_name_in_owner = true
+layout_mode = 2
 size_flags_horizontal = 8
 text = "$100000"
-align = 2
+horizontal_alignment = 2
 
 [node name="MoneyIcon" type="TextureRect" parent="ItemLists/Market/Menu/TopBar"]
-offset_left = 362.0
-offset_right = 380.0
-offset_bottom = 20.0
-texture = ExtResource( 4 )
+layout_mode = 2
+texture = ExtResource("4")
 
 [node name="ScrollContainer" type="ScrollContainer" parent="ItemLists/Market/Menu"]
-offset_top = 24.0
-offset_right = 380.0
-offset_bottom = 328.0
+layout_mode = 2
 size_flags_vertical = 3
 follow_focus = true
-scroll_horizontal_enabled = false
 
 [node name="Items" type="GridContainer" parent="ItemLists/Market/Menu/ScrollContainer"]
-offset_right = 380.0
-offset_bottom = 304.0
+unique_name_in_owner = true
+layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 columns = 5
 
 [node name="Inventory" type="HBoxContainer" parent="ItemLists"]
-offset_top = 336.0
-offset_right = 384.0
-offset_bottom = 336.0
+unique_name_in_owner = true
+layout_mode = 2
 alignment = 1
 
 [connection signal="pressed" from="DoneButton" to="." method="_on_DoneButton_pressed"]

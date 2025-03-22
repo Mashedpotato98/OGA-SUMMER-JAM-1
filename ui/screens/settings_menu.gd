@@ -1,13 +1,14 @@
-class_name SettingsMenu
-extends Screen
+class_name SettingsMenu extends Screen
 
 
-@onready var menu: VBoxContainer = $Menu
-@onready var music_slider: HSlider = menu.get_node("Music/MusicSlider")
-@onready var sfx_slider: HSlider = menu.get_node("SFX/SFXSlider")
-@onready var blood_mode_toggle: CheckButton = menu.get_node("BloodMode/BloodModeToggle")
+#region Members
+@onready var music_slider: HSlider = %MusicSlider
+@onready var sfx_slider: HSlider = %SFXSlider
+@onready var blood_mode_toggle: CheckButton = %BloodModeToggle
+#endregion
 
 
+#region Functions
 func _ready() -> void:
 	music_slider.value = inverse_lerp(-80.0, 0.0, Settings.data.music_vol)
 	sfx_slider.value = inverse_lerp(-80.0, 0.0, Settings.data.sfx_vol)
@@ -16,6 +17,7 @@ func _ready() -> void:
 	super()
 
 
+#region Events
 func _on_SaveButton_pressed() -> void:
 	Settings.data.music_vol = AudioServer.get_bus_volume_db(1)
 	Settings.data.sfx_vol = AudioServer.get_bus_volume_db(2)
@@ -37,3 +39,5 @@ func _on_MusicSlider_value_changed(value: float) -> void:
 
 func _on_SFXSlider_value_changed(value: float) -> void:
 	AudioServer.set_bus_volume_db(2, lerp(-80.0, 0.0, value))
+#endregion
+#endregion

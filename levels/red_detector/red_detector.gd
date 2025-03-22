@@ -1,20 +1,22 @@
-class_name RedDetector
-extends Area2D
+class_name RedDetector extends Area2D
 
 
+#region Members
 @export var dmg := 2
 
 var detecting := true: set = _on_detecting_set
 
 @onready var sprite: Sprite2D = $Sprite2D
 @onready var collision_shape: CollisionShape2D = $CollisionShape2D
+#endregion
 
 
+#region Functions
 func _on_detecting_set(value: bool) -> void:
 	detecting = value
 
 	sprite.visible = detecting
-	collision_shape.set_deferred("disabled", not detecting)
+	collision_shape.set_deferred(&"disabled", not detecting)
 
 
 func _on_Timer_timeout() -> void:
@@ -23,3 +25,4 @@ func _on_Timer_timeout() -> void:
 
 func _on_red_detector_area_entered(area: HitBox) -> void:
 	area.take_dmg(global_position, dmg)
+#endregion
