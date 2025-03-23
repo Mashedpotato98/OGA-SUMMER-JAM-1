@@ -5,7 +5,6 @@
 [ext_resource type="Script" path="res://characters/enemies/cop/cop.gd" id="3"]
 [ext_resource type="PackedScene" uid="uid://c88astp844k14" path="res://guns/pistol/pistol.tscn" id="4"]
 [ext_resource type="PackedScene" path="res://components/detection_zone.tscn" id="5"]
-[ext_resource type="Texture2D" uid="uid://5isoufmt8efi" path="res://characters/enemies/cop/cop_bribed_reskin.png" id="6"]
 
 [sub_resource type="CapsuleShape2D" id="4"]
 radius = 2.0
@@ -335,6 +334,9 @@ blend_mode = 1
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="13"]
 
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_i0l45"]
+advance_mode = 2
+
 [sub_resource type="AnimationNodeStateMachine" id="14"]
 states/Idle/node = SubResource("7")
 states/Idle/position = Vector2(332, 78)
@@ -342,18 +344,19 @@ states/Run/node = SubResource("8")
 states/Run/position = Vector2(332, 158)
 states/Walk/node = SubResource("9")
 states/Walk/position = Vector2(481, 78)
-transitions = ["Idle", "Walk", SubResource("10"), "Walk", "Idle", SubResource("11"), "Run", "Idle", SubResource("12"), "Idle", "Run", SubResource("13")]
+transitions = ["Idle", "Walk", SubResource("10"), "Walk", "Idle", SubResource("11"), "Run", "Idle", SubResource("12"), "Idle", "Run", SubResource("13"), "Start", "Idle", SubResource("AnimationNodeStateMachineTransition_i0l45")]
 
 [node name="Cop" instance=ExtResource("1")]
 script = ExtResource("3")
 shoot_margin = 0.25
 min_circle_distance = 64.0
 max_circle_distance = 96.0
-bribed_texture = ExtResource("6")
+bribed_texture = null
 follow_distance = 24.0
 drop_chance = 0.1
 g36c_accuracy = 4.0
 bribed_soft_collider_radius = 16.0
+DEATH_EFFECT = null
 
 [node name="Sprite2D" parent="." index="0"]
 position = Vector2(0, -7)
@@ -402,31 +405,30 @@ shape = SubResource("6")
 [node name="RayCast3D" parent="CopDetectionZone" index="1"]
 collision_mask = 5
 
-[node name="BounceZone" type="Area2D" parent="." index="9"]
+[node name="BounceZone" type="Area2D" parent="CopDetectionZone" index="2"]
 collision_layer = 0
 collision_mask = 17
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="BounceZone" index="0"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CopDetectionZone/BounceZone" index="0"]
 shape = SubResource("2")
 
-[node name="Navigator" type="NavigationAgent2D" parent="." index="10"]
+[node name="Navigator" type="NavigationAgent2D" parent="." index="9"]
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="." index="11"]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." index="10"]
 libraries = {
 "": SubResource("AnimationLibrary_x4yu1")
 }
 
-[node name="AnimationTree" type="AnimationTree" parent="." index="12"]
+[node name="AnimationTree" type="AnimationTree" parent="." index="11"]
 tree_root = SubResource("14")
 anim_player = NodePath("../AnimationPlayer")
 parameters/Idle/blend_position = Vector2(0, 0)
 parameters/Run/blend_position = Vector2(0, 0)
 parameters/Walk/blend_position = Vector2(0, 0)
 
-[connection signal="player_reached" from="." to="." method="_on_Cop_player_reached"]
 [connection signal="lost" from="CopDetectionZone" to="." method="_on_CopDetectionZone_lost"]
 [connection signal="saw" from="CopDetectionZone" to="." method="_on_CopDetectionZone_saw"]
-[connection signal="body_entered" from="BounceZone" to="." method="_on_BounceZone_body_entered"]
+[connection signal="body_entered" from="CopDetectionZone/BounceZone" to="." method="_on_BounceZone_body_entered"]
 
 [editable path="HitBox"]
 [editable path="DetectionZone"]

@@ -74,10 +74,10 @@ walk_speed = 0.0
 
 [node name="CollisionShape2D" parent="Cop" index="1"]
 visible = false
+light_mask = 1
 
 [node name="HitBox" parent="Cop" index="2"]
 visible = false
-rotation = 0.0
 
 [node name="CollisionShape3D" parent="Cop/HitBox" index="0"]
 visible = false
@@ -125,10 +125,10 @@ walk_speed = 0.0
 
 [node name="CollisionShape2D" parent="Swat" index="1"]
 visible = false
+light_mask = 1
 
 [node name="HitBox" parent="Swat" index="2"]
 visible = false
-rotation = 0.0
 
 [node name="CollisionShape3D" parent="Swat/HitBox" index="0"]
 visible = false
