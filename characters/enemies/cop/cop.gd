@@ -70,7 +70,7 @@ func _die() -> void:
 				Inventory.cronies.remove_at(i)
 				Inventory._on_cronies_set(Inventory.cronies)
 				break
-	elif randf() <= drop_chance:
+	if randf() <= drop_chance:
 		drop()
 
 	queue_free()
@@ -201,7 +201,7 @@ func _on_Cop_player_reached() -> void:
 func _on_DetectionZone_lost(what: Node) -> void:
 	if bribe_state == BRIBE_STATES.BRIBED:
 		return
-	super._on_DetectionZone_lost(what)
+	super(what)
 
 
 func _on_CopDetectionZone_lost(what: Node) -> void:
