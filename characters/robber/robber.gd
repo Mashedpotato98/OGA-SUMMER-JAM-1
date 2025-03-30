@@ -45,7 +45,7 @@ func _ready() -> void:
 	spawn_cronies()
 
 	if Inventory.items.keys().size() > 0:
-		Inventory._on_current_item_set(Inventory.current_item)
+		Inventory.current_item_switched.emit(Inventory.current_item)
 
 	Input.mouse_mode = Input.MOUSE_MODE_CONFINED
 	dash_bar.max_value = dash_cool_down.wait_time
@@ -109,7 +109,7 @@ func reset_stats() -> void:
 	Inventory.items = Inventory.DEFAULT_ITEMS.duplicate()
 	Inventory.cronies = []
 	Inventory.first_raid = true
-	Inventory.save_inventory()
+	Inventory.save_file()
 
 
 func dash() -> void:

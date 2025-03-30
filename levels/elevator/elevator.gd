@@ -1,5 +1,4 @@
-class_name Elevator
-extends Area2D
+class_name Elevator extends Area2D
 
 
 #region Members
@@ -19,6 +18,9 @@ func _on_Elevator_body_entered(body: Node) -> void:
 
 
 func _on_OpenZone_body_entered(_body: Node) -> void:
-	if door.frame == 0:
-		door.play(&"open")
+	door.play(&"open")
+
+
+func _on_open_zone_body_exited(_body: Node2D) -> void:
+	door.play_backwards(&"open")
 #endregion

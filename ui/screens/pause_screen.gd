@@ -4,7 +4,7 @@ class_name PauseScreen extends CanvasLayer
 #region Members
 @onready var bg: ColorRect = $BG
 @onready var interface: Screen = $Interface
-@onready var resume_button: Button = interface.get_node("Menu/ResumeButton")
+@onready var resume_button: Button = %ResumeButton
 #endregion
 
 

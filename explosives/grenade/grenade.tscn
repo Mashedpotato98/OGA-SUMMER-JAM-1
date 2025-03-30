@@ -3,7 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://bw3ii81givp03" path="res://explosives/explosive.tscn" id="1"]
 [ext_resource type="Texture2D" uid="uid://c3kdf31kgfv20" path="res://explosives/grenade/grenade.png" id="2"]
 [ext_resource type="Script" path="res://explosives/grenade/grenade.gd" id="3"]
-[ext_resource type="PackedScene" path="res://explosives/grenade/splash.tscn" id="4"]
+[ext_resource type="PackedScene" uid="uid://b6p32hx4eehoi" path="res://explosives/grenade/splash.tscn" id="4"]
 
 [sub_resource type="CircleShape2D" id="1"]
 resource_local_to_scene = true

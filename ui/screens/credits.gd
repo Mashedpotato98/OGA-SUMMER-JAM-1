@@ -1,16 +1,7 @@
 class_name Credits extends Screen
 
 
-@onready var back_button: Button = $Menu/BackButton
-
-
 #region Functions
-func _ready() -> void:
-	back_button.grab_focus()
-	super()
-
-
-#region Events
 func _on_BackButton_pressed() -> void:
 	change_scene_to_file("res://ui/screens/main_menu.tscn")
 

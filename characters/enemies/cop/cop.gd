@@ -164,7 +164,7 @@ func being_bribed() -> void:
 
 
 func drop() -> void:
-	var file := str(item.filename).get_basename().get_file()
+	var file := str(item.scene_file_path).get_basename().get_file()
 	file += "_pickup.tscn"
 	var pickup: ItemPickup = load("res://pickups/" + file).instantiate()
 	get_tree().current_scene.add_child(pickup)

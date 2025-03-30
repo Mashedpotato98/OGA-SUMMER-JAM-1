@@ -12,9 +12,8 @@ const ELEVATOR_TRANSITION := preload("res://ui/screens/elevator_transition.tscn"
 var height := 0
 
 #region Onready
-@onready var y_sort: Node2D = $Node2D
-@onready var robber: Robber = y_sort.get_node("Robber")
-@onready var elevator: Elevator = y_sort.get_node("Elevator")
+@onready var robber: Robber = %Robber
+@onready var elevator: Elevator = %Elevator
 @onready var ui: UI = $UI
 #endregion
 #endregion
@@ -22,8 +21,6 @@ var height := 0
 
 #region Functions
 func _ready() -> void:
-	randomize()
-
 	elevator.needle.frame = height
 
 	var fade := Fade.new()
@@ -31,6 +28,10 @@ func _ready() -> void:
 	fade.fade(Fade.FadeMode.FADE_OUT, 1.0)
 
 	Music.change_track(track, volume)
+
+
+func set_robber_hp(hp: int) -> void:
+	robber.hp = hp
 
 
 func level_up() -> void:
@@ -45,6 +46,7 @@ func level_up() -> void:
 		queue_free()
 		elevator_trans.level_up(height, robber.hp)
 	else:
-#		get_tree().change_scene("res://ui/screens/win_screen.tscn")
-		get_tree().change_scene_to_file("res://ui/screens/shop.tscn") # Decided to go directly to shop instead.
+		#get_tree().change_scene("res://ui/screens/win_screen.tscn")
+		# Decided to go directly to shop instead.
+		get_tree().change_scene_to_file("res://ui/screens/shop.tscn")
 #endregion

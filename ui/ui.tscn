@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://dmdcinglu0t1"]
+[gd_scene load_steps=13 format=3 uid="uid://dmdcinglu0t1"]
 
 [ext_resource type="Texture2D" uid="uid://b06hvhbcexpuk" path="res://ui/icons/Health_bar.png" id="1"]
 [ext_resource type="Texture2D" uid="uid://di1seirj1fqt4" path="res://ui/icons/health_singal.png" id="2"]
@@ -11,7 +11,11 @@
 [ext_resource type="AudioStream" uid="uid://dr4ud50hwf8u4" path="res://sfx/ui/sfx_sounds_error2.wav" id="9"]
 [ext_resource type="AudioStream" uid="uid://dkwcg6lwn4kyv" path="res://sfx/ui/sfx_sounds_impact3.wav" id="10"]
 
+[sub_resource type="InputEventAction" id="InputEventAction_opwrl"]
+action = &"ui_cancel"
+
 [sub_resource type="Shortcut" id="2"]
+events = [SubResource("InputEventAction_opwrl")]
 
 [node name="UI" type="CanvasLayer"]
 script = ExtResource("3")

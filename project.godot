@@ -22,7 +22,7 @@ config/icon="res://icon.png"
 
 Inventory="*res://characters/robber/inventory.gd"
 Music="*res://music/music.tscn"
-Settings="*res://settings.gd"
+Settings="*res://settings.tscn"
 
 [debug]
 

@@ -2,6 +2,8 @@ extends AudioStreamPlayer
 
 
 #region Members
+const MIN_VOLUME := -80.0
+
 @export var fade_duration := 0.5
 
 var track: AudioStream

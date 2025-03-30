@@ -5,16 +5,9 @@ class_name WinScreen extends Screen
 
 
 #region Functions
-#region Overrides
 func _init() -> void:
 	Inventory.first_raid = false
-	Inventory.save_inventory()
-
-
-func _ready() -> void:
-	super()
-	shop_button.grab_focus()
-#endregion
+	Inventory.save_file()
 
 
 #region Events
