@@ -9,7 +9,7 @@ const RIGHT := preload("res://ui/icons/turn_right.png")
 
 #region Onready
 @onready var arrow: TextureRect = $Arrow
-@onready var focus: TextureRect = $Focus
+@onready var focus_texture: TextureRect = $Focus
 #endregion
 #endregion
 
@@ -20,16 +20,15 @@ func set_direction(direction) -> void:
 	arrow.texture = direction if direction == null else (RIGHT if direction else LEFT)
 
 
-#region Events
-func _on_focus_entered() -> void:
-	focus.show()
+func focus() -> void:
+	focus_texture.show()
 	for vault_direction in get_tree().get_nodes_in_group(&"vault_directions"):
 		if vault_direction == self:
 			continue
-		vault_direction.release_focus()
+		vault_direction.remove_focus()
 
 
-func _on_focus_exited() -> void:
-	focus.hide()
+func remove_focus() -> void:
+	focus_texture.hide()
 #endregion
 #endregion

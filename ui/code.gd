@@ -18,7 +18,7 @@ func init_directions(amount: int) -> void:
 func set_directions_array(directions_array: Array) -> void:
 	for i in directions_array.size():
 		var vault_direction: VaultDirection
-		if directions.get_child_count() - 1 < i:
+		if get_direction_count() - 1 < i:
 			vault_direction = VAULT_DIRECTION.instantiate()
 			directions.add_child(vault_direction)
 		else:
@@ -42,11 +42,11 @@ func set_direction(index: int, direction) -> void:
 
 
 func focus(index: int) -> void:
-	directions.get_child(index).grab_focus()
+	directions.get_child(index).focus()
 #endregion
 
 
 func _on_focus_exited() -> void:
 	for vault_direction in directions.get_children():
-		vault_direction.release_focus()
+		vault_direction.remove_focus()
 #endregion
