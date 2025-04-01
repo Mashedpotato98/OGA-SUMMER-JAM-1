@@ -26,8 +26,9 @@ border_width = 4.0
 
 [node name="PauseScreen" parent="." instance=ExtResource("6")]
 
-[node name="Vault" parent="." instance=ExtResource("4")]
+[node name="Vault" parent="." node_paths=PackedStringArray("code_spawn_points") instance=ExtResource("4")]
 position = Vector2(48, -48)
+code_spawn_points = NodePath("../CodeSpawnPoints")
 
 [node name="YSort" type="Node2D" parent="."]
 y_sort_enabled = true

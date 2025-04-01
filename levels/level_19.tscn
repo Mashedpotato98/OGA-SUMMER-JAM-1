@@ -7,7 +7,7 @@
 [ext_resource type="PackedScene" path="res://levels/points/spawn_point.tscn" id="5"]
 [ext_resource type="PackedScene" uid="uid://c3tbei14wbme6" path="res://characters/enemies/cop/cop.tscn" id="6"]
 [ext_resource type="PackedScene" uid="uid://cgrv4g25bd8dm" path="res://pickups/health_pack.tscn" id="7"]
-[ext_resource type="PackedScene" path="res://pickups/ammo_pickup.tscn" id="8"]
+[ext_resource type="PackedScene" uid="uid://c05igbpe3obtp" path="res://pickups/ammo_pickup.tscn" id="8"]
 
 [sub_resource type="NavigationPolygon" id="1"]
 vertices = PackedVector2Array(-174, 114, -222, 114, -258, 102, -222, 102, -90, 30, -78, -42, -78, 78, -90, 42, -90, -30, 210, -42, 210, 210, 174, 90, 174, 54, 78, 150, -54, 210, -66, 186, -174, 6, -186, 102, -186, 18, -198, 6, -222, 18, -138, -42, -126, -30, -138, 150, -126, 30, -54, 258, -66, 246, -307, 258, -270, 246, 162, 102, 126, 102, 78, 90, 114, 90, 162, 42, 78, -42, 126, 42, 78, 78, 114, 54, -307, -30, -307, -42, -174, -42, -282, -30, -174, -30, -198, -30, -282, 6, -258, 18, 42, 78, 30, 90, 30, 42, 42, -42, -42, -42, -30, 42, -42, 78, -30, 90, -90, 90, -126, 42, -126, 150, -234, 186, -222, 150, -234, 138, -270, 138, -294, 102, -307, 6, -294, 18)

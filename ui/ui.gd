@@ -15,7 +15,19 @@ const VAULT_DIRECTION := preload("res://ui/buttons/vault_direction.tscn")
 
 #region Variables
 var vault: Vault = null
-var code := []: set = _on_code_set
+var code := []:
+	set(value):
+		code = value
+
+		for i in code_edit.get_direction_count():
+			@warning_ignore("untyped_declaration")
+			var direction = null if code.size() - 1 < i else code[i]
+			code_edit.set_direction(i, direction)
+
+		if code.size() < code_edit.get_direction_count():
+			code_edit.focus(0 if code.size() <= 0 else code.size())
+		else:
+			code_edit.release_focus()
 #endregion
 
 #region Onready
@@ -62,11 +74,13 @@ func _input(event: InputEvent) -> void:
 		add_dir_to_code(true)
 	elif event.is_action_pressed(&"turn_left"):
 		add_dir_to_code(false)
+#endregion
 
 
+#region Regular
 func add_dir_to_code(direction: bool) -> void:
 	code.append(direction)
-	_on_code_set(code)
+	code = code
 
 	turn_sound.play()
 
@@ -77,10 +91,8 @@ func add_dir_to_code(direction: bool) -> void:
 			wrong_sound.play()
 			await shake_vault_panel()
 		code = []
-#endregion
 
 
-#region Regular
 func shake_vault_panel() -> void:
 	var shakes := 10
 	var distance := 8.0
@@ -134,32 +146,19 @@ func hide_vault_menu() -> void:
 
 
 #region Events
-func _on_code_set(value: Array) -> void:
-	code = value
-
-	for i in code_edit.get_direction_count():
-		@warning_ignore("untyped_declaration")
-		var direction = null if code.size() - 1 < i else code[i]
-		code_edit.set_direction(i, direction)
-
-	if code.size() < code_edit.get_direction_count():
-		code_edit.focus(0 if code.size() <= 0 else code.size())
-	else:
-		code_edit.release_focus()
-
-
 func _on_Robber_cool_down_started(item: String, duration: float) -> void:
 	await RenderingServer.frame_post_draw
-	var inventory_item: InventoryItem = inventory.get_child(Inventory.items.keys().find(item))
-	if is_instance_valid(inventory_item):
-		inventory_item.start_cool_down(duration)
+	var inventory_item: InventoryItem = inventory.get_child(Inventory.items.keys(
+
+	).find(item))
+	inventory_item.start_cool_down(duration)
 
 
 func _on_Vault_activated(vault: Vault) -> void:
 	self.vault = vault
 
 	code_edit.init_directions(vault.code_length)
-	_on_code_set(code)
+	code = code
 
 	vault_menu.show()
 	cancel_button.grab_focus()
@@ -174,7 +173,7 @@ func _on_Robber_code_grabbed(code: Array, from: Vector2) -> void:
 	key_panel.show()
 	key_code_display.set_directions_array(code)
 
-	var code_instance: Code = CODE.instance()
+	var code_instance: Code = CODE.instantiate()
 	get_parent().add_child(code_instance)
 	code_instance.set_directions_array(code)
 	code_instance.position = from

@@ -4,7 +4,10 @@ class_name InventoryItem extends Button
 #region Members
 #region Variables
 var item := ""
-var ammo := 1: set = _on_ammo_set
+var ammo := 1:
+	set(value):
+		ammo = value
+		text = str(ammo)
 #endregion
 
 @onready var cool_down: ProgressBar = $CoolDown
@@ -22,11 +25,6 @@ func start_cool_down(duration: float) -> void:
 
 
 #region Events
-func _on_ammo_set(value: int) -> void:
-	ammo = value
-	text = "X" + str(ammo)
-
-
 func _on_InventoryItem_pressed() -> void:
 	if not pressed:
 		set_pressed_no_signal(true)

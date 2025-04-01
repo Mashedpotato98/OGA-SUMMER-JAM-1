@@ -8,7 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://c3tbei14wbme6" path="res://characters/enemies/cop/cop.tscn" id="9"]
 [ext_resource type="PackedScene" path="res://levels/points/spawn_point.tscn" id="10"]
 [ext_resource type="PackedScene" uid="uid://bi3co628klrml" path="res://levels/points/wander_point.tscn" id="11"]
-[ext_resource type="PackedScene" path="res://pickups/ammo_pickup.tscn" id="12"]
+[ext_resource type="PackedScene" uid="uid://c05igbpe3obtp" path="res://pickups/ammo_pickup.tscn" id="12"]
 [ext_resource type="PackedScene" uid="uid://bts3lfwobpknr" path="res://guns/turret/turret.tscn" id="13"]
 
 [sub_resource type="NavigationPolygon" id="1"]
@@ -19,41 +19,39 @@ outlines = Array[PackedVector2Array]([PackedVector2Array(78, 570, 114, 570, 114,
 
 [node name="Level10" instance=ExtResource("7")]
 
-[node name="FloorWall1" parent="." index="2" instance=ExtResource("4")]
-format = 2
-
-[node name="Carpet" parent="." index="3" instance=ExtResource("1")]
-format = 2
-
-[node name="Decorations1" parent="Node2D" index="0" instance=ExtResource("3")]
-format = 2
-
-[node name="Robber" parent="Node2D" index="1"]
-position = Vector2(423, 443)
-
-[node name="Cop" parent="Node2D/Cops" index="0" instance=ExtResource("9")]
+[node name="Node2D_Cops#Cop" parent="." index="0" instance=ExtResource("9")]
 position = Vector2(586, 147)
 
-[node name="Cop2" parent="Node2D/Cops" index="1" instance=ExtResource("9")]
+[node name="Node2D_Cops#Cop2" parent="." index="1" instance=ExtResource("9")]
 position = Vector2(137, 347)
 
-[node name="Cop3" parent="Node2D/Cops" index="2" instance=ExtResource("9")]
+[node name="Node2D_Cops#Cop3" parent="." index="2" instance=ExtResource("9")]
 position = Vector2(175, 504)
 
-[node name="Cop4" parent="Node2D/Cops" index="3" instance=ExtResource("9")]
+[node name="Node2D_Cops#Cop4" parent="." index="3" instance=ExtResource("9")]
 position = Vector2(656, 345)
 
-[node name="Swat" parent="Node2D/Cops" index="4" instance=ExtResource("8")]
+[node name="Node2D_Cops#Swat" parent="." index="4" instance=ExtResource("8")]
 position = Vector2(749, 62)
 
-[node name="Swat2" parent="Node2D/Cops" index="5" instance=ExtResource("8")]
+[node name="Node2D_Cops#Swat2" parent="." index="5" instance=ExtResource("8")]
 position = Vector2(103, 114)
 
-[node name="Turret" parent="Node2D/Cops" index="6" instance=ExtResource("13")]
+[node name="Node2D_Cops#Turret" parent="." index="6" instance=ExtResource("13")]
 position = Vector2(318, 85)
 
-[node name="Elevator" parent="Node2D" index="3"]
-position = Vector2(96, 48)
+[node name="Node2D#Decorations1" parent="." index="7" instance=ExtResource("3")]
+format = 2
+
+[node name="FloorWall1" parent="." index="10" instance=ExtResource("4")]
+format = 2
+
+[node name="Carpet" parent="." index="11" instance=ExtResource("1")]
+format = 2
+
+[node name="Vault" parent="." index="13"]
+position = Vector2(312, 24)
+scale = Vector2(0.9, 0.9)
 
 [node name="AmmoPickup" parent="Pickups" index="0" instance=ExtResource("12")]
 position = Vector2(182, 36)
@@ -85,10 +83,6 @@ position = Vector2(140, 349)
 [node name="WanderPoint9" parent="WanderPoints" index="8" instance=ExtResource("11")]
 position = Vector2(219, 502)
 
-[node name="Vault" parent="." index="8"]
-position = Vector2(312, 24)
-scale = Vector2(0.9, 0.9)
-
 [node name="SpawnPoint" parent="CodeSpawnPoints" index="0" instance=ExtResource("10")]
 position = Vector2(156, 36)
 
@@ -113,5 +107,5 @@ position = Vector2(750, 300)
 [node name="SpawnPoint8" parent="CodeSpawnPoints" index="7" instance=ExtResource("10")]
 position = Vector2(396, 564)
 
-[node name="NavigationRegion2D" parent="." index="10"]
+[node name="NavigationRegion2D" parent="." index="18"]
 navigation_polygon = SubResource("1")
