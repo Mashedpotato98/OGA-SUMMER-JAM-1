@@ -25,7 +25,7 @@ func _process(_delta: float) -> void:
 # But does it make sense for enemy.gd to have animation?
 func animate() -> void:
 	var anim_name := ""
-	if smooth_vel.length() >= speed:
+	if smooth_vel.length() > speed:
 		anim_name = "Run"
 	elif smooth_vel.length() > 0.0:
 		anim_name = "Walk"

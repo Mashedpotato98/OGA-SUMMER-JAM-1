@@ -186,9 +186,9 @@ func blink() -> void:
 	var blink_duration := 0.25
 	var blinks := 3
 	for i in blinks:
-		sprite.material.set(&"shader_param/enabled", true)
+		sprite.material.set(&"shader_parameter/enabled", true)
 		await get_tree().create_timer(blink_duration / blinks / 2.0).timeout
-		sprite.material.set(&"shader_param/enabled", false)
+		sprite.material.set(&"shader_parameter/enabled", false)
 		await get_tree().create_timer(blink_duration / blinks / 2.0).timeout
 #endregion
 

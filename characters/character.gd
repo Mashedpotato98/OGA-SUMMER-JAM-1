@@ -20,8 +20,23 @@ signal died
 @export var hurt_bounce_time := 0.25
 @export var desired_distance := 4.0
 
-@export var max_hp := 3: set = _on_max_hp_set
-@export var hp := 3: set = _on_hp_set
+@export var max_hp := 3:
+	set(value):
+		max_hp = value
+		hp = hp
+		max_hp_changed.emit(max_hp)
+@export var hp := 3:
+	set(value):
+		hp = mini(value, max_hp)
+		if hp <= 0:
+			if DEATH_EFFECT != null:
+				var death_effect: Node = DEATH_EFFECT.instantiate()
+				get_tree().current_scene.add_child(death_effect)
+				if death_effect is Node2D:
+					death_effect.global_position = global_position
+			_die()
+			died.emit()
+		hp_changed.emit(hp)
 @export var item: Node = null
 @export var ammo := -1
 @export_enum("cop", "robber", "all") var type := "cop"
@@ -38,7 +53,7 @@ var stunned := false
 @onready var sprite: Sprite2D = $Sprite2D
 @onready var hit_box: HitBox = $HitBox
 @onready var hand_pivot: Marker2D = $HandPivot
-@onready var hand: Marker2D = $HandPivot/Hand
+@onready var hand: Marker2D = %Hand
 @onready var wall_detector: RayCast2D = $WallDetector
 @onready var hurt_sound: AudioStreamPlayer2D = $HurtSound
 #endregion
@@ -62,7 +77,7 @@ func _die() -> void:
 #region Regular
 func change_item(ITEM: PackedScene) -> void:
 	if item != null:
-		item.queue_free()
+		item.free()
 		#await item.tree_exited
 		#item = null
 
@@ -91,7 +106,7 @@ func activate_item() -> bool:
 
 
 func start_cool_down() -> void:
-	if is_instance_valid(item) and item.has_node(^"CoolDown"):
+	if item.has_node(^"CoolDown"):
 		cool_down_started.emit(item.scene_file_path, item.get_node(^"CoolDown").wait_time)
 
 
@@ -128,31 +143,8 @@ func choose_wander_point() -> void:
 #endregion
 
 
-#region Events
-func _on_max_hp_set(value: int) -> void:
-	max_hp = value
-	_on_hp_set(hp)
-	max_hp_changed.emit(max_hp)
-
-
-func _on_hp_set(value: int) -> void:
-	hp = mini(value, max_hp)
-	if hp <= 0:
-		if DEATH_EFFECT != null:
-			var death_effect: Node = DEATH_EFFECT.instantiate()
-			get_tree().current_scene.add_child(death_effect)
-			if death_effect is Node2D:
-				death_effect.global_position = global_position
-
-		_die()
-		died.emit()
-
-	hp_changed.emit(hp)
-
-
 func _on_HitBox_dmg_taken(from: Vector2, amount: int) -> void:
 	shove(from.direction_to(global_position) * hurt_bounce, hurt_bounce_time)
 	hp -= amount
 	hurt_sound.play()
-#endregion
 #endregion

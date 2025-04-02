@@ -20,8 +20,8 @@ var last_target_sighting := Vector2.INF
 func _physics_process(delta: float) -> void:
 	if not stunned:
 		_move()
+		smooth_vel = soft_collider.get_safe_velocity(smooth_vel)
 
-	smooth_vel = soft_collider.get_safe_velocity(smooth_vel)
 	super(delta)
 
 
@@ -47,12 +47,12 @@ func patrol() -> void:
 	if not is_null(current_target):
 		hand_pivot.set_target(current_target)
 		_chase(current_target)
-	elif last_target_sighting != Vector2.INF:
-		hand_pivot.lose_target()
-		search()
 	else:
 		hand_pivot.lose_target()
-		wander()
+		if last_target_sighting != Vector2.INF:
+			search()
+		else:
+			wander()
 
 
 func lose_sight_of(what: Node, property: String, detection_zone: DetectionZone) -> void:

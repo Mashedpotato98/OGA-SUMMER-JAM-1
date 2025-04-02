@@ -1,10 +1,9 @@
-[gd_scene load_steps=47 format=3 uid="uid://c3tbei14wbme6"]
+[gd_scene load_steps=46 format=3 uid="uid://c3tbei14wbme6"]
 
 [ext_resource type="PackedScene" uid="uid://cnqsjoshe46sf" path="res://characters/enemies/enemy.tscn" id="1"]
 [ext_resource type="Texture2D" uid="uid://d3uj3hhughs8q" path="res://characters/enemies/cop/cop_reskin.png" id="2"]
 [ext_resource type="Script" path="res://characters/enemies/cop/cop.gd" id="3"]
-[ext_resource type="PackedScene" uid="uid://c88astp844k14" path="res://guns/pistol/pistol.tscn" id="4"]
-[ext_resource type="PackedScene" path="res://components/detection_zone.tscn" id="5"]
+[ext_resource type="PackedScene" uid="uid://dqn60b8acu3lw" path="res://components/detection_zone.tscn" id="5"]
 [ext_resource type="Texture2D" uid="uid://5isoufmt8efi" path="res://characters/enemies/cop/cop_bribed_reskin.png" id="6"]
 
 [sub_resource type="CapsuleShape2D" id="4"]
@@ -379,31 +378,25 @@ position = Vector2(0, -7)
 [node name="Hand" parent="HandPivot" index="0"]
 position = Vector2(8, 0)
 
-[node name="Pistol" parent="HandPivot/Hand" index="0" instance=ExtResource("4")]
-
-[node name="DetectionZone" parent="." index="4"]
-visible = false
-
 [node name="CollisionShape2D" parent="DetectionZone" index="0"]
 shape = SubResource("3")
 
 [node name="SoftCollider" parent="." index="5"]
-visible = false
 strength = 0.4
+
+[node name="WallDetector" parent="." index="6"]
+enabled = true
 
 [node name="HurtSound" parent="." index="7"]
 max_distance = 2000.0
 
 [node name="CopDetectionZone" parent="." index="8" instance=ExtResource("5")]
-visible = false
 collision_mask = 4
 monitorable = true
 
 [node name="CollisionShape2D" parent="CopDetectionZone" index="0"]
+visible = false
 shape = SubResource("6")
-
-[node name="RayCast3D" parent="CopDetectionZone" index="1"]
-collision_mask = 5
 
 [node name="BounceZone" type="Area2D" parent="CopDetectionZone" index="2"]
 collision_layer = 0

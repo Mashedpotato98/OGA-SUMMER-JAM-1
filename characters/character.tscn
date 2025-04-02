@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://glhv5vfaemdb"]
 
-[ext_resource type="PackedScene" path="res://components/hit_box.tscn" id="1"]
+[ext_resource type="PackedScene" uid="uid://tc5o1ddt3pf6" path="res://components/hit_box.tscn" id="1"]
 [ext_resource type="Script" path="res://characters/character.gd" id="2"]
 [ext_resource type="AudioStream" uid="uid://v54lug6rm6kk" path="res://sfx/dmg/sfx_damage_hit1.wav" id="3"]
 
@@ -26,8 +26,10 @@ shape = SubResource("1")
 [node name="HandPivot" type="Marker2D" parent="."]
 
 [node name="Hand" type="Marker2D" parent="HandPivot"]
+unique_name_in_owner = true
 
 [node name="WallDetector" type="RayCast2D" parent="."]
+enabled = false
 target_position = Vector2(0, 0)
 collision_mask = 17
 

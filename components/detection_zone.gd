@@ -9,7 +9,7 @@ signal lost(what: Node)
 
 var collisions := []
 
-@onready var ray_cast: RayCast2D = $RayCast3D
+@onready var ray_cast: RayCast2D = $RayCast2D
 #endregion
 
 
@@ -27,14 +27,13 @@ func _process(_delta: float) -> void:
 		ray_cast.target_position = to_local(collider.global_position)
 		ray_cast.force_raycast_update()
 
-		var hit_collider: bool = ray_cast.is_colliding() and ray_cast.get_collider() == collider
+		var hit_collider := ray_cast.get_collider() == collider
 		if hit_collider:
 			if not collisions.has(collider):
 				see(collider)
 		elif collisions.has(collider):
 			lose(collider)
 #endregion
-
 
 
 #region Regular
@@ -57,13 +56,7 @@ func get_colliders() -> Array:
 
 #region Events
 func _on_collider_exited(collider: Node) -> void:
-	if get_colliders().size() <= 0:
-		ray_cast.enabled = false
 	if collisions.has(collider):
 		lose(collider)
-
-
-func _on_collider_entered(_collider: Node) -> void:
-	ray_cast.enabled = true
 #endregion
 #endregion
