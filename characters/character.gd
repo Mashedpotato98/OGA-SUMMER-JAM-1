@@ -113,6 +113,7 @@ func start_cool_down() -> void:
 func shove(vel: Vector2, duration: float, stun := true) -> void:
 	if stunned:
 		return
+	var last_vel := velocity
 	velocity = vel
 	smooth_vel = Vector2.INF
 
@@ -120,6 +121,7 @@ func shove(vel: Vector2, duration: float, stun := true) -> void:
 		stunned = true
 		await get_tree().create_timer(duration).timeout
 		stunned = false
+	velocity = last_vel
 
 
 func wander() -> void: # Built to be called every frame.

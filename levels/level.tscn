@@ -35,6 +35,8 @@ y_sort_enabled = true
 
 [node name="Robber" parent="YSort" instance=ExtResource("5")]
 unique_name_in_owner = true
+dash_speed = 512.0
+dash_length = 0.1
 
 [node name="Cops" type="Node2D" parent="YSort"]
 y_sort_enabled = true

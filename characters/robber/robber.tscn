@@ -361,10 +361,10 @@ collision_layer = 2
 collision_mask = 85
 script = ExtResource("2")
 turn_speed = 10.0
-dash_speed = 128.0
-dash_length = 0.5
+dash_speed = 512.0
+dash_length = 0.1
 cronie_spawn_distance = 24.0
-acceleration = 512.0
+acceleration = 1024.0
 speed = 96.0
 max_hp = 6
 hp = 6
@@ -396,10 +396,10 @@ position = Vector2(0, -7)
 [node name="Hand" parent="HandPivot" index="0"]
 position = Vector2(8, 0)
 
-[node name="ScreenShakeCamera" parent="." index="4" instance=ExtResource("8")]
-
-[node name="HurtSound" parent="." index="6"]
+[node name="HurtSound" parent="." index="5"]
 stream = ExtResource("7")
+
+[node name="ScreenShakeCamera" parent="." index="6" instance=ExtResource("8")]
 
 [node name="DashCoolDown" type="Timer" parent="." index="7"]
 wait_time = 2.0

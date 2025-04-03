@@ -9,19 +9,31 @@ const BRIBE := preload("res://characters/robber/bribe.tscn")
 
 #region Export
 @export var turn_speed := 10.0
-@export var dash_speed := 128.0
-@export var dash_length := 0.5
+@export var dash_speed := 512.0
+@export var dash_length := 0.1
 @export var cronie_spawn_distance := 24.0
 #endregion
 
 #region Variables
 var dash_cooling := false
-var anim_dir := Vector2.RIGHT: set = _on_anim_dir_set
+var anim_dir := Vector2.RIGHT:
+	set(value):
+		if value.length() > 0.0:
+			anim_dir = value
+
+		var state := "Run" if value.length() > 0.0 else "Idle"
+		animation_tree.set(&"parameters/{0}/blend_position".format([state]), anim_dir)
+		playback.travel(state)
 var aim_dir := Vector2()
 var bribing := false
 var is_ready := false
 var holding_trigger := false
-var enabled := true: set = _on_enabled_set
+var enabled := true:
+	set(value):
+		enabled = value
+		if not enabled:
+			holding_trigger = false
+		set_physics_process(enabled)
 #endregion
 
 #region Onready
@@ -113,7 +125,7 @@ func reset_stats() -> void:
 
 
 func dash() -> void:
-	shove(anim_dir * dash_speed, dash_length, false)
+	shove(anim_dir * dash_speed, dash_length, true)
 	dash_cooling = true
 	dash_cool_down.start()
 	hit_box.start_immunity(dash_length)
@@ -194,15 +206,6 @@ func blink() -> void:
 
 
 #region Events
-func _on_anim_dir_set(value: Vector2) -> void:
-	if value.length() > 0.0:
-		anim_dir = value
-
-	var state := "Run" if value.length() > 0.0 else "Idle"
-	animation_tree.set(&"parameters/{0}/blend_position".format([state]), anim_dir)
-	playback.travel(state)
-
-
 func _on_ammo_set(value: int) -> void:
 	if not is_ready:
 		return
@@ -210,13 +213,6 @@ func _on_ammo_set(value: int) -> void:
 	ammo = value
 	var item_path: String = item.scene_file_path
 	Inventory.set_item_ammo(item_path, ammo, false)
-
-
-func _on_enabled_set(value: bool) -> void:
-	enabled = value
-	if not enabled:
-		holding_trigger = false
-	set_physics_process(enabled)
 
 
 func _on_Inventory_current_item_switched(item_index: int) -> void:
