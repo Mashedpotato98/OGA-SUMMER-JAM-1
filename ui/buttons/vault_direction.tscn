@@ -2,7 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://exdc7qtbtkbq" path="res://ui/icons/arrow_bg.png" id="1"]
 [ext_resource type="Texture2D" uid="uid://7iahd6odlc25" path="res://ui/icons/arrow_focus.png" id="2"]
-[ext_resource type="Script" path="res://ui/buttons/vault_direction.gd" id="3"]
+[ext_resource type="Script" uid="uid://bolexrnqtcenm" path="res://ui/buttons/vault_direction.gd" id="3"]
 
 [node name="VaultDirection" type="TextureRect" groups=["vault_directions"]]
 offset_right = 48.0

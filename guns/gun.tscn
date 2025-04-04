@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=3 uid="uid://41kpqewbhbrg"]
 
-[ext_resource type="Script" path="res://guns/gun.gd" id="1"]
+[ext_resource type="Script" uid="uid://bnilkerphkn5g" path="res://guns/gun.gd" id="1"]
 
 [sub_resource type="Animation" id="2"]
 resource_name = "Idle"
@@ -54,9 +54,9 @@ tracks/0/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_uuvqf"]
 _data = {
-"Idle": SubResource("2"),
-"RESET": SubResource("1"),
-"Shoot": SubResource("Animation_k0ed3")
+&"Idle": SubResource("2"),
+&"RESET": SubResource("1"),
+&"Shoot": SubResource("Animation_k0ed3")
 }
 
 [node name="Gun" type="Node2D"]
@@ -74,7 +74,7 @@ autostart = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
-"": SubResource("AnimationLibrary_uuvqf")
+&"": SubResource("AnimationLibrary_uuvqf")
 }
 autoplay = "Shoot"
 

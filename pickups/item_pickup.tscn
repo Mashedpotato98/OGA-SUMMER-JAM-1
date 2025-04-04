@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://bdkq5awasu10h"]
 
 [ext_resource type="PackedScene" uid="uid://igden0dqd8aa" path="res://pickups/pickup.tscn" id="1"]
-[ext_resource type="Script" path="res://pickups/item_pickup.gd" id="2"]
+[ext_resource type="Script" uid="uid://deolglakkqg2t" path="res://pickups/item_pickup.gd" id="2"]
 
 [sub_resource type="CircleShape2D" id="1"]
 resource_local_to_scene = true

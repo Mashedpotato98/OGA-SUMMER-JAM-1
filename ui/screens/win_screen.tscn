@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://ccg3h8ro7y5ur"]
 
 [ext_resource type="PackedScene" uid="uid://wkfst0sburps" path="res://ui/screens/screen.tscn" id="1"]
-[ext_resource type="Script" path="res://ui/screens/win_screen.gd" id="2"]
+[ext_resource type="Script" uid="uid://d217hoj2su607" path="res://ui/screens/win_screen.gd" id="2"]
 
 [node name="WinScreen" node_paths=PackedStringArray("focused_button") instance=ExtResource("1")]
 script = ExtResource("2")

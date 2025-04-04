@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=3 uid="uid://byoxf24ra61n0"]
 
-[ext_resource type="Script" path="res://levels/vault/vault.gd" id="1"]
+[ext_resource type="Script" uid="uid://djru6ykn6okrt" path="res://levels/vault/vault.gd" id="1"]
 [ext_resource type="Texture2D" uid="uid://u6uljrgw02c7" path="res://levels/vault/vault_door.png" id="2"]
 [ext_resource type="AudioStream" uid="uid://bx3hfjygmcxlw" path="res://sfx/explosions/Explosion3__002.wav" id="3"]
 

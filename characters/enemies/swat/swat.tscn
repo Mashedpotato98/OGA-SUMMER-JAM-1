@@ -1,7 +1,7 @@
 [gd_scene load_steps=53 format=3 uid="uid://crpitsrjpoxuw"]
 
 [ext_resource type="PackedScene" uid="uid://cnqsjoshe46sf" path="res://characters/enemies/enemy.tscn" id="1"]
-[ext_resource type="Script" path="res://characters/enemies/swat/swat.gd" id="2"]
+[ext_resource type="Script" uid="uid://ht2ko2yaarjx" path="res://characters/enemies/swat/swat.gd" id="2"]
 [ext_resource type="Texture2D" uid="uid://df6sr002hmabq" path="res://characters/enemies/swat/swat_normal.png" id="3"]
 
 [sub_resource type="CapsuleShape2D" id="6"]
@@ -300,23 +300,23 @@ tracks/0/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_jbu8n"]
 _data = {
-"AttackDown": SubResource("28"),
-"AttackLeft": SubResource("29"),
-"AttackRight": SubResource("30"),
-"AttackUp": SubResource("31"),
-"IdleDown": SubResource("19"),
-"IdleLeft": SubResource("20"),
-"IdleRight": SubResource("21"),
-"IdleUp": SubResource("22"),
-"RESET": SubResource("23"),
-"RunDown": SubResource("24"),
-"RunLeft": SubResource("25"),
-"RunRight": SubResource("26"),
-"RunUp": SubResource("27"),
-"WalkDown": SubResource("44"),
-"WalkLeft": SubResource("45"),
-"WalkRight": SubResource("46"),
-"WalkUp": SubResource("47")
+&"AttackDown": SubResource("28"),
+&"AttackLeft": SubResource("29"),
+&"AttackRight": SubResource("30"),
+&"AttackUp": SubResource("31"),
+&"IdleDown": SubResource("19"),
+&"IdleLeft": SubResource("20"),
+&"IdleRight": SubResource("21"),
+&"IdleUp": SubResource("22"),
+&"RESET": SubResource("23"),
+&"RunDown": SubResource("24"),
+&"RunLeft": SubResource("25"),
+&"RunRight": SubResource("26"),
+&"RunUp": SubResource("27"),
+&"WalkDown": SubResource("44"),
+&"WalkLeft": SubResource("45"),
+&"WalkRight": SubResource("46"),
+&"WalkUp": SubResource("47")
 }
 
 [sub_resource type="AnimationNodeAnimation" id="36"]
@@ -477,7 +477,7 @@ shape = SubResource("5")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." index="9"]
 libraries = {
-"": SubResource("AnimationLibrary_jbu8n")
+&"": SubResource("AnimationLibrary_jbu8n")
 }
 
 [node name="AnimationTree" type="AnimationTree" parent="." index="10"]

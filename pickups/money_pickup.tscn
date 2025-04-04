@@ -2,7 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://6i6jv7s3607b" path="res://ui/icons/money.png" id="1"]
 [ext_resource type="PackedScene" uid="uid://igden0dqd8aa" path="res://pickups/pickup.tscn" id="2"]
-[ext_resource type="Script" path="res://pickups/money_pickup.gd" id="3"]
+[ext_resource type="Script" uid="uid://bb4e1oturcse" path="res://pickups/money_pickup.gd" id="3"]
 
 [sub_resource type="CircleShape2D" id="1"]
 resource_local_to_scene = true

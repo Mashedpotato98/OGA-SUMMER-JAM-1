@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://glhv5vfaemdb"]
 
 [ext_resource type="PackedScene" uid="uid://tc5o1ddt3pf6" path="res://components/hit_box.tscn" id="1"]
-[ext_resource type="Script" path="res://characters/character.gd" id="2"]
+[ext_resource type="Script" uid="uid://54ll6jntdeux" path="res://characters/character.gd" id="2"]
 [ext_resource type="AudioStream" uid="uid://v54lug6rm6kk" path="res://sfx/dmg/sfx_damage_hit1.wav" id="3"]
 
 [sub_resource type="RectangleShape2D" id="1"]

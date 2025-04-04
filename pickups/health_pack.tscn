@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://cgrv4g25bd8dm"]
 
 [ext_resource type="PackedScene" uid="uid://igden0dqd8aa" path="res://pickups/pickup.tscn" id="1"]
-[ext_resource type="Script" path="res://pickups/health_pack.gd" id="2"]
+[ext_resource type="Script" uid="uid://cj8d57aaxb7ec" path="res://pickups/health_pack.gd" id="2"]
 [ext_resource type="Texture2D" uid="uid://di1seirj1fqt4" path="res://ui/icons/health_singal.png" id="3"]
 
 [sub_resource type="CircleShape2D" id="1"]

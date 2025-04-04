@@ -3,7 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://c2r3q7iusfgay" path="res://levels/elevator/elevator_needle.png" id="1"]
 [ext_resource type="Texture2D" uid="uid://cgic71bfxckot" path="res://levels/elevator/elevator_wall.png" id="2"]
 [ext_resource type="Texture2D" uid="uid://dvfsqopfshxj7" path="res://levels/elevator/elevator_door_large.png" id="3"]
-[ext_resource type="Script" path="res://levels/elevator/elevator.gd" id="4"]
+[ext_resource type="Script" uid="uid://74dpl67027rg" path="res://levels/elevator/elevator.gd" id="4"]
 
 [sub_resource type="AtlasTexture" id="7"]
 atlas = ExtResource("3")

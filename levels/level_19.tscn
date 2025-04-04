@@ -4,7 +4,7 @@
 [ext_resource type="TileSet" uid="uid://c5vkd17vo0u6s" path="res://levels/wall_tile_set.tres" id="2"]
 [ext_resource type="PackedScene" uid="uid://bi3co628klrml" path="res://levels/points/wander_point.tscn" id="3"]
 [ext_resource type="PackedScene" uid="uid://kfbfa6j5jk1k" path="res://levels/level.tscn" id="4"]
-[ext_resource type="PackedScene" path="res://levels/points/spawn_point.tscn" id="5"]
+[ext_resource type="PackedScene" uid="uid://bfxg1m6cr27xi" path="res://levels/points/spawn_point.tscn" id="5"]
 [ext_resource type="PackedScene" uid="uid://crpitsrjpoxuw" path="res://characters/enemies/swat/swat.tscn" id="5_tfup6"]
 [ext_resource type="PackedScene" uid="uid://c3tbei14wbme6" path="res://characters/enemies/cop/cop.tscn" id="6"]
 [ext_resource type="PackedScene" uid="uid://cgrv4g25bd8dm" path="res://pickups/health_pack.tscn" id="7"]
@@ -34,10 +34,6 @@ tile_set = ExtResource("1")
 
 [node name="Vault" parent="." index="6"]
 position = Vector2(0, 120)
-
-[node name="Robber" parent="YSort" index="0"]
-dash_speed = 512.0
-dash_length = 0.1
 
 [node name="Node2D_Cops#Cop" parent="YSort/Cops" index="0" instance=ExtResource("6")]
 position = Vector2(-240, -32)

@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://d2fbuqeou0j3r"]
 
 [ext_resource type="Theme" uid="uid://bfswc7hc3bmsg" path="res://ui/theme.theme" id="1"]
-[ext_resource type="Script" path="res://ui/code.gd" id="3"]
+[ext_resource type="Script" uid="uid://bswvni3p4prl4" path="res://ui/code.gd" id="3"]
 
 [node name="Code" type="PanelContainer"]
 offset_right = 14.0

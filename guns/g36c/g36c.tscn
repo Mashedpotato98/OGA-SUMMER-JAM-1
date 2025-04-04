@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://41kpqewbhbrg" path="res://guns/gun.tscn" id="1"]
 [ext_resource type="Texture2D" uid="uid://b6yvop7katr53" path="res://guns/g36c/rail_gun.png" id="2"]
-[ext_resource type="PackedScene" path="res://guns/bullets/strong_bullet.tscn" id="3"]
+[ext_resource type="PackedScene" uid="uid://b3dq564uqprbx" path="res://guns/bullets/strong_bullet.tscn" id="3"]
 [ext_resource type="AudioStream" uid="uid://tlusa4pym3u3" path="res://sfx/shots/sfx_weapon_singleshot8.wav" id="4"]
 
 [node name="G36C" instance=ExtResource("1")]
