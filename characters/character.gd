@@ -10,9 +10,9 @@ signal died
 #endregion
 
 #region Export
-@export var acceleration := 128.0
-@export var speed := 32.0
-@export var walk_speed := 16.0
+@export var acceleration := 1024.0
+@export var speed := 64.0
+@export var walk_speed := 32.0
 @export var hit_force := 64.0
 @export var kickback := 32.0
 @export var kickback_time := 0.1

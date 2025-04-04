@@ -440,8 +440,8 @@ graph_offset = Vector2(-99, 14)
 script = ExtResource("2")
 dmg = 1
 swat_cool_down = 1.0
-acceleration = 256.0
-speed = 52.0
+acceleration = 2048.0
+speed = 104.0
 max_hp = 6
 hp = 6
 
