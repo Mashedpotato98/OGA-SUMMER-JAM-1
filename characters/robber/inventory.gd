@@ -16,52 +16,58 @@ const PASSWORD := "y$NWO#6%T;51(nhsLZ*Q}yGm8,h:7T#Sa?ELupjw=5$C5j2TmTM0%.aQ:V4vZ
 
 const DEFAULT_MONEY := 5_000
 const DEFAULT_ITEMS := {
-	"res://guns/pistol/pistol.tscn": 100,
+	"res://ITEMS/guns/submachine_gun/submachine_gun.tscn": 100,
 	BRIBE_PATH: MAX_CRONIES,
 }
+
+var items := DEFAULT_ITEMS.duplicate():
+	set(value):
+		items = value
+		items_changed.emit(items)
+
 #endregion
 
 #region Variables
 var items_list := {
 	BRIBE_PATH:
 		ItemInfo.new(
-			preload("res://ui/icons/money.png"),
+			preload("res://assets/old/ui_assets/icons_img/money.png"),
 			[500],
 			0,
 		),
-	"res://guns/submachine_gun/submachine_gun.tscn":
+	"res://ITEMS/guns/submachine_gun/submachine_gun.tscn":
 		ItemInfo.new(
-			preload("res://guns/submachine_gun/submachine.png"),
+			preload('res://ITEMS/guns/submachine_gun/submachine.png'),
 			[500, 1_000, 1_500],
 			25,
 		),
-	"res://guns/shot_gun/shot_gun.tscn":
+	"res://ITEMS/guns/shot_gun/shot_gun.tscn":
 		ItemInfo.new(
-			preload("res://guns/shot_gun/shotgun.png"),
+			preload('res://ITEMS/guns/shot_gun/shotgun.png'),
 			[800, 1_200],
 			10,
 		),
-	"res://guns/pistol/pistol.tscn":
+	"res://ITEMS/guns/pistol/pistol.tscn":
 		ItemInfo.new(
-			preload("res://guns/pistol/pistol.png"),
-			[1_000],
+			preload('res://ITEMS/guns/pistol/pistol.png'),
+			[1_000,1_000],
 			6,
 		),
-	"res://guns/g36c/g36c.tscn":
+	"res://ITEMS/guns/g36c/g36c.tscn":
 		ItemInfo.new(
-			preload("res://guns/g36c/rail_gun_icon.png"),
+			preload("res://ITEMS/guns/g36c/rail_gun_icon.png"),
 			[400, 1_200, 1_400],
 			3,
 		),
-	"res://explosives/grenade/grenade_launcher.tscn":
+	"res://ITEMS/explosives/grenade/grenade.tscn":
 		ItemInfo.new(
-			preload("res://explosives/grenade/grenade.png"),
+			preload("res://ITEMS/explosives/grenade/grenade.png"),
 			[500, 1000, 1000, 1500],
 			1,
 		),
-	"res://explosives/molotov_cocktail/molotov_cocktail_thower.tscn":
+	"res://ITEMS/explosives/molotov_cocktail/molotov_cocktail.tscn":
 		ItemInfo.new(
-			preload("res://explosives/molotov_cocktail/molotov cocktail_icon.png"),
+			preload("res://ITEMS/explosives/molotov_cocktail/molotov cocktail_icon.png"),
 			[200, 500, 800],
 			1,
 		),
@@ -74,10 +80,6 @@ var money := DEFAULT_MONEY:
 		money = value
 		update_bribe_ammo()
 		money_changed.emit(money)
-var items := DEFAULT_ITEMS.duplicate():
-	set(value):
-		items = value
-		items_changed.emit(items)
 var current_item := 0:
 	set(value):
 		current_item = wrapi(value, 0, items.size())

@@ -3,8 +3,8 @@ class_name VaultDirection extends TextureRect
 
 #region Members
 #region Constants
-const LEFT := preload("res://ui/icons/turn_left.png")
-const RIGHT := preload("res://ui/icons/turn_right.png")
+const LEFT := preload("res://assets/old/ui_assets/icons_img/turn_left.png")
+const RIGHT := preload("res://assets/old/ui_assets/icons_img/turn_left.png")
 #endregion
 
 #region Onready

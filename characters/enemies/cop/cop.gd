@@ -11,10 +11,10 @@ enum BRIBE_STATES {
 }
 
 const GUNS := [
-	preload("res://guns/g36c/g36c.tscn"),
-	preload("res://guns/pistol/pistol.tscn"),
-	preload("res://guns/shot_gun/shot_gun.tscn"),
-	preload("res://guns/submachine_gun/submachine_gun.tscn"),
+	preload("res://ITEMS/guns/g36c/g36c.tscn"),
+	preload("res://ITEMS/guns/pistol/pistol.tscn"),
+	preload("res://ITEMS/guns/shot_gun/shot_gun.tscn"),
+	preload("res://ITEMS/guns/submachine_gun/submachine_gun.tscn"),
 ]
 
 #region Export

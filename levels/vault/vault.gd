@@ -5,8 +5,8 @@ class_name Vault extends StaticBody2D
 signal activated(vault: Vault)
 
 #region Constants
-const MONEY_PICKUP := preload("res://pickups/money_pickup.tscn")
-const CODE_PICKUP := preload("res://pickups/code_pickup.tscn")
+const MONEY_PICKUP := preload("res://ITEMS/pickups/money/money_pickup.tscn")
+const CODE_PICKUP := preload("res://ITEMS/pickups/code pickup/code_pickup.tscn")
 #endregion
 
 #region Export
