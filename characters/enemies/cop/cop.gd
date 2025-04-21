@@ -68,7 +68,7 @@ func _die() -> void:
 			if (cronie.type == scene_file_path
 					and true if not cronie.has("weapon") else cronie.weapon == item.scene_file_path):
 				Inventory.cronies.remove_at(i)
-				Inventory._on_cronies_set(Inventory.cronies)
+				Inventory.cronies = Inventory.cronies
 				break
 	if randf() <= drop_chance:
 		drop()
@@ -157,7 +157,7 @@ func bribed() -> void:
 
 func being_bribed() -> void:
 	if is_null(player) or cop_detection_zone.collisions.size() > 0 or not player.bribing:
-		self.bribe_state = BRIBE_STATES.INNOCENT
+		bribe_state = BRIBE_STATES.INNOCENT
 	else:
 		hand_pivot.lose_target()
 		follow_player()
@@ -190,10 +190,10 @@ func _on_Cop_player_reached() -> void:
 	if bribe_state != BRIBE_STATES.BEING_BRIBED:
 		return
 
-	self.bribe_state = BRIBE_STATES.BRIBED
+	bribe_state = BRIBE_STATES.BRIBED
 	var cronie_data := {"type": scene_file_path}
 	if item != null:
-		cronie_data.weapon = item.filename
+		cronie_data.weapon = item.scene_file_path
 	Inventory.cronies.append(cronie_data)
 	Inventory.money -= Inventory.items_list[Inventory.BRIBE_PATH].prices[0]
 
