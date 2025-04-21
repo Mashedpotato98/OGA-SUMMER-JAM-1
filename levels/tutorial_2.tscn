@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://b7c0psu4dpfjr" path="res://levels/spritesheet.png" id="2"]
 [ext_resource type="PackedScene" uid="uid://c3tbei14wbme6" path="res://characters/enemies/cop/cop.tscn" id="3"]
 [ext_resource type="Theme" uid="uid://bfswc7hc3bmsg" path="res://ui/theme.theme" id="4"]
-[ext_resource type="TileSet" path="res://levels/wall_tile_set.tres" id="5"]
+[ext_resource type="TileSet" uid="uid://c5vkd17vo0u6s" path="res://levels/wall_tile_set.tres" id="5"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_lwv5n"]
 texture = ExtResource("2")

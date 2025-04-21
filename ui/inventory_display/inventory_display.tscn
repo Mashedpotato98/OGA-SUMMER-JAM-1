@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://dxxa0rxxq6b87"]
 
-[ext_resource type="Script" path="res://ui/inventory_display/inventory_display.gd" id="1"]
+[ext_resource type="Script" uid="uid://b5ybh6qbn6mex" path="res://ui/inventory_display/inventory_display.gd" id="1"]
 
 [node name="InventoryDisplay" type="HBoxContainer"]
 offset_right = 40.0

@@ -2,16 +2,16 @@
 
 [ext_resource type="PackedScene" uid="uid://dmdcinglu0t1" path="res://ui/ui.tscn" id="1"]
 [ext_resource type="PackedScene" uid="uid://ddbxcr8sg45oc" path="res://characters/robber/robber.tscn" id="2"]
-[ext_resource type="PackedScene" path="res://levels/tile/floor_wall4.tscn" id="3"]
-[ext_resource type="PackedScene" path="res://levels/tile/decorations1.tscn" id="4"]
-[ext_resource type="PackedScene" path="res://levels/tile/floor_wall3.tscn" id="5"]
-[ext_resource type="PackedScene" path="res://levels/tile/floor_wall2.tscn" id="6"]
-[ext_resource type="PackedScene" path="res://levels/tile/floor_wall1.tscn" id="7"]
+[ext_resource type="PackedScene" uid="uid://uo0vi6rhf3aq" path="res://levels/tile/floor_wall4.tscn" id="3"]
+[ext_resource type="PackedScene" uid="uid://di1pousrehf6f" path="res://levels/tile/decorations1.tscn" id="4"]
+[ext_resource type="PackedScene" uid="uid://dmhurhb52jihg" path="res://levels/tile/floor_wall3.tscn" id="5"]
+[ext_resource type="PackedScene" uid="uid://ntndis6nv2go" path="res://levels/tile/floor_wall2.tscn" id="6"]
+[ext_resource type="PackedScene" uid="uid://dg8v3bamw6ah2" path="res://levels/tile/floor_wall1.tscn" id="7"]
 [ext_resource type="FontFile" uid="uid://c2h4rc6o3rhul" path="res://ui/fonts/kenpixel.ttf" id="8"]
 [ext_resource type="PackedScene" uid="uid://cr44pjevxysp1" path="res://levels/elevator/elevator.tscn" id="9"]
 [ext_resource type="PackedScene" uid="uid://byoxf24ra61n0" path="res://levels/vault/vault.tscn" id="10"]
 [ext_resource type="PackedScene" uid="uid://c3tbei14wbme6" path="res://characters/enemies/cop/cop.tscn" id="11"]
-[ext_resource type="PackedScene" path="res://levels/points/spawn_point.tscn" id="12"]
+[ext_resource type="PackedScene" uid="uid://bgyeeafw1llvk" path="res://levels/points/spawn_point.tscn" id="12"]
 
 [sub_resource type="RectangleShape2D" id="2"]
 resource_local_to_scene = true

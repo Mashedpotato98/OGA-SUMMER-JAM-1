@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://bdkq5awasu10h" path="res://pickups/item_pickup.tscn" id="1"]
 [ext_resource type="Texture2D" uid="uid://b17p5v2hcuqia" path="res://guns/pistol/pistol.png" id="2"]
-[ext_resource type="PackedScene" path="res://guns/pistol/pistol.tscn" id="3"]
+[ext_resource type="PackedScene" uid="uid://c88astp844k14" path="res://guns/pistol/pistol.tscn" id="3"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_np88y"]
 resource_local_to_scene = true

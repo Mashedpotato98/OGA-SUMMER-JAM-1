@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://dmdcinglu0t1" path="res://ui/ui.tscn" id="1"]
 [ext_resource type="AudioStream" uid="uid://ckafxcityefnj" path="res://music/tausdei_-_vice_police.mp3" id="2"]
-[ext_resource type="Script" path="res://levels/level.gd" id="3"]
+[ext_resource type="Script" uid="uid://oxexdclt7o6t" path="res://levels/level.gd" id="3"]
 [ext_resource type="PackedScene" uid="uid://byoxf24ra61n0" path="res://levels/vault/vault.tscn" id="4"]
 [ext_resource type="PackedScene" uid="uid://ddbxcr8sg45oc" path="res://characters/robber/robber.tscn" id="5"]
 [ext_resource type="PackedScene" uid="uid://dtfm5hyaklhm7" path="res://ui/screens/pause_screen.tscn" id="6"]

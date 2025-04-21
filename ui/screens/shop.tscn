@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://brm3oh5g5n7nf"]
 
 [ext_resource type="Theme" uid="uid://bfswc7hc3bmsg" path="res://ui/theme.theme" id="1"]
-[ext_resource type="Script" path="res://ui/screens/shop.gd" id="2"]
+[ext_resource type="Script" uid="uid://db2tor5ymeoio" path="res://ui/screens/shop.gd" id="2"]
 [ext_resource type="FontFile" path="res://ui/fonts/title_font.tres" id="3"]
 [ext_resource type="Texture2D" uid="uid://6i6jv7s3607b" path="res://ui/icons/money.png" id="4"]
 

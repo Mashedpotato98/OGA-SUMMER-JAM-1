@@ -2,9 +2,9 @@
 
 [ext_resource type="PackedScene" uid="uid://glhv5vfaemdb" path="res://characters/character.tscn" id="1"]
 [ext_resource type="PackedScene" uid="uid://dqn60b8acu3lw" path="res://components/detection_zone.tscn" id="2"]
-[ext_resource type="Script" path="res://characters/enemies/enemy.gd" id="3"]
+[ext_resource type="Script" uid="uid://dmb2nu8h1hebo" path="res://characters/enemies/enemy.gd" id="3"]
 [ext_resource type="PackedScene" uid="uid://ccrep57x66knm" path="res://components/soft_collider.tscn" id="4"]
-[ext_resource type="Script" path="res://guns/auto_aimer.gd" id="5"]
+[ext_resource type="Script" uid="uid://d0qnxxc8bfnu8" path="res://guns/auto_aimer.gd" id="5"]
 [ext_resource type="PackedScene" uid="uid://b0h6h3d675xmv" path="res://characters/enemies/enemy_death_effect.tscn" id="6"]
 
 [sub_resource type="RectangleShape2D" id="1"]

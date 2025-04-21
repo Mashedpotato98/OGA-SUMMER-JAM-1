@@ -1,20 +1,20 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=5 format=3 uid="uid://ssa5cadqb41b"]
 
-[ext_resource path="res://pickups/pickup.tscn" type="PackedScene" id=1]
-[ext_resource path="res://pickups/code_pickup.gd" type="Script" id=2]
-[ext_resource path="res://pickups/key.png" type="Texture2D" id=3]
+[ext_resource type="PackedScene" uid="uid://igden0dqd8aa" path="res://pickups/pickup.tscn" id="1"]
+[ext_resource type="Script" uid="uid://j7bue6x8sfjv" path="res://pickups/code_pickup.gd" id="2"]
+[ext_resource type="Texture2D" uid="uid://kq85j53wdoaw" path="res://pickups/key.png" id="3"]
 
-[sub_resource type="CircleShape2D" id=1]
+[sub_resource type="CircleShape2D" id="1"]
 resource_local_to_scene = true
 
-[node name="CodePickup" instance=ExtResource( 1 )]
-script = ExtResource( 2 )
+[node name="CodePickup" instance=ExtResource("1")]
+script = ExtResource("2")
 
 [node name="Sprite2D" parent="." index="0"]
-texture = ExtResource( 3 )
+texture = ExtResource("3")
 
 [node name="CollisionShape3D" parent="." index="1"]
-shape = SubResource( 1 )
+shape = SubResource("1")
 
 [node name="SoundEffect" parent="." index="2"]
 volume_db = -5.0

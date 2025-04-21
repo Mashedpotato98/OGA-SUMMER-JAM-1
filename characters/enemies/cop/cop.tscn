@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://cnqsjoshe46sf" path="res://characters/enemies/enemy.tscn" id="1"]
 [ext_resource type="Texture2D" uid="uid://d3uj3hhughs8q" path="res://characters/enemies/cop/cop_reskin.png" id="2"]
-[ext_resource type="Script" path="res://characters/enemies/cop/cop.gd" id="3"]
+[ext_resource type="Script" uid="uid://df6qbbsabqwfm" path="res://characters/enemies/cop/cop.gd" id="3"]
 [ext_resource type="PackedScene" uid="uid://dqn60b8acu3lw" path="res://components/detection_zone.tscn" id="5"]
 [ext_resource type="Texture2D" uid="uid://5isoufmt8efi" path="res://characters/enemies/cop/cop_bribed_reskin.png" id="6"]
 
@@ -242,19 +242,19 @@ tracks/0/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_x4yu1"]
 _data = {
-"IdleDown": SubResource("16"),
-"IdleLeft": SubResource("17"),
-"IdleRight": SubResource("18"),
-"IdleUp": SubResource("19"),
-"RESET": SubResource("20"),
-"RunDown": SubResource("25"),
-"RunLeft": SubResource("26"),
-"RunRight": SubResource("27"),
-"RunUp": SubResource("28"),
-"WalkDown": SubResource("21"),
-"WalkLeft": SubResource("22"),
-"WalkRight": SubResource("23"),
-"WalkUp": SubResource("24")
+&"IdleDown": SubResource("16"),
+&"IdleLeft": SubResource("17"),
+&"IdleRight": SubResource("18"),
+&"IdleUp": SubResource("19"),
+&"RESET": SubResource("20"),
+&"RunDown": SubResource("25"),
+&"RunLeft": SubResource("26"),
+&"RunRight": SubResource("27"),
+&"RunUp": SubResource("28"),
+&"WalkDown": SubResource("21"),
+&"WalkLeft": SubResource("22"),
+&"WalkRight": SubResource("23"),
+&"WalkUp": SubResource("24")
 }
 
 [sub_resource type="AnimationNodeAnimation" id="29"]

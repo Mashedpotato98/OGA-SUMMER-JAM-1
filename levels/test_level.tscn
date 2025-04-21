@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://dn6b558gufs2v"]
 
 [ext_resource type="PackedScene" uid="uid://kfbfa6j5jk1k" path="res://levels/level.tscn" id="1"]
-[ext_resource type="PackedScene" path="res://pickups/ammo_pickup.tscn" id="2"]
+[ext_resource type="PackedScene" uid="uid://c05igbpe3obtp" path="res://pickups/ammo_pickup.tscn" id="2"]
 [ext_resource type="PackedScene" uid="uid://blh163uxe1moq" path="res://pickups/money_pickup.tscn" id="3"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_gbs8q"]

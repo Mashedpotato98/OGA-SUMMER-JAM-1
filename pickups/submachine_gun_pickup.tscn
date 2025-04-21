@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://c7h48yu0cf33i"]
 
 [ext_resource type="PackedScene" uid="uid://bdkq5awasu10h" path="res://pickups/item_pickup.tscn" id="1"]
-[ext_resource type="PackedScene" path="res://guns/submachine_gun/submachine_gun.tscn" id="2"]
+[ext_resource type="PackedScene" uid="uid://di0pdllscar5u" path="res://guns/submachine_gun/submachine_gun.tscn" id="2"]
 [ext_resource type="Texture2D" uid="uid://bn5pu0ugjj52e" path="res://guns/submachine_gun/submachine.png" id="3"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_qeb44"]

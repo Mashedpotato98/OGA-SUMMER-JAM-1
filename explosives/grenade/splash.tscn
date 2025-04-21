@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://b6p32hx4eehoi"]
 
-[ext_resource type="Script" path="res://explosives/grenade/splash.gd" id="1"]
+[ext_resource type="Script" uid="uid://d3wkn3vo2su8k" path="res://explosives/grenade/splash.gd" id="1"]
 [ext_resource type="PackedScene" path="res://guns/bullets/strong_bullet.tscn" id="2"]
 [ext_resource type="AudioStream" uid="uid://ctqtucejresi6" path="res://sfx/explosions/sfx_exp_short_hard8.wav" id="3"]
 

@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://c4q4trnucjjy4"]
 
-[ext_resource type="PackedScene" path="res://guns/bullets/bullet.tscn" id="1"]
+[ext_resource type="PackedScene" uid="uid://do1t2gtch4tru" path="res://guns/bullets/bullet.tscn" id="1"]
 
 [sub_resource type="CircleShape2D" id="1"]
 resource_local_to_scene = true

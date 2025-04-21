@@ -2,7 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://b06hvhbcexpuk" path="res://ui/icons/Health_bar.png" id="1"]
 [ext_resource type="Texture2D" uid="uid://di1seirj1fqt4" path="res://ui/icons/health_singal.png" id="2"]
-[ext_resource type="Script" path="res://ui/ui.gd" id="3"]
+[ext_resource type="Script" uid="uid://c7sh6b705jio2" path="res://ui/ui.gd" id="3"]
 [ext_resource type="Texture2D" uid="uid://6i6jv7s3607b" path="res://ui/icons/money.png" id="4"]
 [ext_resource type="Theme" uid="uid://bfswc7hc3bmsg" path="res://ui/theme.theme" id="5"]
 [ext_resource type="Texture2D" uid="uid://kq85j53wdoaw" path="res://pickups/key.png" id="6"]

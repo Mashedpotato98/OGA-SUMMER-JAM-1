@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://df4f5hnusjxqn"]
 
-[ext_resource type="Script" path="res://characters/robber/screen_shake_camera/screen_shake_camera.gd" id="1"]
+[ext_resource type="Script" uid="uid://d22s3saseoyc6" path="res://characters/robber/screen_shake_camera/screen_shake_camera.gd" id="1"]
 
 [node name="ScreenShakeCamera" type="Camera2D" groups=["cameras"]]
 script = ExtResource("1")

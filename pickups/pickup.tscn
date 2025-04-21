@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://igden0dqd8aa"]
 
-[ext_resource type="Script" path="res://pickups/pickup.gd" id="1"]
+[ext_resource type="Script" uid="uid://dxhiswe1v2or3" path="res://pickups/pickup.gd" id="1"]
 [ext_resource type="AudioStream" uid="uid://c55th0b0sguu3" path="res://sfx/other/sfx_coin_cluster1.wav" id="2"]
 
 [sub_resource type="CircleShape2D" id="1"]

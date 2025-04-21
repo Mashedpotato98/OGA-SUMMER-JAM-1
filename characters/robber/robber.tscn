@@ -1,9 +1,9 @@
 [gd_scene load_steps=50 format=3 uid="uid://ddbxcr8sg45oc"]
 
 [ext_resource type="PackedScene" uid="uid://glhv5vfaemdb" path="res://characters/character.tscn" id="1"]
-[ext_resource type="Script" path="res://characters/robber/robber.gd" id="2"]
+[ext_resource type="Script" uid="uid://dp3l8hvlcq6yw" path="res://characters/robber/robber.gd" id="2"]
 [ext_resource type="Texture2D" uid="uid://bvpg1s24pq5sd" path="res://characters/robber/robber_reskin.png" id="3"]
-[ext_resource type="Shader" path="res://characters/robber/color_shader.gdshader" id="4"]
+[ext_resource type="Shader" uid="uid://c5yfnwyjpn31f" path="res://characters/robber/color_shader.gdshader" id="4"]
 [ext_resource type="AudioStream" uid="uid://bveniy17a0e16" path="res://sfx/movement/sfx_movement_jump15.wav" id="5"]
 [ext_resource type="PackedScene" uid="uid://bc7bxfabx0y62" path="res://sfx/dmg/death_sound.tscn" id="6"]
 [ext_resource type="AudioStream" uid="uid://dn0q72aeb5q00" path="res://sfx/dmg/sfx_damage_hit3.wav" id="7"]
@@ -235,19 +235,19 @@ tracks/0/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_1yf3f"]
 _data = {
-"DashDown": SubResource("74"),
-"DashLeft": SubResource("75"),
-"DashRight": SubResource("76"),
-"DashUp": SubResource("77"),
-"IdleDown": SubResource("48"),
-"IdleLeft": SubResource("50"),
-"IdleRight": SubResource("51"),
-"IdleUp": SubResource("52"),
-"RESET": SubResource("49"),
-"RunDown": SubResource("66"),
-"RunLeft": SubResource("67"),
-"RunRight": SubResource("68"),
-"RunUp": SubResource("69")
+&"DashDown": SubResource("74"),
+&"DashLeft": SubResource("75"),
+&"DashRight": SubResource("76"),
+&"DashUp": SubResource("77"),
+&"IdleDown": SubResource("48"),
+&"IdleLeft": SubResource("50"),
+&"IdleRight": SubResource("51"),
+&"IdleUp": SubResource("52"),
+&"RESET": SubResource("49"),
+&"RunDown": SubResource("66"),
+&"RunLeft": SubResource("67"),
+&"RunRight": SubResource("68"),
+&"RunUp": SubResource("69")
 }
 
 [sub_resource type="AnimationNodeAnimation" id="78"]
