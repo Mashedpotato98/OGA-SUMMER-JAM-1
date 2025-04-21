@@ -1,0 +1,23 @@
+[gd_scene load_steps=5 format=3 uid="uid://cgrv4g25bd8dm"]
+
+[ext_resource type="PackedScene" uid="uid://igden0dqd8aa" path="res://ITEMS/pickups/pickup.tscn" id="1"]
+[ext_resource type="Script" uid="uid://ch8m74xip33m4" path="res://ITEMS/pickups/health/health_pack.gd" id="2"]
+[ext_resource type="Texture2D" uid="uid://di1seirj1fqt4" path="res://assets/old/ui_assets/icons_img/health_singal.png" id="3"]
+
+[sub_resource type="CircleShape2D" id="1"]
+resource_local_to_scene = true
+
+[node name="HealthPack" instance=ExtResource("1")]
+collision_mask = 10
+script = ExtResource("2")
+health_amount = 1
+
+[node name="Sprite2D" parent="." index="0"]
+texture = ExtResource("3")
+
+[node name="CollisionShape3D" parent="." index="1"]
+shape = SubResource("1")
+
+[node name="SoundEffect" parent="." index="2"]
+volume_db = -5.0
+bus = &"SFX"

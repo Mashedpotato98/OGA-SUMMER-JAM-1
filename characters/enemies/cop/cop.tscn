@@ -2,8 +2,8 @@
 
 [ext_resource type="PackedScene" uid="uid://cnqsjoshe46sf" path="res://characters/enemies/enemy.tscn" id="1"]
 [ext_resource type="Texture2D" uid="uid://d3uj3hhughs8q" path="res://characters/enemies/cop/cop_reskin.png" id="2"]
-[ext_resource type="Script" uid="uid://j3ts2ifrga37" path="res://characters/enemies/cop/cop.gd" id="3"]
-[ext_resource type="PackedScene" uid="uid://dqn60b8acu3lw" path="res://components/detection_zone.tscn" id="5"]
+[ext_resource type="Script" path="res://characters/enemies/cop/cop.gd" id="3"]
+[ext_resource type="PackedScene" uid="uid://dqn60b8acu3lw" path="res://components/detect/detection_zone.tscn" id="5"]
 [ext_resource type="Texture2D" uid="uid://5isoufmt8efi" path="res://characters/enemies/cop/cop_bribed_reskin.png" id="6"]
 
 [sub_resource type="CapsuleShape2D" id="4"]
@@ -419,7 +419,6 @@ parameters/Idle/blend_position = Vector2(0, 0)
 parameters/Run/blend_position = Vector2(0, 0)
 parameters/Walk/blend_position = Vector2(0, 0)
 
-[connection signal="player_reached" from="." to="." method="_on_Cop_player_reached"]
 [connection signal="lost" from="CopDetectionZone" to="." method="_on_CopDetectionZone_lost"]
 [connection signal="saw" from="CopDetectionZone" to="." method="_on_CopDetectionZone_saw"]
 [connection signal="body_entered" from="CopDetectionZone/BounceZone" to="." method="_on_BounceZone_body_entered"]

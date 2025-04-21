@@ -1,0 +1,18 @@
+[gd_scene load_steps=5 format=3 uid="uid://dxartndr3l87y"]
+
+[ext_resource type="PackedScene" uid="uid://bdkq5awasu10h" path="res://ITEMS/pickups/item_pickup.tscn" id="1"]
+[ext_resource type="Texture2D" uid="uid://drg65t68iooa5" path="res://ITEMS/guns/shot_gun/shotgun.png" id="2"]
+[ext_resource type="PackedScene" uid="uid://b38xdgwomoftd" path="res://ITEMS/guns/shot_gun/shot_gun.tscn" id="3"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_lxct8"]
+resource_local_to_scene = true
+
+[node name="ShotGunPickup" instance=ExtResource("1")]
+ITEM = ExtResource("3")
+
+[node name="Sprite2D" parent="." index="0"]
+texture = ExtResource("2")
+flip_h = true
+
+[node name="CollisionShape3D" parent="." index="1"]
+shape = SubResource("CircleShape2D_lxct8")

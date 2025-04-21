@@ -2,9 +2,9 @@
 
 [ext_resource type="Script" uid="uid://ccjnmcfgn1de0" path="res://ui/buttons/buy_button.gd" id="1"]
 [ext_resource type="Theme" uid="uid://bfswc7hc3bmsg" path="res://ui/theme.theme" id="2"]
-[ext_resource type="AudioStream" uid="uid://c3r6t6iw1elgd" path="res://sfx/ui/sfx_coin_double5.wav" id="3"]
-[ext_resource type="FontFile" path="res://ui/fonts/default_font.tres" id="4"]
-[ext_resource type="AudioStream" uid="uid://qmtit6ueqfmi" path="res://sfx/ui/sfx_coin_single2.wav" id="5"]
+[ext_resource type="AudioStream" uid="uid://c3r6t6iw1elgd" path="res://assets/sfx/ui/sfx_coin_double5.wav" id="3"]
+[ext_resource type="FontFile" uid="uid://bo512aej45lyr" path="res://assets/old/ui_assets/fonts/default_font.tres" id="4"]
+[ext_resource type="AudioStream" uid="uid://qmtit6ueqfmi" path="res://assets/sfx/ui/sfx_coin_single2.wav" id="5"]
 
 [node name="BuyButton" type="PanelContainer"]
 offset_right = 39.0

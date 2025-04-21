@@ -1,10 +1,10 @@
 [gd_scene load_steps=9 format=3 uid="uid://cnqsjoshe46sf"]
 
 [ext_resource type="PackedScene" uid="uid://glhv5vfaemdb" path="res://characters/character.tscn" id="1"]
-[ext_resource type="PackedScene" uid="uid://dqn60b8acu3lw" path="res://components/detection_zone.tscn" id="2"]
+[ext_resource type="PackedScene" uid="uid://dqn60b8acu3lw" path="res://components/detect/detection_zone.tscn" id="2"]
 [ext_resource type="Script" uid="uid://1yc36eqvaxu3" path="res://characters/enemies/enemy.gd" id="3"]
-[ext_resource type="PackedScene" uid="uid://ccrep57x66knm" path="res://components/soft_collider.tscn" id="4"]
-[ext_resource type="Script" uid="uid://d3xt02kmcbnvt" path="res://guns/auto_aimer.gd" id="5"]
+[ext_resource type="PackedScene" uid="uid://ccrep57x66knm" path="res://components/collisions/soft_collider.tscn" id="4"]
+[ext_resource type="Script" uid="uid://d0qnxxc8bfnu8" path="res://ITEMS/guns/classes/auto_aimer.gd" id="5"]
 [ext_resource type="PackedScene" uid="uid://b0h6h3d675xmv" path="res://characters/enemies/enemy_death_effect.tscn" id="6"]
 
 [sub_resource type="RectangleShape2D" id="1"]

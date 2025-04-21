@@ -1,6 +1,6 @@
 [gd_scene load_steps=29 format=3 uid="uid://pg5qycjxurbk"]
 
-[ext_resource type="Texture2D" uid="uid://b7c0psu4dpfjr" path="res://levels/spritesheet.png" id="1"]
+[ext_resource type="Texture2D" uid="uid://b7c0psu4dpfjr" path="res://assets/old/old tiles/spritesheets/spritesheet.png" id="1"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_en3cx"]
 texture = ExtResource("1")
@@ -910,5 +910,4 @@ sources/51 = SubResource("TileSetAtlasSource_v2o2r")
 
 [node name="decorations1" type="TileMap"]
 tile_set = SubResource("4")
-cell_size = Vector2(24, 24)
-format = 1
+format = 2

@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://utep5hsaukrq"]
 
-[ext_resource type="Texture2D" uid="uid://6i6jv7s3607b" path="res://ui/icons/money.png" id="1"]
+[ext_resource type="Texture2D" uid="uid://6i6jv7s3607b" path="res://assets/old/ui_assets/icons_img/money.png" id="1"]
 
 [node name="Bribe" type="Sprite2D"]
 light_mask = 3

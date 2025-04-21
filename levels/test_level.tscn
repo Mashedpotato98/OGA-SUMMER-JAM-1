@@ -1,8 +1,8 @@
 [gd_scene load_steps=5 format=3 uid="uid://dn6b558gufs2v"]
 
-[ext_resource type="PackedScene" uid="uid://kfbfa6j5jk1k" path="res://levels/level.tscn" id="1"]
-[ext_resource type="PackedScene" uid="uid://c05igbpe3obtp" path="res://pickups/ammo_pickup.tscn" id="2"]
-[ext_resource type="PackedScene" uid="uid://blh163uxe1moq" path="res://pickups/money_pickup.tscn" id="3"]
+[ext_resource type="PackedScene" uid="uid://kfbfa6j5jk1k" path="res://levels/playable_levels_old/level.tscn" id="1"]
+[ext_resource type="PackedScene" uid="uid://c05igbpe3obtp" path="res://ITEMS/pickups/gun/AMMO PICKUP/ammo_pickup.tscn" id="2"]
+[ext_resource type="PackedScene" uid="uid://blh163uxe1moq" path="res://ITEMS/pickups/money/money_pickup.tscn" id="3"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_gbs8q"]
 resource_local_to_scene = true

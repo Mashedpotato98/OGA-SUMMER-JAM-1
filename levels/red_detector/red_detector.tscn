@@ -1,6 +1,6 @@
-[gd_scene load_steps=4 format=3 uid="uid://dofkyvalbgr3i"]
+[gd_scene load_steps=4 format=3 uid="uid://cfyw5xo0k684x"]
 
-[ext_resource type="Texture2D" uid="uid://b4ubwqdj5allc" path="res://levels/red_detector/red_barrier.png" id="1"]
+[ext_resource type="Texture2D" uid="uid://b4ubwqdj5allc" path="res://assets/old/old tiles/laser/red_barrier.png" id="1"]
 [ext_resource type="Script" uid="uid://dc8eavlxouj4a" path="res://levels/red_detector/red_detector.gd" id="2"]
 
 [sub_resource type="RectangleShape2D" id="1"]
@@ -11,9 +11,6 @@ collision_layer = 0
 collision_mask = 8
 monitorable = false
 script = ExtResource("2")
-__meta__ = {
-"_edit_group_": true
-}
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("1")

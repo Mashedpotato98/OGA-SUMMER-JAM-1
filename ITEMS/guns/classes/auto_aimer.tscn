@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://bhmxqrnsjixfm"]
+
+[ext_resource type="Script" uid="uid://d0qnxxc8bfnu8" path="res://ITEMS/guns/classes/auto_aimer.gd" id="1"]
+
+[node name="AutoAimer" type="Node2D"]
+script = ExtResource("1")

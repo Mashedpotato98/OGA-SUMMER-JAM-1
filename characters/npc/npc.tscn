@@ -1,10 +1,10 @@
-[gd_scene load_steps=11 format=3 uid="uid://f1fofsqpbnps"]
+[gd_scene load_steps=11 format=3 uid="uid://b0oplhe48lpf8"]
 
 [ext_resource type="PackedScene" uid="uid://glhv5vfaemdb" path="res://characters/character.tscn" id="1"]
 [ext_resource type="Script" uid="uid://bg64co6vwkr76" path="res://characters/npc/npc.gd" id="2"]
 [ext_resource type="Texture2D" uid="uid://ocorcxc66rx0" path="res://characters/npc/npc_women.png" id="3"]
 [ext_resource type="Texture2D" uid="uid://gmpphfr52mpy" path="res://characters/npc/npc_guy.png" id="4"]
-[ext_resource type="PackedScene" uid="uid://dqn60b8acu3lw" path="res://components/detection_zone.tscn" id="5"]
+[ext_resource type="PackedScene" uid="uid://dqn60b8acu3lw" path="res://components/detect/detection_zone.tscn" id="5"]
 [ext_resource type="PackedScene" uid="uid://b0h6h3d675xmv" path="res://characters/enemies/enemy_death_effect.tscn" id="6"]
 
 [sub_resource type="CapsuleShape2D" id="1"]
@@ -25,11 +25,11 @@ radius = 8.0
 [node name="NPC" instance=ExtResource("1")]
 collision_layer = 64
 script = ExtResource("2")
+skins = [ExtResource("4"), ExtResource("3")]
 max_hp = 1
 hp = 1
 type = "all"
 DEATH_EFFECT = ExtResource("6")
-skins = [ExtResource("4"), ExtResource("3")]
 
 [node name="Sprite2D" parent="." index="0"]
 position = Vector2(0, -7)
@@ -51,9 +51,6 @@ collision_mask = 130
 
 [node name="CollisionShape2D" parent="PanicZone" index="0"]
 shape = SubResource("5")
-
-[node name="RayCast3D" parent="PanicZone" index="1"]
-collision_mask = 131
 
 [node name="WallBounce" type="Area2D" parent="." index="7"]
 collision_layer = 0

@@ -1,0 +1,22 @@
+[gd_scene load_steps=5 format=3 uid="uid://blh163uxe1moq"]
+
+[ext_resource type="Texture2D" uid="uid://6i6jv7s3607b" path="res://assets/old/ui_assets/icons_img/money.png" id="1"]
+[ext_resource type="PackedScene" uid="uid://igden0dqd8aa" path="res://ITEMS/pickups/pickup.tscn" id="2"]
+[ext_resource type="Script" uid="uid://c52a0u4x7b3u2" path="res://ITEMS/pickups/money/money_pickup.gd" id="3"]
+
+[sub_resource type="CircleShape2D" id="1"]
+resource_local_to_scene = true
+
+[node name="MoneyPickup" instance=ExtResource("2")]
+script = ExtResource("3")
+amount = 100
+
+[node name="Sprite2D" parent="." index="0"]
+texture = ExtResource("1")
+
+[node name="CollisionShape3D" parent="." index="1"]
+shape = SubResource("1")
+
+[node name="SoundEffect" parent="." index="2"]
+volume_db = -5.0
+bus = &"SFX"

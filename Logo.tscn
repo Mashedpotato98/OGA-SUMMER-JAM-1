@@ -3,8 +3,8 @@
 [ext_resource type="PackedScene" uid="uid://crpitsrjpoxuw" path="res://characters/enemies/swat/swat.tscn" id="1"]
 [ext_resource type="PackedScene" uid="uid://ddbxcr8sg45oc" path="res://characters/robber/robber.tscn" id="2"]
 [ext_resource type="PackedScene" uid="uid://c3tbei14wbme6" path="res://characters/enemies/cop/cop.tscn" id="3"]
-[ext_resource type="Texture2D" uid="uid://bdsqhpwrr8wgm" path="res://light.png" id="4"]
-[ext_resource type="FontFile" uid="uid://c2h4rc6o3rhul" path="res://ui/fonts/kenpixel.ttf" id="5"]
+[ext_resource type="Texture2D" uid="uid://bdsqhpwrr8wgm" path="res://assets/old/juice/light.png" id="4"]
+[ext_resource type="FontFile" uid="uid://c2h4rc6o3rhul" path="res://assets/old/ui_assets/fonts/kenpixel.ttf" id="5"]
 
 [sub_resource type="RectangleShape2D" id="1"]
 resource_local_to_scene = true
@@ -58,10 +58,10 @@ shape = SubResource("1")
 [node name="HandPivot" parent="Robber" index="3"]
 visible = false
 
-[node name="WallDetector" parent="Robber" index="5"]
+[node name="WallDetector" parent="Robber" index="4"]
 visible = false
 
-[node name="HurtSound" parent="Robber" index="6"]
+[node name="HurtSound" parent="Robber" index="5"]
 visible = false
 
 [node name="AudioListener2D" parent="Robber" index="8"]
@@ -74,7 +74,6 @@ walk_speed = 0.0
 
 [node name="CollisionShape2D" parent="Cop" index="1"]
 visible = false
-light_mask = 1
 
 [node name="HitBox" parent="Cop" index="2"]
 visible = false
@@ -89,15 +88,8 @@ visible = false
 [node name="Hand" parent="Cop/HandPivot" index="0"]
 visible = false
 
-[node name="Pistol" parent="Cop/HandPivot/Hand" index="0"]
-visible = false
-
 [node name="CollisionShape2D" parent="Cop/DetectionZone" index="0"]
-visible = false
 shape = SubResource("4")
-
-[node name="RayCast3D" parent="Cop/DetectionZone" index="1"]
-visible = false
 
 [node name="WallDetector" parent="Cop" index="6"]
 visible = false
@@ -106,17 +98,7 @@ visible = false
 visible = false
 
 [node name="CollisionShape2D" parent="Cop/CopDetectionZone" index="0"]
-visible = false
 shape = SubResource("5")
-
-[node name="RayCast3D" parent="Cop/CopDetectionZone" index="1"]
-visible = false
-
-[node name="BounceZone" parent="Cop" index="9"]
-visible = false
-
-[node name="CollisionShape2D" parent="Cop/BounceZone" index="0"]
-visible = false
 
 [node name="Swat" parent="." instance=ExtResource("1")]
 position = Vector2(127, 145)
@@ -125,7 +107,6 @@ walk_speed = 0.0
 
 [node name="CollisionShape2D" parent="Swat" index="1"]
 visible = false
-light_mask = 1
 
 [node name="HitBox" parent="Swat" index="2"]
 visible = false
@@ -144,11 +125,7 @@ visible = false
 visible = false
 
 [node name="CollisionShape2D" parent="Swat/DetectionZone" index="0"]
-visible = false
 shape = SubResource("7")
-
-[node name="RayCast3D" parent="Swat/DetectionZone" index="1"]
-visible = false
 
 [node name="SoftCollider" parent="Swat" index="5"]
 visible = false

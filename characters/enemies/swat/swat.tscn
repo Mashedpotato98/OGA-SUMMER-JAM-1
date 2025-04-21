@@ -1,7 +1,7 @@
 [gd_scene load_steps=53 format=3 uid="uid://crpitsrjpoxuw"]
 
 [ext_resource type="PackedScene" uid="uid://cnqsjoshe46sf" path="res://characters/enemies/enemy.tscn" id="1"]
-[ext_resource type="Script" uid="uid://ht2ko2yaarjx" path="res://characters/enemies/swat/swat.gd" id="2"]
+[ext_resource type="Script" uid="uid://ftu2bv18wpne" path="res://characters/enemies/swat/swat.gd" id="2"]
 [ext_resource type="Texture2D" uid="uid://df6sr002hmabq" path="res://characters/enemies/swat/swat_normal.png" id="3"]
 
 [sub_resource type="CapsuleShape2D" id="6"]

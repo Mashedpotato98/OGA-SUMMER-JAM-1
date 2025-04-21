@@ -1,8 +1,6 @@
-[gd_resource type="TileSet" load_steps=7 format=3 uid="uid://c5vkd17vo0u6s"]
+[gd_resource type="TileSet" load_steps=5 format=3 uid="uid://c5vkd17vo0u6s"]
 
-[ext_resource type="Texture2D" uid="uid://b1adolvbn6ici" path="res://levels/wall_tiles.png" id="1"]
-[ext_resource type="Texture2D" uid="uid://s3taqhe4y11l" path="res://levels/oga_summer_2023_robber_game_jam_art/OGA Summer 2023 Robber Game Jam Art/textures/floor_panel.png" id="2"]
-[ext_resource type="Texture2D" uid="uid://c7elfpvsvndvo" path="res://levels/oga_summer_2023_robber_game_jam_art/OGA Summer 2023 Robber Game Jam Art/textures/carpet.png" id="3"]
+[ext_resource type="Texture2D" uid="uid://b1adolvbn6ici" path="res://assets/old/old tiles/spritesheets/wall_tiles.png" id="1"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_762h0"]
 texture = ExtResource("1")
@@ -467,7 +465,6 @@ texture_region_size = Vector2i(24, 24)
 5:2/7/transpose = true
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_bpxla"]
-texture = ExtResource("2")
 texture_region_size = Vector2i(24, 24)
 0:0/next_alternative_id = 8
 0:0/0 = 0
@@ -492,7 +489,6 @@ texture_region_size = Vector2i(24, 24)
 0:0/7/transpose = true
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_d2j8m"]
-texture = ExtResource("3")
 texture_region_size = Vector2i(24, 24)
 0:0/next_alternative_id = 8
 0:0/0 = 0

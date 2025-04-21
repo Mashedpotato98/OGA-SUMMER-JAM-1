@@ -1,0 +1,11 @@
+[gd_scene load_steps=4 format=3 uid="uid://csx5w4aghtwgm"]
+
+[ext_resource type="PackedScene" uid="uid://41kpqewbhbrg" path="res://ITEMS/guns/classes/gun.tscn" id="1"]
+[ext_resource type="PackedScene" uid="uid://de2b8c1xrdsyo" path="res://ITEMS/explosives/grenade/grenade.tscn" id="3"]
+[ext_resource type="Texture2D" uid="uid://c3kdf31kgfv20" path="res://ITEMS/explosives/grenade/grenade.png" id="4"]
+
+[node name="GrenadeLauncher" instance=ExtResource("1")]
+BULLET = ExtResource("3")
+
+[node name="Sprite2D" parent="." index="0"]
+texture = ExtResource("4")

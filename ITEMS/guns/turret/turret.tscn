@@ -1,0 +1,136 @@
+[gd_scene load_steps=16 format=3 uid="uid://bts3lfwobpknr"]
+
+[ext_resource type="Texture2D" uid="uid://dfm8oi8v12nf0" path="res://ITEMS/guns/turret/turret_1.png" id="1"]
+[ext_resource type="Script" path="res://ITEMS/guns/turret/turret.gd" id="2"]
+[ext_resource type="PackedScene" uid="uid://41kpqewbhbrg" path="res://ITEMS/guns/classes/gun.tscn" id="3"]
+[ext_resource type="Texture2D" uid="uid://df71gu2t035db" path="res://ITEMS/guns/turret/turret_2.png" id="4"]
+[ext_resource type="PackedScene" uid="uid://dqn60b8acu3lw" path="res://components/detect/detection_zone.tscn" id="5"]
+[ext_resource type="PackedScene" uid="uid://ckac0bi5ty4a5" path="res://ITEMS/guns/bullets/weak_bullet.tscn" id="6"]
+[ext_resource type="PackedScene" uid="uid://tc5o1ddt3pf6" path="res://components/attack/hit_box.tscn" id="7"]
+[ext_resource type="PackedScene" uid="uid://bhmxqrnsjixfm" path="res://ITEMS/guns/classes/auto_aimer.tscn" id="8"]
+[ext_resource type="AudioStream" uid="uid://bdgj81ldkdt7l" path="res://assets/sfx/shots/sfx_wpn_machinegun_loop4.wav" id="9"]
+[ext_resource type="AudioStream" uid="uid://c2woxq7c2relb" path="res://assets/sfx/dmg/sfx_damage_hit7.wav" id="10"]
+
+[sub_resource type="CircleShape2D" id="1"]
+radius = 8.0
+
+[sub_resource type="Animation" id="4"]
+resource_name = "Fire"
+length = 0.5
+tracks/0/type = "method"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AutoAimer/Gun")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"activate"
+}]
+}
+
+[sub_resource type="Animation" id="3"]
+resource_name = "RapidFire"
+length = 2.0
+tracks/0/type = "method"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AutoAimer/Gun")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6, 0.8, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"values": [{
+"args": [],
+"method": &"activate"
+}, {
+"args": [],
+"method": &"activate"
+}, {
+"args": [],
+"method": &"activate"
+}, {
+"args": [],
+"method": &"activate"
+}, {
+"args": [],
+"method": &"activate"
+}, {
+"args": [],
+"method": &"activate"
+}]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_u2jcw"]
+_data = {
+&"Fire": SubResource("4"),
+&"RapidFire": SubResource("3")
+}
+
+[sub_resource type="CircleShape2D" id="6"]
+radius = 7.0
+
+[node name="Turret" type="StaticBody2D"]
+collision_layer = 4
+collision_mask = 23
+script = ExtResource("2")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+light_mask = 3
+texture = ExtResource("1")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("1")
+
+[node name="AutoAimer" parent="." instance=ExtResource("8")]
+
+[node name="Gun" parent="AutoAimer" instance=ExtResource("3")]
+unique_name_in_owner = true
+BULLET = ExtResource("6")
+flip = false
+
+[node name="Sprite2D" parent="AutoAimer/Gun" index="0"]
+rotation = -1.5708
+texture = ExtResource("4")
+
+[node name="Barrel" parent="AutoAimer/Gun" index="1"]
+position = Vector2(8, 0)
+
+[node name="CoolDown" parent="AutoAimer/Gun" index="2"]
+wait_time = 0.1
+
+[node name="ShootSound" parent="AutoAimer/Gun" index="4"]
+stream = ExtResource("9")
+
+[node name="DetectionZone" parent="." instance=ExtResource("5")]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_u2jcw")
+}
+
+[node name="HitBox" parent="." instance=ExtResource("7")]
+
+[node name="CollisionShape3D" parent="HitBox" index="0"]
+shape = SubResource("6")
+
+[node name="ImmunityDuration" parent="HitBox" index="1"]
+wait_time = 0.001
+
+[node name="HurtSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("10")
+max_distance = 512.0
+
+[connection signal="lost" from="DetectionZone" to="." method="_on_DetectionZone_lost"]
+[connection signal="lost" from="DetectionZone" to="AutoAimer" method="lose_target"]
+[connection signal="saw" from="DetectionZone" to="." method="_on_DetectionZone_saw"]
+[connection signal="saw" from="DetectionZone" to="AutoAimer" method="set_target"]
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_AnimationPlayer_animation_finished"]
+[connection signal="dmg_taken" from="HitBox" to="." method="_on_HitBox_dmg_taken"]
+
+[editable path="AutoAimer/Gun"]
+[editable path="HitBox"]

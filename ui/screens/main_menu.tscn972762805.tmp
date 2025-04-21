@@ -1,0 +1,56 @@
+[gd_scene load_steps=3 format=3 uid="uid://58s6qlqdfyek"]
+
+[ext_resource type="PackedScene" uid="uid://wkfst0sburps" path="res://ui/screens/screen.tscn" id="1"]
+[ext_resource type="Script" uid="uid://dsjrdw7nycxsc" path="res://ui/screens/main_menu.gd" id="2"]
+
+[node name="MainMenu" node_paths=PackedStringArray("focused_button") instance=ExtResource("1")]
+script = ExtResource("2")
+focused_button = NodePath("Menu/StartButtons/PlayButton")
+
+[node name="Title" parent="." index="0"]
+layout_mode = 1
+anchors_preset = 10
+offset_bottom = 24.0
+grow_horizontal = 2
+
+[node name="Menu" parent="." index="1"]
+layout_mode = 1
+anchors_preset = 8
+offset_left = -78.5
+offset_top = -54.0
+offset_right = 78.5
+offset_bottom = 54.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="StartButtons" type="HBoxContainer" parent="Menu" index="0"]
+layout_mode = 2
+
+[node name="PlayButton" type="Button" parent="Menu/StartButtons" index="0"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Play"
+
+[node name="Tutorial" type="Button" parent="Menu/StartButtons" index="1"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Tutorial"
+
+[node name="CreditsButton" type="Button" parent="Menu" index="1"]
+layout_mode = 2
+text = "Credits"
+
+[node name="SettingsButton" type="Button" parent="Menu" index="2"]
+layout_mode = 2
+text = "Settings"
+
+[node name="QuitButton" type="Button" parent="Menu" index="3"]
+layout_mode = 2
+text = "Quit"
+
+[connection signal="pressed" from="Menu/StartButtons/PlayButton" to="." method="_on_PlayButton_pressed"]
+[connection signal="pressed" from="Menu/StartButtons/Tutorial" to="." method="_on_Tutorial_pressed"]
+[connection signal="pressed" from="Menu/CreditsButton" to="." method="_on_CreditsButton_pressed"]
+[connection signal="pressed" from="Menu/SettingsButton" to="." method="_on_SettingsButton_pressed"]
+[connection signal="pressed" from="Menu/QuitButton" to="." method="_on_QuitButton_pressed"]

@@ -2,7 +2,7 @@
 
 [ext_resource type="Theme" uid="uid://bfswc7hc3bmsg" path="res://ui/theme.theme" id="1"]
 [ext_resource type="Script" uid="uid://cnco1x0q3ksyt" path="res://ui/screens/screen.gd" id="2"]
-[ext_resource type="FontFile" path="res://ui/fonts/title_font.tres" id="3"]
+[ext_resource type="FontFile" path="res://assets/old/ui_assets/fonts/title_font.tres" id="3"]
 
 [node name="Screen" type="Control"]
 layout_mode = 3

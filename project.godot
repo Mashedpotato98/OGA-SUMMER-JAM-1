@@ -15,14 +15,14 @@ run/main_scene="res://ui/screens/main_menu.tscn"
 config/features=PackedStringArray("4.4")
 boot_splash/bg_color=Color(0.121569, 0.113725, 0.113725, 1)
 boot_splash/use_filter=false
-boot_splash/image="res://ui/screens/splash.png"
+boot_splash/image="uid://chdoiltaf58s1"
 config/icon="res://icon.png"
 
 [autoload]
 
+Settings="*res://ui/settings/settings.gd"
 Inventory="*res://characters/robber/inventory.gd"
-Music="*res://music/music.tscn"
-Settings="*res://settings.tscn"
+Music="*res://assets/music/music.gd"
 
 [debug]
 
@@ -39,6 +39,10 @@ window/size/window_height_override=540
 window/stretch/mode="canvas_items"
 window/size/fullscreen=true
 
+[dotnet]
+
+project/assembly_name="Robbing Hood"
+
 [editor]
 
 version_control_autoload_on_startup=true
@@ -46,7 +50,7 @@ version_control_plugin_name="GitAPI"
 
 [editor_plugins]
 
-enabled=PackedStringArray()
+enabled=PackedStringArray("res://addons/script-ide/plugin.cfg")
 
 [gui]
 

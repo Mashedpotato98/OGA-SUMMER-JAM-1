@@ -216,6 +216,7 @@ func _on_ammo_set(value: int) -> void:
 
 
 func _on_Inventory_current_item_switched(item_index: int) -> void:
+	@warning_ignore("shadowed_variable_base_class")
 	var item := load(Inventory.items.keys()[item_index])
 	change_item(item)
 	bribing = item == BRIBE

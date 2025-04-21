@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://wkfst0sburps" path="res://ui/screens/screen.tscn" id="1"]
 [ext_resource type="Script" uid="uid://c16qcxtb2wwc5" path="res://ui/screens/credits.gd" id="2"]
-[ext_resource type="FontFile" uid="uid://nldy1avv3bll" path="res://ui/fonts/kenpixel_mini.ttf" id="3"]
+[ext_resource type="FontFile" uid="uid://nldy1avv3bll" path="res://assets/old/ui_assets/fonts/kenpixel_mini.ttf" id="3"]
 
 [sub_resource type="FontFile" id="1"]
 fallbacks = Array[Font]([ExtResource("3")])
