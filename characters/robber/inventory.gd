@@ -20,7 +20,12 @@ const DEFAULT_ITEMS := {
 	BRIBE_PATH: MAX_CRONIES,
 }
 
-var items := DEFAULT_ITEMS.duplicate():
+var items_new = DEFAULT_ITEMS.duplicate(true):
+	set(value):
+		items_new = value
+		items_changed.emit(items)
+
+var items := DEFAULT_ITEMS.duplicate(true):
 	set(value):
 		items = value
 		items_changed.emit(items)
@@ -82,7 +87,7 @@ var money := DEFAULT_MONEY:
 		money_changed.emit(money)
 var current_item := 0:
 	set(value):
-		current_item = wrapi(value, 0, items.size())
+		current_item = wrapi(value, 0, items_new.size())
 		current_item_switched.emit(current_item)
 var cronies := []:
 	set(value):
@@ -101,7 +106,7 @@ func _ready() -> void:
 
 func load_file(password := PASSWORD) -> void:
 	super(password)
-	items = data.items
+	items_new = data.items
 	cronies = data.cronies
 	first_raid = data.first_raid
 	money = data.money
@@ -116,17 +121,17 @@ func save_file(password := PASSWORD) -> void:
 #region Regular
 func set_item_ammo(item: String, ammo: int, relative := true) -> void:
 	if relative:
-		items[item] += ammo
+		items_new[item] += ammo
 	else:
-		items[item] = ammo
+		items_new[item] = ammo
 
-	if items[item] <= 0:
+	if items_new[item] <= 0:
 		# Remove item.
-		if current_item >= items.keys().find(item):
+		if current_item >= items_new.keys().find(item):
 			current_item -= 1
-		items.erase(item)
+		items_new.erase(item)
 
-	items = items
+	items_new = items
 
 
 func update_bribe_ammo() -> void:

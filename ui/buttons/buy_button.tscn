@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=3 uid="uid://lt1vc3nf4ceq"]
 
-[ext_resource type="Script" uid="uid://ccjnmcfgn1de0" path="res://ui/buttons/buy_button.gd" id="1"]
+[ext_resource type="Script" uid="uid://dnbnqogectqiu" path="res://ui/buttons/buy_button.gd" id="1"]
 [ext_resource type="Theme" uid="uid://bfswc7hc3bmsg" path="res://ui/theme.theme" id="2"]
 [ext_resource type="AudioStream" uid="uid://c3r6t6iw1elgd" path="res://assets/sfx/ui/sfx_coin_double5.wav" id="3"]
 [ext_resource type="FontFile" uid="uid://bo512aej45lyr" path="res://assets/old/ui_assets/fonts/default_font.tres" id="4"]

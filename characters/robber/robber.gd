@@ -1,7 +1,6 @@
 # Could use state machine, but might be over kill depending on how the mechanics work.
 class_name Robber extends Character
 
-
 #region Members
 signal code_grabbed(code: Array, from: Vector2)
 
@@ -45,24 +44,21 @@ var enabled := true:
 #endregion
 #endregion
 
-
 #region Functions
 #region Overrides
 func _init() -> void:
 	Inventory.current_item_switched.connect(_on_Inventory_current_item_switched)
 	Inventory.items_changed.connect(_on_Inventory_items_changed)
 
-
 func _ready() -> void:
 	spawn_cronies()
 
-	if Inventory.items.keys().size() > 0:
+	if Inventory.items_new.keys().size() > 0:
 		Inventory.current_item_switched.emit(Inventory.current_item)
 
 	Input.mouse_mode = Input.MOUSE_MODE_CONFINED
 	dash_bar.max_value = dash_cool_down.wait_time
 	is_ready = true
-
 
 func _input(event: InputEvent) -> void:
 	if not enabled:
@@ -81,7 +77,6 @@ func _input(event: InputEvent) -> void:
 	elif event.is_action_pressed(&"switch_gun_prev"):
 		scroll_items(-1)
 
-
 func _unhandled_input(event: InputEvent) -> void:
 	if not enabled:
 		return
@@ -90,7 +85,6 @@ func _unhandled_input(event: InputEvent) -> void:
 		holding_trigger = true
 	elif event.is_action_released(&"shoot"):
 		holding_trigger = false
-
 
 func _physics_process(delta: float) -> void:
 	if Input.is_action_pressed(&"dash") and not dash_cooling:
@@ -103,7 +97,6 @@ func _physics_process(delta: float) -> void:
 
 	super(delta)
 
-
 func _die() -> void:
 	reset_stats()
 	var fade := Fade.new()
@@ -113,16 +106,14 @@ func _die() -> void:
 	get_tree().change_scene_to_file("res://ui/screens/lose_screen.tscn")
 #endregion
 
-
 #region Regular
 func reset_stats() -> void:
 	Inventory.money = Inventory.DEFAULT_MONEY
 	Inventory.current_item = 0
-	Inventory.items = Inventory.DEFAULT_ITEMS.duplicate()
+	Inventory.items_new = Inventory.DEFAULT_ITEMS.duplicate()
 	Inventory.cronies = []
 	Inventory.first_raid = true
 	Inventory.save_file()
-
 
 func dash() -> void:
 	shove(anim_dir * dash_speed, dash_length, true)
@@ -135,37 +126,32 @@ func dash() -> void:
 	animation_tree.set(&"parameters/Dash/blend_position", anim_dir)
 	playback.travel(&"Dash")
 
-
 func set_code(code: Array, from: Vector2) -> void:
 	code_grabbed.emit(code, from)
 
-
 func change_item(ITEM: PackedScene) -> void:
-	super(ITEM)
-	ammo = Inventory.items[ITEM.resource_path]
-
+	super(ITEM) #😶‍🌫️
+	#print(Inventory.items_new)
+	ammo = Inventory.items_new[ITEM.resource_path]
 
 func clear_item() -> void:
 	super.change_item(null)
 
-
 func scroll_items(direction: int) -> void:
-	var item_count := Inventory.items.keys().size()
+	var item_count:int = Inventory.items_new.keys().size()
 	if item_count <= 0:
 		return
 
 	Inventory.current_item += direction
 
-
 func add_item(ITEM: PackedScene) -> void:
 	var item_ammo: int = Inventory.items_list[ITEM.resource_path].ammo
-	if Inventory.items.has(ITEM.resource_path):
+	if Inventory.items_new.has(ITEM.resource_path):
 		Inventory.set_item_ammo(ITEM.resource_path, item_ammo)
 	else:
 		Inventory.set_item_ammo(ITEM.resource_path, item_ammo, false)
 
-	Inventory.current_item = Inventory.items.keys().find(ITEM.resource_path)
-
+	Inventory.current_item = Inventory.items_new.keys().find(ITEM.resource_path)
 
 func spawn_cronies() -> void:
 	var cronie_count := Inventory.cronies.size()
@@ -180,19 +166,16 @@ func spawn_cronies() -> void:
 		cronie.change_item(load(cronie_info.weapon))
 		cronie.bribe_state = cronie.BRIBE_STATES.BRIBED
 
-
 func move(_delta: float) -> void:
 	var input_dir := Input.get_vector(&"left", &"right", &"up", &"down")
 	smooth_vel = input_dir * speed
 	anim_dir = input_dir
-
 
 func turn(delta: float) -> void:
 	var joy_direction := Input.get_vector(&"aim_left", &"aim_right", &"aim_up", &"aim_down")
 	if joy_direction.length() > 0.0:
 		aim_dir = joy_direction
 	hand_pivot.rotation = lerp_angle(hand_pivot.rotation, aim_dir.angle(), turn_speed * delta)
-
 
 func blink() -> void:
 	var blink_duration := 0.25
@@ -204,7 +187,6 @@ func blink() -> void:
 		await get_tree().create_timer(blink_duration / blinks / 2.0).timeout
 #endregion
 
-
 #region Events
 func _on_ammo_set(value: int) -> void:
 	if not is_ready:
@@ -214,34 +196,28 @@ func _on_ammo_set(value: int) -> void:
 	var item_path: String = item.scene_file_path
 	Inventory.set_item_ammo(item_path, ammo, false)
 
-
 func _on_Inventory_current_item_switched(item_index: int) -> void:
 	@warning_ignore("shadowed_variable_base_class")
-	var item := load(Inventory.items.keys()[item_index])
+	var item := load(Inventory.items_new.keys()[item_index])
 	change_item(item)
 	bribing = item == BRIBE
 
 	await RenderingServer.frame_pre_draw
 	start_cool_down()
 
-
 func _on_Inventory_items_changed(items: Dictionary) -> void:
 	if items.size() <= 0:
 		clear_item()
-
 
 func _on_HitBox_dmg_taken(from: Vector2, amount: int) -> void:
 	super(from, amount)
 	blink()
 
-
 func _on_DashCoolDown_timeout() -> void:
 	dash_cooling = false
 
-
 func _on_Vault_activated(_vault: StaticBody2D) -> void:
 	enabled = false
-
 
 func _on_UI_vault_menu_closed() -> void:
 	enabled = true

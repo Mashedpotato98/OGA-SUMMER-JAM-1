@@ -61,8 +61,7 @@ func _ready() -> void:
 	Inventory.items_changed.connect(set_items)
 
 	set_money(Inventory.money)
-	print(Inventory.items)
-	set_items(Inventory.items)
+	set_items(Inventory.items_new)
 
 
 func _input(event: InputEvent) -> void:
@@ -128,7 +127,7 @@ func set_items(items: Dictionary) -> void:
 		var inventory_item: InventoryItem = INVENTORY_ITEM.instantiate()
 		inventory.add_child(inventory_item)
 		inventory_item.item = item_path
-		print(Inventory.items_list[item_path])
+		print(Inventory.items_list[item_path].icon)
 		inventory_item.icon = Inventory.items_list[item_path].icon
 		inventory_item.ammo = items[item_path]
 

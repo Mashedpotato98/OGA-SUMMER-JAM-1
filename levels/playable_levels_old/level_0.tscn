@@ -2,11 +2,12 @@
 
 [ext_resource type="PackedScene" uid="uid://kfbfa6j5jk1k" path="res://levels/playable_levels_old/level.tscn" id="1"]
 [ext_resource type="PackedScene" uid="uid://bts3lfwobpknr" path="res://ITEMS/guns/turret/turret.tscn" id="2"]
-[ext_resource type="PackedScene" uid="uid://cjc2u6y8v2lr" path="res://ITEMS/pickups/gun/pistol_pickup/pistol_pickup.tscn" id="3"]
+[ext_resource type="PackedScene" uid="uid://cjc2u6y8v2lr" path="res://ITEMS/pickups/gun/all_gun_pickups/pistol_pickup.tscn" id="3"]
 [ext_resource type="PackedScene" uid="uid://c3tbei14wbme6" path="res://characters/enemies/cop/cop.tscn" id="5"]
-[ext_resource type="PackedScene" uid="uid://c7h48yu0cf33i" path="res://ITEMS/pickups/gun/submachine_pickup/submachine_gun_pickup.tscn" id="6"]
-[ext_resource type="PackedScene" uid="uid://dxartndr3l87y" path="res://ITEMS/pickups/gun/shotgun_pickup/shot_gun_pickup.tscn" id="7"]
-[ext_resource type="PackedScene" uid="uid://b3itb58jf06cq" path="res://ITEMS/pickups/gun/railgun_pickup/g36c_pickup.tscn" id="8"]
+[ext_resource type="PackedScene" uid="uid://c7h48yu0cf33i" path="res://ITEMS/pickups/gun/all_gun_pickups/submachine_gun_pickup.tscn" id="6"]
+[ext_resource type="PackedScene" uid="uid://dxartndr3l87y" path="res://ITEMS/pickups/gun/all_gun_pickups/shot_gun_pickup.tscn" id="7"]
+[ext_resource type="PackedScene" uid="uid://b3itb58jf06cq" path="res://ITEMS/pickups/gun/all_gun_pickups/g36c_pickup.tscn" id="8"]
+
 
 [sub_resource type="NavigationPolygon" id="1"]
 resource_local_to_scene = true

@@ -1,9 +1,8 @@
-[gd_resource type="FontFile" load_steps=2 format=2]
-
-[ext_resource path="res://ui/fonts/kenpixel.ttf" type="FontFile" id=1]
+[gd_resource type="FontFile" format=3 uid="uid://dlkgqf2pcytsn"]
 
 [resource]
-size = 32
-outline_size = 2
-outline_color = Color( 0, 0, 0, 0.752941 )
-font_data = ExtResource( 1 )
+cache/0/16/0/ascent = 0.0
+cache/0/16/0/descent = 0.0
+cache/0/16/0/underline_position = 0.0
+cache/0/16/0/underline_thickness = 0.0
+cache/0/16/0/scale = 1.0

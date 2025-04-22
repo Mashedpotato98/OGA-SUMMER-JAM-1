@@ -2,7 +2,7 @@ class_name Turret extends StaticBody2D
 
 
 #region Members
-const TURRET_DEATH_EFFECT := preload("res://guns/turret/turret_death_effect.tscn")
+const TURRET_DEATH_EFFECT := preload("res://ITEMS/guns/turret/turret_death_effect.tscn")
 
 #region Export
 @export var turn_speed := 5.0
