@@ -1,6 +1,8 @@
-[gd_scene load_steps=2 format=4 uid="uid://cias35jwgadub"]
+[gd_scene load_steps=4 format=4 uid="uid://cias35jwgadub"]
 
 [ext_resource type="PackedScene" uid="uid://b3p2kew6h0p71" path="res://levels/tile/new_tiles/tiles.tscn" id="1_tghxx"]
+[ext_resource type="PackedScene" uid="uid://c3tbei14wbme6" path="res://characters/enemies/cop/cop.tscn" id="2_lioky"]
+[ext_resource type="PackedScene" uid="uid://bi3co628klrml" path="res://levels/points/wander_point.tscn" id="3_nwegg"]
 
 [node name="Level10" type="Node2D"]
 
@@ -12,3 +14,31 @@ tile_map_data = PackedByteArray("AAAAAP//BAABAAAAAAABAP//BAACAAAAAAACAP//BAABAAA
 
 [node name="items" parent="." instance=ExtResource("1_tghxx")]
 tile_map_data = PackedByteArray("AAADAA0AAwAAAAMAAAAEAA0AAwABAAMAAAADAAgAAwAAAAMAAAAEAAgAAwABAAMAAAADAAQAAwAAAAMAAAAEAAQAAwABAAMAAAADAP//AwAFAAYAAAADAAAAAwAFAAcAAAAEAP//AwAGAAYAAAAEAAAAAwAGAAcAAAASAP//AwAFAAYAAAASAAAAAwAFAAcAAAATAP//AwAGAAYAAAATAAAAAwAGAAcAAAASAAQAAwABAAIAAAATAAQAAwACAAIAAAASAAgAAwABAAIAAAATAAgAAwACAAIAAAASAA0AAwABAAIAAAATAA0AAwACAAIAAAADABIAAwAGAAQAAAAEABIAAwAHAAQAAAASABIAAwAEAAQAAAATABIAAwAFAAQAAAAQABEAAwAEAAEAAAAPAAQAAwAEAAEAAAAGAAoAAwAEAAIAAAA=")
+
+[node name="Enemy" type="Node" parent="."]
+
+[node name="Cop" parent="Enemy" instance=ExtResource("2_lioky")]
+position = Vector2(305, 181)
+
+[node name="Cop2" parent="Enemy" instance=ExtResource("2_lioky")]
+position = Vector2(65, 179)
+
+[node name="Cop3" parent="Enemy" instance=ExtResource("2_lioky")]
+position = Vector2(92, 99)
+
+[node name="Cop4" parent="Enemy" instance=ExtResource("2_lioky")]
+position = Vector2(278, 101)
+
+[node name="Cop5" parent="Enemy" instance=ExtResource("2_lioky")]
+position = Vector2(186, 40)
+
+[node name="Wander" type="Node" parent="."]
+
+[node name="WanderPoint" parent="Wander" instance=ExtResource("3_nwegg")]
+position = Vector2(195, 248)
+
+[node name="WanderPoint2" parent="Wander" instance=ExtResource("3_nwegg")]
+position = Vector2(195, 168)
+
+[node name="WanderPoint3" parent="Wander" instance=ExtResource("3_nwegg")]
+position = Vector2(197, 108)

@@ -1,6 +1,8 @@
-[gd_scene load_steps=2 format=4 uid="uid://cc7pasvivllcj"]
+[gd_scene load_steps=4 format=4 uid="uid://oxwrc8b65dv1"]
 
-[ext_resource type="PackedScene" uid="uid://b3p2kew6h0p71" path="res://tiles.tscn" id="1_fwt2v"]
+[ext_resource type="PackedScene" uid="uid://b3p2kew6h0p71" path="res://levels/tile/new_tiles/tiles.tscn" id="1_fwt2v"]
+[ext_resource type="PackedScene" uid="uid://c3tbei14wbme6" path="res://characters/enemies/cop/cop.tscn" id="2_r6pbe"]
+[ext_resource type="PackedScene" uid="uid://bi3co628klrml" path="res://levels/points/wander_point.tscn" id="3_id31w"]
 
 [node name="Level4" type="Node2D"]
 metadata/_edit_horizontal_guides_ = [191.0]
@@ -14,3 +16,34 @@ tile_map_data = PackedByteArray("AAD///7/BAABAAAAAAAAAP7/BAACAAAAAAABAP7/BAABAAA
 
 [node name="items" parent="." instance=ExtResource("1_fwt2v")]
 tile_map_data = PackedByteArray("AAACAAwAAwAEAAEAAAAHAAsAAwAEAAAAAAALAA0AAwAEAAEAAAATAAoAAwACAAEAAAAOAAoAAwACAAEAAAAWAAwAAwAFAAAAAAAWAA0AAwAFAAEAAAAXAAwAAwAGAAAAAAAXAA0AAwAGAAEAAAATAAQAAwAFAAIAAAATAAUAAwAFAAMAAAAUAAQAAwAGAAIAAAAUAAUAAwAGAAMAAAAVAAQAAwAAAAAAAAATAAYAAwAAAAAAAAATAP//AwAAAAMAAAAUAP//AwABAAMAAAAWAP//AwAAAAMAAAAXAP//AwABAAMAAAAOAAgAAwACAAEAAAD//wgAAwACAAEAAAD/////AwACAAEAAAADAP//AwAAAAIAAAAEAP//AwAAAAIAAAAIAP//AwAAAAIAAAAJAP//AwAAAAIAAAD//wUAAwAEAAAAAAD//wEAAwAEAAAAAAABAAgAAwAGAAQAAAACAAgAAwAHAAQAAAAFAAgAAwAGAAQAAAAGAAgAAwAHAAQAAAAKAAgAAwAGAAQAAAALAAgAAwAHAAQAAAA=")
+
+[node name="Enemy" type="Node" parent="."]
+
+[node name="Cop" parent="Enemy" instance=ExtResource("2_r6pbe")]
+position = Vector2(193, 190)
+
+[node name="Cop2" parent="Enemy" instance=ExtResource("2_r6pbe")]
+position = Vector2(283, 48)
+
+[node name="Cop3" parent="Enemy" instance=ExtResource("2_r6pbe")]
+position = Vector2(109, 84)
+
+[node name="Cop4" parent="Enemy" instance=ExtResource("2_r6pbe")]
+position = Vector2(38, 40)
+
+[node name="Wander" type="Node" parent="."]
+
+[node name="WanderPoint" parent="Wander" instance=ExtResource("3_id31w")]
+position = Vector2(43, 90)
+
+[node name="WanderPoint2" parent="Wander" instance=ExtResource("3_id31w")]
+position = Vector2(107, 85)
+
+[node name="WanderPoint3" parent="Wander" instance=ExtResource("3_id31w")]
+position = Vector2(36, 39)
+
+[node name="WanderPoint4" parent="Wander" instance=ExtResource("3_id31w")]
+position = Vector2(276, 98)
+
+[node name="WanderPoint5" parent="Wander" instance=ExtResource("3_id31w")]
+position = Vector2(331, 42)

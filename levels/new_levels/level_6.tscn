@@ -1,7 +1,9 @@
-[gd_scene load_steps=3 format=4 uid="uid://b66k74sx662ll"]
+[gd_scene load_steps=5 format=4 uid="uid://b66k74sx662ll"]
 
 [ext_resource type="PackedScene" uid="uid://b3p2kew6h0p71" path="res://levels/tile/new_tiles/tiles.tscn" id="1_6up2b"]
 [ext_resource type="Texture2D" uid="uid://cxsvm6tp5cbkv" path="res://assets/new/laser.png" id="2_vflpa"]
+[ext_resource type="PackedScene" uid="uid://c3tbei14wbme6" path="res://characters/enemies/cop/cop.tscn" id="3_7thn1"]
+[ext_resource type="PackedScene" uid="uid://bi3co628klrml" path="res://levels/points/wander_point.tscn" id="4_bojag"]
 
 [node name="Level6" type="Node2D"]
 
@@ -30,3 +32,31 @@ texture = ExtResource("2_vflpa")
 position = Vector2(305, 141)
 scale = Vector2(3.8, 1)
 texture = ExtResource("2_vflpa")
+
+[node name="Enemy" type="Node" parent="."]
+
+[node name="Cop" parent="Enemy" instance=ExtResource("3_7thn1")]
+position = Vector2(129, 81)
+
+[node name="Cop2" parent="Enemy" instance=ExtResource("3_7thn1")]
+position = Vector2(128, 147)
+
+[node name="Cop3" parent="Enemy" instance=ExtResource("3_7thn1")]
+position = Vector2(241, 83)
+
+[node name="Cop4" parent="Enemy" instance=ExtResource("3_7thn1")]
+position = Vector2(318, 39)
+
+[node name="Wander" type="Node" parent="."]
+
+[node name="WanderPoint" parent="Wander" instance=ExtResource("4_bojag")]
+position = Vector2(240, 142)
+
+[node name="WanderPoint2" parent="Wander" instance=ExtResource("4_bojag")]
+position = Vector2(128, 142)
+
+[node name="WanderPoint3" parent="Wander" instance=ExtResource("4_bojag")]
+position = Vector2(127, 75)
+
+[node name="WanderPoint4" parent="Wander" instance=ExtResource("4_bojag")]
+position = Vector2(241, 81)

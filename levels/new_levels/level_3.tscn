@@ -1,6 +1,9 @@
-[gd_scene load_steps=2 format=4 uid="uid://ff22jnqvc7bk"]
+[gd_scene load_steps=5 format=4 uid="uid://cog0wau6nk2q2"]
 
-[ext_resource type="PackedScene" uid="uid://b3p2kew6h0p71" path="res://tiles.tscn" id="1_vkd0v"]
+[ext_resource type="PackedScene" uid="uid://b3p2kew6h0p71" path="res://levels/tile/new_tiles/tiles.tscn" id="1_vkd0v"]
+[ext_resource type="PackedScene" uid="uid://c3tbei14wbme6" path="res://characters/enemies/cop/cop.tscn" id="2_w4x7i"]
+[ext_resource type="PackedScene" uid="uid://bi3co628klrml" path="res://levels/points/wander_point.tscn" id="3_likfh"]
+[ext_resource type="PackedScene" uid="uid://ddbxcr8sg45oc" path="res://characters/robber/robber.tscn" id="4_lcxhl"]
 
 [node name="Level3" type="Node2D"]
 
@@ -12,3 +15,37 @@ tile_map_data = PackedByteArray("AAAAAP//BAABAAAAAAABAP//BAACAAAAAAACAP//BAABAAA
 
 [node name="items" parent="." instance=ExtResource("1_vkd0v")]
 tile_map_data = PackedByteArray("AAAYAAwAAwAEAAEAAAAaAAkAAwAEAAEAAAAXAAYAAwAFAAEAAAAXAAUAAwAFAAAAAAAYAAUAAwAGAAAAAAAYAAYAAwAGAAEAAAABAAAAAwABAAAAAAACAAAAAwACAAAAAAAFAAAAAwABAAAAAAAGAAAAAwACAAAAAAAJAAAAAwABAAAAAAAKAAAAAwACAAAAAAANAAAAAwABAAAAAAAOAAAAAwACAAAAAAARAAAAAwABAAAAAAASAAAAAwACAAAAAAASAAYAAwAAAAMAAAATAAYAAwABAAMAAAAOAAYAAwAAAAMAAAAPAAYAAwABAAMAAAAJAAYAAwAAAAMAAAAKAAYAAwABAAMAAAABAAYAAwAAAAMAAAACAAYAAwABAAMAAAABAAUAAwACAAMAAAACAAUAAwADAAMAAAAJAAUAAwACAAMAAAAKAAUAAwADAAMAAAAOAAUAAwACAAMAAAAPAAUAAwADAAMAAAASAAUAAwAAAAAAAAAAAAgAAwACAAEAAAAAAA4AAwACAAEAAAAVAA4AAwACAAEAAAAVAAgAAwACAAEAAAAKAAgAAwAAAAIAAAALAAgAAwAAAAIAAAAQAAgAAwAAAAIAAAARAAgAAwAAAAIAAAAKAA0AAwAFAAAAAAAKAA4AAwAFAAEAAAALAA0AAwAGAAAAAAALAA4AAwAGAAEAAAAQAA0AAwAFAAAAAAAQAA4AAwAFAAEAAAARAA0AAwAGAAAAAAARAA4AAwAGAAEAAAA=")
+
+[node name="Enemies" type="Node" parent="."]
+
+[node name="Cop" parent="Enemies" instance=ExtResource("2_w4x7i")]
+position = Vector2(203, 49)
+
+[node name="Cop2" parent="Enemies" instance=ExtResource("2_w4x7i")]
+position = Vector2(394, 78)
+
+[node name="Cop3" parent="Enemies" instance=ExtResource("2_w4x7i")]
+position = Vector2(230, 189)
+
+[node name="Wander" type="Node" parent="."]
+
+[node name="WanderPoint" parent="Wander" instance=ExtResource("3_likfh")]
+position = Vector2(204, 102)
+
+[node name="WanderPoint2" parent="Wander" instance=ExtResource("3_likfh")]
+position = Vector2(197, 12)
+
+[node name="WanderPoint3" parent="Wander" instance=ExtResource("3_likfh")]
+position = Vector2(421, 134)
+
+[node name="WanderPoint4" parent="Wander" instance=ExtResource("3_likfh")]
+position = Vector2(424, 104)
+
+[node name="WanderPoint5" parent="Wander" instance=ExtResource("3_likfh")]
+position = Vector2(307, 185)
+
+[node name="WanderPoint6" parent="Wander" instance=ExtResource("3_likfh")]
+position = Vector2(152, 186)
+
+[node name="Robber" parent="." instance=ExtResource("4_lcxhl")]
+position = Vector2(411, 227)
