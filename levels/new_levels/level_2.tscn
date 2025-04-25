@@ -1,7 +1,9 @@
-[gd_scene load_steps=3 format=4 uid="uid://chuhjeks0hbky"]
+[gd_scene load_steps=5 format=4 uid="uid://brxhoflrk2e7s"]
 
-[ext_resource type="PackedScene" uid="uid://b3p2kew6h0p71" path="res://tiles.tscn" id="1_mi4ay"]
-[ext_resource type="PackedScene" uid="uid://cqcow1k7r65fj" path="res://tiles_big.tscn" id="2_pqqg8"]
+[ext_resource type="PackedScene" uid="uid://b3p2kew6h0p71" path="res://levels/tile/new_tiles/tiles.tscn" id="1_mi4ay"]
+[ext_resource type="PackedScene" uid="uid://cqcow1k7r65fj" path="res://levels/tile/new_tiles/tiles_big.tscn" id="2_pqqg8"]
+[ext_resource type="PackedScene" uid="uid://c3tbei14wbme6" path="res://characters/enemies/cop/cop.tscn" id="3_mfyww"]
+[ext_resource type="PackedScene" uid="uid://bi3co628klrml" path="res://levels/points/wander_point.tscn" id="4_yvnbb"]
 
 [node name="Level2" type="Node2D"]
 
@@ -15,3 +17,31 @@ tile_map_data = PackedByteArray("AAAAAP//BAABAAAAAAABAP//BAACAAAAAAACAP//BAABAAA
 tile_map_data = PackedByteArray("AAAAAAsAAwABAAAAAAABAAsAAwACAAAAAAACAAsAAwACAAEAAAADAAsAAwABAAAAAAAEAAsAAwACAAAAAAACAA4AAwABAAIAAAADAA4AAwACAAIAAAAAAA4AAwABAAIAAAABAA4AAwACAAIAAAAJAA4AAwACAAEAAAAQAAsAAwAAAAIAAAARAAsAAwAAAAIAAAATAA4AAwACAAEAAAABAAEAAwAAAAAAAAAHAAEAAwAAAAAAAAAAAAAAAwABAAIAAAABAAAAAwACAAIAAAAHAAAAAwABAAIAAAAIAAAAAwACAAIAAAARAAAAAwABAAQAAAATAAAAAwABAAQAAAAVAAAAAwABAAQAAAAXAAAAAwABAAQAAAARAAUAAwACAAQAAAAXAAUAAwACAAQAAAAUAAUAAwACAAQAAAA=")
 
 [node name="items_big" parent="." instance=ExtResource("2_pqqg8")]
+
+[node name="Enemies" type="Node" parent="."]
+
+[node name="Cop" parent="Enemies" instance=ExtResource("3_mfyww")]
+position = Vector2(207, 128)
+
+[node name="Cop5" parent="Enemies" instance=ExtResource("3_mfyww")]
+position = Vector2(317, 55)
+
+[node name="Cop3" parent="Enemies" instance=ExtResource("3_mfyww")]
+position = Vector2(68, 28)
+
+[node name="Cop4" parent="Enemies" instance=ExtResource("3_mfyww")]
+position = Vector2(103, 225)
+
+[node name="Cop2" parent="Enemies" instance=ExtResource("3_mfyww")]
+position = Vector2(385, 212)
+
+[node name="Wander points" type="Node" parent="."]
+
+[node name="WanderPoint" parent="Wander points" instance=ExtResource("4_yvnbb")]
+position = Vector2(211, 49)
+
+[node name="WanderPoint2" parent="Wander points" instance=ExtResource("4_yvnbb")]
+position = Vector2(207, 127)
+
+[node name="WanderPoint3" parent="Wander points" instance=ExtResource("4_yvnbb")]
+position = Vector2(316, 51)
