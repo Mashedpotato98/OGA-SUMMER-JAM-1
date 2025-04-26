@@ -1,8 +1,8 @@
 [gd_scene load_steps=4 format=4 uid="uid://hyemcj4mddkq"]
 
 [ext_resource type="PackedScene" uid="uid://b3p2kew6h0p71" path="res://levels/tile/new_tiles/tiles.tscn" id="1_vn7o3"]
-[ext_resource type="PackedScene" uid="uid://c3tbei14wbme6" path="res://characters/enemies/cop/cop.tscn" id="2_73bwi"]
 [ext_resource type="PackedScene" uid="uid://bi3co628klrml" path="res://levels/points/wander_point.tscn" id="3_mqfk3"]
+[ext_resource type="PackedScene" uid="uid://ddbxcr8sg45oc" path="res://characters/robber/robber.tscn" id="4_phwgt"]
 
 [node name="Level1" type="Node2D"]
 
@@ -12,21 +12,6 @@ tile_map_data = PackedByteArray("AAAAAAUABAAAAAEAAAAAAAYABAAAAAEAAAAAAAcABAAAAAE
 
 [node name="tiles" parent="." instance=ExtResource("1_vn7o3")]
 tile_map_data = PackedByteArray("AAABABAAAwAAAAAAAAACABAAAwAAAAAAAAADABAAAwAAAAAAAAAEABAAAwAAAAAAAAAEABEAAwAAAAAAAAAEABIAAwAAAAAAAAAEABMAAwAAAAAAAAAEABQAAwAAAAAAAAADABQAAwAAAAAAAAACABQAAwAAAAAAAAABABQAAwAAAAAAAAABABMAAwAAAAAAAAABABIAAwAAAAAAAAABABEAAwAAAAAAAAACABEAAwAAAAAAAAADABEAAwAAAAAAAAADABIAAwAAAAAAAAADABMAAwAAAAAAAAACABMAAwAAAAAAAAACABIAAwAAAAAAAAAMABAAAwAAAAAAAAAMABEAAwAAAAAAAAAMABIAAwAAAAAAAAAMABMAAwAAAAAAAAAMABQAAwAAAAAAAAANABAAAwAAAAAAAAANABEAAwAAAAAAAAANABIAAwAAAAAAAAANABMAAwAAAAAAAAANABQAAwAAAAAAAAAOABAAAwAAAAAAAAAOABEAAwAAAAAAAAAOABIAAwAAAAAAAAAOABMAAwAAAAAAAAAOABQAAwAAAAAAAAAPABAAAwAAAAAAAAAPABEAAwAAAAAAAAAPABIAAwAAAAAAAAAPABMAAwAAAAAAAAAPABQAAwAAAAAAAAABAAkAAwAAAAAAAAABAAoAAwAAAAAAAAABAAsAAwAAAAAAAAABAAwAAwAAAAAAAAACAAkAAwAAAAAAAAACAAoAAwAAAAAAAAACAAsAAwAAAAAAAAACAAwAAwAAAAAAAAADAAkAAwAAAAAAAAADAAoAAwAAAAAAAAADAAsAAwAAAAAAAAADAAwAAwAAAAAAAAAEAAkAAwAAAAAAAAAEAAoAAwAAAAAAAAAEAAsAAwAAAAAAAAAEAAwAAwAAAAAAAAAPAAwAAwAAAAAAAAAOAAwAAwAAAAAAAAANAAwAAwAAAAAAAAAMAAwAAwAAAAAAAAAMAAsAAwAAAAAAAAAMAAoAAwAAAAAAAAAMAAkAAwAAAAAAAAANAAkAAwAAAAAAAAAOAAkAAwAAAAAAAAAPAAkAAwAAAAAAAAAPAAoAAwAAAAAAAAAPAAsAAwAAAAAAAAAOAAsAAwAAAAAAAAAOAAoAAwAAAAAAAAANAAoAAwAAAAAAAAANAAsAAwAAAAAAAAAIAA4AAwACAAEAAAA=")
-
-[node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(133, 226)
-zoom = Vector2(1.3, 1.3)
-
-[node name="Enemies" type="Node" parent="."]
-
-[node name="Cop" parent="Enemies" instance=ExtResource("2_73bwi")]
-position = Vector2(88, 129)
-
-[node name="Cop2" parent="Enemies" instance=ExtResource("2_73bwi")]
-position = Vector2(179, 132)
-
-[node name="Cop3" parent="Enemies" instance=ExtResource("2_73bwi")]
-position = Vector2(140, 162)
 
 [node name="wander_points" type="Node" parent="."]
 
@@ -41,3 +26,6 @@ position = Vector2(139, 183)
 
 [node name="WanderPoint4" parent="wander_points" instance=ExtResource("3_mqfk3")]
 position = Vector2(137, 91)
+
+[node name="Robber" parent="." instance=ExtResource("4_phwgt")]
+position = Vector2(137, 220)
