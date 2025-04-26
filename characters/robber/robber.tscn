@@ -1,9 +1,9 @@
 [gd_scene load_steps=50 format=3 uid="uid://ddbxcr8sg45oc"]
 
 [ext_resource type="PackedScene" uid="uid://glhv5vfaemdb" path="res://characters/character.tscn" id="1"]
-[ext_resource type="Script" uid="uid://s73kacgwnv3f" path="res://characters/robber/robber.gd" id="2"]
+[ext_resource type="Script" path="res://characters/robber/robber.gd" id="2"]
 [ext_resource type="Texture2D" uid="uid://bvpg1s24pq5sd" path="res://characters/robber/robber_reskin.png" id="3"]
-[ext_resource type="Shader" path="res://characters/robber/color_shader.gdshader" id="4"]
+[ext_resource type="Shader" uid="uid://c5yfnwyjpn31f" path="res://characters/robber/color_shader.gdshader" id="4"]
 [ext_resource type="AudioStream" uid="uid://bveniy17a0e16" path="res://assets/sfx/movement/sfx_movement_jump15.wav" id="5"]
 [ext_resource type="PackedScene" uid="uid://bc7bxfabx0y62" path="res://assets/sfx/dmg/death_sound.tscn" id="6"]
 [ext_resource type="AudioStream" uid="uid://dn0q72aeb5q00" path="res://assets/sfx/dmg/sfx_damage_hit3.wav" id="7"]
@@ -400,6 +400,7 @@ position = Vector2(8, 0)
 stream = ExtResource("7")
 
 [node name="ScreenShakeCamera" parent="." index="6" instance=ExtResource("8")]
+zoom = Vector2(2, 2)
 
 [node name="DashCoolDown" type="Timer" parent="." index="7"]
 wait_time = 2.0

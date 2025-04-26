@@ -1,10 +1,10 @@
 [gd_scene load_steps=4 format=3 uid="uid://cfyw5xo0k684x"]
 
-[ext_resource type="Texture2D" uid="uid://b4ubwqdj5allc" path="res://assets/old/old tiles/laser/red_barrier.png" id="1"]
-[ext_resource type="Script" uid="uid://dc8eavlxouj4a" path="res://levels/red_detector/red_detector.gd" id="2"]
+[ext_resource type="Script" uid="uid://4ehn3hi2a012" path="res://levels/red_detector/red_detector.gd" id="2"]
+[ext_resource type="Texture2D" uid="uid://cxsvm6tp5cbkv" path="res://assets/new/laser.png" id="2_xfu10"]
 
 [sub_resource type="RectangleShape2D" id="1"]
-size = Vector2(94, 12)
+size = Vector2(16, 6)
 
 [node name="red_detector" type="Area2D"]
 collision_layer = 0
@@ -13,7 +13,7 @@ monitorable = false
 script = ExtResource("2")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("1")
+texture = ExtResource("2_xfu10")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("1")

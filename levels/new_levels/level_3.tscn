@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=4 uid="uid://cog0wau6nk2q2"]
+[gd_scene load_steps=6 format=4 uid="uid://cog0wau6nk2q2"]
 
 [ext_resource type="PackedScene" uid="uid://b3p2kew6h0p71" path="res://levels/tile/new_tiles/tiles.tscn" id="1_vkd0v"]
 [ext_resource type="PackedScene" uid="uid://c3tbei14wbme6" path="res://characters/enemies/cop/cop.tscn" id="2_w4x7i"]
 [ext_resource type="PackedScene" uid="uid://bi3co628klrml" path="res://levels/points/wander_point.tscn" id="3_likfh"]
 [ext_resource type="PackedScene" uid="uid://ddbxcr8sg45oc" path="res://characters/robber/robber.tscn" id="4_lcxhl"]
+[ext_resource type="PackedScene" uid="uid://cr44pjevxysp1" path="res://levels/elevator/elevator.tscn" id="5_gfiv0"]
 
 [node name="Level3" type="Node2D"]
 
@@ -49,3 +50,6 @@ position = Vector2(152, 186)
 
 [node name="Robber" parent="." instance=ExtResource("4_lcxhl")]
 position = Vector2(411, 227)
+
+[node name="Elevator" parent="." instance=ExtResource("5_gfiv0")]
+position = Vector2(63, 72)

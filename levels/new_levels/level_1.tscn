@@ -28,4 +28,4 @@ position = Vector2(139, 183)
 position = Vector2(137, 91)
 
 [node name="Robber" parent="." instance=ExtResource("4_phwgt")]
-position = Vector2(137, 220)
+position = Vector2(137, 335)

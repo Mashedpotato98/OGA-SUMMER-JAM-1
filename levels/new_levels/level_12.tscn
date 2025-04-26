@@ -1,8 +1,8 @@
 [gd_scene load_steps=4 format=4 uid="uid://dlesn6skl4eld"]
 
 [ext_resource type="PackedScene" uid="uid://b3p2kew6h0p71" path="res://levels/tile/new_tiles/tiles.tscn" id="1_tqn0i"]
-[ext_resource type="Texture2D" uid="uid://cxsvm6tp5cbkv" path="res://assets/new/laser.png" id="2_0of3o"]
 [ext_resource type="PackedScene" uid="uid://c3tbei14wbme6" path="res://characters/enemies/cop/cop.tscn" id="3_rnvwp"]
+[ext_resource type="PackedScene" uid="uid://cfyw5xo0k684x" path="res://levels/red_detector/red_detector.tscn" id="4_kkj3f"]
 
 [node name="Level12" type="Node2D"]
 
@@ -14,24 +14,6 @@ tile_map_data = PackedByteArray("AAAAAP7/BAABAAAAAAABAP7/BAACAAAAAAACAP7/BAABAAA
 
 [node name="items" parent="." instance=ExtResource("1_tqn0i")]
 tile_map_data = PackedByteArray("AAAAAAUAAwAEAAIAAAAAAAYAAwAEAAIAAAAIAAUAAwAEAAIAAAANAAUAAwAAAAMAAAAOAAUAAwABAAMAAAARAAUAAwAAAAMAAAASAAUAAwABAAMAAAAXAAUAAwACAAEAAAAXAAYAAwAEAAIAAAAFAA0AAwABAAIAAAAGAA0AAwACAAIAAAAEAA0AAwADAAAAAAALAA0AAwABAAIAAAAMAA0AAwACAAIAAAAKAA0AAwADAAAAAAAQAA0AAwAEAAIAAAAEAAUAAwAAAAAAAAAEAAYAAwAEAAIAAAA=")
-
-[node name="Laser" type="Sprite2D" parent="."]
-position = Vector2(298, 0)
-rotation = 1.5708
-scale = Vector2(2, 1)
-texture = ExtResource("2_0of3o")
-
-[node name="Laser2" type="Sprite2D" parent="."]
-position = Vector2(208, 0)
-rotation = 1.5708
-scale = Vector2(2, 1)
-texture = ExtResource("2_0of3o")
-
-[node name="Laser3" type="Sprite2D" parent="."]
-position = Vector2(126, 0)
-rotation = 1.5708
-scale = Vector2(2, 1)
-texture = ExtResource("2_0of3o")
 
 [node name="Enemy" type="Node" parent="."]
 
@@ -51,3 +33,20 @@ position = Vector2(358, 6)
 position = Vector2(358, 6)
 
 [node name="Wander" type="Node" parent="."]
+
+[node name="Lasers" type="Node" parent="."]
+
+[node name="red_detector" parent="Lasers" instance=ExtResource("4_kkj3f")]
+position = Vector2(126, 0)
+rotation = 1.5708
+scale = Vector2(2, 1)
+
+[node name="red_detector2" parent="Lasers" instance=ExtResource("4_kkj3f")]
+position = Vector2(208, 0)
+rotation = 1.5708
+scale = Vector2(2, 1)
+
+[node name="red_detector3" parent="Lasers" instance=ExtResource("4_kkj3f")]
+position = Vector2(298, 0)
+rotation = 1.5708
+scale = Vector2(2, 1)

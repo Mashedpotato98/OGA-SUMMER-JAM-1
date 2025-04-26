@@ -1,8 +1,8 @@
 [gd_scene load_steps=5 format=4 uid="uid://bbhvbm2d2fcqp"]
 
 [ext_resource type="PackedScene" uid="uid://b3p2kew6h0p71" path="res://levels/tile/new_tiles/tiles.tscn" id="1_3y4iq"]
-[ext_resource type="Texture2D" uid="uid://cxsvm6tp5cbkv" path="res://assets/new/laser.png" id="2_j1kd0"]
 [ext_resource type="PackedScene" uid="uid://c3tbei14wbme6" path="res://characters/enemies/cop/cop.tscn" id="3_2aw5n"]
+[ext_resource type="PackedScene" uid="uid://cfyw5xo0k684x" path="res://levels/red_detector/red_detector.tscn" id="4_7vwid"]
 [ext_resource type="PackedScene" uid="uid://bi3co628klrml" path="res://levels/points/wander_point.tscn" id="4_46h42"]
 
 [node name="Level9" type="Node2D"]
@@ -15,11 +15,6 @@ tile_map_data = PackedByteArray("AAAAAP//BAABAAAAAAABAP//BAACAAAAAAACAP//BAABAAA
 
 [node name="items" parent="." instance=ExtResource("1_3y4iq")]
 tile_map_data = PackedByteArray("AAAQAAYAAwAFAAIAAAAQAAcAAwAFAAMAAAARAAYAAwAGAAIAAAARAAcAAwAGAAMAAAAQAAAAAwABAAAAAAARAAAAAwACAAAAAAAQAAUAAwAAAAAAAAAKAAAAAwAAAAMAAAALAAAAAwABAAMAAAAKAAgAAwABAAIAAAALAAgAAwACAAIAAAAIAA0AAwAEAAEAAAAMAAsAAwAGAAEAAAALAAoAAwAFAAAAAAALAAsAAwAFAAEAAAAMAAoAAwAGAAAAAAACAAAAAwABAAAAAAADAAAAAwACAAAAAAALAAcAAwAAAAAAAAABAAgAAwACAAEAAAAGAAgAAwACAAEAAAAZAAgAAwAEAAEAAAAaAAYAAwAEAAEAAAA=")
-
-[node name="Laser" type="Sprite2D" parent="."]
-position = Vector2(337.5, 153)
-scale = Vector2(3.8, 1)
-texture = ExtResource("2_j1kd0")
 
 [node name="Enemy" type="Node" parent="."]
 
@@ -42,3 +37,7 @@ position = Vector2(335, 116)
 
 [node name="WanderPoint2" parent="Wander" instance=ExtResource("4_46h42")]
 position = Vector2(63, 121)
+
+[node name="red_detector" parent="." instance=ExtResource("4_7vwid")]
+position = Vector2(337, 153)
+scale = Vector2(3.9, 1)
