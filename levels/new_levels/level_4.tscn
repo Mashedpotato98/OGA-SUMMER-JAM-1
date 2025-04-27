@@ -50,6 +50,6 @@ position = Vector2(276, 98)
 position = Vector2(331, 42)
 
 [node name="Elevator" parent="." instance=ExtResource("4_slx0q")]
-position = Vector2(-15, 77)
+position = Vector2(-15, 75)
 rotation = -1.5708
-skew = 1.56905
+skew = 1.39626
