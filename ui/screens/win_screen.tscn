@@ -1,23 +1,22 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=3 format=3 uid="uid://ccg3h8ro7y5ur"]
 
-[ext_resource path="res://ui/screens/screen.tscn" type="PackedScene" id=1]
-[ext_resource path="res://ui/screens/win_screen.gd" type="Script" id=2]
+[ext_resource type="PackedScene" uid="uid://wkfst0sburps" path="res://ui/screens/screen.tscn" id="1"]
+[ext_resource type="Script" uid="uid://d217hoj2su607" path="res://ui/screens/win_screen.gd" id="2"]
 
-[node name="WinScreen" instance=ExtResource( 1 )]
-script = ExtResource( 2 )
+[node name="WinScreen" node_paths=PackedStringArray("focused_button") instance=ExtResource("1")]
+script = ExtResource("2")
+focused_button = NodePath("Menu/ShopButton")
 
 [node name="Title" parent="." index="0"]
 text = "Raid Completed"
 
 [node name="ShopButton" type="Button" parent="Menu" index="0"]
-margin_right = 48.0
-margin_bottom = 21.0
+unique_name_in_owner = true
+layout_mode = 2
 text = "Shop"
 
 [node name="QuitButton" type="Button" parent="Menu" index="1"]
-margin_top = 25.0
-margin_right = 48.0
-margin_bottom = 46.0
+layout_mode = 2
 text = "Quit"
 
 [connection signal="pressed" from="Menu/ShopButton" to="." method="_on_ShopButton_pressed"]

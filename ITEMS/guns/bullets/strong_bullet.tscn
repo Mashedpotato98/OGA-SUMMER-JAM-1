@@ -1,0 +1,20 @@
+[gd_scene load_steps=3 format=3 uid="uid://dbe5wxxcig4n0"]
+
+[ext_resource type="PackedScene" uid="uid://do1t2gtch4tru" path="res://ITEMS/guns/bullets/bullet.tscn" id="1"]
+
+[sub_resource type="CircleShape2D" id="1"]
+resource_local_to_scene = true
+radius = 4.0
+
+[node name="StrongBullet" instance=ExtResource("1")]
+speed = 256.0
+dmg = 3
+
+[node name="Sprite2D" parent="." index="0"]
+region_rect = Rect2(0, 20, 10, 10)
+
+[node name="CollisionShape2D" parent="." index="1"]
+shape = SubResource("1")
+
+[node name="PointLight2D" parent="." index="2"]
+color = Color(1, 0.501961, 0, 1)

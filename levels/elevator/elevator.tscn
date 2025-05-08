@@ -1,63 +1,80 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=12 format=3 uid="uid://cr44pjevxysp1"]
 
-[ext_resource path="res://levels/elevator/elevator_needle.png" type="Texture" id=1]
-[ext_resource path="res://levels/elevator/elevator_wall.png" type="Texture" id=2]
-[ext_resource path="res://levels/elevator/elevator_door_large.png" type="Texture" id=3]
-[ext_resource path="res://levels/elevator/elevator.gd" type="Script" id=4]
+[ext_resource type="Texture2D" uid="uid://c2r3q7iusfgay" path="res://assets/old/old tiles/elevator/elevator_needle.png" id="1"]
+[ext_resource type="Texture2D" uid="uid://cgic71bfxckot" path="res://assets/old/old tiles/elevator/elevator_wall.png" id="2"]
+[ext_resource type="Texture2D" uid="uid://c6h048li53j8a" path="res://assets/new/elevator_door_new.png" id="3_mfj24"]
+[ext_resource type="Script" uid="uid://bu5um7l14q2pk" path="res://levels/elevator/elevator.gd" id="4"]
 
-[sub_resource type="AtlasTexture" id=7]
-atlas = ExtResource( 3 )
-region = Rect2( 0, 0, 48, 24 )
+[sub_resource type="AtlasTexture" id="AtlasTexture_2enqp"]
+atlas = ExtResource("3_mfj24")
+region = Rect2(0, 0, 16, 16)
 
-[sub_resource type="AtlasTexture" id=8]
-atlas = ExtResource( 3 )
-region = Rect2( 0, 24, 48, 24 )
+[sub_resource type="AtlasTexture" id="AtlasTexture_6ihvx"]
+atlas = ExtResource("3_mfj24")
+region = Rect2(16, 0, 16, 16)
 
-[sub_resource type="AtlasTexture" id=9]
-atlas = ExtResource( 3 )
-region = Rect2( 0, 48, 48, 24 )
+[sub_resource type="AtlasTexture" id="AtlasTexture_bnd26"]
+atlas = ExtResource("3_mfj24")
+region = Rect2(32, 0, 16, 16)
 
-[sub_resource type="SpriteFrames" id=1]
-animations = [ {
-"frames": [ SubResource( 7 ), SubResource( 8 ), SubResource( 9 ) ],
-"loop": false,
-"name": "open",
-"speed": 6.0
-} ]
+[sub_resource type="AtlasTexture" id="AtlasTexture_4f5fn"]
+atlas = ExtResource("3_mfj24")
+region = Rect2(48, 0, 16, 16)
 
-[sub_resource type="RectangleShape2D" id=5]
-extents = Vector2( 24, 4 )
+[sub_resource type="SpriteFrames" id="SpriteFrames_1crsg"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2enqp")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6ihvx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bnd26")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4f5fn")
+}],
+"loop": true,
+"name": &"open",
+"speed": 5.0
+}]
 
-[sub_resource type="RectangleShape2D" id=6]
-extents = Vector2( 24, 10 )
+[sub_resource type="RectangleShape2D" id="5"]
+size = Vector2(48, 8)
+
+[sub_resource type="RectangleShape2D" id="6"]
+size = Vector2(28, 32)
 
 [node name="Elevator" type="Area2D"]
 collision_layer = 0
 collision_mask = 2
 monitorable = false
-script = ExtResource( 4 )
+script = ExtResource("4")
 
-[node name="Wall" type="Sprite" parent="."]
+[node name="Wall" type="Sprite2D" parent="."]
+position = Vector2(2.38419e-07, -14.025)
+scale = Vector2(1.125, 1.25312)
+texture = ExtResource("2")
+
+[node name="Door" type="AnimatedSprite2D" parent="."]
+process_mode = 3
+position = Vector2(0, -12)
+sprite_frames = SubResource("SpriteFrames_1crsg")
+animation = &"open"
+
+[node name="Needle" type="Sprite2D" parent="."]
 visible = false
-position = Vector2( 0, -12 )
-texture = ExtResource( 2 )
-
-[node name="Door" type="AnimatedSprite" parent="."]
-pause_mode = 2
-position = Vector2( 0, -12 )
-frames = SubResource( 1 )
-animation = "open"
-
-[node name="Needle" type="Sprite" parent="."]
-visible = false
-position = Vector2( 0, -12 )
-texture = ExtResource( 1 )
+position = Vector2(0, -12)
+texture = ExtResource("1")
 hframes = 7
 frame = 3
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2( 0, -20 )
-shape = SubResource( 5 )
+visible = false
+position = Vector2(0, -20)
+shape = SubResource("5")
 
 [node name="OpenZone" type="Area2D" parent="."]
 collision_layer = 0
@@ -65,8 +82,8 @@ collision_mask = 2
 monitorable = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="OpenZone"]
-position = Vector2( 0, -6 )
-shape = SubResource( 6 )
+shape = SubResource("6")
 
 [connection signal="body_entered" from="." to="." method="_on_Elevator_body_entered"]
 [connection signal="body_entered" from="OpenZone" to="." method="_on_OpenZone_body_entered"]
+[connection signal="body_exited" from="OpenZone" to="." method="_on_open_zone_body_exited"]

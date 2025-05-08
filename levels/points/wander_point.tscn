@@ -1,6 +1,3 @@
-[gd_scene format=2]
+[gd_scene format=3 uid="uid://bi3co628klrml"]
 
-[node name="WanderPoint" type="Position2D" groups=["wander_points"]]
-__meta__ = {
-"_gizmo_extents_": 4.0
-}
+[node name="WanderPoint" type="Marker2D" groups=["wander_points"]]

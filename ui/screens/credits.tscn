@@ -1,17 +1,26 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=5 format=3 uid="uid://8rsm8dqxu1gp"]
 
-[ext_resource path="res://ui/screens/screen.tscn" type="PackedScene" id=1]
-[ext_resource path="res://ui/screens/credits.gd" type="Script" id=2]
-[ext_resource path="res://ui/fonts/kenpixel_mini.ttf" type="DynamicFontData" id=3]
+[ext_resource type="PackedScene" uid="uid://wkfst0sburps" path="res://ui/screens/screen.tscn" id="1"]
+[ext_resource type="Script" uid="uid://c16qcxtb2wwc5" path="res://ui/screens/credits.gd" id="2"]
+[ext_resource type="FontFile" uid="uid://nldy1avv3bll" path="res://assets/old/ui_assets/fonts/kenpixel_mini.ttf" id="3"]
 
-[sub_resource type="DynamicFont" id=1]
-size = 8
-font_data = ExtResource( 3 )
+[sub_resource type="FontFile" id="1"]
+fallbacks = Array[Font]([ExtResource("3")])
+cache/0/16/0/ascent = 0.0
+cache/0/16/0/descent = 0.0
+cache/0/16/0/underline_position = 0.0
+cache/0/16/0/underline_thickness = 0.0
+cache/0/16/0/scale = 1.0
 
-[node name="Credits" instance=ExtResource( 1 )]
-script = ExtResource( 2 )
+[node name="Credits" node_paths=PackedStringArray("focused_button") instance=ExtResource("1")]
+script = ExtResource("2")
+focused_button = NodePath("Menu/BackButton")
 
 [node name="Title" parent="." index="0"]
+layout_mode = 1
+anchors_preset = 10
+offset_bottom = 24.0
+grow_horizontal = 2
 text = "Credits"
 
 [node name="Menu" parent="." index="1"]
@@ -19,22 +28,21 @@ anchor_left = 0.0
 anchor_top = 0.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = 0.0
-margin_top = 48.0
-margin_right = 0.0
-margin_bottom = 0.0
+offset_left = 0.0
+offset_top = 48.0
+offset_right = 0.0
+offset_bottom = 0.0
 
 [node name="Text" type="RichTextLabel" parent="Menu" index="0"]
-margin_right = 384.0
-margin_bottom = 308.0
+layout_mode = 2
 size_flags_vertical = 3
-custom_fonts/normal_font = SubResource( 1 )
+theme_override_fonts/normal_font = SubResource("1")
 bbcode_enabled = true
-bbcode_text = "Title:
+text = "Title:
     Assets for OGA Summer Jam
 
 Author:
-    [url=https://opengameart.org/users/mashedpotato98]mashedpotato98[/url]
+    mashedpotato98
 
 URL:
     [url]https://opengameart.org/content/assets-for-oga-summer-jam[/url]
@@ -48,10 +56,10 @@ Title:
     OGA Summer 2023 Robber Game Jam Art
 
 Author:
-    [url=https://opengameart.org/users/cranton]Cranton[/url]
+    Cranton
 
 Collaborators:
-    [url=https://opengameart.org/users/mashedpotato98]mashedpotato98[/url]
+    mashedpotato98
 
 URL:
     [url]https://opengameart.org/content/oga-summer-2023-robber-game-jam-art[/url]
@@ -65,7 +73,7 @@ Title:
     512 Sound Effects (8-bit style)
 
 Author:
-    [url=https://opengameart.org/users/subspaceaudio]SubspaceAudio[/url]
+    SubspaceAudio
 
 URL:
     [url]https://opengameart.org/content/512-sound-effects-8-bit-style[/url]
@@ -79,7 +87,7 @@ Title:
     Kenney fonts
 
 Author:
-    [url=https://opengameart.org/users/kenney]Kenney[/url]
+    Kenney
 
 URL:
     [url]https://opengameart.org/content/kenney-fonts[/url]
@@ -88,7 +96,7 @@ License(s):
     * CC0 ( [url]http://creativecommons.org/publicdomain/zero/1.0/legalcode[/url] )
 
 Copyright/Attribution Notice:
-    Credit \"Kenney.nl\" or \"www.kenney.nl\", this is not mandatory.
+    Credit \"[url]Kenney.nl[/url]\" or \"[url]www.kenney.nl[/url]\", this is not mandatory.
 
 ----------------------------------------
 
@@ -96,7 +104,7 @@ Title:
     Vice Police
 
 Author:
-    [url=https://opengameart.org/users/tausdei]Tausdei[/url]
+    Tausdei
 
 URL:
     [url]https://opengameart.org/content/vice-police[/url]
@@ -113,7 +121,7 @@ Title:
     SFX: The Ultimate 2017 16 bit Mini pack
 
 Author:
-    [url=https://opengameart.org/users/phoenix1291]phoenix1291[/url]
+    phoenix1291
 
 URL:
     [url]https://opengameart.org/content/sfx-the-ultimate-2017-16-bit-mini-pack[/url]
@@ -130,7 +138,7 @@ Title:
     OGA SUMMER JAM ASSETS 2
 
 Author:
-    [url=https://opengameart.org/users/mashedpotato98]mashedpotato98[/url]
+    mashedpotato98
 
 URL:
     [url]https://opengameart.org/content/oga-summer-jam-assets-2[/url]
@@ -139,121 +147,10 @@ License(s):
     * CC0 ( [url]http://creativecommons.org/publicdomain/zero/1.0/legalcode[/url] )
 
 ----------------------------------------"
-text = "Title:
-    Assets for OGA Summer Jam
-
-Author:
-    mashedpotato98
-
-URL:
-    https://opengameart.org/content/assets-for-oga-summer-jam
-
-License(s):
-    * CC0 ( http://creativecommons.org/publicdomain/zero/1.0/legalcode )
-
-----------------------------------------
-
-Title:
-    OGA Summer 2023 Robber Game Jam Art
-
-Author:
-    Cranton
-
-Collaborators:
-    mashedpotato98
-
-URL:
-    https://opengameart.org/content/oga-summer-2023-robber-game-jam-art
-
-License(s):
-    * CC0 ( http://creativecommons.org/publicdomain/zero/1.0/legalcode )
-
-----------------------------------------
-
-Title:
-    512 Sound Effects (8-bit style)
-
-Author:
-    SubspaceAudio
-
-URL:
-    https://opengameart.org/content/512-sound-effects-8-bit-style
-
-License(s):
-    * CC0 ( http://creativecommons.org/publicdomain/zero/1.0/legalcode )
-
-----------------------------------------
-
-Title:
-    Kenney fonts
-
-Author:
-    Kenney
-
-URL:
-    https://opengameart.org/content/kenney-fonts
-
-License(s):
-    * CC0 ( http://creativecommons.org/publicdomain/zero/1.0/legalcode )
-
-Copyright/Attribution Notice:
-    Credit \"Kenney.nl\" or \"www.kenney.nl\", this is not mandatory.
-
-----------------------------------------
-
-Title:
-    Vice Police
-
-Author:
-    Tausdei
-
-URL:
-    https://opengameart.org/content/vice-police
-
-License(s):
-    * CC-BY 3.0 ( http://creativecommons.org/licenses/by/3.0/legalcode )
-
-Copyright/Attribution Notice:
-    Music by Tausdei
-
-----------------------------------------
-
-Title:
-    SFX: The Ultimate 2017 16 bit Mini pack
-
-Author:
-    phoenix1291
-
-URL:
-    https://opengameart.org/content/sfx-the-ultimate-2017-16-bit-mini-pack
-
-License(s):
-    * CC0 ( http://creativecommons.org/publicdomain/zero/1.0/legalcode )
-
-Copyright/Attribution Notice:
-    Credit \"phoenix1291\" or \"SwissArcadeGameEntertainment\", this is not mandatory.
-
-----------------------------------------
-
-Title:
-    OGA SUMMER JAM ASSETS 2
-
-Author:
-    mashedpotato98
-
-URL:
-    https://opengameart.org/content/oga-summer-jam-assets-2
-
-License(s):
-    * CC0 ( http://creativecommons.org/publicdomain/zero/1.0/legalcode )
-
-----------------------------------------"
 
 [node name="BackButton" type="Button" parent="Menu" index="1"]
-margin_left = 168.0
-margin_top = 312.0
-margin_right = 216.0
-margin_bottom = 336.0
+unique_name_in_owner = true
+layout_mode = 2
 size_flags_horizontal = 4
 text = "Back"
 

@@ -1,30 +1,30 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=5 format=3 uid="uid://5uln3lervwnm"]
 
-[ext_resource path="res://ui/theme.theme" type="Theme" id=1]
-[ext_resource path="res://ui/buttons/inventory_item.gd" type="Script" id=2]
+[ext_resource type="Theme" uid="uid://bfswc7hc3bmsg" path="res://ui/theme.theme" id="1"]
+[ext_resource type="Script" uid="uid://c7cw0ax4xyh4x" path="res://ui/buttons/inventory_item.gd" id="2"]
 
-[sub_resource type="StyleBoxFlat" id=1]
-bg_color = Color( 0, 0, 0, 0.501961 )
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_c7rr0"]
 
-[sub_resource type="StyleBoxEmpty" id=2]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7rrxx"]
+bg_color = Color(0, 0, 0, 0.501961)
 
 [node name="InventoryItem" type="Button" groups=["inventory_items"]]
-margin_right = 24.0
-margin_bottom = 24.0
+offset_right = 24.0
+offset_bottom = 24.0
 size_flags_horizontal = 8
-theme = ExtResource( 1 )
+theme = ExtResource("1")
 toggle_mode = true
-align = 2
-script = ExtResource( 2 )
+script = ExtResource("2")
 
 [node name="CoolDown" type="ProgressBar" parent="."]
+layout_mode = 0
 anchor_right = 1.0
 anchor_bottom = 1.0
 mouse_filter = 2
-custom_styles/fg = SubResource( 1 )
-custom_styles/bg = SubResource( 2 )
+theme_override_styles/background = SubResource("StyleBoxEmpty_c7rr0")
+theme_override_styles/fill = SubResource("StyleBoxFlat_7rrxx")
 max_value = 1.0
-percent_visible = false
+show_percentage = false
 
 [connection signal="focus_entered" from="." to="." method="_on_InventoryItem_focus_entered"]
 [connection signal="pressed" from="." to="." method="_on_InventoryItem_pressed"]

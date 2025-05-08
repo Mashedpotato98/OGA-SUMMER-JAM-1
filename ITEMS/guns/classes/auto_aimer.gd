@@ -1,0 +1,30 @@
+class_name AutoAimer extends Node2D
+
+
+#region Members
+@export var turn_speed := 5.0
+
+var target: Node2D = null
+var shooting := false
+#endregion
+
+
+#region Functions
+func _physics_process(delta: float) -> void:
+	if target == null or not is_instance_valid(target):
+		return
+
+	var direction := global_position.direction_to(target.global_position)
+	var target_transform := Transform2D(direction.angle(), transform.origin)
+	transform = transform.interpolate_with(target_transform, turn_speed * delta)
+
+
+#region Regular
+func set_target(what: Node) -> void:
+	target = what
+
+
+func lose_target(_what := Node.new()) -> void:
+	target = null
+#endregion
+#endregion

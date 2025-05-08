@@ -1,8 +1,8 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=2 format=3 uid="uid://utep5hsaukrq"]
 
-[ext_resource path="res://ui/icons/money.png" type="Texture" id=1]
+[ext_resource type="Texture2D" uid="uid://6i6jv7s3607b" path="res://assets/old/ui_assets/icons_img/money.png" id="1"]
 
-[node name="Bribe" type="Sprite"]
+[node name="Bribe" type="Sprite2D"]
 light_mask = 3
-position = Vector2( 7, 0 )
-texture = ExtResource( 1 )
+position = Vector2(7, 0)
+texture = ExtResource("1")

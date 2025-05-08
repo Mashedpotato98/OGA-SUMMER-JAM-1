@@ -1,0 +1,13 @@
+[gd_scene load_steps=4 format=3 uid="uid://cjq4vwr4mrx5s"]
+
+[ext_resource type="PackedScene" uid="uid://41kpqewbhbrg" path="res://ITEMS/guns/classes/gun.tscn" id="1"]
+[ext_resource type="PackedScene" uid="uid://bb6xaq3pfnaxn" path="res://ITEMS/explosives/molotov_cocktail/molotov_cocktail.tscn" id="2"]
+[ext_resource type="Texture2D" uid="uid://cs5o480hkneks" path="res://ITEMS/explosives/molotov_cocktail/molotov cocktail_icon.png" id="3"]
+
+[node name="MolotovCoctailThower" instance=ExtResource("1")]
+BULLET = ExtResource("2")
+distance = 128.0
+
+[node name="Sprite2D" parent="." index="0"]
+texture = ExtResource("3")
+flip_h = true

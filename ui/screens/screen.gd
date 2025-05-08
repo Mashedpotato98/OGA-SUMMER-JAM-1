@@ -1,17 +1,26 @@
-class_name Screen
-extends Control
+class_name Screen extends Control
 
 
+@export var focused_button: Control
+
+
+#region Functions
 func _ready() -> void:
 	var fade := Fade.new()
 	add_child(fade)
-	fade.fade(Fade.FADE_OUT, 1.0)
+	fade.fade(Fade.FadeMode.FADE_OUT, 1.0)
+	if focused_button != null:
+		focused_button.grab_focus()
 
 
-func change_scene(scene: String) -> void:
+func change_scene_to_packed(scene: PackedScene) -> void:
 	var fade := Fade.new()
 	add_child(fade)
-	fade.fade(Fade.FADE_IN, 1.0)
-	yield(fade, "finished")
-# warning-ignore:return_value_discarded
-	get_tree().change_scene(scene)
+	fade.fade(Fade.FadeMode.FADE_IN, 1.0)
+	await fade.finished
+	get_tree().change_scene_to_packed(scene)
+
+
+func change_scene_to_file(scene: String) -> void:
+	change_scene_to_packed(load(scene))
+#endregion

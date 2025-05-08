@@ -1,133 +1,157 @@
-extends Node
+# TODO: Combine file loading/saving with settings.gd's loading/saving.
+extends SaveManager
 
 
-signal money_changed(money)
-signal current_item_switched(new_item)
-signal items_changed(items)
+#region Members
+#region Signals
+signal money_changed(money: int)
+signal current_item_switched(new_item: int)
+signal items_changed(items: Dictionary)
+#endregion
 
-const MAX_CRONIES := 4
+#region Constants
+const MAX_CRONIES := 16
 const BRIBE_PATH := "res://characters/robber/bribe.tscn"
+const PASSWORD := "y$NWO#6%T;51(nhsLZ*Q}yGm8,h:7T#Sa?ELupjw=5$C5j2TmTM0%.aQ:V4vZ8(sh6GLeR`CDZl~4n[AhF[0!(qF:7~[S<)5;=j,C)zJZb;mUyXKp*&@lA@W:D7j(HR0"
 
 const DEFAULT_MONEY := 5_000
 const DEFAULT_ITEMS := {
-	"res://guns/pistol/pistol.tscn": 100,
+	"res://ITEMS/guns/submachine_gun/submachine_gun.tscn": 100,
 	BRIBE_PATH: MAX_CRONIES,
 }
 
-var file_path := "user://inventory"
-var password := "y$NWO#6%T;51(nhsLZ*Q}yGm8,h:7T#Sa?ELupjw=5$C5j2TmTM0%.aQ:V4vZ8(sh6GLeR`CDZl~4n[AhF[0!(qF:7~[S<)5;=j,C)zJZb;mUyXKp*&@lA@W:D7j(HR0"
+var items_new = DEFAULT_ITEMS.duplicate(true):
+	set(value):
+		items_new = value
+		items_changed.emit(items)
 
+var items := DEFAULT_ITEMS.duplicate(true):
+	set(value):
+		items = value
+		items_changed.emit(items)
+
+#endregion
+
+#region Variables
 var items_list := {
-	BRIBE_PATH: ItemInfo.new(preload("res://ui/icons/money.png"), [1_000], 0),
-	"res://guns/submachine_gun/submachine_gun.tscn": ItemInfo.new(preload("res://guns/submachine_gun/submachine.png"), [500, 1_000, 1_500], 25),
-	"res://guns/shot_gun/shot_gun.tscn": ItemInfo.new(preload("res://guns/shot_gun/shotgun.png"), [800, 1_200], 10),
-	"res://guns/pistol/pistol.tscn": ItemInfo.new(preload("res://guns/pistol/pistol.png"), [1_000], 6),
-	"res://guns/g36c/g36c.tscn": ItemInfo.new(preload("res://guns/g36c/rail_gun_icon.png"), [400, 1_200, 1_400], 3),
-	"res://explosives/grenade/grenade_launcher.tscn": ItemInfo.new(preload("res://explosives/grenade/grenade.png"), [100, 250, 250, 500, 500], 1),
-	"res://explosives/molotov_cocktail/molotov_cocktail_thower.tscn": ItemInfo.new(preload("res://explosives/molotov_cocktail/molotov cocktail_icon.png"), [200, 200, 300], 1),
+	BRIBE_PATH:
+		ItemInfo.new(
+			preload("res://assets/old/ui_assets/icons_img/money.png"),
+			[500],
+			0,
+		),
+	"res://ITEMS/guns/submachine_gun/submachine_gun.tscn":
+		ItemInfo.new(
+			preload('res://ITEMS/guns/submachine_gun/submachine.png'),
+			[500, 1_000, 1_500],
+			25,
+		),
+	"res://ITEMS/guns/shot_gun/shot_gun.tscn":
+		ItemInfo.new(
+			preload('res://ITEMS/guns/shot_gun/shotgun.png'),
+			[800, 1_200],
+			10,
+		),
+	"res://ITEMS/guns/pistol/pistol.tscn":
+		ItemInfo.new(
+			preload('res://ITEMS/guns/pistol/pistol.png'),
+			[1_000,1_000],
+			6,
+		),
+	"res://ITEMS/guns/g36c/g36c.tscn":
+		ItemInfo.new(
+			preload("res://ITEMS/guns/g36c/rail_gun_icon.png"),
+			[400, 1_200, 1_400],
+			3,
+		),
+	"res://ITEMS/explosives/grenade/grenade.tscn":
+		ItemInfo.new(
+			preload("res://ITEMS/explosives/grenade/grenade.png"),
+			[500, 1000, 1000, 1500],
+			1,
+		),
+	"res://ITEMS/explosives/molotov_cocktail/molotov_cocktail.tscn":
+		ItemInfo.new(
+			preload("res://ITEMS/explosives/molotov_cocktail/molotov cocktail_icon.png"),
+			[200, 500, 800],
+			1,
+		),
 	#"res:guns/": ItemInfo.new(preload("res://guns/uzi/uzi.png"), 1_000),
 	#"res:guns/": ItemInfo.new(preload("res://guns/ak/ak.png"), 1_000),
 }
-var money := DEFAULT_MONEY setget _on_money_changed
-var items := DEFAULT_ITEMS.duplicate() setget _on_items_set# <item_path> = <ammo>
-var current_item := 0 setget _on_current_item_set
-var cronies := [] setget _on_cronies_set# [{"type": <Enemy file path>, "weapon": <weapon path>}]
 var first_raid := true
+var money := DEFAULT_MONEY:
+	set(value):
+		money = value
+		update_bribe_ammo()
+		money_changed.emit(money)
+var current_item := 0:
+	set(value):
+		current_item = wrapi(value, 0, items_new.size())
+		current_item_switched.emit(current_item)
+var cronies := []:
+	set(value):
+		cronies = value
+		update_bribe_ammo()
+#endregion
+#endregion
 
 
+#region Functions
+#region Overrides
 func _ready() -> void:
-	load_inventory()
-	_on_money_changed(money)
+	data = {"money": money, "items": items, "cronies": cronies, "first_raid": first_raid}
+	load_file()
 
 
-func load_inventory() -> void:
-	var file := File.new()
-	if file.file_exists(file_path):
-		var error := file.open_encrypted_with_pass(file_path, File.READ, password)
-		if error == OK:
-			var inventory: Dictionary = file.get_var()
-			items = inventory.items
-			self.cronies = inventory.cronies
-			first_raid = inventory.first_raid
-			self.money = inventory.money
-		else:
-			OS.alert("Could not load inventory. Error code: " + str(error))
-	else:
-		save_inventory()
-
-	file.close()
+func load_file(password := PASSWORD) -> void:
+	super(password)
+	items_new = data.items
+	cronies = data.cronies
+	first_raid = data.first_raid
+	money = data.money
 
 
-func save_inventory() -> void:
-	var file := File.new()
-	var error := file.open_encrypted_with_pass(file_path, File.WRITE, password)
-	if error == OK:
-		var data := {"money": money, "items": items, "cronies": cronies, "first_raid": first_raid}
-		file.store_var(data)
-	else:
-		OS.alert("Could not save inventory. Error code: " + str(error))
-
-	file.close()
+func save_file(password := PASSWORD) -> void:
+	data = {"money": money, "items": items, "cronies": cronies, "first_raid": first_raid}
+	super(password)
+#endregion
 
 
+#region Regular
 func set_item_ammo(item: String, ammo: int, relative := true) -> void:
 	if relative:
-		self.items[item] += ammo
+		items_new[item] += ammo
 	else:
-		self.items[item] = ammo
+		items_new[item] = ammo
 
-	if items[item] <= 0:
-		remove_item(item)
+	if items_new[item] <= 0:
+		# Remove item.
+		if current_item >= items_new.keys().find(item):
+			current_item -= 1
+		items_new.erase(item)
 
-	_on_items_set(items)
-
-
-func remove_item(item: String) -> void:
-# warning-ignore:return_value_discarded
-	if current_item >= items.keys().find(item):
-		self.current_item -= 1
-	self.items.erase(item)
+	items_new = items
 
 
-func check_bribe_count() -> void:
+func update_bribe_ammo() -> void:
 	var bribe_price: int = items_list[BRIBE_PATH].prices[0]
 	var crony_count := cronies.size()
-# warning-ignore:narrowing_conversion
-# warning-ignore:integer_division
-	set_item_ammo(BRIBE_PATH, min(MAX_CRONIES - crony_count, money / bribe_price), false)
-
-
-func _on_cronies_set(value: Array) -> void:
-	cronies = value
-	check_bribe_count()
-
-
-func _on_money_changed(value: int) -> void:
-	money = value
-	check_bribe_count()
-	emit_signal("money_changed", money)
-
-
-func _on_items_set(value: Dictionary) -> void:
-	items = value
-	emit_signal("items_changed", items)
-
-
-func _on_current_item_set(value: int) -> void:
-	current_item = wrapi(value, 0, items.size())
-	emit_signal("current_item_switched", current_item)
+	@warning_ignore("integer_division")
+	set_item_ammo(BRIBE_PATH, mini(MAX_CRONIES - crony_count, money / bribe_price), false)
+#endregion
+#endregion
 
 
 class ItemInfo:
-	var icon: Texture
-	var prices: PoolIntArray
+#region Members
+	var icon: Texture2D
+	var prices: PackedInt32Array
 	var ammo: int
+#endregion
 
 
-# warning-ignore:shadowed_variable
-# warning-ignore:shadowed_variable
-# warning-ignore:shadowed_variable
-	func _init(icon: Texture, prices: PoolIntArray, ammo: int) -> void:
+	func _init(icon: Texture2D, prices: PackedInt32Array, ammo: int) -> void:
 		self.icon = icon
 		self.prices = prices
 		self.ammo = ammo

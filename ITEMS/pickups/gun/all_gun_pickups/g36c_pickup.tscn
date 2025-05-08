@@ -1,0 +1,17 @@
+[gd_scene load_steps=5 format=3 uid="uid://b3itb58jf06cq"]
+
+[ext_resource type="PackedScene" uid="uid://bdkq5awasu10h" path="res://ITEMS/pickups/item_pickup.tscn" id="1"]
+[ext_resource type="PackedScene" uid="uid://bwsdhomt3luor" path="res://ITEMS/guns/g36c/g36c.tscn" id="2"]
+[ext_resource type="Texture2D" uid="uid://dshw7owpnkvee" path="res://ITEMS/guns/g36c/rail_gun_icon.png" id="3"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_6dw58"]
+resource_local_to_scene = true
+
+[node name="G36CPickup" instance=ExtResource("1")]
+ITEM = ExtResource("2")
+
+[node name="Sprite2D" parent="." index="0"]
+texture = ExtResource("3")
+
+[node name="CollisionShape3D" parent="." index="1"]
+shape = SubResource("CircleShape2D_6dw58")

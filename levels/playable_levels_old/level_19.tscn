@@ -1,0 +1,200 @@
+[gd_scene load_steps=12 format=4 uid="uid://bp2y1348xaspn"]
+
+[ext_resource type="TileSet" uid="uid://0wmaeu57v8iq" path="res://levels/tile_set.tres" id="1"]
+[ext_resource type="TileSet" uid="uid://c5vkd17vo0u6s" path="res://levels/wall_tile_set.tres" id="2"]
+[ext_resource type="PackedScene" uid="uid://bi3co628klrml" path="res://levels/points/wander_point.tscn" id="3"]
+[ext_resource type="PackedScene" uid="uid://kfbfa6j5jk1k" path="res://levels/playable_levels_old/level.tscn" id="4"]
+[ext_resource type="PackedScene" uid="uid://dkuqj4va2auwi" path="res://levels/points/spawn_point.tscn" id="5"]
+[ext_resource type="PackedScene" uid="uid://crpitsrjpoxuw" path="res://characters/enemies/swat/swat.tscn" id="5_tfup6"]
+[ext_resource type="PackedScene" uid="uid://c3tbei14wbme6" path="res://characters/enemies/cop/cop.tscn" id="6"]
+[ext_resource type="PackedScene" uid="uid://cgrv4g25bd8dm" path="res://ITEMS/pickups/health/health_pack.tscn" id="7"]
+[ext_resource type="PackedScene" uid="uid://c05igbpe3obtp" path="res://ITEMS/pickups/gun/AMMO PICKUP/ammo_pickup.tscn" id="8"]
+[ext_resource type="Texture2D" uid="uid://dvch3f0l01og8" path="res://assets/old/old tiles/oga_summer_2023_robber_game_jam_art/OGA Summer 2023 Robber Game Jam Art/book_shelf.png" id="9_spol0"]
+
+[sub_resource type="NavigationPolygon" id="1"]
+vertices = PackedVector2Array(-174, 114, -222, 114, -258, 102, -222, 102, -90, 30, -78, -42, -78, 78, -90, 42, -90, -30, 210, -42, 210, 210, 174, 90, 174, 54, 78, 150, -54, 210, -66, 186, -174, 6, -186, 102, -186, 18, -198, 6, -222, 18, -138, -42, -126, -30, -138, 150, -126, 30, -54, 258, -66, 246, -307, 258, -270, 246, 162, 102, 126, 102, 78, 90, 114, 90, 162, 42, 78, -42, 126, 42, 78, 78, 114, 54, -307, -30, -307, -42, -174, -42, -282, -30, -174, -30, -198, -30, -282, 6, -258, 18, 42, 78, 30, 90, 30, 42, 42, -42, -42, -42, -30, 42, -42, 78, -30, 90, -90, 90, -126, 42, -126, 150, -234, 186, -222, 150, -234, 138, -270, 138, -294, 102, -307, 6, -294, 18)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3), PackedInt32Array(4, 5, 6, 7), PackedInt32Array(5, 4, 8), PackedInt32Array(9, 10, 11, 12), PackedInt32Array(13, 10, 14, 15), PackedInt32Array(16, 0, 17, 18), PackedInt32Array(19, 16, 18, 20), PackedInt32Array(21, 5, 8, 22), PackedInt32Array(23, 21, 22, 24), PackedInt32Array(14, 25, 26, 15), PackedInt32Array(26, 25, 27, 28), PackedInt32Array(29, 11, 10), PackedInt32Array(29, 10, 13, 30), PackedInt32Array(30, 13, 31, 32), PackedInt32Array(9, 12, 33), PackedInt32Array(34, 9, 33, 35), PackedInt32Array(36, 34, 35, 37), PackedInt32Array(36, 37, 32, 31), PackedInt32Array(38, 39, 40, 41), PackedInt32Array(40, 42, 43), PackedInt32Array(41, 40, 43), PackedInt32Array(44, 41, 43, 19, 20, 45), PackedInt32Array(46, 36, 31, 47), PackedInt32Array(46, 47, 48, 49), PackedInt32Array(50, 49, 48, 51), PackedInt32Array(52, 50, 51, 53), PackedInt32Array(52, 53, 54, 6), PackedInt32Array(6, 54, 7), PackedInt32Array(24, 4, 7, 55), PackedInt32Array(23, 24, 55), PackedInt32Array(23, 55, 56), PackedInt32Array(56, 13, 15, 57), PackedInt32Array(23, 56, 57), PackedInt32Array(58, 23, 57), PackedInt32Array(58, 57, 59, 1), PackedInt32Array(2, 1, 59, 60, 61), PackedInt32Array(60, 28, 27, 61), PackedInt32Array(61, 27, 62, 63), PackedInt32Array(63, 62, 44, 45), PackedInt32Array(45, 20, 3, 2), PackedInt32Array(0, 3, 17)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(-307, -42, -174, -42, -174, -30, -198, -30, -198, 6, -174, 6, -174, 114, -222, 114, -222, 150, -138, 150, -138, -42, -78, -42, -78, 78, -42, 78, -42, -42, 42, -42, 42, 78, 78, 78, 78, -42, 210, -42, 210, 210, -54, 210, -54, 258, -307, 258, -307, 6, -282, 6, -282, -30, -307, -30), PackedVector2Array(-126, -30, -126, 30, -90, 30, -90, -30), PackedVector2Array(-126, 42, -90, 42, -90, 90, -30, 90, -30, 42, 30, 42, 30, 90, 78, 90, 78, 150, -126, 150), PackedVector2Array(126, 42, 162, 42, 174, 54, 174, 90, 162, 102, 126, 102, 114, 90, 114, 54), PackedVector2Array(-294, 18, -258, 18, -258, 102, -294, 102), PackedVector2Array(-222, 18, -222, 102, -186, 102, -186, 18), PackedVector2Array(-270, 138, -234, 138, -234, 186, -66, 186, -66, 246, -270, 246)])
+
+[node name="Level" instance=ExtResource("4")]
+
+[node name="CanvasModulate" type="CanvasModulate" parent="." index="0"]
+visible = false
+color = Color(0, 0, 0, 1)
+
+[node name="Layer0" type="TileMapLayer" parent="." index="3"]
+use_parent_material = true
+tile_map_data = PackedByteArray("AAD8/wUAAAADAAEAAAD9/wUAAAADAAEAAAD+/wUAAAADAAEAAAD//wUAAAADAAEAAAAAAAUAAAADAAEAAAABAAUAAAADAAEAAAD7/wUAAAAAAAEAAAACAAUAAAABAAEAAAD7/wkAAAADAAEAAAD6/wkAAAADAAEAAAD5/wkAAAADAAEAAAD4/wkAAAADAAEAAAD3/wkAAAADAAEAAAD2/wkAAAADAAEAAAD1/wkAAAAAAAEAAAD8/wkAAAABAAEAAAD7/wAAAAACAAEAAAD9/wIAAAACAAEAAAACAAIAAAACAAEAAAD//wQAAAADAAEAAAAAAAQAAAADAAEAAAADAP3/AAADAAEAAAAEAP3/AAADAAEAAAAHAP3/AAADAAEAAAAIAP3/AAADAAEAAADz//3/AAADAAEAAAD0//3/AAADAAEAAAD1//3/AAADAAEAAAD2//3/AAADAAEAAAD3//3/AAADAAEAAAD4//3/AAADAAEAAAD4////AAAAAAEAAADz////AAABAAEAAAD6//3/AAADAAEAAAD7//3/AAADAAEAAAD8//3/AAADAAEAAAD+//3/AAADAAEAAAD///3/AAADAAEAAAAAAP3/AAADAAEAAAABAP3/AAADAAEAAADz//7/AgAAAAAAAAD0//7/AgAAAAAAAAD1//7/AgAAAAAAAAD2//7/AgAAAAAAAAD3//7/AgAAAAAAAAD4//7/AgAAAAAAAAD0////AgAAAAAAAAD1////AgAAAAAAAAD2////AgAAAAAAAAD3////AgAAAAAAAAD3/wAAAgAAAAAAAAD4/wAAAgAAAAAAAAD2/wAAAgAAAAAAAAD1/wAAAgAAAAAAAAD0/wAAAgAAAAAAAADz/wAAAgAAAAAAAADz/wEAAgAAAAAAAADz/wIAAgAAAAAAAADz/wMAAgAAAAAAAAD0/wMAAgAAAAAAAAD1/wMAAgAAAAAAAAD2/wMAAgAAAAAAAAD3/wMAAAADAAEAAAD4/wMAAgAAAAAAAAD4/wIAAgAAAAAAAAD4/wEAAgAAAAAAAAD3/wEAAAADAAEAAAD2/wEAAgAAAAAAAAD1/wEAAgAAAAAAAAD0/wEAAAADAAEAAAD0/wIAAAADAAEAAAD1/wIAAgAAAAAAAAD2/wIAAgAAAAAAAAD3/wIAAAADAAEAAADz/wQAAgAAAAAAAAD0/wQAAgAAAAAAAAD1/wQAAgAAAAAAAAD2/wQAAgAAAAAAAAD3/wQAAgAAAAAAAAD4/wQAAgAAAAAAAAD4/wUAAAADAAEAAAD3/wUAAAADAAEAAAD2/wUAAgAAAAAAAAD1/wUAAgAAAAAAAAD0/wUAAgAAAAAAAADz/wUAAgAAAAAAAAD5/wUAAAACAAEAAAD6//7/AQAAAAAAAAD7//7/AQAAAAAAAAD8//7/AQAAAAAAAAD8////AQAAAAAAAAD8/wAAAQAAAAAAAAD8/wEAAQAAAAAAAAD7/wEAAQAAAAAAAAD6/wEAAQAAAAAAAAD6/wAAAQAAAAAAAAD6////AQAAAAAAAAD6/wIAAQAAAAAAAAD6/wMAAQAAAAAAAAD6/wQAAQAAAAAAAAD6/wUAAQAAAAAAAAD6/wYAAQAAAAAAAAD2/wYAAQAAAAAAAAD2/wcAAQAAAAAAAAD3/wcAAQAAAAAAAAD3/wYAAQAAAAAAAAD4/wYAAQAAAAAAAAD5/wYAAQAAAAAAAAD5/wcAAQAAAAAAAAD4/wcAAQAAAAAAAAD6/wcAAQAAAAAAAAD7/wcAAQAAAAAAAAD8/wcAAQAAAAAAAAD9/wcAAQAAAAAAAAD+/wcAAQAAAAAAAAD//wcAAQAAAAAAAAAAAAcAAQAAAAAAAAABAAcAAQAAAAAAAAACAAcAAQAAAAAAAAADAAcAAQAAAAAAAAAEAAcAAQAAAAAAAAAFAAcAAQAAAAAAAAAGAAcAAQAAAAAAAAAHAAcAAQAAAAAAAAAIAAcAAQAAAAAAAAAIAAgAAQAAAAAAAAAHAAgAAQAAAAAAAAAGAAgAAQAAAAAAAAAFAAgAAQAAAAAAAAACAAgAAQAAAAAAAAABAAgAAQAAAAAAAAAAAAgAAQAAAAAAAAD//wgAAQAAAAAAAAD+/wgAAQAAAAAAAAD9/wgAAQAAAAAAAAADAAgAAQAAAAAAAAAEAAgAAQAAAAAAAAADAP7/AQAAAAAAAAADAP//AQAAAAAAAAADAAAAAQAAAAAAAAADAAEAAQAAAAAAAAADAAIAAQAAAAAAAAADAAMAAQAAAAAAAAADAAQAAQAAAAAAAAADAAUAAQAAAAAAAAADAAYAAQAAAAAAAAAEAP7/AQAAAAAAAAAEAP//AQAAAAAAAAAEAAAAAQAAAAAAAAAEAAEAAQAAAAAAAAAEAAIAAQAAAAAAAAAEAAMAAQAAAAAAAAAEAAQAAQAAAAAAAAAEAAUAAQAAAAAAAAAEAAYAAQAAAAAAAAAFAP7/AQAAAAAAAAAFAP//AQAAAAAAAAAFAAAAAQAAAAAAAAAFAAEAAQAAAAAAAAAFAAIAAQAAAAAAAAAFAAMAAQAAAAAAAAAFAAQAAQAAAAAAAAAFAAUAAQAAAAAAAAAFAAYAAQAAAAAAAAAGAP7/AQAAAAAAAAAGAP//AQAAAAAAAAAGAAAAAQAAAAAAAAAGAAEAAQAAAAAAAAAGAAIAAQAAAAAAAAAGAAMAAQAAAAAAAAAGAAQAAQAAAAAAAAAGAAUAAQAAAAAAAAAGAAYAAQAAAAAAAAAHAP7/AQAAAAAAAAAHAP//AQAAAAAAAAAHAAAAAQAAAAAAAAAHAAEAAQAAAAAAAAAHAAIAAQAAAAAAAAAHAAMAAQAAAAAAAAAHAAQAAQAAAAAAAAAHAAUAAQAAAAAAAAAHAAYAAQAAAAAAAAAIAP7/AQAAAAAAAAAIAP//AQAAAAAAAAAIAAAAAQAAAAAAAAAIAAEAAQAAAAAAAAAIAAIAAQAAAAAAAAAIAAMAAQAAAAAAAAAIAAQAAQAAAAAAAAAIAAUAAQAAAAAAAAAIAAYAAQAAAAAAAAACAAMAAQAAAAAAAAABAAMAAQAAAAAAAAD//wEAAQAAAAAAAAABAAIAAQAAAAAAAAABAAEAAQAAAAAAAAABAAAAAQAAAAAAAAABAP//AQAAAAAAAAABAP7/AQAAAAAAAAAAAP7/AQAAAAAAAAD///7/AQAAAAAAAAD+//7/AQAAAAAAAAD+////AQAAAAAAAAD+/wAAAQAAAAAAAAD+/wEAAQAAAAAAAAD+/wIAAQAAAAAAAAAAAAEAAQAAAAAAAAAAAAAAAQAAAAAAAAAAAP//AQAAAAAAAAD/////AQAAAAAAAAD//wAAAQAAAAAAAAD+/wMAAQAAAAAAAAD9/wMAAQAAAAAAAAD8/wMAAQAAAAAAAAD8/wIAAQAAAAAAAAD7/wYAAQAAAAAAAAD8/wYAAQAAAAAAAAD9/wYAAQAAAAAAAAD+/wYAAQAAAAAAAAD//wYAAQAAAAAAAAAAAAYAAQAAAAAAAAABAAYAAQAAAAAAAAACAAYAAQAAAAAAAADz/wYAAQAAAAAAAADz/wcAAQAAAAAAAADz/wgAAQAAAAAAAADz/wkAAQAAAAAAAADz/woAAQAAAAAAAAD0/woAAQAAAAAAAAD0/wkAAQAAAAAAAAD0/wgAAQAAAAAAAAD0/wcAAQAAAAAAAAD0/wYAAQAAAAAAAAD1/woAAQAAAAAAAAD2/woAAQAAAAAAAAD3/woAAQAAAAAAAAD4/woAAQAAAAAAAAD5/woAAQAAAAAAAAD6/woAAQAAAAAAAAD7/woAAQAAAAAAAAD8/woAAQAAAAAAAAD9/woAAQAAAAAAAAD9/wkAAQAAAAAAAAACAAEAAAADAAAAAAACAAAAAAADAAAAAAACAP//AAADAAAAAAACAP7/AAADAAAAAAACAP3/AAADAAAAAAD9/wEAAAADAAAAAAD9/wAAAAADAAAAAAD9////AAADAAAAAAD9//7/AAADAAAAAAD9//3/AAADAAAAAAD5/wQAAAADAAAAAAD5/wMAAAADAAAAAAD5/wIAAAADAAAAAAD5/wEAAAADAAAAAAD5/wAAAAADAAAAAAD5////AAADAAAAAAD5//7/AAADAAAAAAD5//3/AAADAAAAAAD//wIAAAADAAAAAAAAAAIAAAADAAAAAAAAAAMAAAADAAAAAAD//wMAAAADAAAAAAABAAQAAAADAAAAAAACAAQAAAADAAAAAAD+/wQAAAADAAAAAAD9/wQAAAADAAAAAAD8/wQAAAADAAAAAAD7/wQAAAADAAAAAAD7/wMAAAADAAAAAAD7/wIAAAADAAAAAAD7////AAADAAAAAAAJAP3/AAADAAAAAAAJAP7/AAADAAAAAAAJAP//AAADAAAAAAAJAAAAAAADAAAAAAAJAAEAAAADAAAAAAAJAAIAAAADAAAAAAAJAAMAAAADAAAAAAAJAAQAAAADAAAAAAAJAAUAAAADAAAAAAAJAAYAAAADAAAAAAAJAAcAAAADAAAAAAAJAAgAAAADAAAAAAAJAAkAAAADAAAAAAAIAAkAAAADAAAAAAAHAAkAAAADAAAAAAAGAAkAAAADAAAAAAAFAAkAAAADAAAAAAAEAAkAAAADAAAAAAADAAkAAAADAAAAAAACAAkAAAADAAAAAAABAAkAAAADAAAAAAAAAAkAAAADAAAAAAD//wkAAAADAAAAAAD+/wkAAAADAAAAAAD+/woAAAADAAAAAAD+/wsAAAADAAAAAAD9/wsAAAADAAAAAAD8/wsAAAADAAAAAAD7/wsAAAADAAAAAAD6/wsAAAADAAAAAAD5/wsAAAADAAAAAAD4/wsAAAADAAAAAAD3/wsAAAADAAAAAAD2/wsAAAADAAAAAAD1/wsAAAADAAAAAAD0/wsAAAADAAAAAADz/wsAAAADAAAAAADy/wsAAAADAAAAAADy/woAAAADAAAAAADy/wkAAAADAAAAAADy/wgAAAADAAAAAADy/wcAAAADAAAAAADy/wYAAAADAAAAAADy/wUAAAADAAAAAADy/wQAAAADAAAAAADy/wMAAAADAAAAAADy/wIAAAADAAAAAADy/wEAAAADAAAAAADy/wAAAAADAAAAAADy////AAADAAAAAADy//7/AAADAAAAAADy//3/AAADAAAAAAD1/wYAAAADAAAAAAD1/wcAAAADAAAAAAD1/wgAAAADAAAAAAD2/wgAAAADAAAAAAD3/wgAAAADAAAAAAD4/wgAAAADAAAAAAD5/wgAAAADAAAAAAD6/wgAAAADAAAAAAD7/wgAAAADAAAAAAD8/wgAAAADAAAAAAAEAPz/AAADAAAAAAAFAPz/AAADAAAAAAAGAPz/AAADAAAAAAAHAPz/AAADAAAAAAA=")
+tile_set = ExtResource("2")
+
+[node name="Layer1" type="TileMapLayer" parent="." index="4"]
+use_parent_material = true
+tile_map_data = PackedByteArray("AADz////BgABAAAAAAD4////BgABAAAAAAD3/wUABgABAAAAAAD4/wUABgABAAAAAAAFAAIAAwAAAAAAAAAFAAMAAwAAAAEAAAAGAAIAAwABAAAAAAAGAAMAAwABAAEAAAD7/wAAAAALAAAAAAD3/wMABgABAAAAAAD0/wMABAAGAAAAAAD3/wIABgABAAAAAAD3/wEABgABAAAAAAD0/wIABgABAAAAAAD0/wEABgABAAAAAAAHAAcABQAAAAAAAAAIAAcABQAEAAAAAAA=")
+tile_set = ExtResource("1")
+
+[node name="Vault" parent="." index="6"]
+position = Vector2(0, 120)
+
+[node name="Node2D_Cops#Cop" parent="YSort/Cops" index="0" instance=ExtResource("6")]
+position = Vector2(-240, -32)
+
+[node name="Node2D_Cops#Cop2" parent="YSort/Cops" index="1" instance=ExtResource("6")]
+position = Vector2(-240, 16)
+
+[node name="Node2D_Cops#Cop3" parent="YSort/Cops" index="2" instance=ExtResource("6")]
+position = Vector2(-184, 16)
+
+[node name="Node2D_Cops#Cop4" parent="YSort/Cops" index="3" instance=ExtResource("6")]
+position = Vector2(-296, 16)
+
+[node name="Node2D_Cops#Cop5" parent="YSort/Cops" index="4" instance=ExtResource("6")]
+position = Vector2(-240, 112)
+
+[node name="Node2D_Cops#Cop6" parent="YSort/Cops" index="5" instance=ExtResource("6")]
+position = Vector2(-184, 104)
+
+[node name="Node2D_Cops#Cop7" parent="YSort/Cops" index="6" instance=ExtResource("6")]
+position = Vector2(-296, 104)
+
+[node name="Node2D_Cops#Cop8" parent="YSort/Cops" index="7" instance=ExtResource("6")]
+position = Vector2(-56, 168)
+
+[node name="Node2D_Cops#Cop9" parent="YSort/Cops" index="8" instance=ExtResource("6")]
+position = Vector2(200, -32)
+
+[node name="Node2D_Cops#Cop10" parent="YSort/Cops" index="9" instance=ExtResource("6")]
+position = Vector2(88, 184)
+
+[node name="Node2D_Cops#Cop11" parent="YSort/Cops" index="10" instance=ExtResource("6")]
+position = Vector2(-64, 256)
+
+[node name="Swat" parent="YSort/Cops" index="11" instance=ExtResource("5_tfup6")]
+position = Vector2(-84, -36)
+
+[node name="Elevator" parent="YSort" index="2"]
+position = Vector2(144, -48)
+
+[node name="HealthPack3" parent="Pickups" index="0" instance=ExtResource("7")]
+position = Vector2(-240, 36)
+
+[node name="AmmoPickup" parent="Pickups" index="1" instance=ExtResource("8")]
+position = Vector2(-108, -36)
+
+[node name="WanderPoint" parent="WanderPoints" index="0" instance=ExtResource("3")]
+position = Vector2(-84, -36)
+
+[node name="WanderPoint2" parent="WanderPoints" index="1" instance=ExtResource("3")]
+position = Vector2(-132, -36)
+
+[node name="WanderPoint3" parent="WanderPoints" index="2" instance=ExtResource("3")]
+position = Vector2(-132, 36)
+
+[node name="WanderPoint4" parent="WanderPoints" index="3" instance=ExtResource("3")]
+position = Vector2(-84, 36)
+
+[node name="WanderPoint5" parent="WanderPoints" index="4" instance=ExtResource("3")]
+position = Vector2(-288, 78)
+
+[node name="WanderPoint6" parent="WanderPoints" index="5" instance=ExtResource("3")]
+position = Vector2(84, 180)
+
+[node name="WanderPoint7" parent="WanderPoints" index="6" instance=ExtResource("3")]
+position = Vector2(84, -36)
+
+[node name="WanderPoint8" parent="WanderPoints" index="7" instance=ExtResource("3")]
+position = Vector2(204, -36)
+
+[node name="WanderPoint9" parent="WanderPoints" index="8" instance=ExtResource("3")]
+position = Vector2(204, 156)
+
+[node name="WanderPoint10" parent="WanderPoints" index="9" instance=ExtResource("3")]
+position = Vector2(-60, 168)
+
+[node name="WanderPoint13" parent="WanderPoints" index="10" instance=ExtResource("3")]
+position = Vector2(-240, -36)
+
+[node name="WanderPoint14" parent="WanderPoints" index="11" instance=ExtResource("3")]
+position = Vector2(-300, 12)
+
+[node name="WanderPoint15" parent="WanderPoints" index="12" instance=ExtResource("3")]
+position = Vector2(-240, 12)
+
+[node name="WanderPoint16" parent="WanderPoints" index="13" instance=ExtResource("3")]
+position = Vector2(-180, 12)
+
+[node name="WanderPoint17" parent="WanderPoints" index="14" instance=ExtResource("3")]
+position = Vector2(-180, 108)
+
+[node name="WanderPoint18" parent="WanderPoints" index="15" instance=ExtResource("3")]
+position = Vector2(-240, 108)
+
+[node name="WanderPoint19" parent="WanderPoints" index="16" instance=ExtResource("3")]
+position = Vector2(-300, 108)
+
+[node name="WanderPoint20" parent="WanderPoints" index="17" instance=ExtResource("3")]
+position = Vector2(36, -36)
+
+[node name="WanderPoint21" parent="WanderPoints" index="18" instance=ExtResource("3")]
+position = Vector2(-60, 252)
+
+[node name="WanderPoint22" parent="WanderPoints" index="19" instance=ExtResource("3")]
+position = Vector2(-36, -36)
+
+[node name="WanderPoint23" parent="WanderPoints" index="20" instance=ExtResource("3")]
+position = Vector2(-36, 84)
+
+[node name="WanderPoint25" parent="WanderPoints" index="21" instance=ExtResource("3")]
+position = Vector2(-300, 252)
+
+[node name="WanderPoint24" parent="WanderPoints" index="22" instance=ExtResource("3")]
+position = Vector2(84, 84)
+
+[node name="WanderPoint26" parent="WanderPoints" index="23" instance=ExtResource("3")]
+position = Vector2(-228, 168)
+
+[node name="CodeSpawnPoints" parent="." index="10"]
+position = Vector2(-300, -36)
+
+[node name="SpawnPoint" parent="CodeSpawnPoints" index="0" instance=ExtResource("5")]
+
+[node name="SpawnPoint2" parent="CodeSpawnPoints" index="1" instance=ExtResource("5")]
+position = Vector2(120, 0)
+
+[node name="NavigationRegion2D" parent="." index="11"]
+navigation_polygon = SubResource("1")
+
+[node name="BookShelf" type="Sprite2D" parent="." index="12"]
+position = Vector2(-180, 132)
+texture = ExtResource("9_spol0")
+
+[node name="BookShelf2" type="Sprite2D" parent="." index="13"]
+position = Vector2(-300, -12)
+texture = ExtResource("9_spol0")
+
+[node name="BookShelf3" type="Sprite2D" parent="." index="14"]
+position = Vector2(-180, -12)
+texture = ExtResource("9_spol0")
+
+[node name="BookShelf4" type="Sprite2D" parent="." index="15"]
+position = Vector2(-204, 36)
+texture = ExtResource("9_spol0")
+
+[node name="BookShelf5" type="Sprite2D" parent="." index="16"]
+position = Vector2(-204, 60)
+texture = ExtResource("9_spol0")
+
+[node name="BookShelf6" type="Sprite2D" parent="." index="17"]
+position = Vector2(-204, 84)
+texture = ExtResource("9_spol0")
+
+[node name="BookShelf7" type="Sprite2D" parent="." index="18"]
+position = Vector2(-276, 60)
+texture = ExtResource("9_spol0")
+
+[node name="BookShelf8" type="Sprite2D" parent="." index="19"]
+position = Vector2(-276, 36)
+texture = ExtResource("9_spol0")
+
+[node name="BookShelf9" type="Sprite2D" parent="." index="20"]
+position = Vector2(-204, 132)
+texture = ExtResource("9_spol0")
